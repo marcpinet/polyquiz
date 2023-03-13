@@ -1,0 +1,25 @@
+{
+  "name": "ps6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint": ".eslintrc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2019-2020-ps6/2022-2023-ps6-4-grands-corsaires.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2019-2020-ps6/2022-2023-ps6-4-grands-corsaires/issues"
+  },
+  "homepage": "https://github.com/2019-2020-ps6/2022-2023-ps6-4-grands-corsaires#readme",
+  "devDependencies": {
+    "husky": "^8.0.3"
+  }
+}
