@@ -1,0 +1,49 @@
+<body class="h-screen overflow-hidden">
+  <div class="flex justify-center h-full">
+    <!-- Row -->
+    <div class="w-full flex">
+      <!-- Col -->
+      <div class="w-full h-auto bg-[#90C1DF] hidden lg:block lg:w-1/2 rounded-l-lg overflow-hidden">
+        <img class="w-full h-full object-cover" src="../../assets/images/login.png" alt="background" />
+      </div>
+      <!-- Col -->
+      <div class="w-full lg:w-1/2 bg-[#FCFEFF] p-5 ">
+        <div class="flex items-center">
+          <img class="w-12 h-12 mr-3" src="../../assets/images/Poly.png" alt="Logo">
+          <h3 class="pt-4 text-3xl font-sans font-bold text-[#2B3467]">Bienvenue à PolyQuiz</h3>
+        </div>
+        <form class="px-8 pt-6 pb-8 mb-4 bg-[#FCFEFF] ">
+          <div class="mb-4">
+            <label class="block mb-2 text-lg font-bold text-[#2B3467]" for="username">
+              Username
+            </label>
+            <input
+              class="w-full px-4 py-4 text-lg leading-tight text-[#2B3467] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              id="username"
+              type="text"
+              placeholder="Entrez votre username"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2 text-lg font-bold text-[#2B3467]" for="password">
+              Mot de passe
+            </label>
+            <input
+              class="w-full px-4 py-4 mb-3 text-lg leading-tight text-[#2B3467] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              id="password"
+              type="password"
+              placeholder="Entrez votre mot de passe"
+            />
+            <!--TODO: input can have class = border-red-500 if error -->
+            <!-- <p class="text-xs italic text-red-500">Veuillez entrer votre mot de passe.</p> -->
+          </div>
+          <div class="mb-6 text-center">
+            <button class="w-full px-4 py-4 font-bold text-white text-xl bg-indigo-800 rounded-full hover:bg-indigo-900 focus:outline-none focus:shadow-outline" type="button">
+              Se connecter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
