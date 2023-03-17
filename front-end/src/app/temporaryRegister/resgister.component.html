@@ -1,0 +1,239 @@
+<div class="w-full w-full py-10 px-5 md:px-10">
+  <div class="text-center mb-10">
+    <h1 class="font-bold text-3xl text-gray-900">Créer Compte Résident</h1>
+  </div>
+  <div>
+    <div class="flex -mx-3">
+      <div
+        x-data="{photoName: null, photoPreview: null}"
+        class="w-full px-3 mb-5"
+      >
+        <!-- Photo File Input TODO: Maybe implements Drag&Drop later-->
+        <input
+          type="file"
+          class="hidden"
+          x-ref="photo"
+          x-on:change="
+                            photoName = $refs.photo.files[0].name;
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                photoPreview = e.target.result;
+                            };
+                            reader.readAsDataURL($refs.photo.files[0]);
+        "
+        />
+
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Image du résident</label
+        >
+
+        <div class="text-center">
+          <!-- Current Profile Photo -->
+          <div class="mt-2" x-show="! photoPreview">
+            <img
+              src="../../assets/images/defaltAvatar.png"
+              class="w-40 h-40 m-auto rounded-full shadow"
+            />
+          </div>
+          <!-- New Profile Photo Preview -->
+          <div class="mt-2" x-show="photoPreview" style="display: none">
+            <span
+              class="block w-40 h-40 rounded-full m-auto shadow"
+              x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'"
+              style="
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-image: url('null');
+              "
+            >
+            </span>
+          </div>
+          <button
+            type="button"
+            class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 ml-3"
+            x-on:click.prevent="$refs.photo.click()"
+          >
+            Charger l'image
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Numéro du résident</label
+        >
+        <div class="flex">
+          <div
+            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+          >
+            <i class="mdi mdi-phone-outline text-gray-400 text-lg"></i>
+          </div>
+          <input
+            type="text"
+            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            placeholder="123456"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Nom du résident</label>
+        <div class="flex">
+          <div
+            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+          >
+            <i class="mdi mdi-account-outline text-gray-400 text-lg"></i>
+          </div>
+          <input
+            type="text"
+            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            placeholder="John"
+          />
+        </div>
+      </div>
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Prénom du résident</label
+        >
+        <div class="flex">
+          <div
+            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+          >
+            <i class="mdi mdi-account-outline text-gray-400 text-lg"></i>
+          </div>
+          <input
+            type="text"
+            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            placeholder="Doe"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Genre du résident</label
+        >
+        <div class="flex items-center">
+          <div class="mr-4 rounded-md bg-indigo-200 p-2">
+            <input
+              type="checkbox"
+              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+            />
+            <label for="" class="ml-2 text-sm text-gray-600">Féminin</label>
+          </div>
+          <div class="mr-4 rounded-md bg-indigo-200 p-2">
+            <input
+              type="checkbox"
+              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+            />
+            <label for="" class="ml-2 text-sm text-gray-600">Masculin</label>
+          </div>
+          <div class="mr-4 rounded-md bg-indigo-200 p-2">
+            <input
+              type="checkbox"
+              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+            />
+            <label for="" class="ml-2 text-sm text-gray-600">Autres</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Symptômes du résident</label>
+        <div class="flex items-center">
+          <div class="mr-4 rounded-md bg-indigo-200 p-2">
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+            <label for="" class="ml-2 text-sm text-gray-600">Le tremblement de repos</label>
+          </div>
+          <div class="mr-4 rounded-md bg-indigo-200 p-2">
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+            <label for="" class="ml-2 text-sm text-gray-600">L'akinésie</label>
+          </div>
+          <div class="mr-4 rounded-md bg-indigo-200 p-2">
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+            <label for="" class="ml-2 text-sm text-gray-600">La rigidité</label>
+          </div>
+          <div class="mr-4 rounded-md bg-indigo-200 p-2">
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" id="autres-checkbox" />
+            <label for="autres-checkbox" class="ml-2 text-sm text-gray-600">Autres</label>
+          </div>
+          <div id="autres-input" class="hidden">
+            <input type="text" class="w-full border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1">User Name</label>
+        <div class="flex">
+          <div
+            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+          >
+            <i class="mdi mdi-account-outline text-gray-400 text-lg"></i>
+          </div>
+          <input
+            type="text"
+            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            placeholder="JohnDoe123"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Password</label>
+        <div class="flex">
+          <div
+            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+          >
+            <i class="mdi mdi-lock-outline text-gray-400 text-lg"></i>
+          </div>
+          <input
+            type="password"
+            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            placeholder="************"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Confirm Password</label
+        >
+        <div class="flex">
+          <div
+            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+          >
+            <i class="mdi mdi-lock-outline text-gray-400 text-lg"></i>
+          </div>
+          <input
+            type="password"
+            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            placeholder="************"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <button
+          class="block w-full max-w-xs mx-auto text-xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

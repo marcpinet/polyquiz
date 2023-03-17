@@ -4,5 +4,5 @@ export interface User {
   firstName: string;
   lastName: string;
   password: string;
-  userType: string; //patient, admin, superAdmin
+  userType: "patient" | "admin" | "superAdmin";
 }
