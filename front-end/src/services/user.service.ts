@@ -11,11 +11,10 @@ import {Router} from '@angular/router'; //to be able to navigate when log in, lo
 export class UserService {
   private userUrl = serverUrl + '/users';
   private httpOptions = httpOptionsBase;
-  private DEFAULT_AVATAR = "../../assets/images/defaultAvatar.png";
   constructor(private http: HttpClient,
     private router: Router) {
   }
-  createResidentAccount(userName: string, firstName: string, lastName: string, password: string, residentNum: string, genre: string, symptome : [], dateOfBirth: Date, avatar?: string) {
+  createResidentAccount(userName: string, firstName: string, lastName: string, password: string, residentNum: string, genre: string, symptome : [], dateOfBirth: Date, avatar: File | null) {
     return new Promise(
       ((resolve, reject) => {
         const residentToCreate = {
@@ -27,7 +26,7 @@ export class UserService {
           genre,
           symptome,
           dateOfBirth,
-          avatar: this.DEFAULT_AVATAR
+          avatar,
         };
         this.http.post<User>(this.userUrl + '/', residentToCreate, httpOptionsBase).subscribe((u) => {
           const error = JSON.parse(JSON.stringify(u)).errors;

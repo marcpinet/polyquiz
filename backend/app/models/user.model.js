@@ -9,5 +9,5 @@ module.exports = new BaseModel('User', {
   lastName: Joi.string().required(),
   password: Joi.string().required(),
   userType: Joi.string().required(),
-  avatar: Joi.string().default("../../assets/images/defaultAvatar.png") 
+  avatar: Joi.string().default("http://localhost:9428/api/uploads/defaultAvatar.png") 
 })

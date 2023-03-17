@@ -2,7 +2,7 @@
   <div class="text-center mb-10">
     <h1 class="font-bold text-3xl text-gray-900">Créer Compte Résident</h1>
   </div>
-  <div>
+  <form [formGroup]="residentForm" (ngSubmit)="addResident()">
     <div class="flex -mx-3">
       <div
         x-data="{photoName: null, photoPreview: null}"
@@ -31,7 +31,7 @@
           <!-- Current Profile Photo -->
           <div class="mt-2" x-show="! photoPreview">
             <img
-              src="../../assets/images/defaultAvatar.png"
+              src="http://localhost:9428/api/uploads/defaultAvatar.png"
               class="w-40 h-40 m-auto rounded-full shadow"
             />
           </div>
@@ -250,5 +250,5 @@
         </button>
       </div>
     </div>
-  </div>
+  </form>
 </div>
