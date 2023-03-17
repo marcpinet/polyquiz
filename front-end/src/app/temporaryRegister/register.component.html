@@ -31,7 +31,7 @@
           <!-- Current Profile Photo -->
           <div class="mt-2" x-show="! photoPreview">
             <img
-              src="../../assets/images/defaltAvatar.png"
+              src="../../assets/images/defaultAvatar.png"
               class="w-40 h-40 m-auto rounded-full shadow"
             />
           </div>
@@ -138,6 +138,7 @@
               class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
             />
             <label for="" class="ml-2 text-sm text-gray-600">Autres</label>
+            <!-- TODO: Add input text champ onClick Autres and in reverse -->
           </div>
         </div>
       </div>
@@ -162,6 +163,7 @@
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
             <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" id="autres-checkbox" />
             <label for="autres-checkbox" class="ml-2 text-sm text-gray-600">Autres</label>
+            <!-- TODO: Add input text champ onClick Autres and in reverse -->
           </div>
           <div id="autres-input" class="hidden">
             <input type="text" class="w-full border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -169,8 +171,21 @@
         </div>
       </div>
     </div>
-
-
+    <div class="flex -mx-3">
+      <div class="w-full px-3 mb-5">
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Date de Naissance du résident</label>
+        <div class="flex">
+          <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+            <i class="mdi mdi-calendar-blank text-gray-400 text-lg"></i>
+          </div>
+          <input
+            type="date"
+            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            placeholder="01/01/1990"
+          />
+        </div>
+      </div>
+    </div>
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
         <label for="" class="text-lg font-bold text-[#2B3467] px-1">User Name</label>
