@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <div>
-  <h1>Liste des quizzes</h1>
+  <h1>{{listTitle}}</h1>
+  <div class="rectangle" id="left"><p><</p></div>
   <ul>
     <li *ngFor="let quiz of quizList">
       <app-quiz-details [quiz]="quiz"></app-quiz-details>
     </li>
   </ul>
+  <div class="rectangle" id="right"><p>></p></div>
 </div>

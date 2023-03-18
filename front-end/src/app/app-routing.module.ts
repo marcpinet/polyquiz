@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QuizDetailsComponent } from './quizlist/child/child.component';
+import { QuizDetailsComponent } from './quizlist/child/quiz-details.component';
 import { QuizListComponent} from './quizlist/quizlist.component';
 
 const routes: Routes = [{ path: 'quizlist', component: QuizListComponent},

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/mocks/quiz.mock';
-import { QuizDetailsComponent } from './child/child.component';
+import { QuizDetailsComponent } from './child/quiz-details.component';
 import { QuizListService } from 'src/services/quizlist-service.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { QuizListService } from 'src/services/quizlist-service.service';
 })
 export class QuizListComponent implements OnInit {
   quizList: Quiz[] = [];
+  listTitle = 'Quiz List';
 
   constructor(private quizService: QuizListService) {}
 

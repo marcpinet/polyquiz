@@ -3,8 +3,8 @@ import { Quiz } from '../../../mocks/quiz.mock';
 
 @Component({
   selector: 'app-quiz-details',
-  templateUrl: './child.component.html',
-  styleUrls: ['./child.component.scss']
+  templateUrl: './quiz-details.component.html',
+  styleUrls: ['./quiz-details.component.scss']
 })
 export class QuizDetailsComponent {
 
@@ -12,7 +12,7 @@ export class QuizDetailsComponent {
   quiz: Quiz;
 
   constructor() { 
-    this.quiz = new Quiz('','','',[]);
+    this.quiz = new Quiz('','','','',[]);
   }
   
 }

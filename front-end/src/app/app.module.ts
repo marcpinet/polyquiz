@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { QuizDetailsComponent } from './quizlist/child/child.component';
+import { QuizDetailsComponent } from './quizlist/child/quiz-details.component';
 import { QuizListComponent } from './quizlist/quizlist.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
