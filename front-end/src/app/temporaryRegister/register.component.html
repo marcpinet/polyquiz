@@ -2,7 +2,7 @@
   <div class="text-center mb-10">
     <h1 class="font-bold text-3xl text-gray-900">Créer Compte Résident</h1>
   </div>
-  <form [formGroup]="residentForm" (ngSubmit)="addResident()">
+  <form [formGroup]="residentForm">
     <div class="flex -mx-3">
       <div
         x-data="{photoName: null, photoPreview: null}"
@@ -13,6 +13,7 @@
           type="file"
           class="hidden"
           x-ref="photo"
+          [formControlName]="'avatar'"
           x-on:change="
                             photoName = $refs.photo.files[0].name;
                             const reader = new FileReader();
@@ -73,6 +74,7 @@
           <input
             type="text"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            [formControlName]="'residentNum'"
             placeholder="123456"
           />
         </div>
@@ -89,6 +91,7 @@
           </div>
           <input
             type="text"
+            [formControlName]="'lastName'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
             placeholder="John"
           />
@@ -106,6 +109,7 @@
           </div>
           <input
             type="text"
+            [formControlName]="'firstName'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
             placeholder="Doe"
           />
@@ -114,31 +118,19 @@
     </div>
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
-          >Genre du résident</label
-        >
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Genre du résident</label>
         <div class="flex items-center">
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input
-              type="checkbox"
-              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-            />
-            <label for="" class="ml-2 text-sm text-gray-600">Féminin</label>
+            <input type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="genre" name="genre" value="feminin"/>
+            <label for="feminin" class="ml-2 text-sm text-gray-600">Féminin</label>
           </div>
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input
-              type="checkbox"
-              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-            />
-            <label for="" class="ml-2 text-sm text-gray-600">Masculin</label>
+            <input type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="genre" name="genre" value="masculin"/>
+            <label for="masculin" class="ml-2 text-sm text-gray-600">Masculin</label>
           </div>
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input
-              type="checkbox"
-              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-            />
-            <label for="" class="ml-2 text-sm text-gray-600">Autres</label>
-            <!-- TODO: Add input text champ onClick Autres and in reverse -->
+            <input type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="genre" name="genre" value="autres"/>
+            <label for="autres" class="ml-2 text-sm text-gray-600">Autres</label>
           </div>
         </div>
       </div>
@@ -149,19 +141,20 @@
         <label for="" class="text-lg font-bold text-[#2B3467] px-1">Symptômes du résident</label>
         <div class="flex items-center">
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+            <input type="checkbox"
+            class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="symptome" value="tremblement" />
             <label for="" class="ml-2 text-sm text-gray-600">Le tremblement de repos</label>
           </div>
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="symptome" value="akinesie"/>
             <label for="" class="ml-2 text-sm text-gray-600">L'akinésie</label>
           </div>
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="symptome" value="rigidite"/>
             <label for="" class="ml-2 text-sm text-gray-600">La rigidité</label>
           </div>
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" id="autres-checkbox" />
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" id="autres-checkbox" formControlName="symptome" value="autres"/>
             <label for="autres-checkbox" class="ml-2 text-sm text-gray-600">Autres</label>
             <!-- TODO: Add input text champ onClick Autres and in reverse -->
           </div>
@@ -180,6 +173,7 @@
           </div>
           <input
             type="date"
+            [formControlName]="'dateOfBirth'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
             placeholder="01/01/1990"
           />
@@ -188,7 +182,7 @@
     </div>
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1">User Name</label>
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Username</label>
         <div class="flex">
           <div
             class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
@@ -197,6 +191,7 @@
           </div>
           <input
             type="text"
+            [formControlName]="'userName'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
             placeholder="JohnDoe123"
           />
@@ -214,6 +209,7 @@
           </div>
           <input
             type="password"
+            [formControlName]="'password'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
             placeholder="************"
           />
@@ -240,11 +236,13 @@
         </div>
       </div>
     </div>
+    <!-- TODO: Error if confirmPassword is not the same as Password or not have enough characters -->
 
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
         <button
           class="block w-full max-w-xs mx-auto text-xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+          (click)="addResident()"
         >
           Register
         </button>
