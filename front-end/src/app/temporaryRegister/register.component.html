@@ -82,7 +82,9 @@
     </div>
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Nom du résident</label>
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Nom du résident</label
+        >
         <div class="flex">
           <div
             class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
@@ -118,19 +120,45 @@
     </div>
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Genre du résident</label>
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Genre du résident</label
+        >
         <div class="flex items-center">
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="genre" name="genre" value="feminin"/>
-            <label for="feminin" class="ml-2 text-sm text-gray-600">Féminin</label>
+            <input
+              type="radio"
+              class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+              formControlName="genre"
+              name="genre"
+              value="feminin"
+            />
+            <label for="feminin" class="ml-2 text-sm text-gray-600"
+              >Féminin</label
+            >
           </div>
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="genre" name="genre" value="masculin"/>
-            <label for="masculin" class="ml-2 text-sm text-gray-600">Masculin</label>
+            <input
+              type="radio"
+              class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+              formControlName="genre"
+              name="genre"
+              value="masculin"
+            />
+            <label for="masculin" class="ml-2 text-sm text-gray-600"
+              >Masculin</label
+            >
           </div>
           <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="genre" name="genre" value="autres"/>
-            <label for="autres" class="ml-2 text-sm text-gray-600">Autres</label>
+            <input
+              type="radio"
+              class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+              formControlName="genre"
+              name="genre"
+              value="autres"
+            />
+            <label for="autres" class="ml-2 text-sm text-gray-600"
+              >Autres</label
+            >
           </div>
         </div>
       </div>
@@ -138,37 +166,39 @@
 
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Symptômes du résident</label>
+        <label for="symptome" class="text-lg font-bold text-[#2B3467] px-1"
+          >Symptômes du résident</label
+        >
         <div class="flex items-center">
-          <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox"
-            class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="symptome" value="tremblement" />
-            <label for="" class="ml-2 text-sm text-gray-600">Le tremblement de repos</label>
-          </div>
-          <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="symptome" value="akinesie"/>
-            <label for="" class="ml-2 text-sm text-gray-600">L'akinésie</label>
-          </div>
-          <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" formControlName="symptome" value="rigidite"/>
-            <label for="" class="ml-2 text-sm text-gray-600">La rigidité</label>
-          </div>
-          <div class="mr-4 rounded-md bg-indigo-200 p-2">
-            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" id="autres-checkbox" formControlName="symptome" value="autres"/>
-            <label for="autres-checkbox" class="ml-2 text-sm text-gray-600">Autres</label>
-            <!-- TODO: Add input text champ onClick Autres and in reverse -->
-          </div>
-          <div id="autres-input" class="hidden">
-            <input type="text" class="w-full border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          <div
+            class="mr-4 rounded-md bg-indigo-200 p-2"
+            *ngFor="let symptome of symptomes"
+          >
+            <input
+              type="checkbox"
+              class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+              name="symptome"
+              [value]="symptome.value"
+              [checked]="symptome.checked"
+              (change)="changeState(symptome.id)"
+            />
+            <label for="symptome" class="ml-2 text-sm text-gray-600">{{
+              symptome.name
+            }}</label>
           </div>
         </div>
       </div>
     </div>
+
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Date de Naissance du résident</label>
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Date de Naissance du résident</label
+        >
         <div class="flex">
-          <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+          <div
+            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+          >
             <i class="mdi mdi-calendar-blank text-gray-400 text-lg"></i>
           </div>
           <input
@@ -182,7 +212,9 @@
     </div>
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Username</label>
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Username</label
+        >
         <div class="flex">
           <div
             class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
@@ -200,7 +232,9 @@
     </div>
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
-        <label for="" class="text-lg font-bold text-[#2B3467] px-1">Password</label>
+        <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+          >Password</label
+        >
         <div class="flex">
           <div
             class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"

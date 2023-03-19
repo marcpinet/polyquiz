@@ -10,6 +10,12 @@ import { Resident } from 'src/models/resident.model';
 })
 export class RegisterComponent implements OnInit {
   public residentForm: FormGroup;
+  symptomes = [
+    {name: 'Le tremblement de repos', value: 'tremblement', id: 0, checked: false},
+    {name: 'Akinésie', value: 'akinesie', id: 1, checked: false},
+    {name: 'La rigidité', value: 'rigidite', id: 2, checked: false},
+    {name: 'Autres', value: 'autres', id: 3, checked: false},
+  ];
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder
@@ -17,7 +23,7 @@ export class RegisterComponent implements OnInit {
     this.residentForm = this.formBuilder.group({
       residentNum: ['', Validators.required],
       genre: [[], Validators.required],
-      symptome: this.formBuilder.array([], Validators.required), //TODO
+      symptome: this.formBuilder.array([], Validators.required),
       dateOfBirth: ['', Validators.required],
       firstName: ['', [Validators.maxLength(20), Validators.required]],
       lastName: ['', [Validators.maxLength(20), Validators.required]],
@@ -33,18 +39,23 @@ export class RegisterComponent implements OnInit {
       userType: 'patient',
       avatar: [''],
     });
+
   }
 
   ngOnInit() {}
 
   addResident() {
-    const resident: Resident = {
-      userId: Date.now(),
-      residentNum: this.residentForm.value.residentNum,
-      genre: this.residentForm.value.genre,
-      symptome: this.residentForm.value.symptome, //TODO
-      dateOfBirth: this.residentForm.value.dateOfBirth,
-    };
+    const symptomeArray = this.symptomes
+    .filter((symptome) => symptome.checked)
+    .map((symptome) => symptome.value);
+
+  const resident: Resident = {
+    userId: Date.now(),
+    residentNum: this.residentForm.value.residentNum,
+    genre: this.residentForm.value.genre,
+    symptome: symptomeArray,
+    dateOfBirth: this.residentForm.value.dateOfBirth,
+  };
     const user: User = {
       userId: resident.userId,
       userName: this.residentForm.value.userName,
@@ -61,5 +72,12 @@ export class RegisterComponent implements OnInit {
     console.log(user);
     console.log(resident);
     this.userService.createResident(resident, user);
+  }
+  changeState(id: number) {
+    this.symptomes[id].checked = !this.symptomes[id].checked;
+    const symptomeArray = this.symptomes
+      .filter((symptome) => symptome.checked)
+      .map((symptome) => symptome.value);
+    this.residentForm.setControl('symptome', this.formBuilder.array(symptomeArray));
   }
 }
