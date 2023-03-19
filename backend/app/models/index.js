@@ -1,5 +1,6 @@
-// const YourModel = require('./your-model.model.js')
-
+const User = require ('./user.model.js')
+const Resident = require ('./resident.model.js')
 module.exports = {
-  // YourModel,
+  User,
+  Resident
 }
