@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Quiz } from '../../../mocks/quiz.mock';
 
 @Component({
@@ -14,5 +15,10 @@ export class QuizDetailsComponent {
   constructor() { 
     this.quiz = new Quiz('','','','',[]);
   }
+
+  onClick(){
+  }
+
+  
   
 }

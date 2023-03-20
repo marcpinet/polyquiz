@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/mocks/quiz.mock';
-import { QuizDetailsComponent } from './child/quiz-details.component';
 import { QuizListService } from 'src/services/quizlist-service.service';
 
 @Component({

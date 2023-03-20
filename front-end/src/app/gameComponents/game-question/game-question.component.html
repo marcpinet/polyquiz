@@ -1,0 +1,27 @@
+<div id="question">
+    <h1>{{this.question.question}}</h1>
+    <ul>
+        <li>
+            <button (click)="selectAnswer.emit(question.answers[0])">
+                <app-game-answer [answer]="question.answers[0]"></app-game-answer>
+            </button>
+        </li>
+        <li>
+            <button (click)="selectAnswer.emit(question.answers[1])">
+                <app-game-answer [answer]="question.answers[1]"></app-game-answer>
+            </button>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <button (click)="selectAnswer.emit(question.answers[2])">
+                <app-game-answer [answer]="question.answers[2]"></app-game-answer>
+            </button>
+        </li>
+        <li>
+            <button (click)="selectAnswer.emit(question.answers[3])">
+                <app-game-answer [answer]="question.answers[3]"></app-game-answer>
+            </button>
+        </li>
+    </ul>
+</div>

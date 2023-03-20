@@ -1,0 +1,4 @@
+<div> 
+    <h1>{{quiz.name}}</h1>
+    <app-game-question [question]="quiz.questions[compteur]" (selectAnswer)="function($event)"></app-game-question>
+</div>
