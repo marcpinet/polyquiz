@@ -1,6 +1,6 @@
 export interface Resident {
   userId: number;
-  residentNum: string;
+  id: number;
   genre: string;
   symptome: string[];
   dateOfBirth: Date;

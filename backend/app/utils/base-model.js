@@ -71,4 +71,17 @@ module.exports = class BaseModel {
     this.items = this.items.filter((item) => item.id !== id)
     this.save()
   }
+
+  findOne(condition) {
+    const item = this.items.find((i) => {
+      for (const key in condition) {
+        if (condition[key] !== i[key]) {
+          return false;
+        }
+      }
+      return true;
+    });
+    if (!item) return false;
+    return item;
+  }
 }

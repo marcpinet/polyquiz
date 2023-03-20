@@ -46,19 +46,28 @@ router.use(session({
   },
 }));
 
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
   try {
-    const user = User.create({ ...req.body })
-    res.status(201).json(user)
+    const { userName, password, avatar } = req.body;
+    const existingUser = await User.findOne({ userName });
+    if (existingUser) {
+      return res.status(409).json({ error: 'User already exists' });
+    }
+    //TODO: avatar upload control here
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await User.create({ ...req.body, userName: userName, password: hashedPassword, avatar: avatar });
+    res.status(201).json(user);
   } catch (err) {
-    manageAllErrors(res, err)
+    console.log(err)
+    manageAllErrors(res, err);
   }
-})
+});
 
 router.put('/:userId', (req, res) => {
   try {
     res.status(200).json(User.update(req.params.userId, req.body))
   } catch (err) {
+    console.log(err)
     manageAllErrors(res, err)
   }
 })
