@@ -80,4 +80,11 @@ export class UserService {
       }
     });
   }
+
+  getPhotoUrl(user: User) {
+    if(user.avatar == undefined) {
+      return  "assets/user.png"; //TODO: path works?
+    }
+    else return user.avatar;
+  }
 }
