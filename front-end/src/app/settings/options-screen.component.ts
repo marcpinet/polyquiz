@@ -22,4 +22,8 @@ export class OptionsScreenComponent {
   public saveSettings(): void {
     console.log('Settings saved:', this.settings);
   }
+
+  public settingsChanged(): boolean {
+    return JSON.stringify(this.settings) !== JSON.stringify(this.defaultSettings);
+  }
 }
