@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { QuizCarousel } from './quizlist/quiz-carousel/quiz-carousel.component';
+import { OptionsScreenComponent } from './settings/options-screen.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,8 @@ import { QuizCarousel } from './quizlist/quiz-carousel/quiz-carousel.component';
     LoginComponent,
     RegisterComponent,
     MainPage,
-    QuizCarousel
+    QuizCarousel,
+    OptionsScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,6 @@ import { QuizCarousel } from './quizlist/quiz-carousel/quiz-carousel.component';
     IvyCarouselModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
