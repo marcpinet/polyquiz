@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { MainPage } from './mainpage/mainpage.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
 @NgModule({
@@ -15,7 +15,8 @@ import { RegisterComponent } from './temporaryRegister/register.component';
     QuizListComponent,
     QuizDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainPage
   ],
   imports: [
     BrowserModule,
