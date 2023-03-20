@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { QuizDetailsComponent } from './quizlist/child/quiz-details.component';
+import { QuizListComponent } from './quizlist/quizlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,8 @@ import { RegisterComponent } from './temporaryRegister/register.component';
 @NgModule({
   declarations: [
     AppComponent,
+    QuizListComponent,
+    QuizDetailsComponent,
     LoginComponent,
     RegisterComponent
   ],
@@ -23,4 +27,5 @@ import { RegisterComponent } from './temporaryRegister/register.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
