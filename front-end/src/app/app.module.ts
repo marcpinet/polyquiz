@@ -6,8 +6,9 @@ import { QuizListComponent } from './quizlist/quizlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainPage } from './mainpage/mainpage.component';
+import { ResultComponent } from './result/result.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
@@ -29,6 +30,7 @@ import { OptionsScreenComponent } from './settings/options-screen.component';
     MainPage,
     QuizCarousel,
     OptionsScreenComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -41,4 +43,4 @@ import { OptionsScreenComponent } from './settings/options-screen.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
