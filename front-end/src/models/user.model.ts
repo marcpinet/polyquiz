@@ -5,5 +5,6 @@ export interface User {
   userName: string;
   password: string;
   userType: "patient" | "admin" | "superAdmin";
-  avatar: File | null;
+  //avatar: File | null;
+  avatar: string;
 }

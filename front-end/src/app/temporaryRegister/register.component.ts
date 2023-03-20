@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
       lastName: this.residentForm.value.lastName,
       password: this.residentForm.value.password,
       userType: 'patient',
-      avatar: null,
+      avatar: '../../assets/images/defaultAvatar.png',
     };
     const avatarFile = this.residentForm.value.avatar;
     if (avatarFile) {
