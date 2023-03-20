@@ -50,21 +50,25 @@
                     <p class="text-lg">Vous avez passé ce quizz avec un résultat de {{score}}%</p>
                 </div>
             </div>
-            <div class="col-start-3 row-start-1 p-4 rounded-lg bg-[#61a968] shadow-md">
-                <div class="text-gray-700">Réponses correctes</div>
-                <div class="text-4xl font-bold mt-2">{{correct_answers}}</div>
+            <div class="col-start-3 row-start-1 p-4 rounded-lg bg-[#61a968] shadow-md flex flex-col items-center">
+                <i class="fas fa-check text-white text-4xl mb-2"></i>
+                <div class="text-4xl text-white font-bold mt-2">{{correct_answers}}</div>
+                <div class="text-white">Réponses correctes</div>
             </div>
-            <div class="col-start-4 row-start-1 p-4 rounded-lg bg-[#cf615c] shadow-md">
-                <div class="text-gray-700">Réponses fausses</div>
-                <div class="text-4xl font-bold mt-2">{{incorrect_answers}}</div>
+            <div class="col-start-4 row-start-1 p-4 rounded-lg bg-[#cf615c] shadow-md flex flex-col items-center">
+                <i class="fas fa-times text-white text-4xl mb-2"></i>
+                <div class="text-4xl text-white font-bold mt-2">{{incorrect_answers}}</div>
+                <div class="text-white">Réponses fausses</div>
             </div>
-            <div class="col-start-3 row-start-2 p-4 rounded-lg bg-[#db975b] shadow-md">
-                <div class="text-gray-700">Temps total</div>
-                <div class="text-4xl font-bold mt-2">{{total_time}}</div>
+            <div class="col-start-3 row-start-2 p-4 rounded-lg bg-[#db975b] shadow-md flex flex-col items-center">
+                <i class="fas fa-stopwatch text-white text-4xl mb-2"></i>
+                <div class="text-4xl text-white font-bold mt-2">{{total_time}}</div>
+                <div class="text-white">Temps total</div>
             </div>
-            <div class="col-start-4 row-start-2 p-4 rounded-lg bg-[#4b7ead] shadow-md">
-                <div class="text-gray-700">Temps moyen par question</div>
-                <div class="text-4xl font-bold mt-2">{{average_time}}</div>
+            <div class="col-start-4 row-start-2 p-4 rounded-lg bg-[#4b7ead] shadow-md flex flex-col items-center">
+                <i class="fas fa-clock text-white text-4xl mb-2"></i>
+                <div class="text-4xl text-white font-bold mt-2">{{average_time}}</div>
+                <div class="text-white">Temps moyen par question</div>
             </div>
         </div>
         <button class="mt-8 w-64 h-16 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
