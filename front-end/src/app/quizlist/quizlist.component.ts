@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Quiz } from 'src/mocks/quiz.mock';
 import { QuizListService } from 'src/services/quizlist-service.service';
 
@@ -11,7 +12,7 @@ export class QuizListComponent implements OnInit {
   quizList: Quiz[] = [];
   listTitle = 'Quiz List';
 
-  constructor(private quizService: QuizListService) {}
+  constructor(private quizService: QuizListService, private router: Router) {}
 
   ngOnInit(): void {
     this.quizService.quizzes$.subscribe((quizList: Quiz[]) => {

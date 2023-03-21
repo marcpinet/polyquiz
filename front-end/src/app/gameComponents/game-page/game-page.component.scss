@@ -4,10 +4,46 @@ div{
     height: 100vh;
 }
 
-h1{
-    color: red;
+h1 {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
     text-decoration: underline;
+}
+
+#title{
+    color: red;
+}
+
+.rectangle {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+  }
+
+#true {
+    background-color: green;
+}
+
+#false {
+    background-color: red;
+}
+
+#reptext {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+#rep {
+    color: white;
+    text-align: center;
+}
+
+#end {
+    background-color: black;
 }

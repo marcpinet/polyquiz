@@ -19,7 +19,7 @@ export class GameQuestionComponent{
     
 
     constructor(){
-        this.question = new Question('',["","","",""]);
+        this.question = new Question('',["","","",""],1);
     }
 
 

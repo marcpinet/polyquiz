@@ -8,7 +8,7 @@ import { GamePageComponent } from './gameComponents/game-page/game-page.componen
 
 const routes: Routes = [
   {path: 'quizlist', component: QuizListComponent},
-  {path: 'game', component: GamePageComponent},
+  {path: 'game/:quizId', component: GamePageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'tempo-register', component: RegisterComponent}, //only do this for the moment, to be implement only in admin's interface later
 ];

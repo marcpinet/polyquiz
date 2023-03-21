@@ -1,5 +1,5 @@
 import { Component, HostListener, Input } from '@angular/core';
-import { ActivatedRoute, NavigationExtras } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Quiz } from '../../../mocks/quiz.mock';
 
 @Component({
@@ -12,11 +12,12 @@ export class QuizDetailsComponent {
   @Input()
   quiz: Quiz;
 
-  constructor() { 
+  constructor(private router: Router) { 
     this.quiz = new Quiz('','','','',[]);
   }
 
   onClick(){
+    this.router.navigate(['/game', this.quiz.id]);
   }
 
   

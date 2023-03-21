@@ -1,4 +1,16 @@
 <div> 
-    <h1>{{quiz.name}}</h1>
-    <app-game-question [question]="quiz.questions[compteur]" (selectAnswer)="function($event)"></app-game-question>
+    <h1 id="title">{{quiz.name}}</h1>
+    <app-game-question [question]="quiz.questions[compteur]" (selectAnswer)="checkAnswer($event)"></app-game-question>
+    <div *ngIf="answerSelected && answerGood" class="rectangle" id="true" (click)="nextQuestion()">
+        <h1 id="rep">BRAVO</h1>
+        <p id="reptext"> Tu as trouvé la bonne réponse</p>
+    </div>
+    <div *ngIf="answerSelected && !answerGood" class="rectangle" id="false" (click)="nextQuestion()">
+        <h1 id="rep">DOMMAGE</h1>
+        <p id="reptext">La bonne réponse était: <br> {{this.quiz.questions[this.compteur].answers[this.quiz.questions[this.compteur].goodAnswer]}}</p>
+    </div>
+    <div *ngIf="compteur == quiz.questions.length" class="rectangle" id="end" (click)="endGame()">
+        <h1 id="rep">FIN DU QUIZ</h1>
+        <p id="reptext">Tu as trouvé {{this.score}} bonnes réponses sur {{this.quiz.questions.length}}</p>
+    </div>
 </div>
