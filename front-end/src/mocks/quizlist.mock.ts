@@ -1,23 +1,51 @@
+import { Answer } from "./answer.mock";
+import { Question } from "./question.mock";
 import { Quiz } from "./quiz.mock";
 
 export const QUIZ_LIST: Quiz[] = [
-  {
-    id: '1',
-    img: '../assets/img/placeholder.png',
-    name: 'Les Acteurs',
-    theme: 'Actor',
-    questions: [{question: "La ville du Vatican, capitale du Vatican, a le taux de crime le plus faible du monde.", 
-    answers: ["Vrai", "Faux"], goodAnswer: 0},
-                {question: "Question 2", answers: ["Réponse 5", "Réponse 6", "Réponse 7", "Réponse 8"], goodAnswer: 1},
-                {question: "Question 3", answers: ["Réponse 9", "Réponse 10", "Réponse 11", "Réponse 12"], goodAnswer: 2},
-                {question: "Question 4", answers: ["Réponse 13", "Réponse 14", "Réponse 15", "Réponse 16"], goodAnswer: 3}]
-  },
-  {
-    id: '2',
-    img: '../assets/img/placeholder.png',
-    name: 'Les technos WEB',
-    theme: 'Technologies',
-    questions: [{question: "Question 1", answers: ["Réponse 1", "Réponse 2", "Réponse 3", "Réponse 4"], goodAnswer: 1},
-                {question: "Question 2", answers: ["Réponse 1", "Réponse 2", "Réponse 3", "Réponse 4"], goodAnswer: 1}]
-  }
-];
+  new Quiz(
+    1,
+    "Les capitales européennes",
+    1,
+    "Bienvenue au jeu de quiz sur les capitales européennes ! Testez vos connaissances sur les villes capitales, gagnez des points pour chaque bonne réponse et devenez le vainqueur. Parfait pour les amateurs de géographie, voyages et histoire. Jouez dès maintenant !",
+    15,
+    [
+      new Question(
+        1,
+        1,
+        "La ville du Vatican, capital du Vatican, a le taux de crime le plus faible au monde",
+        2,
+        [
+          new Answer(1, 1, "Vrai"),
+          new Answer(2, 1, "False"),
+        ]
+      ),
+      new Question(
+        2,
+        1,
+        "Comment il s'appelle la capitale de Pologne?",
+        2,
+        [
+          new Answer(3, 2, "Paris"),
+          new Answer(4, 2, "Varsovie"),
+          new Answer(5, 2, "Bretagne"),
+          new Answer(6, 2, "Mazovie")
+        ],
+        "https://www.contrepoints.org/wp-content/uploads/2023/03/pologne-Photo-by-Elijah-G-on-Unsplash-e1678455293592-1200x800.jpg",
+      ),
+      new Question(
+        3,
+        1,
+        "Quel est le symbôle de Paris?",
+        3,
+        [
+          new Answer(7, 3, "https://www.planetware.com/wpimages/2021/02/france-paris-top-attractions-arc-de-triomphe.jpg"),
+          new Answer(8, 3, "https://www.touropia.com/gfx/b/2013/02/sacre_coeur.jpg"),
+          new Answer(9, 3, "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg"),
+          new Answer(10, 3, "https://www.planetware.com/wpimages/2022/02/france-paris-top-tourist-attractions-musee-du-louvre.jpg")
+        ]
+      )
+    ]
+  )
+]
+
