@@ -1,5 +1,13 @@
-<div> 
+<div id="base"> 
     <h1 id="title">{{quiz.name}}</h1>
+    <div class="progress_case">
+        <div class="progress" >
+            <div class="progress_bar" role="progressbar" [style.width]="(compteur/quiz.questions.length)*100 + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="progression">
+            <p>{{compteur}}/{{quiz.questions.length}}</p>
+        </div>
+    </div>
     <app-game-question [question]="quiz.questions[compteur]" (selectAnswer)="checkAnswer($event)"></app-game-question>
     <div *ngIf="answerSelected && answerGood" class="rectangle" id="true" (click)="nextQuestion()">
         <h1 id="rep">BRAVO</h1>

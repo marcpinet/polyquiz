@@ -1,27 +1,30 @@
 <div id="question">
+    <h1 *ngIf="this.question.answers.length == 2">VRAI OU FAUX?<br></h1>
     <h1>{{this.question.question}}</h1>
     <ul>
-        <li>
-            <button (click)="selectAnswer.emit(question.answers[0])">
-                <app-game-answer [answer]="question.answers[0]"></app-game-answer>
-            </button>
-        </li>
-        <li>
-            <button (click)="selectAnswer.emit(question.answers[1])">
-                <app-game-answer [answer]="question.answers[1]"></app-game-answer>
-            </button>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            <button (click)="selectAnswer.emit(question.answers[2])">
-                <app-game-answer [answer]="question.answers[2]"></app-game-answer>
-            </button>
-        </li>
-        <li>
-            <button (click)="selectAnswer.emit(question.answers[3])">
-                <app-game-answer [answer]="question.answers[3]"></app-game-answer>
-            </button>
-        </li>
+        <ul>
+            <li>
+                <button (click)="selectAnswer.emit(question.answers[0])">
+                    <p class="letter">A.</p> <p class="rep">{{question.answers[0]}}</p>
+                </button>
+            </li>
+            <li>
+                <button (click)="selectAnswer.emit(question.answers[1])">
+                    <p class="letter">B.</p> <p class="rep">{{question.answers[1]}}</p>
+                </button>
+            </li>
+        </ul>
+        <ul *ngIf="this.question.answers.length == 4">
+            <li>
+                <button (click)="selectAnswer.emit(question.answers[2])">
+                    <p class="letter">C.</p> <p class="rep">{{question.answers[2]}}</p>
+                </button>
+            </li>
+            <li>
+                <button (click)="selectAnswer.emit(question.answers[3])">
+                    <p class="letter">D.</p> <p class="rep">{{question.answers[3]}}</p>
+                </button>
+            </li>
+        </ul>
     </ul>
 </div>
