@@ -1,0 +1,88 @@
+
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.progress_case{
+    background-color: #ffffff;
+    border: #2B3467 1px solid;
+    width: 50vw;
+    height: 5vh;
+    border-radius: 15px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.progress{
+    margin-left: 3%;
+    width: 80%;
+    height: 50%;
+    border: inherit;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    box-shadow: 0px 1px 3px #8a8a8a;
+}
+
+.progress_bar{
+    background-color: #2B3467;
+    height: 100%;
+}
+
+.progression{
+    color: #2B3467;
+    width: 1px;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-left: 5%;
+    display: inline-block;
+}
+
+.rectangle {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+}
+
+#title{
+    color: #EB455F;
+
+}
+
+#base{
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#true {
+    background-color: green;
+}
+
+#false {
+    background-color: red;
+}
+
+#reptext {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+#rep {
+    color: white;
+    text-align: center;
+}
+
+#end {
+    background-color: black;
+}
