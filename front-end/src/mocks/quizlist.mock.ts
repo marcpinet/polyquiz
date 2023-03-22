@@ -39,10 +39,10 @@ export const QUIZ_LIST: Quiz[] = [
         "Quel est le symbôle de Paris?",
         3,
         [
-          new Answer(7, 3, "https://www.planetware.com/wpimages/2021/02/france-paris-top-attractions-arc-de-triomphe.jpg"),
-          new Answer(8, 3, "https://www.touropia.com/gfx/b/2013/02/sacre_coeur.jpg"),
-          new Answer(9, 3, "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg"),
-          new Answer(10, 3, "https://www.planetware.com/wpimages/2022/02/france-paris-top-tourist-attractions-musee-du-louvre.jpg")
+          new Answer(7, 3,"", "https://www.planetware.com/wpimages/2021/02/france-paris-top-attractions-arc-de-triomphe.jpg"),
+          new Answer(8, 3,"", "https://www.touropia.com/gfx/b/2013/02/sacre_coeur.jpg"),
+          new Answer(9, 3,"", "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg"),
+          new Answer(10, 3,"", "https://www.planetware.com/wpimages/2022/02/france-paris-top-tourist-attractions-musee-du-louvre.jpg")
         ]
       )
     ]
