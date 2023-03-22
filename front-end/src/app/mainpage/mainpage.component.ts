@@ -1,10 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IvyCarouselModule } from 'angular-responsive-carousel';
-
+import { QuizCarousel } from '../quizlist/quiz-carousel/quiz-carousel.component';
 @Component({
   selector: 'app-main',
-  templateUrl: './mainpage.component.html',
-  styleUrls: ['./mainpage.component.css']
+  templateUrl: './mainpage.component.html'
 })
 
 export class MainPage implements OnInit {

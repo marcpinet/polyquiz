@@ -10,7 +10,7 @@ import { MainPage } from './mainpage/mainpage.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
-
+import { QuizCarousel } from './quizlist/quiz-carousel/quiz-carousel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,8 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     QuizDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    MainPage
+    MainPage,
+    QuizCarousel
   ],
   imports: [
     BrowserModule,

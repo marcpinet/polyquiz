@@ -77,74 +77,8 @@
         <p class="text-2xl font-bold text-[#2B3467] mt-1">Name</p>
       </div>
     </nav>
-    <!-- Begin of Carousel Quiz List -->
-<div class="ml-1">
-      <p class="text-2xl font-bold text-[#2B3467] mb-1">Nouveau quiz</p>
-      <carousel [cellsToShow]="3" [loop]="true" [height]="160">
-        <div class="carousel-cell">
-          <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/Poly.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/login.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/Poly.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/login.png" class="w-full" />
-        </div>
-      </carousel>
-
-      <p class="text-2xl font-bold text-[#EB455F] mt-3 mb-1">Quiz Populaire</p>
-      <carousel [cellsToShow]="3" [loop]="true" [height]="160" >
-        <div class="carousel-cell">
-          <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/Poly.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/login.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/Poly.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/login.png" class="w-full" />
-        </div>
-      </carousel>
-
-      <p class="text-2xl font-bold text-[#2B3467] mt-3 mb-1">Explorez par thèmes</p>
-      <carousel [cellsToShow]="3" [loop]="true" [height]="160" >
-        <div class="carousel-cell">
-          <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/Poly.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/login.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/Poly.png" class="w-full" />
-        </div>
-        <div class="carousel-cell">
-          <img src="../../assets/images/login.png" class="w-full" />
-        </div>
-      </carousel>
-    </div>
-    <!-- End of Carousel Quiz List -->
+    <!-- Begin of RightSide (Quiz, Parameters or Mes Resultats)-->
+      <app-quiz-carousel></app-quiz-carousel>
+    <!-- End of RightSide-->
   </div>
 </div>
