@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { MainPage } from './mainpage/mainpage.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
 import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
 import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { QuizCarousel } from './quizlist/quiz-carousel/quiz-carousel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +23,17 @@ import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.co
     GameQuestionComponent,
     GameAnswerComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainPage,
+    QuizCarousel
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    IvyCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -51,19 +51,19 @@ export class RegisterComponent implements OnInit {
 
   const resident: Resident = {
     userId: Date.now(),
-    residentNum: this.residentForm.value.residentNum,
+    id: this.residentForm.value.residentNum,
     genre: this.residentForm.value.genre,
     symptome: symptomeArray,
     dateOfBirth: this.residentForm.value.dateOfBirth,
   };
     const user: User = {
-      userId: resident.userId,
+      id: resident.userId,
       userName: this.residentForm.value.userName,
       firstName: this.residentForm.value.firstName,
       lastName: this.residentForm.value.lastName,
       password: this.residentForm.value.password,
       userType: 'patient',
-      avatar: null,
+      avatar: '../../assets/images/defaultAvatar.png',
     };
     const avatarFile = this.residentForm.value.avatar;
     if (avatarFile) {

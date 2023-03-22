@@ -26,11 +26,13 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "1.19.0",
+    "connect-multiparty": "^2.2.0",
     "cors": "2.8.5",
     "express": "4.17.1",
     "express-session": "^1.17.3",
     "joi": "14.3.1",
-    "morgan": "1.9.1"
+    "morgan": "1.9.1",
+    "session-file-store": "^1.5.0"
   },
   "devDependencies": {
     "eslint": "6.8.0",
