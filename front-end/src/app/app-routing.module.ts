@@ -5,6 +5,7 @@ import { QuizListComponent} from './quizlist/quizlist.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
 import { MainPage } from './mainpage/mainpage.component';
+import { OptionsScreenComponent } from './settings/options-screen.component';
 
 const routes: Routes = [
   {path: 'quizlist', component: QuizListComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'tempo-register', component: RegisterComponent}, //only do this for the moment, to be implement only in admin's interface later
   {path: '', component: MainPage},
+  {path: 'settings', component: OptionsScreenComponent},
 ];
 
 @NgModule({
