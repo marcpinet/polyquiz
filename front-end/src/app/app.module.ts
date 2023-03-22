@@ -6,23 +6,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { MainPage } from './mainpage/mainpage.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { QuizCarousel } from './quizlist/quiz-carousel/quiz-carousel.component';
 @NgModule({
   declarations: [
     AppComponent,
     QuizListComponent,
     QuizDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainPage,
+    QuizCarousel
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    IvyCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
