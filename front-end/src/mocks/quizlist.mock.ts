@@ -1,14 +1,16 @@
 import { Answer } from "./answer.mock";
 import { Question } from "./question.mock";
 import { Quiz } from "./quiz.mock";
-
+import { Theme } from "./theme.mock";
 export const QUIZ_LIST: Quiz[] = [
   new Quiz(
     1,
     "Les capitales européennes",
     1,
+    "https://edoc.coe.int/10944/map-of-the-council-of-europe-46-member-states.jpg",
     "Bienvenue au jeu de quiz sur les capitales européennes ! Testez vos connaissances sur les villes capitales, gagnez des points pour chaque bonne réponse et devenez le vainqueur. Parfait pour les amateurs de géographie, voyages et histoire. Jouez dès maintenant !",
     15,
+    new Theme(1, "Europe", "https://thumbs.dreamstime.com/b/placez-des-symboles-de-g%C3%A9ographie-%C3%A9quipements-pour-banni%C3%A8res-web-croquis-d-ensemble-cru-gribouillez-le-type-%C3%A9ducation-136641038.jpg"),
     [
       new Question(
         1,

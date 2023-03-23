@@ -2,8 +2,10 @@ export interface Quiz {
   id: number;
   name: string;
   level: number;
+  image: string;
   description: string;
   estimated_time: number;
+  theme_id: number;
 }
 
 export interface Question {
@@ -20,4 +22,10 @@ export interface Answer {
   question_id: number;
   answer_text?: string;
   answer_image?: string;
+}
+
+export interface Theme {
+  id: number;
+  name: string;
+  image: number;
 }
