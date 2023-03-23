@@ -3,19 +3,29 @@
   height: 88.596%;
   background-color: #2B3467;
   border-radius: 12px 12px 0 0;
-  text-align: center;
   font-size: 1.5em;
   font-weight: 600;
   color: #fff;
   line-height: 1.2;
+  overflow: hidden;
+}
+
+.upper{
+  display: flex;
 }
 
 .box{
-  display: flex;
   align-items: center;
   text-align: center;
+  display: inline-block;
 }
 
+img {
+  height: 22vh;
+  width: 22vw;
+  padding-top: 2vh;
+  padding-left: 2vw;  
+}
 
 
 p {
@@ -34,7 +44,7 @@ h1 {
   text-align: left;
   padding-top: 2%;
   margin-left: 2%;
-  
+  width: 90vw;
 }
 
 li {

@@ -1,6 +1,11 @@
 <div id="question">
-    <h1 *ngIf="this.question.answers.length == 2">VRAI OU FAUX?<br></h1>
-    <h1>{{this.question.question_text}}</h1>
+    <div class="upper">
+        <img src="{{this.question.question_image}}" *ngIf="this.question.question_image != undefined" alt="image de la question" class="image">
+        <div>
+            <h1 *ngIf="this.question.answers.length == 2">VRAI OU FAUX?<br></h1>
+            <h1>{{this.question.question_text}}</h1>
+        </div>
+    </div>
     <div class="box">
         <ul>
             <ul>
