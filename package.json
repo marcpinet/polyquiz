@@ -6,11 +6,14 @@
   "scripts": {
     "server": "npm run start --prefix backend",
     "client": "npm run start --prefix front-end",
+    "build-client": "npm run build --prefix front-end",
     "dev": "concurrently \" npm run server \" \" npm run client \"",
+    "build": "npm run build-client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
     "lint": ".eslintrc.js"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/2019-2020-ps6/2022-2023-ps6-4-grands-corsaires.git"
