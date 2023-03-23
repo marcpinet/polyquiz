@@ -13,7 +13,7 @@ export class QuizDetailsComponent {
   quiz: Quiz;
 
   constructor(private router: Router) { 
-    this.quiz = new Quiz('','','','',[]);
+    this.quiz = {} as Quiz;
   }
 
   onClick(){

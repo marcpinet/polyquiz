@@ -12,9 +12,11 @@ export interface Question {
   id: number;
   quiz_id: number;
   question_text: string;
+  answers: Answer[];
   question_image?: string;
   question_sound?: string;
   correct_answer: number;
+
 }
 
 export interface Answer {

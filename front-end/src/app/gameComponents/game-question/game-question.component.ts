@@ -15,13 +15,11 @@ export class GameQuestionComponent{
     @Input()
     question: Question;
     @Output()
-    selectAnswer = new EventEmitter<string>();
+    selectAnswer = new EventEmitter<number>();
     
 
     constructor(){
-        this.question = new Question('',["","","",""],1);
+      this.question = {} as Question;
     }
-
-
 
 }

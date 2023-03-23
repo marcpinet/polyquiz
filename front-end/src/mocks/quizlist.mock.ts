@@ -16,7 +16,7 @@ export const QUIZ_LIST: Quiz[] = [
         1,
         1,
         "La ville du Vatican, capital du Vatican, a le taux de crime le plus faible au monde",
-        2,
+        1,
         [
           new Answer(1, 1, "Vrai"),
           new Answer(2, 1, "False"),
@@ -26,7 +26,7 @@ export const QUIZ_LIST: Quiz[] = [
         2,
         1,
         "Comment il s'appelle la capitale de Pologne?",
-        2,
+        1,
         [
           new Answer(3, 2, "Paris"),
           new Answer(4, 2, "Varsovie"),
@@ -39,7 +39,7 @@ export const QUIZ_LIST: Quiz[] = [
         3,
         1,
         "Quel est le symbôle de Paris?",
-        3,
+        2,
         [
           new Answer(7, 3,"", "https://www.planetware.com/wpimages/2021/02/france-paris-top-attractions-arc-de-triomphe.jpg"),
           new Answer(8, 3,"", "https://www.touropia.com/gfx/b/2013/02/sacre_coeur.jpg"),

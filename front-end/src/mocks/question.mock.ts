@@ -25,4 +25,5 @@ export class Question {
     this.question_image = question_image;
     this.question_sound = question_sound;
   }
+
 }

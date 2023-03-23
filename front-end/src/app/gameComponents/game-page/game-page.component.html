@@ -15,7 +15,10 @@
     </div>
     <div *ngIf="answerSelected && !answerGood" class="rectangle" id="false" (click)="nextQuestion()">
         <h1 id="rep">DOMMAGE</h1>
-        <p id="reptext">La bonne réponse était: <br> {{this.quiz.questions[this.compteur].answers[this.quiz.questions[this.compteur].goodAnswer]}}</p>
+        <p id="reptext">La bonne réponse était:</p>
+        <p id="reptext">{{quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_text}}</p>
+        <img *ngIf="quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_text == ''" alt="image réponse" 
+        src="{{quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_image}}">
     </div>
     <div *ngIf="compteur == quiz.questions.length" class="rectangle" id="end" (click)="endGame()">
         <h1 id="rep">FIN DU QUIZ</h1>

@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { asNativeElements, Component, Input, OnInit } from '@angular/core';
 import { Quiz } from 'src/mocks/quiz.mock';
+import { Question } from 'src/mocks/question.mock';
+import { Answer } from 'src/mocks/answer.mock';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QUIZ_LIST } from 'src/mocks/quizlist.mock';
 
@@ -15,7 +17,7 @@ export class GamePageComponent implements OnInit {
     score = 0;
     compteur = 0;
     answerSelected = false;
-    selectedAnswer = "";
+    selectedAnswer : string | undefined;
     answerGood = false;
 
     constructor(private router: Router, private route: ActivatedRoute){
@@ -31,10 +33,11 @@ export class GamePageComponent implements OnInit {
     }
 
 
-    checkAnswer(answer: string){
+    checkAnswer(answer: number){
+        this.score = answer;
         this.answerSelected = true;
-        this.selectedAnswer = answer;
-        this.answerGood = this.quiz.questions[this.compteur].answers[this.quiz.questions[this.compteur].goodAnswer] == this.selectedAnswer;
+        this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
+        this.answerGood = this.quiz.questions[this.compteur].correct_answer == answer;
     }
 
     updateScore(){
