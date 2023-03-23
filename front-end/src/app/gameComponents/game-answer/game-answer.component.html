@@ -1,0 +1,8 @@
+<div class="text" *ngIf="this.answer.answer_text != ''">
+    <p class="letter">{{this.letter}}</p>
+    <p class="rep"> {{this.answer.answer_text}}</p>
+</div>
+<div class="image" *ngIf="this.answer.answer_image != undefined">
+    <p class="letter">{{this.letter}}</p>
+    <img class="rep_img" src="{{this.answer.answer_image}}" alt="img_reponse">
+</div>

@@ -1,0 +1,27 @@
+<div id="base"> 
+    <h1 id="title">{{quiz.name}}</h1>
+    <div class="progress_case">
+        <div class="progress" >
+            <div class="progress_bar" role="progressbar" [style.width]="(compteur/quiz.questions.length)*100 + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="progression">
+            <p>{{compteur}}/{{quiz.questions.length}}</p>
+        </div>
+    </div>
+    <app-game-question [question]="quiz.questions[compteur]" (selectAnswer)="checkAnswer($event)"></app-game-question>
+    <div *ngIf="answerSelected && answerGood" class="rectangle" id="true" (click)="nextQuestion()">
+        <h1 id="rep">BRAVO</h1>
+        <p id="reptext"> Tu as trouvé la bonne réponse</p>
+    </div>
+    <div *ngIf="answerSelected && !answerGood" class="rectangle" id="false" (click)="nextQuestion()">
+        <h1 id="rep">DOMMAGE</h1>
+        <p id="reptext">La bonne réponse était:</p>
+        <p id="reptext">{{quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_text}}</p>
+        <img *ngIf="quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_text == ''" alt="image réponse" 
+        src="{{quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_image}}">
+    </div>
+    <div *ngIf="compteur == quiz.questions.length" class="rectangle" id="end" (click)="endGame()">
+        <h1 id="rep">FIN DU QUIZ</h1>
+        <p id="reptext">Tu as trouvé {{this.score}} bonnes réponses sur {{this.quiz.questions.length}}</p>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div id="question">
+    <div class="upper">
+        <img src="{{this.question.question_image}}" *ngIf="this.question.question_image != undefined" alt="image de la question" class="image">
+        <div>
+            <h1 *ngIf="this.question.answers.length == 2">VRAI OU FAUX?<br></h1>
+            <h1>{{this.question.question_text}}</h1>
+        </div>
+    </div>
+    <div class="box">
+        <ul>
+            <ul>
+                <li>
+                    <app-game-answer [answer]="question.answers[0]" (click)="selectAnswer.emit(0)" letter="A."></app-game-answer>
+                </li>
+                <li>
+                    <app-game-answer [answer]="question.answers[1]" (click)="selectAnswer.emit(1)" letter="B." ></app-game-answer>
+                </li>
+            </ul>
+            <ul *ngIf="this.question.answers.length == 4">
+                <li>
+                    <app-game-answer [answer]="question.answers[2]" (click)="selectAnswer.emit(2)" letter="C."  ></app-game-answer>
+                </li>
+                <li>
+                    <app-game-answer [answer]="question.answers[3]" (click)="selectAnswer.emit(3)" letter="D." ></app-game-answer>
+                </li>
+            </ul>
+        </ul>
+    </div>
+</div>
