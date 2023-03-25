@@ -34,6 +34,6 @@ jobs:
     - name: Install front-end dependencies
       run: |
         cd front-end
-        npm ci --legacy-peer-deps
+        npm ci
     - run: npm install -g @angular/cli
     - run: npm run build
