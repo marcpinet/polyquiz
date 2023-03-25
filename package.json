@@ -29,7 +29,6 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
-    "angular-responsive-carousel": "^2.1.0",
     "concurrently": "^7.6.0"
   }
 }
