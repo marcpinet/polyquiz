@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
