@@ -10,6 +10,12 @@
   overflow: hidden;
 }
 
+#rep {
+  text-align: center;
+  padding-bottom: 100%;
+  color: #999;
+}
+
 .upper{
   display: flex;
 }
@@ -40,16 +46,16 @@ p {
 
 
 h1 {
-  font-size: 2em;
+  font-size: 3em;
   text-align: left;
   padding-top: 2%;
   margin-left: 2%;
-  width: 90vw;
+  width: 80vw;
 }
 
 li {
     display: inline-block;
-    padding-left: 15vw;
-    padding-top: 20vh;
+    padding-left: 10vw;
+    padding-top: 15vh;
 }
 

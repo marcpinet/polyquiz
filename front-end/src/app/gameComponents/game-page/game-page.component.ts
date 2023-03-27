@@ -4,6 +4,7 @@ import { Question } from 'src/mocks/question.mock';
 import { Answer } from 'src/mocks/answer.mock';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QUIZ_LIST } from 'src/mocks/quizlist.mock';
+import { GameQuestionComponent } from '../game-question/game-question.component';
 
 @Component({
   selector: 'app-game-page',
@@ -38,6 +39,7 @@ export class GamePageComponent implements OnInit {
         this.answerSelected = true;
         this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
         this.answerGood = this.quiz.questions[this.compteur].correct_answer == answer;
+        this.nextQuestion();
     }
 
     updateScore(){

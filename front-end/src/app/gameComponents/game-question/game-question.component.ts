@@ -11,15 +11,27 @@ import { GamePageComponent } from '../game-page/game-page.component';
   styleUrls: ['./game-question.component.scss'],
 })
 export class GameQuestionComponent{
-    
+  
+  answerSelected = -1;
+
     @Input()
     question: Question;
     @Output()
     selectAnswer = new EventEmitter<number>();
+
     
 
     constructor(){
       this.question = {} as Question;
     }
 
+    checkAnswer(answer: number){
+        this.answerSelected = answer;
+    } 
+
+    nextQuestion(){
+      let ans = this.answerSelected;
+      this.answerSelected = -1;
+      this.selectAnswer.emit(ans);
+    }
 }
