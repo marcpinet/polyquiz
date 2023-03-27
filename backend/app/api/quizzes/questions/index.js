@@ -31,7 +31,22 @@ router.post('/', (req, res) => {
     // Check if quizId exists, if not it will throw a NotFoundError
     Quiz.getById(req.params.quizId)
     const quizId = parseInt(req.params.quizId, 10)
-    let question = Question.create({ label: req.body.label, quizId })
+    let question = {
+      question_text: req.body.question_text,
+      explain_text: req.body.explain_text,
+      quizId
+    };
+    if (req.body.question_image) {
+      question.question_image = req.body.question_image;
+    }
+    if (req.body.question_sound) {
+      question.question_sound = req.body.question_sound;
+    }
+    if (req.body.explain_image) {
+      question.explain_image = req.body.explain_image;
+    }
+    Question.create(question);
+
     // If answers have been provided in the request, we create the answer and update the response to send.
     if (req.body.answers && req.body.answers.length > 0) {
       const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
@@ -46,7 +61,22 @@ router.post('/', (req, res) => {
 router.put('/:questionId', (req, res) => {
   try {
     const question = getQuestionFromQuiz(req.params.quizId, req.params.questionId)
-    const updatedQuestion = Question.update(req.params.questionId, { label: req.body.label, quizId: question.quizId })
+    let updatedQuestion = {
+      question_text: req.body.question_text,
+      explain_text: req.body.explain_text,
+      quizId
+    };
+    
+    if (req.body.question_image) {
+      question.question_image = req.body.question_image;
+    }
+    if (req.body.question_sound) {
+      question.question_sound = req.body.question_sound;
+    }
+    if (req.body.explain_image) {
+      question.explain_image = req.body.explain_image;
+    }
+     Question.update(req.params.questionId, updatedQuestion)
     res.status(200).json(updatedQuestion)
   } catch (err) {
     manageAllErrors(res, err)

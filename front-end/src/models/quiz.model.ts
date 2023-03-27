@@ -6,6 +6,7 @@ export interface Quiz {
   description: string;
   estimated_time: number;
   themeId: number;
+  questions: Question[];
 }
 
 export interface Question {
@@ -14,14 +15,13 @@ export interface Question {
   question_text: string;
   question_image?: string;
   question_sound?: string;
-  correct_answer: number;
   explain_text: string;
   explain_image?: string;
+  answers: Answer[];
 }
 
 export interface Answer {
-  id: number;
-  questionId: number;
+  isCorrect: boolean;
   answer_text?: string;
   answer_image?: string;
 }
