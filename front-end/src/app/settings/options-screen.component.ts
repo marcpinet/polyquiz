@@ -8,7 +8,7 @@ export class OptionsScreenComponent {
   private renderer: Renderer2;
 
   public defaultSettings = {
-    soundEffects: true,
+    vocal: true,
     spacebarClick: false,
     mouseClickType: 'doubleClick',
     mouseSpeed: 5,
