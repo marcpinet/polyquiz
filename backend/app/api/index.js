@@ -1,11 +1,14 @@
 const { Router } = require('express')
 const UserRouter = require('./users')
 const ResidentRouter = require('./users/residents')
+const QuizzesRouter = require('./quizzes')
+const ThemeRouter = require('./themes')
 const router = new Router()
 
 const fs = require("fs");
 const multipart = require('connect-multiparty');
 var path = require('path');
+const { Quiz } = require('../models');
 const multipartMiddleware = multipart({
     uploadDir: './uploads'
 });
@@ -32,4 +35,6 @@ router.post('/upload', multipartMiddleware, (req, res) => {
 router.get('/status', (req, res) => res.status(200).json('ok'))
 router.use('/users', UserRouter)
 router.use('/residents', ResidentRouter )
+router.use('/quizzes', QuizzesRouter)
+router.use('/themes', ThemeRouter)
 module.exports = router

@@ -5,12 +5,12 @@ export interface Quiz {
   image: string;
   description: string;
   estimated_time: number;
-  theme_id: number;
+  themeId: number;
 }
 
 export interface Question {
   id: number;
-  quiz_id: number;
+  quizId: number;
   question_text: string;
   question_image?: string;
   question_sound?: string;
@@ -21,7 +21,7 @@ export interface Question {
 
 export interface Answer {
   id: number;
-  question_id: number;
+  questionId: number;
   answer_text?: string;
   answer_image?: string;
 }

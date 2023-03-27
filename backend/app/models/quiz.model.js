@@ -8,5 +8,5 @@ module.exports = new BaseModel('Quiz', {
     image: Joi.string().required(),
     description: Joi.string().required(),
     estimated_time: Joi.number().integer().required(),
-    theme_id: Joi.number().integer().required(),
+    themeId: Joi.number().integer().required(),
 })
