@@ -1,27 +1,27 @@
 export interface Quiz {
   id: number;
   name: string;
-  level: number;
+  difficulty: string;
   image: string;
   description: string;
   estimated_time: number;
-  theme_id: number;
+  themeId: number;
+  questions: Question[];
 }
 
 export interface Question {
   id: number;
-  quiz_id: number;
+  quizId: number;
   question_text: string;
-  answers: Answer[];
   question_image?: string;
   question_sound?: string;
-  correct_answer: number;
-
+  explain_text: string;
+  explain_image?: string;
+  answers: Answer[];
 }
 
 export interface Answer {
-  id: number;
-  question_id: number;
+  isCorrect: boolean;
   answer_text?: string;
   answer_image?: string;
 }
