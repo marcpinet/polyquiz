@@ -12,22 +12,22 @@
     <div class="grid grid-cols-1 gap-6">
       <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
         <div class="flex items-center justify-between">
-          <span>Effets sonores</span>
+          <span>Action au microphone</span>
           <div>
             <button
               [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': settings.soundEffects
+                'bg-[#bad7e9] text-[#2B3467]': settings.vocal
               }"
-              (click)="settings.soundEffects = true"
+              (click)="settings.vocal = true"
               class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
             >
               Activer
             </button>
             <button
               [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': !settings.soundEffects
+                'bg-[#bad7e9] text-[#2B3467]': !settings.vocal
               }"
-              (click)="settings.soundEffects = false"
+              (click)="settings.vocal = false"
               class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
             >
               Désactiver
@@ -72,20 +72,6 @@
             <option value="longPress">Pression longue</option>
             <option value="none">Aucun</option>
           </select>
-        </div>
-      </div>
-      <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-        <div class="flex items-center justify-between">
-          <span>Vitesse de la souris</span>
-          <input
-            type="number"
-            [ngModel]="settings.mouseSpeed"
-            (ngModelChange)="settings.mouseSpeed = $event"
-            min="1"
-            max="10"
-            step="1"
-            class="bg-[#BAD7E9] p-2 rounded text-[#2B3467]"
-          />
         </div>
       </div>
       <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
