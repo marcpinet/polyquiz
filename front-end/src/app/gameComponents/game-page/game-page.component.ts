@@ -1,7 +1,7 @@
 import { asNativeElements, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Quiz} from '../../../models/quiz.model';
-
+import { QuizService } from 'src/services/quiz.service';
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
@@ -9,32 +9,29 @@ import {Quiz} from '../../../models/quiz.model';
 })
 export class GamePageComponent implements OnInit {
 
-    quiz: Quiz = QUIZ_LIST[0];
-
+    quiz: Quiz | undefined;
     score = 0;
     compteur = 0;
     answerSelected = false;
     selectedAnswer : string | undefined;
     answerGood = false;
 
-    constructor(private router: Router, private route: ActivatedRoute){
+    constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService){
+      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
     }
 
     ngOnInit(): void {
-        const quiz = QUIZ_LIST.find(quiz => quiz.id == this.route.snapshot.params['quizId']);
-        if(quiz != null){
-            this.quiz = quiz
-        }else {
-            this.quiz = QUIZ_LIST[0];
-        }
+      const id = this.route.snapshot.paramMap.get('id');
+      this.quizService.setSelectedQuiz(Number(id));
+      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
     }
 
 
     checkAnswer(answer: number){
         this.score = answer;
         this.answerSelected = true;
-        this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
-        this.answerGood = this.quiz.questions[this.compteur].correct_answer == answer;
+        //this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
+        // this.answerGood = this.quiz.questions[this.compteur].correct_answer == answer;
     }
 
     updateScore(){

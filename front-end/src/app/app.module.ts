@@ -21,7 +21,7 @@ import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 @NgModule({
   declarations: [
     AppComponent,
-      QuizListComponent,
+    QuizListComponent,
     QuizDetailsComponent,
     //GamePageComponent,
     //GameQuestionComponent,
