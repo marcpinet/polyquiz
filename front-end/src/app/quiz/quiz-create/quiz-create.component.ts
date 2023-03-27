@@ -28,7 +28,7 @@ export class QuizCreateComponent implements OnInit {
       quizEstimatedTime: ['', Validators.required],
       quizTheme: ['', Validators.required],
     });
-    this.quizService.getThemes().subscribe(themes => this.themes = themes);
+    //this.quizService.getThemes().subscribe(themes => this.themes = themes);
   }
 
   ngOnInit() {}

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
-// import { QuizDetailsComponent } from './quiz/quiz-details/quiz-details.component';
-// import { QuizListComponent } from './quiz/quizlist/quizlist.component';
+import { QuizDetailsComponent } from './quiz/quiz-details/quiz-details.component';
+import { QuizListComponent } from './quiz/quizlist/quizlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,8 +21,8 @@ import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 @NgModule({
   declarations: [
     AppComponent,
-    //QuizListComponent,
-    //QuizDetailsComponent,
+      QuizListComponent,
+    QuizDetailsComponent,
     //GamePageComponent,
     //GameQuestionComponent,
     //GameAnswerComponent,

@@ -1,33 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject,  Observable, forkJoin } from 'rxjs';
-import { Quiz, Question, Answer, Theme } from '../models/quiz.model';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Quiz } from '../models/quiz.model';
+import { Question } from '../models/quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-  private quizUrl = serverUrl + '/quizzes';
-  private questionUrl = serverUrl + '/questions';
-  private answerUrl = serverUrl + '/answers';
-  private themeUrl = serverUrl + '/themes';
-  private httpOptions = httpOptionsBase;
-  private quizzes: Quiz[] = [];
-  private questions: Question[] = [];
-  private answers: Answer[] = [];
-  private themes: Theme[] = [];
-  public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject<Quiz[]>([]);
-  public questions$: BehaviorSubject<Question[]> = new BehaviorSubject<Question[]>([]);
-  public answers$: BehaviorSubject<Answer[]> = new BehaviorSubject<Answer[]>([]);
-  public themes$: BehaviorSubject<Theme[]> = new BehaviorSubject<Theme[]>([]);
+  /*
+   Services Documentation:
+   https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
+   */
 
-  constructor(private http: HttpClient, private router: Router) {
+  /*
+   The list of quiz.
+   The list is retrieved from the mock.
+   */
+  private quizzes: Quiz[] = [];
+
+  /*
+   Observable which contains the list of the quiz.
+   Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
+   */
+  public quizzes$: BehaviorSubject<Quiz[]>
+    = new BehaviorSubject(this.quizzes);
+
+  public quizSelected$: Subject<Quiz> = new Subject();
+
+  private quizUrl = serverUrl + '/quizzes';
+  private questionsPath = 'questions';
+
+  private httpOptions = httpOptionsBase;
+
+  constructor(private http: HttpClient) {
     this.retrieveQuizzes();
-    this.retrieveQuestions();
-    this.retrieveAnswers();
-    this.retrieveThemes();
   }
 
   retrieveQuizzes(): void {
@@ -40,61 +48,35 @@ export class QuizService {
         console.error('Failed to retrieve quizzes', error);
       },
       complete: () => {
-        console.log('User retrieval completed');
+        console.log('Quizzes retrieval completed');
       }
     });
   }
 
-  retrieveQuestions(): void {
-    this.http.get<Question[]>(this.questionUrl).subscribe({
-      next: questionList => {
-        this.questions = questionList;
-        this.questions$.next(this.questions);
-      },
-      error: error => {
-        console.error('Failed to retrieve questions', error);
-      },
-      complete: () => {
-        console.log('Question retrieval completed');
-      }
+  addQuiz(quiz: Quiz): void {
+    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.retrieveQuizzes());
+  }
+
+  setSelectedQuiz(quizId: number): void {
+    const urlWithId = this.quizUrl + '/' + quizId;
+    this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
+      this.quizSelected$.next(quiz);
     });
   }
 
-  retrieveAnswers(): void {
-    this.http.get<Answer[]>(this.answerUrl).subscribe({
-      next: answerList => {
-        this.answers = answerList;
-        this.answers$.next(this.answers);
-      },
-      error: error => {
-        console.error('Failed to retrieve answers', error);
-      },
-      complete: () => {
-        console.log('Answer retrieval completed');
-      }
-    });
+  deleteQuiz(quiz: Quiz): void {
+    const urlWithId = this.quizUrl + '/' + quiz.id;
+    this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
-  retrieveThemes(): void {
-    this.http.get<Theme[]>(this.themeUrl).subscribe({
-      next: themeList => {
-        this.themes = themeList;
-        this.themes$.next(this.themes);
-      },
-      error: error => {
-        console.error('Failed to retrieve themes', error);
-      },
-      complete: () => {
-        console.log('Theme retrieval completed');
-      }
-    });
+  addQuestion(quiz: Quiz, question: Question): void {
+    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
+    this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  getThemes(): Observable<Theme[]> {
-    return this.http.get<Theme[]>(this.themeUrl);
+  deleteQuestion(quiz: Quiz, question: Question): void {
+    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
+    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  getThemeById(id: number): Observable<Theme> {
-    return this.http.get<Theme>(`${this.themeUrl}/${id}`);
-  }
 }

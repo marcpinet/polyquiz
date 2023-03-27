@@ -1,9 +1,6 @@
 import { asNativeElements, Component, Input, OnInit } from '@angular/core';
-import { Quiz } from 'src/mocks/quiz.mock';
-import { Question } from 'src/mocks/question.mock';
-import { Answer } from 'src/mocks/answer.mock';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QUIZ_LIST } from 'src/mocks/quizlist.mock';
+import {Quiz} from '../../../models/quiz.model';
 
 @Component({
   selector: 'app-game-page',
@@ -11,7 +8,7 @@ import { QUIZ_LIST } from 'src/mocks/quizlist.mock';
   styleUrls: ['./game-page.component.scss'],
 })
 export class GamePageComponent implements OnInit {
-    
+
     quiz: Quiz = QUIZ_LIST[0];
 
     score = 0;
