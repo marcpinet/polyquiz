@@ -11,7 +11,7 @@ import { GameQuestionComponent } from '../game-question/game-question.component'
 })
 export class GamePageComponent implements OnInit {
 
-    quiz: Quiz | undefined;
+    quiz: Quiz  = {} as Quiz;
     score = 0;
     compteur = 0;
     answerSelected = false;
@@ -25,7 +25,7 @@ export class GamePageComponent implements OnInit {
     ngOnInit(): void {
       const id = this.route.snapshot.paramMap.get('id');
       this.quizService.setSelectedQuiz(Number(id));
-      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
     }
 
 
@@ -33,7 +33,7 @@ export class GamePageComponent implements OnInit {
         this.score = answer;
         this.answerSelected = true;
         this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
-        this.answerGood = this.quiz.questions[this.compteur].correct_answer == answer;
+        this.answerGood = this.quiz.questions[this.compteur].answers[answer].isCorrect;
         this.nextQuestion();
     }
 

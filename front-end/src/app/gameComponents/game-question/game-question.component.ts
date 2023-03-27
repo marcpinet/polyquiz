@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Question } from 'src/mocks/question.mock';
-import { Quiz } from 'src/mocks/quiz.mock';
-import { QUIZ_LIST } from 'src/mocks/quizlist.mock';
-import { QuizListService } from 'src/services/quizlist-service.service';
+import { Question } from 'src/models/quiz.model';
 import { GamePageComponent } from '../game-page/game-page.component';
 
 @Component({

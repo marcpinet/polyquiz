@@ -11,9 +11,9 @@ import { MainPage } from './mainpage/mainpage.component';
 import { ResultComponent } from './result/result.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
-// import { GamePageComponent } from './gameComponents/game-page/game-page.component';
-// import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
-// import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
+import { GamePageComponent } from './gameComponents/game-page/game-page.component';
+import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
+import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
 import { QuizCarousel } from './quiz/quiz-carousel/quiz-carousel.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
@@ -23,9 +23,9 @@ import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
     AppComponent,
     QuizListComponent,
     QuizDetailsComponent,
-    //GamePageComponent,
-    //GameQuestionComponent,
-    //GameAnswerComponent,
+    GamePageComponent,
+    GameQuestionComponent,
+    GameAnswerComponent,
     LoginComponent,
     RegisterComponent,
     MainPage,
