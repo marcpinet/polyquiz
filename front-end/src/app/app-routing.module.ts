@@ -8,14 +8,19 @@ import { RegisterComponent } from './temporaryRegister/register.component';
 import { MainPage } from './mainpage/mainpage.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
+import { ResultComponent } from './result/result.component';
+import { UserProfileComponent } from './userProfile/user-profile.component';
+
 const routes: Routes = [
-  {path: 'quizlist', component: QuizListComponent},
-  // {path: 'game/:quizId', component: GamePageComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'tempo-register', component: RegisterComponent}, //only do this for the moment, to be implement only in admin's interface later
+  { path: 'quizlist', component: QuizListComponent },
+ // { path: 'game/:quizId', component: GamePageComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'tempo-register', component: RegisterComponent }, //only do this for the moment, to be implement only in admin's interface later
   {path: 'tempo-quiz-create', component: QuizCreateComponent},
-  {path: '', component: MainPage},
-  {path: 'settings', component: OptionsScreenComponent},
+  { path: '', component: MainPage },
+  { path: 'settings', component: OptionsScreenComponent },
+  { path: 'result', component: ResultComponent },
+  { path: 'userProfile', component: UserProfileComponent },
 ];
 
 @NgModule({
