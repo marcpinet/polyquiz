@@ -17,6 +17,9 @@ import { RegisterComponent } from './temporaryRegister/register.component';
 import { QuizCarousel } from './quiz/quiz-carousel/quiz-carousel.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
+import { UserProfileComponent } from './userProfile/user-profile.component';
+
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
     QuizCarousel,
     OptionsScreenComponent,
     QuizCreateComponent,
+    ResultComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
