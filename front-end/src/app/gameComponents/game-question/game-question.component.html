@@ -25,8 +25,9 @@
                 </li>
             </ul>
         </ul>
+        <img *ngIf="this.answerSelected != -1 && this.question.explain_image != undefined" id="rep_img" (click)="this.nextQuestion()" salt="image d'explication de réponse" src="{{this.question.explain_image}}">
         <p *ngIf="this.answerSelected != -1" id="rep" (click)="this.nextQuestion()">
-            CECI EST L'EXPLICATION DE LA RÉPONSE POUR L'UTILISATEUR
+            {{this.question.explain_text}}
         </p>
     </div>
 </div>
