@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainPage } from './mainpage/mainpage.component';
+import { MainPage } from './mainpage/mainpage-main/mainpage.component';
 import { ResultComponent } from './result/result.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
@@ -17,9 +17,8 @@ import { RegisterComponent } from './temporaryRegister/register.component';
 import { QuizCarousel } from './quiz/quiz-carousel/quiz-carousel.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
+import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
-
-
 
 @NgModule({
   declarations: [
@@ -35,6 +34,7 @@ import { UserProfileComponent } from './userProfile/user-profile.component';
     QuizCarousel,
     OptionsScreenComponent,
     QuizCreateComponent,
+    MesResultatsComponent,
     ResultComponent,
     UserProfileComponent
   ],
@@ -47,6 +47,6 @@ import { UserProfileComponent } from './userProfile/user-profile.component';
     IvyCarouselModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
