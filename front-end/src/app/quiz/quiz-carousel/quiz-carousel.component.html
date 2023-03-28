@@ -1,30 +1,15 @@
 <!-- Begin of Carousel Quiz List -->
 <div class="ml-1">
   <p class="text-xl font-bold text-[#2B3467] mb-1">Nouveaux quiz</p>
-  <carousel [cellsToShow]="3" [loop]="true" [height]="140">
-    <!-- TODO: Replace images into quiz here -->
-    <div class="carousel-cell">
-      <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-    </div>
-    <div class="carousel-cell">
-      <img src="../../assets/images/Poly.png" class="w-full" />
-    </div>
-    <div class="carousel-cell">
-      <img src="../../assets/images/login.png" class="w-full" />
-    </div>
-    <div class="carousel-cell">
-      <img src="../../assets/images/defaultAvatar.png" class="w-full" />
-    </div>
-    <div class="carousel-cell">
-      <img src="../../assets/images/Poly.png" class="w-full" />
-    </div>
-    <div class="carousel-cell">
-      <img src="../../assets/images/login.png" class="w-full" />
+
+  <carousel [cellsToShow]="3" [loop]="true" [height]="150" [margin]="-80">
+    <div class="carousel-cell -mt-5" *ngFor="let quiz of quizList">
+      <app-quiz-details-carousel [quiz]="quiz" class="w-full"></app-quiz-details-carousel>
     </div>
   </carousel>
 
-  <p class="text-xl font-bold text-[#EB455F] mt-3 mb-1">Explorez par thèmes</p>
-  <carousel [cellsToShow]="3" [loop]="true" [height]="140">
+  <p class="text-xl font-bold text-[#EB455F] mt-1 mb-1">Explorez par thèmes</p>
+  <carousel [cellsToShow]="3" [loop]="true" [height]="120">
     <div class="carousel-cell">
       <img src="../../assets/images/defaultAvatar.png" class="w-full" />
     </div>

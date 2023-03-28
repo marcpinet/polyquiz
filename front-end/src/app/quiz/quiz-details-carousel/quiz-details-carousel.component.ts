@@ -3,10 +3,10 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Quiz, Theme } from 'src/models/quiz.model';
 
 @Component({
-  selector: 'app-quiz-details',
-  templateUrl: './quiz-details.component.html',
+  selector: 'app-quiz-details-carousel',
+  templateUrl: './quiz-details-carousel.component.html',
 })
-export class QuizDetailsComponent {
+export class QuizDetailsCarouselComponent {
   @Input() quiz: Quiz;
 
   constructor(private router: Router) {}
