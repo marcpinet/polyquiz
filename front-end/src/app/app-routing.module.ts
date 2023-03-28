@@ -5,7 +5,7 @@ import { QuizListComponent} from './quiz/quizlist/quizlist.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './temporaryRegister/register.component';
 // import { GamePageComponent } from './gameComponents/game-page/game-page.component';
-import { MainPage } from './mainpage/mainpage.component';
+import { MainPage } from './mainpage/mainpage-main/mainpage.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 const routes: Routes = [
