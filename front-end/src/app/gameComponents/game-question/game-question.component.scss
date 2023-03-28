@@ -12,9 +12,18 @@
 
 #rep {
   text-align: center;
+  text-decoration: justify;
   padding-bottom: 100%;
   color: #999;
   margin-top: 2%;
+}
+
+#rep_img{
+  margin-top: 3%;
+}
+
+#rep_div {
+  display: flex;
 }
 
 .upper{
