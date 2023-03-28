@@ -15,19 +15,16 @@ export class GamePageComponent implements OnInit {
     score = 0;
     compteur = 0;
     answerSelected = false;
-    selectedAnswer : string | undefined;
+    selectedAnswer : string;
     answerGood = false;
 
     constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService){
+      const id = this.route.snapshot.paramMap.get('id');
+      this.quizService.setSelectedQuiz(id);
+      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
     }
 
     ngOnInit(): void {
-      const id = this.route.snapshot.paramMap.get('id');
-      console.log("id:" + id);
-      this.quizService.setSelectedQuiz(Number(id));
-      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); 
-      console.log("okkkk");
-      console.log(this.quiz.description);
     }
 
 

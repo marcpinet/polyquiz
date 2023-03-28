@@ -1,5 +1,5 @@
 export interface Quiz {
-  id: number;
+  id: string;
   name: string;
   difficulty: string;
   image: string;
@@ -11,7 +11,7 @@ export interface Quiz {
 }
 
 export interface Question {
-  id: number;
+  id: string;
   quizId: number;
   question_text: string;
   question_image?: string;
@@ -28,7 +28,7 @@ export interface Answer {
 }
 
 export interface Theme {
-  id: number;
+  id: string;
   name: string;
   image: number;
 }
