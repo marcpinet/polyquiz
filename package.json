@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "npm run start --prefix backend",
+    "server": "nodemon backend/app/index.js",
     "client": "npm run start --prefix front-end",
     "build-client": "npm run build --prefix front-end",
     "dev": "concurrently \" npm run server \" \" npm run client \"",
@@ -13,7 +13,6 @@
     "prepare": "husky install",
     "lint": ".eslintrc.js"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/2019-2020-ps6/2022-2023-ps6-4-grands-corsaires.git"
@@ -29,6 +28,7 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.22"
   }
 }

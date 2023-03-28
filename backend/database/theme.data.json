@@ -8,5 +8,15 @@
     "name": "Sport",
     "image": "https://img.freepik.com/photos-gratuite/outils-sport_53876-138077.jpg",
     "id": 1679998829002
+  },
+  {
+    "name": "Histoire",
+    "image": "https://alameda.edu/wp-content/uploads/2021/07/History.png",
+    "id": 1680001828941
+  },
+  {
+    "name": "Animaux",
+    "image": "https://images.photowall.com/products/65791/world-of-animals-map.jpg?h=699&q=85",
+    "id": 1680001941231
   }
 ]
