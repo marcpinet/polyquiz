@@ -1,6 +1,7 @@
-<div class="quiz" (click)="onClick()">
-    <img class="img" src="{{quiz.image}}" alt="image du quiz">
-    <p class="name">{{quiz.name}}</p>
-    <p class="theme">{{ theme?.name }}</p>
-    <p class="questions">Questions: {{quiz.questions.length}}</p>
+<div *ngIf="quiz" class="quiz" (click)="onClick()">
+  <img class="img" src="{{quiz.image}}" alt="image du quiz">
+  <p class="name">{{quiz.name}}</p>
+  <p class="theme">{{ quiz?.theme?.name }}</p>
+  <p class="questions">Questions: {{quiz.questions.length}}</p>
 </div>
+
