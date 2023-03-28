@@ -1,14 +1,14 @@
 <div
   (click)="onClick()"
-  class="h-full scale-50 transform rounded-lg bg-[#2B3467] dark:bg-[#2B3467] shadow-md duration-300 hover:scale-60 hover:shadow-lg justify-center items-center"
+  class="h-full scale-50 transform rounded-t-lg bg-[#2B3467] dark:bg-[#2B3467] shadow-md duration-300 hover:scale-60 hover:shadow-lg justify-center items-center -m-8 -mb-9"
 >
   <img
-    class="h-36 w-full"
+    class="h-36"
     src="{{ quiz.image }}"
     alt="Quiz Image"
   />
 
-  <div class="-mt-1 items-center justify-between bg-[#2B3467] dark:bg-[#2B3467]">
+  <div class="-mt-1 items-center justify-between bg-[#2B3467] dark:bg-[#2B3467] pl-2 pb-1 rounded-b-lg">
     <h2 class="text-xl font-medium dark:text-[#EB455F] text-[#EB455F]">
       {{ quiz.name }}
     </h2>
@@ -19,13 +19,13 @@
       }}</span></span
     >
     <div class="items-center">
-      <span class="text-lg text-white mr-2">Questions: </span>
-      <p class="text-lg font-semibold text-white dark:text-white">
+      <span class="text-lg text-white mr-1">Questions: </span>
+      <span class="text-lg font-semibold text-white dark:text-white">
         {{ quiz.questions.length }}
-      </p>
-      <p class="ml-auto text-base font-medium text-[#BAD7E9]">
+      </span>
+      <span class="ml-40 text-base font-medium text-[#BAD7E9]">
         <i class="fa-solid mr-2 fa-clock"></i>{{ quiz.estimated_time }} mins
-      </p>
+      </span>
     </div>
   </div>
 </div>
