@@ -10,22 +10,21 @@ import { GameQuestionComponent } from '../game-question/game-question.component'
   styleUrls: ['./game-page.component.scss'],
 })
 export class GamePageComponent implements OnInit {
-
-    quiz: Quiz  = {} as Quiz;
+    quiz: Quiz;
     score = 0;
     compteur = 0;
     answerSelected = false;
-    selectedAnswer : string | undefined;
+    selectedAnswer : string;
     answerGood = false;
 
     constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService){
-      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+      const id = this.route.snapshot.paramMap.get('id');
+      this.quizService.setSelectedQuiz(id);
+      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
     }
 
     ngOnInit(): void {
-      const id = this.route.snapshot.paramMap.get('id');
-      this.quizService.setSelectedQuiz(Number(id));
-      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
+
     }
 
 

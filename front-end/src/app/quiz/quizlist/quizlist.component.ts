@@ -30,10 +30,10 @@ export class QuizListComponent implements OnInit {
     }
 
     for (const themeId of themeIds) {
-      this.themeService.setSelectedTheme(themeId);
+      this.themeService.setSelectedTheme(themeId.toString());
       this.themeService.themeSelected$.subscribe(theme => {
         for (const quiz of this.quizList) {
-          if (quiz.themeId === theme.id) {
+          if (quiz.themeId.toString() === theme.id) {
             quiz.theme = theme;
           }
         }
