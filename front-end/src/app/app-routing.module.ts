@@ -13,7 +13,7 @@ import { UserProfileComponent } from './userProfile/user-profile.component';
 
 const routes: Routes = [
   {path: 'quizlist', component: QuizListComponent},
-  {path: 'game/:quizId', component: GamePageComponent},
+  {path: 'game/:id', component: GamePageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'tempo-register', component: RegisterComponent}, //only do this for the moment, to be implement only in admin's interface later
   {path: 'tempo-quiz-create', component: QuizCreateComponent},
