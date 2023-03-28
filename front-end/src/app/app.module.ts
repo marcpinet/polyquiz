@@ -18,6 +18,8 @@ import { QuizCarousel } from './quiz/quiz-carousel/quiz-carousel.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
+import { UserProfileComponent } from './userProfile/user-profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
     OptionsScreenComponent,
     QuizCreateComponent,
     MesResultatsComponent,
+    ResultComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
