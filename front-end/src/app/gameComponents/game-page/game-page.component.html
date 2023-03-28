@@ -9,19 +9,8 @@
         </div>
     </div>
     <app-game-question [question]="quiz.questions[compteur]" (selectAnswer)="checkAnswer($event)"></app-game-question>
-    <div *ngIf="answerSelected && answerGood" class="rectangle" id="true" (click)="nextQuestion()">
-        <h1 id="rep">BRAVO</h1>
-        <p id="reptext"> Tu as trouvé la bonne réponse</p>
-    </div>
-    <div *ngIf="answerSelected && !answerGood" class="rectangle" id="false" (click)="nextQuestion()">
-        <h1 id="rep">DOMMAGE</h1>
-        <p id="reptext">La bonne réponse était:</p>
-        <p id="reptext">{{quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_text}}</p>
-        <img *ngIf="quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_text == ''" alt="image réponse" 
-        src="{{quiz.questions[compteur].answers[quiz.questions[compteur].correct_answer].answer_image}}">
-    </div>
     <div *ngIf="compteur == quiz.questions.length" class="rectangle" id="end" (click)="endGame()">
         <h1 id="rep">FIN DU QUIZ</h1>
         <p id="reptext">Tu as trouvé {{this.score}} bonnes réponses sur {{this.quiz.questions.length}}</p>
-    </div>
+    </div> 
 </div>

@@ -7,23 +7,26 @@
         </div>
     </div>
     <div class="box">
-        <ul>
+        <ul *ngIf="this.answerSelected == -1">
             <ul>
                 <li>
-                    <app-game-answer [answer]="question.answers[0]" (click)="selectAnswer.emit(0)" letter="A."></app-game-answer>
+                    <app-game-answer [answer]="question.answers[0]" (click)="this.answerSelected = 0" letter="A."></app-game-answer>
                 </li>
                 <li>
-                    <app-game-answer [answer]="question.answers[1]" (click)="selectAnswer.emit(1)" letter="B." ></app-game-answer>
+                    <app-game-answer [answer]="question.answers[1]" (click)="this.answerSelected = 1" letter="B." ></app-game-answer>
                 </li>
             </ul>
             <ul *ngIf="this.question.answers.length == 4">
                 <li>
-                    <app-game-answer [answer]="question.answers[2]" (click)="selectAnswer.emit(2)" letter="C."  ></app-game-answer>
+                    <app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C."  ></app-game-answer>
                 </li>
                 <li>
-                    <app-game-answer [answer]="question.answers[3]" (click)="selectAnswer.emit(3)" letter="D." ></app-game-answer>
+                    <app-game-answer [answer]="question.answers[3]" (click)="this.answerSelected = 3" letter="D." ></app-game-answer>
                 </li>
             </ul>
         </ul>
+        <p *ngIf="this.answerSelected != -1" id="rep" (click)="this.nextQuestion()">
+            CECI EST L'EXPLICATION DE LA RÉPONSE POUR L'UTILISATEUR
+        </p>
     </div>
 </div>
