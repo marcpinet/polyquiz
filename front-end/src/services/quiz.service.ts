@@ -57,7 +57,7 @@ export class QuizService {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
-  setSelectedQuiz(quizId: number): void {
+  setSelectedQuiz(quizId: string): void {
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
       this.quizSelected$.next(quiz);

@@ -16,5 +16,41 @@
     "estimated_time": 20,
     "themeId": 1679998829002,
     "id": 1679916495824
+  },
+  {
+    "name": "Les Volcans",
+    "difficulty": "Difficile",
+    "image": "https://imageio.forbes.com/specials-images/imageserve/60708b35c49cab8e47fb7e60/Volcano-Smoke/960x0.jpg?format=jpg&width=960",
+    "description": "Bienvenue au jeu de quiz sur les volcans",
+    "estimated_time": 25,
+    "themeId": 1679918457070,
+    "id": 1680002047198
+  },
+  {
+    "name": "Animaux du désert",
+    "difficulty": "Moyen",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Suricates%2C_Namibia-2.jpg",
+    "description": "Bienvenue au jeu de quiz sur les animaux du désert",
+    "estimated_time": 12,
+    "themeId": 1680001941231,
+    "id": 1680002234117
+  },
+  {
+    "name": "Les éléphants",
+    "difficulty": "Moyen",
+    "image": "https://www.clairedahan.fr/wp-content/uploads/2017/06/La_Legende_Des_Aveugles_Et_Elephant.jpg",
+    "description": "Bienvenue au jeu de quiz sur les éléphants",
+    "estimated_time": 10,
+    "themeId": 1680001941231,
+    "id": 1680002766579
+  },
+  {
+    "name": "La reine Élisabeth II",
+    "difficulty": "Facile",
+    "image": "https://ichef.bbci.co.uk/news/640/cpsprodpb/18510/production/_118400699_gettyimages-515984032.jpg",
+    "description": "Bienvenue au jeu de quiz sur la reine Élisabeth II",
+    "estimated_time": 12,
+    "themeId": 1680001828941,
+    "id": 1680002987645
   }
 ]

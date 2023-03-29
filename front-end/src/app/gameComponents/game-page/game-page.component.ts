@@ -2,7 +2,8 @@ import { asNativeElements, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Quiz} from '../../../models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
-import { GameQuestionComponent } from '../game-question/game-question.component';
+import { ResultService } from 'src/services/result.service';
+import { Result } from 'src/models/result-quiz.model';
 
 @Component({
   selector: 'app-game-page',
@@ -10,22 +11,22 @@ import { GameQuestionComponent } from '../game-question/game-question.component'
   styleUrls: ['./game-page.component.scss'],
 })
 export class GamePageComponent implements OnInit {
-
-    quiz: Quiz  = {} as Quiz;
+    quiz: Quiz  ;
     score = 0;
     compteur = 0;
     answerSelected = false;
-    selectedAnswer : string | undefined;
+    selectedAnswer : string;
     answerGood = false;
+    startTime : Date;
 
-    constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService){
-      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+    constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService, private resultService: ResultService) {
+      const id = this.route.snapshot.paramMap.get('id');
+      this.quizService.setSelectedQuiz(id);
+      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
+      this.startTime=new Date();
     }
 
     ngOnInit(): void {
-      const id = this.route.snapshot.paramMap.get('id');
-      this.quizService.setSelectedQuiz(Number(id));
-      this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
     }
 
 
@@ -34,7 +35,6 @@ export class GamePageComponent implements OnInit {
         this.answerSelected = true;
         this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
         this.answerGood = this.quiz.questions[this.compteur].answers[answer].isCorrect;
-
         this.nextQuestion();
     }
 
@@ -45,17 +45,45 @@ export class GamePageComponent implements OnInit {
     }
 
     nextQuestion(){
-        this.updateScore();
-        this.answerSelected = false;
-        this.selectedAnswer = "";
-        this.answerGood = false;
-        this.compteur++;
+      this.updateScore();
+      this.answerSelected = false;
+      this.selectedAnswer = "";
+      this.answerGood = false;
+      this.compteur++;
+      if(this.isLastQuestion()){
+        this.endGame();
+      }
     }
 
-    endGame(){
-        this.router.navigate(['/']);
+    isLastQuestion(){
+        return  this.quiz !== undefined && this.quiz.questions !== undefined && this.compteur === this.quiz.questions.length;
     }
 
+    endGame(){ //add Result and get the id of the result and navigate to /result
+      const result : Result = {
+        id: 0,
+        quiz_id: this.quiz.id,
+        score: this.score,
+        date: new Date(),
+        user_id: 1,
+        right_answers: this.score,
+        wrong_answers: this.quiz.questions.length - this.score,
+        play_time: this.getElapsedTimeInSeconds(),
+        time_per_question: this.getElapsedTimeInSeconds()/this.quiz.questions.length
+      }
+
+      this.resultService.addResult(result).subscribe((result) => {
+        this.router.navigate(['/result', result.id]);
+      });
+      console.log("End of the game");
+
+    }
+
+    getElapsedTimeInSeconds(): number {
+      const currentTime = new Date();
+      const elapsedSeconds = (currentTime.getTime() - this.startTime.getTime()) / 1000;
+      return Math.floor(elapsedSeconds);
+    }
 
 
 }

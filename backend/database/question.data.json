@@ -9,6 +9,7 @@
   {
     "question_text": "Comment il s'appelle la capitale de Pologne?",
     "explain_text": "Capitale de la Pologne depuis 1596, Varsovie est située au centre-est du pays. Ville fascinante, pleine de contradictions, considérée par beaucoup comme inébranlable, Varsovie trouve son âme dans des lieux qui aujourd'hui ne sont plus.",
+    "explain_image": "https://www.strasbourg.aeroport.fr/wp-content/uploads/2022/06/varsovie.1572978.w630-2.jpg",
     "quizId": 1679875889425,
     "question_image": "https://www.contrepoints.org/wp-content/uploads/2023/03/pologne-Photo-by-Elijah-G-on-Unsplash-e1678455293592-1200x800.jpg",
     "id": 1679880026855
@@ -16,6 +17,7 @@
   {
     "question_text": "Quel est le symbôle de Paris?",
     "explain_text": "La Tour Eiffel est le symbole de Paris et, par extension, de la France. Construite pour l'Exposition Universelle de Paris de 1889, elle est le monument le plus visité au monde.",
+    "explain_image": "https://www.merveilles-du-monde.com/Tour-Eiffel/images/Photos/Tour-Eiffel-010.jpg",
     "quizId": 1679875889425,
     "id": 1679880139299
   }

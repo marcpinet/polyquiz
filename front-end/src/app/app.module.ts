@@ -19,7 +19,7 @@ import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
-
+import { QuizDetailsCarouselComponent } from './quiz/quiz-details-carousel/quiz-details-carousel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { UserProfileComponent } from './userProfile/user-profile.component';
     QuizCreateComponent,
     MesResultatsComponent,
     ResultComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    QuizDetailsCarouselComponent
   ],
   imports: [
     BrowserModule,

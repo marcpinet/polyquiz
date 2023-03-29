@@ -6,4 +6,4 @@ module.exports = new BaseModel('Answer', {
     answer_text: Joi.string(),
     answer_image: Joi.string(),
     isCorrect: Joi.boolean().required(),
-})
+}) 

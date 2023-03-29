@@ -34,7 +34,7 @@ export class ThemesService {
     });
   }
 
-  setSelectedTheme(themeId: number): void {
+  setSelectedTheme(themeId: string): void {
     const urlWithId = this.themeUrl + '/' + themeId;
     this.http.get<Theme>(urlWithId).subscribe((theme) => {
       this.themeSelected$.next(theme);

@@ -4,11 +4,10 @@ const { Quiz } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 const QuestionsRouter = require('./questions')
 const { buildQuizz, buildQuizzes } = require('./manager')
-
+const ResultsRouter = require('../results')
 const router = new Router()
 
 router.use('/:quizId/questions', QuestionsRouter)
-
 router.get('/', (req, res) => {
   try {
     const quizzes = buildQuizzes()
