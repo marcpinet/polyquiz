@@ -22,4 +22,8 @@ export class QuizCarousel implements OnInit {
 
   ngOnInit(): void {
   }
+
+  navigateQuizList(){
+    this.router.navigate(['/quizlist']);
+  }
 }
