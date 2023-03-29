@@ -1,4 +1,4 @@
-<ng-container *ngIf="quiz !== undefined && quiz.questions !== undefined">
+<ng-container *ngIf="quiz !== undefined && quiz.questions !== undefined && isLastQuestion()==false">
 <div id="base">
     <h1 id="title">{{quiz.name}}</h1>
     <div class="progress_case">

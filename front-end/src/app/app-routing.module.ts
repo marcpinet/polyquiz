@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'tempo-quiz-create', component: QuizCreateComponent},
   { path: '', component: MainPage },
   { path: 'settings', component: OptionsScreenComponent },
-  { path: 'result', component: ResultComponent },
+  { path: 'result/:id', component: ResultComponent },
   { path: 'userProfile', component: UserProfileComponent },
 ];
 

@@ -2,7 +2,8 @@ import { asNativeElements, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Quiz} from '../../../models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
-import { GameQuestionComponent } from '../game-question/game-question.component';
+import { ResultService } from 'src/services/result.service';
+import { Result } from 'src/models/result-quiz.model';
 
 @Component({
   selector: 'app-game-page',
@@ -17,8 +18,7 @@ export class GamePageComponent implements OnInit {
     selectedAnswer : string;
     answerGood = false;
     date : Date;
-    result_id : number;
-    constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService){
+    constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService, private resultService: ResultService) {
       const id = this.route.snapshot.paramMap.get('id');
       this.quizService.setSelectedQuiz(id);
       this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
@@ -44,15 +44,37 @@ export class GamePageComponent implements OnInit {
     }
 
     nextQuestion(){
-        this.updateScore();
-        this.answerSelected = false;
-        this.selectedAnswer = "";
-        this.answerGood = false;
-        this.compteur++;
+      this.updateScore();
+      this.answerSelected = false;
+      this.selectedAnswer = "";
+      this.answerGood = false;
+      this.compteur++;
+      if(this.isLastQuestion()){
+        this.endGame();
+      }
     }
 
-    endGame(){
-        this.router.navigate(['/']);
+    isLastQuestion(){
+        return  this.quiz !== undefined && this.quiz.questions !== undefined && this.compteur === this.quiz.questions.length;
+    }
+
+    endGame(){ //add Result and get the id of the result and navigate to /result
+      const result : Result = {
+        id: 0,
+        quiz_id: this.quiz.id,
+        score: this.score,
+        date: this.date,
+        user_id: 1,
+        right_answers: this.score,
+        wrong_answers: this.quiz.questions.length - this.score,
+        play_time: 0
+      }
+
+      this.resultService.addResult(result).subscribe((result) => {
+        this.router.navigate(['/result', result.id]);
+      });
+      console.log("End of the game");
+
     }
 
 
