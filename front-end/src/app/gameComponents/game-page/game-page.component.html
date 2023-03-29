@@ -1,4 +1,5 @@
-<div id="base"> 
+<ng-container *ngIf="quiz !== undefined && quiz.questions !== undefined">
+<div id="base">
     <h1 id="title">{{quiz.name}}</h1>
     <div class="progress_case">
         <div class="progress" >
@@ -12,5 +13,6 @@
     <div *ngIf="compteur == quiz.questions.length" class="rectangle" id="end" (click)="endGame()">
         <h1 id="rep">FIN DU QUIZ</h1>
         <p id="reptext">Tu as trouvé {{this.score}} bonnes réponses sur {{this.quiz.questions.length}}</p>
-    </div> 
+    </div>
 </div>
+</ng-container>

@@ -34,7 +34,6 @@ export class GamePageComponent implements OnInit {
         this.answerSelected = true;
         this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
         this.answerGood = this.quiz.questions[this.compteur].answers[answer].isCorrect;
-
         this.nextQuestion();
     }
 
