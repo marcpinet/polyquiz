@@ -10,18 +10,19 @@ import { GameQuestionComponent } from '../game-question/game-question.component'
   styleUrls: ['./game-page.component.scss'],
 })
 export class GamePageComponent implements OnInit {
-
     quiz: Quiz  ;
     score = 0;
     compteur = 0;
     answerSelected = false;
     selectedAnswer : string;
     answerGood = false;
-
+    date : Date;
+    result_id : number;
     constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService){
       const id = this.route.snapshot.paramMap.get('id');
       this.quizService.setSelectedQuiz(id);
       this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
+      this.date=new Date();
     }
 
     ngOnInit(): void {

@@ -6,6 +6,7 @@ export interface Result { //Result of of quiz's play round
   wrong_answers: number;
   score: number; //caculated based on right_answers and wrong_answers
   play_time: number;
+  date: Date;
 }
 
 

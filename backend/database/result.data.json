@@ -1,0 +1,12 @@
+[
+  {
+    "user_id": 123,
+    "quiz_id": 456,
+    "right_answers": 8,
+    "wrong_answers": 2,
+    "score": 80,
+    "play_time": 650,
+    "date": "2023-03-29",
+    "id": 1680059290528
+  }
+]

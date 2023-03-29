@@ -3,38 +3,40 @@ const UserRouter = require('./users')
 const ResidentRouter = require('./users/residents')
 const QuizzesRouter = require('./quizzes')
 const ThemeRouter = require('./themes')
-const router = new Router()
+const ResultRouter = require('./results')
 
+const router = new Router()
 const fs = require("fs");
 const multipart = require('connect-multiparty');
 var path = require('path');
 const { Quiz } = require('../models');
 const multipartMiddleware = multipart({
-    uploadDir: './uploads'
+  uploadDir: './uploads'
 });
 router.get('/uploads/:fileName', (req, res) => {
 
-  var file = path.resolve(__dirname+'/../../uploads/'+req.params.fileName)
+  var file = path.resolve(__dirname + '/../../uploads/' + req.params.fileName)
   if (fs.existsSync(file)) {
     res.sendFile(file);
-  }else {
+  } else {
     res.status(404)
   }
 })
 
 router.post('/upload', multipartMiddleware, (req, res) => {
-    if(req.files.uploads[0] !== undefined) {
-      var file = req.files.uploads[0].path;
-      var newFile = file.split("/").pop();
-      res.json({
-        'filepath': file
-      });
-    }
+  if (req.files.uploads[0] !== undefined) {
+    var file = req.files.uploads[0].path;
+    var newFile = file.split("/").pop();
+    res.json({
+      'filepath': file
+    });
+  }
 });
 
 router.get('/status', (req, res) => res.status(200).json('ok'))
 router.use('/users', UserRouter)
-router.use('/residents', ResidentRouter )
+router.use('/residents', ResidentRouter)
 router.use('/quizzes', QuizzesRouter)
 router.use('/themes', ThemeRouter)
+router.use('/results', ResultRouter)
 module.exports = router
