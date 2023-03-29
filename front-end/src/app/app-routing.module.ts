@@ -10,7 +10,7 @@ import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { ResultComponent } from './result/result.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
-
+import { NavbarComponent } from './navbar/navbar.component';
 const routes: Routes = [
   {path: 'quizlist', component: QuizListComponent},
   {path: 'game/:id', component: GamePageComponent},
@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'settings', component: OptionsScreenComponent },
   { path: 'result/:id', component: ResultComponent },
   { path: 'userProfile', component: UserProfileComponent },
+  { path: 'navbar', component: NavbarComponent },
 ];
 
 @NgModule({
