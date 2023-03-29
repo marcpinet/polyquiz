@@ -10,9 +10,5 @@
         </div>
     </div>
     <app-game-question [question]="quiz.questions[compteur]" (selectAnswer)="checkAnswer($event)"></app-game-question>
-    <div *ngIf="compteur == quiz.questions.length" class="rectangle" id="end" (click)="endGame()">
-        <h1 id="rep">FIN DU QUIZ</h1>
-        <p id="reptext">Tu as trouvé {{this.score}} bonnes réponses sur {{this.quiz.questions.length}}</p>
-    </div>
 </div>
 </ng-container>

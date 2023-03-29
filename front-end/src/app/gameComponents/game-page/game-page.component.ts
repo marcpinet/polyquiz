@@ -17,12 +17,13 @@ export class GamePageComponent implements OnInit {
     answerSelected = false;
     selectedAnswer : string;
     answerGood = false;
-    date : Date;
+    startTime : Date;
+
     constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService, private resultService: ResultService) {
       const id = this.route.snapshot.paramMap.get('id');
       this.quizService.setSelectedQuiz(id);
       this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
-      this.date=new Date();
+      this.startTime=new Date();
     }
 
     ngOnInit(): void {
@@ -63,11 +64,12 @@ export class GamePageComponent implements OnInit {
         id: 0,
         quiz_id: this.quiz.id,
         score: this.score,
-        date: this.date,
+        date: new Date(),
         user_id: 1,
         right_answers: this.score,
         wrong_answers: this.quiz.questions.length - this.score,
-        play_time: 0
+        play_time: this.getElapsedTimeInSeconds(),
+        time_per_question: this.getElapsedTimeInSeconds()/this.quiz.questions.length
       }
 
       this.resultService.addResult(result).subscribe((result) => {
@@ -77,6 +79,11 @@ export class GamePageComponent implements OnInit {
 
     }
 
+    getElapsedTimeInSeconds(): number {
+      const currentTime = new Date();
+      const elapsedSeconds = (currentTime.getTime() - this.startTime.getTime()) / 1000;
+      return Math.floor(elapsedSeconds);
+    }
 
 
 }
