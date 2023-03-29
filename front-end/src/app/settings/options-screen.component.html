@@ -1,134 +1,122 @@
-<body class="bg-[#fcffe7] p-2 rounded">
-  <div class="container mx-auto p-4">
-
-
-    <div class="flex border rounded-md overflow-hidden h-16">
-      <div class="title py-3 my-auto px-5 bg-[#2b3467] text-white h-16 text-2xl font-semibold border-r border-r-[#2b3467]">
-        <i class="fa-solid fa-arrow-pointer"></i>
-        Options de clic souris
-      </div>
-      <div class="button-container flex flex-grow h-16 my-auto">
-        <button class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300">Double-Clique</button>
-        <button class="bg-[#bad7e9] flex-grow border-l border-r border-l-[#2b3467] border-r-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300">Pression longue</button>
-        <button class="bg-[#bad7e9] flex-grow  p-0 border-l border-l-[#2b3467] text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300">Aucun</button>
-      </div>
-    </div>
-
-
-
-
-
-
-
+<div class="bg-[#fcffe7] pl-2 pr-2 rounded">
+  <div class="container mx-auto flex justify-between items-center">
+    <h1 class="font-semibold text-2xl text-[#2B3467]">Paramètres</h1>
+    <button id="mute-button" (click)="toggleMute()" class="bg-[#2B3467] hover:bg-[#1a2357] text-white rounded-md px-5 py-2.5 font-semibold">
+      <i class="fa fa-volume-up text-3xl"></i>
+      <!-- <span>{{ isMuted ? 'Effet sonore désactivé' : 'Effet sonore activé' }}</span> -->
+    </button>
     <button
       (click)="resetSettings()"
-      class="bg-[#EB455F] text-white px-8 py-4 font-semibold"
+      class="bg-[#EB455F] hover:bg-[#991c2f] text-white rounded-md px-5 py-4 font-semibold"
     >
       Réinitialiser
     </button>
   </div>
-  <div class="grid grid-cols-1 gap-6">
-    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-      <div class="flex items-center justify-between">
-        <span>Action au microphone</span>
-        <div>
-          <button
-            [ngClass]="{
-              'bg-[#bad7e9] text-[#2B3467]': settings.vocal
-            }"
-            (click)="settings.vocal = true"
-            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-          >
-            Activer
-          </button>
-          <button
-            [ngClass]="{
-              'bg-[#bad7e9] text-[#2B3467]': !settings.vocal
-            }"
-            (click)="settings.vocal = false"
-            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-          >
-            Désactiver
-          </button>
-        </div>
-      </div>
+  <hr class="h-px mb-2 bg-gray-200 border-0 dark:bg-gray-700" />
+
+  <div
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+  >
+    <div
+      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-2xl font-semibold border-r border-r-[#2b3467]"
+    >
+      <i class="fa-solid fa-arrow-pointer text-[#EB455F] mr-2"></i>
+      Options de clic souris
     </div>
-    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-      <div class="flex items-center justify-between">
-        <span>Clic avec barre d'espace</span>
-        <div>
-          <button
-            [ngClass]="{
-              'bg-[#bad7e9] text-[#2B3467]': settings.spacebarClick
-            }"
-            (click)="settings.spacebarClick = true"
-            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-          >
-            Activer
-          </button>
-          <button
-            [ngClass]="{
-              'bg-[#bad7e9] text-[#2B3467]': !settings.spacebarClick
-            }"
-            (click)="settings.spacebarClick = false"
-            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-          >
-            Désactiver
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-      <div class="flex items-center justify-between">
-        <span>Type de clic</span>
-        <select
-          [ngModel]="settings.mouseClickType"
-          (ngModelChange)="settings.mouseClickType = $event"
-          class="bg-[#BAD7E9] p-2 rounded text-[#2B3467]"
-        >
-          <option value="doubleClick">Double clic</option>
-          <option value="longPress">Pression longue</option>
-          <option value="none">Aucun</option>
-        </select>
-      </div>
-    </div>
-    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-      <div class="flex items-center justify-between">
-        <span>Confirmer avant d'envoyer</span>
-        <div>
-          <button
-            [ngClass]="{
-              'bg-[#bad7e9] text-[#2B3467]': settings.confirmDialog
-            }"
-            (click)="settings.confirmDialog = true"
-            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-          >
-            Activer
-          </button>
-          <button
-            [ngClass]="{
-              'bg-[#bad7e9] text-[#2B3467]': !settings.confirmDialog
-            }"
-            (click)="settings.confirmDialog = false"
-            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-          >
-            Désactiver
-          </button>
-        </div>
-      </div>
+    <div class="button-container flex flex-grow h-12 my-auto">
+      <button
+        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300"
+      >
+        Double-Clique
+      </button>
+      <button
+        class="bg-[#bad7e9] flex-grow border-l border-r border-l-[#2b3467] border-r-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+      >
+        Pression longue
+      </button>
+      <button
+        class="bg-[#bad7e9] flex-grow p-0 border-l border-l-[#2b3467] text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+      >
+        Aucun
+      </button>
     </div>
   </div>
-  <div class="flex justify-center mt-8">
+
+  <div
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+  >
+    <div
+      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-2xl font-semibold border-r border-r-[#2b3467]"
+    >
+      <i class="fa-solid fa-microphone text-[#EB455F] mr-2"></i>
+      Action au microphone
+    </div>
+    <div class="button-container flex flex-grow h-12 my-auto">
+      <button
+        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300 border-r-[#2b3467] border-r"
+      >
+        Activé
+      </button>
+      <button
+        class="bg-[#bad7e9] flex-grow border-l border-l-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+      >
+        Déactivé
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+  >
+    <div
+      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-2xl font-semibold border-r border-r-[#2b3467]"
+    >
+      <i class="fa-solid fa-check text-[#EB455F] mr-2"></i>
+      Confirmer avant d'envoyer
+    </div>
+    <div class="button-container flex flex-grow h-12 my-auto">
+      <button
+        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300 border-r-[#2b3467] border-r"
+      >
+        Activé
+      </button>
+      <button
+        class="bg-[#bad7e9] flex-grow border-l border-l-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+      >
+        Déactivé
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+  >
+    <div
+      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-2xl font-semibold border-r border-r-[#2b3467]"
+    >
+      <i class="fa-solid fa-keyboard text-[#EB455F] mr-2"></i>
+      Jouer quiz avec la clavier
+    </div>
+    <div class="button-container flex flex-grow h-12 my-auto">
+      <button
+        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300 border-r-[#2b3467] border-r"
+      >
+        Activé
+      </button>
+      <button
+        class="bg-[#bad7e9] flex-grow border-l border-l-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+      >
+        Déactivé
+      </button>
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-3">
     <button
       (click)="saveSettings()"
-      [ngClass]="
-        settingsChanged()
-          ? 'bg-[#2B3467] text-white'
-          : 'bg-[#BAD7E9] text-[#2B3467]'
-      "
-      class="px-8 py-4 font-semibold hover:bg-[#BAD7E9] hover:text-[#2b3467] transition"
+      class="px-8 py-4 font-semibold border border-[#EB455F] rounded-lg bg-[#BAD7E9] text-[#2b3467] hover:bg-[#2b3467] hover:text-white transition text-2xl"
     >
       Sauvegarder
     </button>
   </div>
-</body>
+</div>
