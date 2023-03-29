@@ -20,6 +20,7 @@ import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { QuizDetailsCarouselComponent } from './quiz/quiz-details-carousel/quiz-details-carousel.component';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { QuizDetailsCarouselComponent } from './quiz/quiz-details-carousel/quiz-
     MesResultatsComponent,
     ResultComponent,
     UserProfileComponent,
-    QuizDetailsCarouselComponent
+    QuizDetailsCarouselComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

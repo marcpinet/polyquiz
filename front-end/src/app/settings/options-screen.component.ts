@@ -1,11 +1,11 @@
-import { Component, ElementRef, Renderer2, RendererFactory2 } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-options-screen',
   templateUrl: './options-screen.component.html',
 })
 export class OptionsScreenComponent {
-  private renderer: Renderer2;
+  isMuted: boolean = false;
 
   public defaultSettings = {
     vocal: true,
@@ -17,9 +17,7 @@ export class OptionsScreenComponent {
 
   public settings = { ...this.defaultSettings };
 
-  constructor(rendererFactory: RendererFactory2, private el: ElementRef) {
-    this.renderer = rendererFactory.createRenderer(null, null);
-  }
+  constructor(private renderer: Renderer2) {}
 
   public resetSettings(): void {
     this.settings = { ...this.defaultSettings };
@@ -35,4 +33,15 @@ export class OptionsScreenComponent {
     return JSON.stringify(this.settings) !== JSON.stringify(this.defaultSettings);
   }
 
+  toggleMute() {
+    this.isMuted = !this.isMuted;
+    const buttonIcon = this.renderer.selectRootElement('#mute-button i');
+    if (this.isMuted) {
+      this.renderer.removeClass(buttonIcon, 'fa-volume-up');
+      this.renderer.addClass(buttonIcon, 'fa-volume-mute');
+    } else {
+      this.renderer.removeClass(buttonIcon, 'fa-volume-mute');
+      this.renderer.addClass(buttonIcon, 'fa-volume-up');
+    }
+  }
 }

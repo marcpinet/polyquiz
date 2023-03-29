@@ -24,6 +24,8 @@ export class GamePageComponent implements OnInit {
       this.quizService.setSelectedQuiz(id);
       this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz); console.log(this.quiz);
       this.startTime=new Date();
+      console.log(this.score);
+      
     }
 
     ngOnInit(): void {
@@ -31,7 +33,6 @@ export class GamePageComponent implements OnInit {
 
 
     checkAnswer(answer: number){
-        this.score = answer;
         this.answerSelected = true;
         this.selectedAnswer = this.quiz.questions[this.compteur].answers[answer].answer_text;
         this.answerGood = this.quiz.questions[this.compteur].answers[answer].isCorrect;
@@ -46,6 +47,7 @@ export class GamePageComponent implements OnInit {
 
     nextQuestion(){
       this.updateScore();
+      console.log(this.score);
       this.answerSelected = false;
       this.selectedAnswer = "";
       this.answerGood = false;
@@ -61,7 +63,7 @@ export class GamePageComponent implements OnInit {
 
     endGame(){ //add Result and get the id of the result and navigate to /result
       const result : Result = {
-        id: 0,
+        id: this.resultService.resultId,
         quiz_id: this.quiz.id,
         score: this.score,
         date: new Date(),
