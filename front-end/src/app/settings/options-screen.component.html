@@ -1,117 +1,134 @@
-<body class="bg-[#fcffe7] text-white p-2 rounded mb-4">
-  <div class="container mx-auto p-4 max-w-4xl">
-    <div class="flex justify-between items-center mb-4">
-      <h1 class="text-xl font-bold">Options</h1>
-      <button
-        (click)="resetSettings()"
-        class="bg-[#EB455F] text-white px-8 py-4 font-semibold"
-      >
-        Réinitialiser
-      </button>
+<body class="bg-[#fcffe7] p-2 rounded">
+  <div class="container mx-auto p-4">
+
+
+    <div class="flex border rounded-md overflow-hidden h-16">
+      <div class="title py-3 my-auto px-5 bg-[#2b3467] text-white h-16 text-2xl font-semibold border-r border-r-[#2b3467]">
+        <i class="fa-solid fa-arrow-pointer"></i>
+        Options de clic souris
+      </div>
+      <div class="button-container flex flex-grow h-16 my-auto">
+        <button class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300">Double-Clique</button>
+        <button class="bg-[#bad7e9] flex-grow border-l border-r border-l-[#2b3467] border-r-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300">Pression longue</button>
+        <button class="bg-[#bad7e9] flex-grow  p-0 border-l border-l-[#2b3467] text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300">Aucun</button>
+      </div>
     </div>
-    <div class="grid grid-cols-1 gap-6">
-      <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-        <div class="flex items-center justify-between">
-          <span>Action au microphone</span>
-          <div>
-            <button
-              [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': settings.vocal
-              }"
-              (click)="settings.vocal = true"
-              class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-            >
-              Activer
-            </button>
-            <button
-              [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': !settings.vocal
-              }"
-              (click)="settings.vocal = false"
-              class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-            >
-              Désactiver
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-        <div class="flex items-center justify-between">
-          <span>Clic avec barre d'espace</span>
-          <div>
-            <button
-              [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': settings.spacebarClick
-              }"
-              (click)="settings.spacebarClick = true"
-              class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-            >
-              Activer
-            </button>
-            <button
-              [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': !settings.spacebarClick
-              }"
-              (click)="settings.spacebarClick = false"
-              class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-            >
-              Désactiver
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-        <div class="flex items-center justify-between">
-          <span>Type de clic</span>
-          <select
-            [ngModel]="settings.mouseClickType"
-            (ngModelChange)="settings.mouseClickType = $event"
-            class="bg-[#BAD7E9] p-2 rounded text-[#2B3467]"
+
+
+
+
+
+
+
+    <button
+      (click)="resetSettings()"
+      class="bg-[#EB455F] text-white px-8 py-4 font-semibold"
+    >
+      Réinitialiser
+    </button>
+  </div>
+  <div class="grid grid-cols-1 gap-6">
+    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
+      <div class="flex items-center justify-between">
+        <span>Action au microphone</span>
+        <div>
+          <button
+            [ngClass]="{
+              'bg-[#bad7e9] text-[#2B3467]': settings.vocal
+            }"
+            (click)="settings.vocal = true"
+            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
           >
-            <option value="doubleClick">Double clic</option>
-            <option value="longPress">Pression longue</option>
-            <option value="none">Aucun</option>
-          </select>
-        </div>
-      </div>
-      <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
-        <div class="flex items-center justify-between">
-          <span>Confirmer avant d'envoyer</span>
-          <div>
-            <button
-              [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': settings.confirmDialog
-              }"
-              (click)="settings.confirmDialog = true"
-              class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-            >
-              Activer
-            </button>
-            <button
-              [ngClass]="{
-                'bg-[#bad7e9] text-[#2B3467]': !settings.confirmDialog
-              }"
-              (click)="settings.confirmDialog = false"
-              class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
-            >
-              Désactiver
-            </button>
-          </div>
+            Activer
+          </button>
+          <button
+            [ngClass]="{
+              'bg-[#bad7e9] text-[#2B3467]': !settings.vocal
+            }"
+            (click)="settings.vocal = false"
+            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
+          >
+            Désactiver
+          </button>
         </div>
       </div>
     </div>
-    <div class="flex justify-center mt-8">
-      <button
-        (click)="saveSettings()"
-        [ngClass]="
-          settingsChanged()
-            ? 'bg-[#2B3467] text-white'
-            : 'bg-[#BAD7E9] text-[#2B3467]'
-        "
-        class="px-8 py-4 font-semibold hover:bg-[#BAD7E9] hover:text-[#2b3467] transition"
-      >
-        Sauvegarder
-      </button>
+    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
+      <div class="flex items-center justify-between">
+        <span>Clic avec barre d'espace</span>
+        <div>
+          <button
+            [ngClass]="{
+              'bg-[#bad7e9] text-[#2B3467]': settings.spacebarClick
+            }"
+            (click)="settings.spacebarClick = true"
+            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
+          >
+            Activer
+          </button>
+          <button
+            [ngClass]="{
+              'bg-[#bad7e9] text-[#2B3467]': !settings.spacebarClick
+            }"
+            (click)="settings.spacebarClick = false"
+            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
+          >
+            Désactiver
+          </button>
+        </div>
+      </div>
     </div>
+    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
+      <div class="flex items-center justify-between">
+        <span>Type de clic</span>
+        <select
+          [ngModel]="settings.mouseClickType"
+          (ngModelChange)="settings.mouseClickType = $event"
+          class="bg-[#BAD7E9] p-2 rounded text-[#2B3467]"
+        >
+          <option value="doubleClick">Double clic</option>
+          <option value="longPress">Pression longue</option>
+          <option value="none">Aucun</option>
+        </select>
+      </div>
+    </div>
+    <div class="bg-[#2b3467] text-white p-2 rounded mb-4">
+      <div class="flex items-center justify-between">
+        <span>Confirmer avant d'envoyer</span>
+        <div>
+          <button
+            [ngClass]="{
+              'bg-[#bad7e9] text-[#2B3467]': settings.confirmDialog
+            }"
+            (click)="settings.confirmDialog = true"
+            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
+          >
+            Activer
+          </button>
+          <button
+            [ngClass]="{
+              'bg-[#bad7e9] text-[#2B3467]': !settings.confirmDialog
+            }"
+            (click)="settings.confirmDialog = false"
+            class="px-2 py-1 rounded hover:bg-[#bad7e9] hover:text-[#2B3467] transition"
+          >
+            Désactiver
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center mt-8">
+    <button
+      (click)="saveSettings()"
+      [ngClass]="
+        settingsChanged()
+          ? 'bg-[#2B3467] text-white'
+          : 'bg-[#BAD7E9] text-[#2B3467]'
+      "
+      class="px-8 py-4 font-semibold hover:bg-[#BAD7E9] hover:text-[#2b3467] transition"
+    >
+      Sauvegarder
+    </button>
   </div>
 </body>

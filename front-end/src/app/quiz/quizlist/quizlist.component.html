@@ -1,7 +1,30 @@
-<div>
-  <ul >
-    <li *ngFor="let quiz of quizList">
-      <app-quiz-details [quiz]="quiz"></app-quiz-details>
-    </li>
-  </ul>
+
+<div class="h-screen flex flex-col">
+  <h1 class="font-semibold text-4xl text-[#2B3467] text-center">
+    Quiz
+  </h1>
+  <div class="my-1">
+    <div class="font-semibold text-2xl text-[#2B3467] ml-2">
+      Filtres:
+    </div>
+  </div>
+  <div class="flex-1 overflow-y-auto">
+    <ul>
+      <li *ngFor="let quiz of quizList">
+        <app-quiz-details [quiz]="quiz"></app-quiz-details>
+      </li>
+    </ul>
+  </div>
 </div>
+
+
+
+<!-- <div>
+      <carousel [cellsToShow]="3" [loop]="true" [height]="140">
+        <div class="carousel-cell">
+          <div *ngFor="let quiz of quizList">
+            <app-quiz-details [quiz]="quiz"></app-quiz-details>
+        </div></div>
+      </carousel>
+
+</div> -->

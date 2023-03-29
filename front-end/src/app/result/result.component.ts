@@ -38,7 +38,7 @@ export class ResultComponent implements OnInit {
     }
 
     replay(){
-        this.router.navigate(['/']);
+        this.router.navigate(['/game/'+ this.result.quiz_id]);
     }
 
 

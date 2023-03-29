@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: '', component: MainPage },
   { path: 'settings', component: OptionsScreenComponent },
   { path: 'result/:id', component: ResultComponent },
-  { path: 'userProfile', component: UserProfileComponent },
+  { path: 'profile', component: UserProfileComponent },
   { path: 'navbar', component: NavbarComponent },
 ];
 
