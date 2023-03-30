@@ -9,62 +9,36 @@
       <ul
         class="w-full h-full flex flex-col justify-center items-center flex-grow"
       >
-        <!-- Add the "active" class to the button that should be "clicked" by default -->
-        <li
-          class="w-full h-1/3 flex-grow"
-          (click)="loadTabComponent('QUIZ')"
-          id="quiz-btn"
-        >
-          <button
-            class="w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] active:bg-[#2B3467] active:text-[#FCFFE7]"
-            onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('span').css('color', '#FCFFE7');"
-            onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('span').css('color', '#2B3467');"
-          >
-            <i
-              class="fa-solid fa-puzzle-piece text-4xl align-middle text-[#2B3467]"
-            ></i>
-            <span class="font-semibold align-middle text-2xl text-[#2B3467]"
-              >Quiz</span
-            >
-          </button>
-        </li>
+      <li class="w-full h-1/3 flex-grow" (click)="loadTabComponent('QUIZ')" id="result-btn">
+        <button class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467]" data-tab="QUIZ">
+          <i class="fa-solid fa-puzzle-piece text-4xl align-middle" [ngClass]="{'text-[#EB455F]': currentTab === 'QUIZ', 'text-[#2B3467]': currentTab !== 'QUIZ'}" *ngIf="currentTab !== 'QUIZ'"></i>
 
-        <!-- For the other buttons, we add a custom data attribute "tab" with the corresponding value -->
-        <li
-          class="w-full h-1/3 flex-grow"
-          (click)="loadTabComponent('RESULTAT')"
-          id="result-btn"
-        >
-          <button
-            class="w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467]"
-            onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('span').css('color', '#FCFFE7');"
-            onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('span').css('color', '#2B3467');"
-            data-tab="RESULTAT"
-          >
-            <i
-              class="fa-sharp fa-solid fa-trophy text-4xl align-middle text-[#2B3467]"
-            ></i>
-            <span class="font-semibold align-middle text-2xl text-[#2B3467]"
-              >Mes résultats</span
-            >
-          </button>
-        </li>
+          <i class="fa-solid fa-puzzle-piece text-4xl align-middle" [ngClass]="{'text-[#EB455F]': currentTab === 'QUIZ'}" *ngIf="currentTab === 'QUIZ'"></i>
+
+          <span class="font-semibold align-middle text-2xl" [ngClass]="{'text-[#EB455F]': currentTab === 'QUIZ', 'text-[#2B3467]': currentTab !== 'QUIZ'}" *ngIf="currentTab !== 'QUIZ'">Quiz</span>
+
+          <span class="font-semibold align-middle text-2xl" [ngClass]="{'text-white': currentTab === 'QUIZ'}" *ngIf="currentTab === 'QUIZ'">Quiz</span>
+        </button>
+      </li>
+      <li class="w-full h-1/3 flex-grow" (click)="loadTabComponent('RESULTAT')" id="result-btn">
+        <button class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467]" data-tab="RESULTAT">
+          <i class="fa-sharp fa-solid fa-trophy text-4xl align-middle" [ngClass]="{'text-[#EB455F]': currentTab === 'RESULTAT', 'text-[#2B3467]': currentTab !== 'RESULTAT'}" *ngIf="currentTab !== 'RESULTAT'"></i>
+          <i class="fa-sharp fa-solid fa-trophy text-4xl align-middle" [ngClass]="{'text-[#EB455F]': currentTab === 'RESULTAT'}" *ngIf="currentTab === 'RESULTAT'"></i>
+          <span class="font-semibold align-middle text-2xl" [ngClass]="{'text-[#EB455F]': currentTab === 'RESULTAT', 'text-[#2B3467]': currentTab !== 'RESULTAT'}" *ngIf="currentTab !== 'RESULTAT'">Mes résultats</span>
+          <span class="font-semibold align-middle text-2xl" [ngClass]="{'text-white': currentTab === 'RESULTAT'}" *ngIf="currentTab === 'RESULTAT'">Mes résultats</span>
+        </button>
+      </li>
+
         <li
           class="w-full h-1/3 flex-grow"
           (click)="loadTabComponent('PARAMETRES')"
           id="param-btn"
-        >
-          <button
-            class="w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467]"
-            onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('span').css('color', '#FCFFE7');"
-            onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('span').css('color', '#2B3467');"
-            data-tab="PARAMETRES"
-          >
-            <i class="fa fa-cog text-4xl align-middle text-[#2B3467]"></i>
-            <span class="font-semibold align-middle text-2xl text-[#2B3467]"
-              >Paramètres</span
-            >
-          </button>
+        >  <button class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467]" data-tab="PARAMETRES">
+          <i class="fa fa-cog text-4xl align-middle" [ngClass]="{'text-[#EB455F]': currentTab === 'PARAMETRES', 'text-[#2B3467]': currentTab !== 'PARAMETRES'}" *ngIf="currentTab !== 'PARAMETRES'"></i>
+          <i class="fa fa-cog text-4xl align-middle" [ngClass]="{'text-[#EB455F]': currentTab === 'PARAMETRES'}" *ngIf="currentTab === 'PARAMETRES'"></i>
+          <span class="font-semibold align-middle text-2xl" [ngClass]="{'text-[#EB455F]': currentTab === 'PARAMETRES', 'text-[#2B3467]': currentTab !== 'PARAMETRES'}" *ngIf="currentTab !== 'PARAMETRES'">Paramètres</span>
+          <span class="font-semibold align-middle text-2xl" [ngClass]="{'text-white': currentTab === 'PARAMETRES'}" *ngIf="currentTab === 'PARAMETRES'">Paramètres</span>
+        </button>
         </li>
       </ul>
     </div>
@@ -87,12 +61,12 @@
         </button>
       </div>
 
-      <div class="flex items-center py-2 mr-2"(click)="navigateProfile()">
-          <img
-            src="../../assets/images/defaultAvatar.png"
-            class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-20 w-20"
-          />
-          <p class="text-2xl font-bold text-[#2B3467] mt-1">Name</p>
+      <div class="flex items-center py-2 mr-2" (click)="navigateProfile()">
+        <img
+          src="../../assets/images/defaultAvatar.png"
+          class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-20 w-20"
+        />
+        <p class="text-2xl font-bold text-[#2B3467] mt-1">Name</p>
       </div>
     </nav>
     <!-- Begin of RightSide (Quiz, Parameters or Mes Resultats)-->
