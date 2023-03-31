@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Result } from 'src/models/result-quiz.model';
 import { ResultService } from 'src/services/result.service';
-
+import { Quiz } from 'src/models/quiz.model';
 @Component({
     selector: 'app-result',
     templateUrl: './result.component.html'
@@ -15,6 +15,7 @@ export class ResultComponent implements OnInit {
     total_time = 10;
     average_time = 1;
     result: Result;
+    quiz: Quiz;
 
     constructor(private route: ActivatedRoute, private router: Router, private resultService: ResultService) {
         const id = this.route.snapshot.paramMap.get('id');
