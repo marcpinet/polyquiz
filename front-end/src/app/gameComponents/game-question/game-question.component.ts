@@ -5,10 +5,9 @@ import { GamePageComponent } from '../game-page/game-page.component';
 @Component({
   selector: 'app-game-question',
   templateUrl: './game-question.component.html',
-  styleUrls: ['./game-question.component.scss'],
 })
 export class GameQuestionComponent{
-  
+
   answerSelected = -1;
 
     @Input()
@@ -16,7 +15,7 @@ export class GameQuestionComponent{
     @Output()
     selectAnswer = new EventEmitter<number>();
 
-    
+
 
     constructor(){
       this.question = {} as Question;
@@ -24,7 +23,7 @@ export class GameQuestionComponent{
 
     checkAnswer(answer: number){
         this.answerSelected = answer;
-    } 
+    }
 
     nextQuestion(){
       let ans = this.answerSelected;

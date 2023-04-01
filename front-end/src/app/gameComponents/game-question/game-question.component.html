@@ -1,35 +1,41 @@
-<div id="question">
-    <div class="upper">
-        <img src="{{this.question.question_image}}" *ngIf="this.question.question_image != undefined" alt="image de la question" class="image">
-        <div>
-            <h1 *ngIf="this.question.answers.length == 2">VRAI OU FAUX?<br></h1>
-            <h1>{{this.question.question_text}}</h1>
-        </div>
+<div class=" bg-[#2B3467] rounded-md h-full">
+  <div class="flex pl-10 pr-10">
+    <img src="{{this.question.question_image}}" *ngIf="this.question.question_image != undefined" alt="image de la question" class="h-32 image border border-solid border-white rounded-md mt-1">
+    <div>
+      <!-- TODO: Check if the answers are really type True or False -->
+      <!-- <h1 *ngIf="this.question.answers.length==3" class="text-2xl text-white font-semibold leading-tight pt-2 pl-2">VRAI OU FAUX?<br></h1> -->
+      <h1 class="text-3xl text-white font-semibold leading-tight pl-2 pt-2">{{this.question.question_text}}</h1>
     </div>
-    <div class="box">
-        <ul *ngIf="this.answerSelected == -1">
-            <ul>
-                <li>
-                    <app-game-answer [answer]="question.answers[0]" (click)="this.answerSelected = 0" letter="A."></app-game-answer>
-                </li>
-                <li>
-                    <app-game-answer [answer]="question.answers[1]" (click)="this.answerSelected = 1" letter="B." ></app-game-answer>
-                </li>
-            </ul>
-            <ul *ngIf="this.question.answers.length == 4">
-                <li>
-                    <app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C."  ></app-game-answer>
-                </li>
-                <li>
-                    <app-game-answer [answer]="question.answers[3]" (click)="this.answerSelected = 3" letter="D." ></app-game-answer>
-                </li>
-            </ul>
-        </ul>
-        <div id="rep_div" *ngIf="this.answerSelected != -1">
-            <img *ngIf="this.question.explain_image != undefined" id="rep_img" (click)="this.nextQuestion()" salt="image d'explication de réponse" src="{{this.question.explain_image}}">
-            <p id="rep" (click)="this.nextQuestion()">
-                {{this.question.explain_text}}
-            </p>
-        </div>
+  </div>
+  <div class="flex justify-center items-center h-48 mt-6"  *ngIf="this.answerSelected == -1">
+    <!-- Answers with text -->
+    <div class="grid grid-cols-2 grid-rows-2 gap-x-14 gap-y-6 w-5/6 mx-auto" *ngIf="!question.answers[0].answer_image">
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg col-span-1 row-span-1 p-4"><app-game-answer [answer]="question.answers[0]" (click)="this.answerSelected = 0" letter="A."/></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] col-span-1 row-span-1 p-4 rounded-lg"> <app-game-answer [answer]="question.answers[1]" (click)="this.answerSelected = 1" letter="B." /></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] col-span-1 row-span-1 p-4 rounded-lg" *ngIf="this.question.answers.length == 4"> <app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C." class="h-20"/></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] col-span-1 row-span-1 p-4 rounded-lg" *ngIf="this.question.answers.length == 4"> <app-game-answer [answer]="question.answers[3]" (click)="this.answerSelected = 3" letter="D." class="h-20"/></div>
     </div>
+
+
+    <!-- Answers with images -->
+
+    <div class="grid grid-cols-4 mx-auto gap-10 pl-2 pr-2" *ngIf="question.answers[0].answer_image">
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[0]" (click)="this.answerSelected = 0" letter="A."/></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[1]" (click)="this.answerSelected = 1" letter="B." /></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C." class="h-20"/></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[3]" (click)="this.answerSelected = 3" letter="D." class="h-20"/></div>
+    </div>
+
+
+
+  </div>
+
+  <div class="flex justify-center items-center mt-6 flex-grow" *ngIf="this.answerSelected != -1">
+    <div  class="flex pl-10 pr-10 bg-[#ed667b]">
+      <img *ngIf="this.question.explain_image != undefined" (click)="this.nextQuestion()" alt="image d'explication de réponse" src="{{this.question.explain_image}}" class="h-44 pt-3" />
+      <p (click)="this.nextQuestion()" class="text-lg md:text-xl text-[#2B3467] leading-tight p-10 md:p-20 md:pt-10 md:pb-20 font-semibold">
+        {{this.question.explain_text}}
+      </p>
+    </div>
+  </div>
 </div>
