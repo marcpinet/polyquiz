@@ -50,4 +50,4 @@ Thumbs.db
 backend/sessions
 
 # Angular cache
-**/*.angular.js
+**/*.angular/
