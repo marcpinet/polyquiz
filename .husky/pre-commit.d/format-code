@@ -11,7 +11,7 @@ if [ -z "$staged_files" ]; then
 fi
 
 # Run prettier on all staged files
-echo "$staged_files" | xargs ./front-end/node_modules/.bin/prettier --write
+echo "$staged_files" | xargs ./node_modules/.bin/prettier --write
 
 # Add all staged files
 echo "$staged_files" | xargs git add
