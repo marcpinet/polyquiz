@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './mainpage.component.html'
+  templateUrl: './mainpage.component.html',
 })
 export class MainPage {
   currentTab = 'QUIZ';
@@ -19,7 +19,7 @@ export class MainPage {
   components = {
     QUIZ: QuizCarousel,
     RESULTAT: MesResultatsComponent,
-    PARAMETRES: OptionsScreenComponent
+    PARAMETRES: OptionsScreenComponent,
   };
 
   constructor(public router: Router) {}
@@ -36,7 +36,9 @@ export class MainPage {
       button.style.color = '#2B3467';
     });
     // set the background and text color of the selected button
-    const selectedButton = document.querySelector(`[data-tab=${tab}]`) as HTMLElement;
+    const selectedButton = document.querySelector(
+      `[data-tab=${tab}]`
+    ) as HTMLElement;
     if (selectedButton) {
       selectedButton.style.backgroundColor = '#2B3467';
     }

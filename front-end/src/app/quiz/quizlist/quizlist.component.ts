@@ -10,11 +10,14 @@ import { Theme } from 'src/models/quiz.model';
   styleUrls: ['./quizlist.component.scss'],
 })
 export class QuizListComponent implements OnInit {
-
   public quizList: Quiz[] = [];
   public themes: Theme[] = [];
 
-  constructor(private router: Router, public quizService: QuizService, private themeService: ThemesService) {
+  constructor(
+    private router: Router,
+    public quizService: QuizService,
+    private themeService: ThemesService
+  ) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.populateThemes();
@@ -31,7 +34,7 @@ export class QuizListComponent implements OnInit {
 
     for (const themeId of themeIds) {
       this.themeService.setSelectedTheme(themeId.toString());
-      this.themeService.themeSelected$.subscribe(theme => {
+      this.themeService.themeSelected$.subscribe((theme) => {
         for (const quiz of this.quizList) {
           if (quiz.themeId.toString() === theme.id) {
             quiz.theme = theme;
@@ -41,8 +44,5 @@ export class QuizListComponent implements OnInit {
     }
   }
 
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

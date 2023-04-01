@@ -49,9 +49,9 @@ import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.com
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    IvyCarouselModule
+    IvyCarouselModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

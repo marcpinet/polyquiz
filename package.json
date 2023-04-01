@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "concurrently": "^7.6.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7"
   }
 }

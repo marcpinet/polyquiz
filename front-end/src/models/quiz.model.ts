@@ -6,7 +6,7 @@ export interface Quiz {
   description: string;
   estimated_time: number;
   themeId: number;
-  theme?: Theme
+  theme?: Theme;
   questions: Question[];
 }
 

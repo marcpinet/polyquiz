@@ -1,5 +1,5 @@
-const { Quiz, Question } = require('../../../models')
-const NotFoundError = require('../../../utils/errors/not-found-error.js')
+const { Quiz, Question } = require("../../../models");
+const NotFoundError = require("../../../utils/errors/not-found-error.js");
 
 /**
  * Questions Manager.
@@ -12,10 +12,10 @@ const NotFoundError = require('../../../utils/errors/not-found-error.js')
  * @param quizId
  */
 const filterQuestionsFromQuizz = (quizId) => {
-  const questions = Question.get()
-  const parsedId = parseInt(quizId, 10)
-  return questions.filter((question) => question.quizId === parsedId)
-}
+  const questions = Question.get();
+  const parsedId = parseInt(quizId, 10);
+  return questions.filter((question) => question.quizId === parsedId);
+};
 
 /**
  * getQuestionFromQuiz.
@@ -25,14 +25,17 @@ const filterQuestionsFromQuizz = (quizId) => {
  */
 const getQuestionFromQuiz = (quizId, questionId) => {
   // Check if quizId exists, if not it will throw a NotFoundError
-  const quiz = Quiz.getById(quizId)
-  const quizIdInt = parseInt(quizId, 10)
-  const question = Question.getById(questionId)
-  if (question.quizId !== quizIdInt) throw new NotFoundError(`${question.name} id=${questionId} was not found for ${quiz.name} id=${quiz.id} : not found`)
-  return question
-}
+  const quiz = Quiz.getById(quizId);
+  const quizIdInt = parseInt(quizId, 10);
+  const question = Question.getById(questionId);
+  if (question.quizId !== quizIdInt)
+    throw new NotFoundError(
+      `${question.name} id=${questionId} was not found for ${quiz.name} id=${quiz.id} : not found`
+    );
+  return question;
+};
 
 module.exports = {
   filterQuestionsFromQuizz,
   getQuestionFromQuiz,
-}
+};

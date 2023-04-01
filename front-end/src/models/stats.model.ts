@@ -1,4 +1,5 @@
-export interface Stats { //created along with Result everytime a user plays a quiz
+export interface Stats {
+  //created along with Result everytime a user plays a quiz
   id: number;
   user_id: number;
   quiz_id: number;

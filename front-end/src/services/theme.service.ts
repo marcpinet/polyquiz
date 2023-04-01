@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {BehaviorSubject, Observable, Subject, Subscription} from 'rxjs';
-import {serverUrl, httpOptionsBase} from '../configs/server.config';
-import {Theme} from '../models/quiz.model';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { Theme } from '../models/quiz.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemesService {
-  public themes: Theme[]=[];
+  public themes: Theme[] = [];
   public themes$: BehaviorSubject<Theme[]> = new BehaviorSubject(this.themes);
   public themeSelected$: Subject<Theme> = new Subject();
 
@@ -21,16 +21,16 @@ export class ThemesService {
 
   retrieveThemes(): void {
     this.http.get<Theme[]>(this.themeUrl).subscribe({
-      next: themeList => {
+      next: (themeList) => {
         this.themes = themeList;
         this.themes$.next(this.themes);
       },
-      error: error => {
+      error: (error) => {
         console.error('Failed to retrieve themes', error);
       },
       complete: () => {
         console.log('Themes retrieval completed');
-      }
+      },
     });
   }
 
@@ -40,5 +40,4 @@ export class ThemesService {
       this.themeSelected$.next(theme);
     });
   }
-
 }

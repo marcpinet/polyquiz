@@ -3,7 +3,10 @@
   <p class="text-xl font-bold text-[#2B3467] -mb-1">Nouveaux quiz</p>
   <carousel [cellsToShow]="3" [loop]="true" [height]="170" [margin]="-80">
     <div class="carousel-cell mt-3 mb-2 mr-20" *ngFor="let quiz of quizList">
-      <app-quiz-details-carousel [quiz]="quiz" class="w-full"></app-quiz-details-carousel>
+      <app-quiz-details-carousel
+        [quiz]="quiz"
+        class="w-full"
+      ></app-quiz-details-carousel>
     </div>
   </carousel>
 

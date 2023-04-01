@@ -1,88 +1,85 @@
-
 #base {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 #question {
-    width: 100%;
-    height: 100%;
-    background-color: #2B3467;
-    border-radius: 12px 12px 0 0;
-  }
-
-
-img{
-    display: block;
-    margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: #2b3467;
+  border-radius: 12px 12px 0 0;
 }
 
-.progress_case{
-    background-color: #ffffff;
-    border: #2B3467 1px solid;
-    width: 50vw;
-    height: 5vh;
-    border-radius: 15px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
+img {
+  display: block;
+  margin: auto;
 }
 
-.progress{
-    margin-left: 3%;
-    width: 80%;
-    height: 50%;
-    border: inherit;
-    border-radius: 10px;
-    overflow: hidden;
-    display: inline-block;
-    box-shadow: 0px 1px 3px #8a8a8a;
+.progress_case {
+  background-color: #ffffff;
+  border: #2b3467 1px solid;
+  width: 50vw;
+  height: 5vh;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
 
-.progress_bar{
-    background-color: #2B3467;
-    height: 100%;
+.progress {
+  margin-left: 3%;
+  width: 80%;
+  height: 50%;
+  border: inherit;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 0px 1px 3px #8a8a8a;
 }
 
-.progression{
-    color: #2B3467;
-    width: 1px;
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0 auto;
-    margin-left: 5%;
-    display: inline-block;
+.progress_bar {
+  background-color: #2b3467;
+  height: 100%;
+}
+
+.progression {
+  color: #2b3467;
+  width: 1px;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-left: 5%;
+  display: inline-block;
 }
 
 .rectangle {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
 }
 
 #true {
-    background-color: green;
+  background-color: green;
 }
 
 #false {
-    background-color: red;
+  background-color: red;
 }
 
 #reptext {
-    color: white;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 #rep {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 #end {
-    background-color: black;
+  background-color: black;
 }

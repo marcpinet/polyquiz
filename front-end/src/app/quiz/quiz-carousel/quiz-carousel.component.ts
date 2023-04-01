@@ -8,9 +8,8 @@ import { ThemesService } from 'src/services/theme.service';
 @Component({
   selector: 'app-quiz-carousel',
   templateUrl: './quiz-carousel.component.html',
-  styleUrls: ['./quiz-carousel.component.css']
+  styleUrls: ['./quiz-carousel.component.css'],
 })
-
 export class QuizCarousel implements OnInit {
   public quizList: Quiz[] = [];
   public themeList: Theme[] = [];
@@ -24,11 +23,9 @@ export class QuizCarousel implements OnInit {
     });
   }
 
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  navigateQuizList(){
+  navigateQuizList() {
     this.router.navigate(['/quizlist']);
   }
 }
