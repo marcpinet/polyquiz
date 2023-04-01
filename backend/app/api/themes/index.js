@@ -1,50 +1,50 @@
-const { Router } = require('express')
+const { Router } = require("express");
 
-const { Theme } = require('../../models')
-const manageAllErrors = require('../../utils/routes/error-management')
+const { Theme } = require("../../models");
+const manageAllErrors = require("../../utils/routes/error-management");
 
-const router = new Router()
+const router = new Router();
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   try {
-    res.status(200).json(Theme.get())
+    res.status(200).json(Theme.get());
   } catch (err) {
-    manageAllErrors(res, err)
+    manageAllErrors(res, err);
   }
-})
+});
 
-router.get('/:themeId', (req, res) => {
+router.get("/:themeId", (req, res) => {
   try {
-    res.status(200).json(Theme.getById(req.params.themeId))
+    res.status(200).json(Theme.getById(req.params.themeId));
   } catch (err) {
-    manageAllErrors(res, err)
+    manageAllErrors(res, err);
   }
-})
+});
 
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   try {
-    const theme = Theme.create({ ...req.body })
-    res.status(201).json(theme)
+    const theme = Theme.create({ ...req.body });
+    res.status(201).json(theme);
   } catch (err) {
-    manageAllErrors(res, err)
+    manageAllErrors(res, err);
   }
-})
+});
 
-router.put('/:themeId', (req, res) => {
+router.put("/:themeId", (req, res) => {
   try {
-    res.status(200).json(Theme.update(req.params.themeId, req.body))
+    res.status(200).json(Theme.update(req.params.themeId, req.body));
   } catch (err) {
-    manageAllErrors(res, err)
+    manageAllErrors(res, err);
   }
-})
+});
 
-router.delete('/:themeId', (req, res) => {
+router.delete("/:themeId", (req, res) => {
   try {
-    Theme.delete(req.params.themeId)
-    res.status(204).end()
+    Theme.delete(req.params.themeId);
+    res.status(204).end();
   } catch (err) {
-    manageAllErrors(res, err)
+    manageAllErrors(res, err);
   }
-})
+});
 
-module.exports = router
+module.exports = router;
