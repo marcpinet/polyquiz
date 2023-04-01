@@ -1,13 +1,32 @@
-<div (click)="onClick()" class="mx-auto mb-5 w-80 transform overflow-hidden rounded-lg bg-[#2B3467] dark:bg-[#2B3467] shadow-md duration-300 hover:scale-105 hover:shadow-lg" >
-  <div class="relative h-0" style="padding-top: 50%;">
-    <img class="absolute inset-0 h-full w-full object-cover object-center" src="{{quiz.image}}"alt="Quiz Image" />
+<div
+  (click)="onClick()"
+  class="mx-auto mb-5 w-80 transform overflow-hidden rounded-lg bg-[#2B3467] dark:bg-[#2B3467] shadow-md duration-300 hover:scale-105 hover:shadow-lg"
+>
+  <div class="relative h-0" style="padding-top: 50%">
+    <img
+      class="absolute inset-0 h-full w-full object-cover object-center"
+      src="{{ quiz.image }}"
+      alt="Quiz Image"
+    />
   </div>
   <div class="p-1">
-    <h2 class="mb-1 text-xl font-medium dark:text-[#EB455F] text-[#EB455F]">{{quiz.name}}</h2>
-    <span class="mb-1 text-base dark:text-white text-white">Niveau: <span class="text-lg font-semibold text-white dark:text-white">{{quiz.difficulty}}</span></span>
+    <h2 class="mb-1 text-xl font-medium dark:text-[#EB455F] text-[#EB455F]">
+      {{ quiz.name }}
+    </h2>
+    <span class="mb-1 text-base dark:text-white text-white"
+      >Niveau:
+      <span class="text-lg font-semibold text-white dark:text-white">{{
+        quiz.difficulty
+      }}</span></span
+    >
     <div class="flex items-center">
-      <span class="text-lg text-white mr-2">Questions: </span><p class="text-lg font-semibold text-white dark:text-white">{{quiz.questions.length}}</p>
-      <p class="ml-auto text-base font-medium text-[#BAD7E9]"><i class="fa-solid mr-2 fa-clock"></i>{{quiz.estimated_time}} mins</p>
+      <span class="text-lg text-white mr-2">Questions: </span>
+      <p class="text-lg font-semibold text-white dark:text-white">
+        {{ quiz.questions.length }}
+      </p>
+      <p class="ml-auto text-base font-medium text-[#BAD7E9]">
+        <i class="fa-solid mr-2 fa-clock"></i>{{ quiz.estimated_time }} mins
+      </p>
     </div>
   </div>
 </div>

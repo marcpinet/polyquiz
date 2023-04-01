@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-quiz-carousel',
   templateUrl: './quiz-carousel.component.html',
-  styleUrls: ['./quiz-carousel.component.css']
+  styleUrls: ['./quiz-carousel.component.css'],
 })
-
 export class QuizCarousel implements OnInit {
   public quizList: Quiz[] = [];
 
@@ -19,11 +18,9 @@ export class QuizCarousel implements OnInit {
     });
   }
 
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  navigateQuizList(){
+  navigateQuizList() {
     this.router.navigate(['/quizlist']);
   }
 }

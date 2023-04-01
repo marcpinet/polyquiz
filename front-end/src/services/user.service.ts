@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject,  Observable, forkJoin } from 'rxjs';
+import { BehaviorSubject, Subject, Observable, forkJoin } from 'rxjs';
 import { User } from '../models/user.model';
 import { Resident } from '../models/resident.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private userUrl = serverUrl + '/users';
@@ -15,7 +15,9 @@ export class UserService {
   private users: User[] = [];
   private residents: Resident[] = [];
   public users$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
-  public residents$: BehaviorSubject<Resident[]> = new BehaviorSubject<Resident[]>([]);
+  public residents$: BehaviorSubject<Resident[]> = new BehaviorSubject<
+    Resident[]
+  >([]);
 
   constructor(private http: HttpClient, private router: Router) {
     this.retrieveUsers();
@@ -24,31 +26,31 @@ export class UserService {
 
   retrieveUsers(): void {
     this.http.get<User[]>(this.userUrl).subscribe({
-      next: userList => {
+      next: (userList) => {
         this.users = userList;
         this.users$.next(this.users);
       },
-      error: error => {
+      error: (error) => {
         console.error('Failed to retrieve users', error);
       },
       complete: () => {
         console.log('User retrieval completed');
-      }
+      },
     });
   }
 
   retrieveResidents(): void {
     this.http.get<Resident[]>(this.residentUrl).subscribe({
-      next: residentList => {
+      next: (residentList) => {
         this.residents = residentList;
         this.residents$.next(this.residents);
       },
-      error: error => {
+      error: (error) => {
         console.error('Failed to retrieve residents', error);
       },
       complete: () => {
         console.log('Resident retrieval completed');
-      }
+      },
     });
   }
 
@@ -57,13 +59,18 @@ export class UserService {
   }
 
   addResident(resident: Resident): Observable<Resident> {
-    return this.http.post<Resident>(this.residentUrl, resident, this.httpOptions);
+    return this.http.post<Resident>(
+      this.residentUrl,
+      resident,
+      this.httpOptions
+    );
   }
 
   createResident(resident: Resident, user: User): void {
-    forkJoin([ //create both resident and user or none
+    forkJoin([
+      //create both resident and user or none
       this.addUser(user),
-      this.addResident(resident)
+      this.addResident(resident),
     ]).subscribe({
       next: ([addedUser, addedResident]) => {
         console.log('Both user and resident were added successfully');
@@ -72,19 +79,18 @@ export class UserService {
         this.residents.push(addedResident);
         this.residents$.next(this.residents);
       },
-      error: error => {
+      error: (error) => {
         console.error('Failed to create resident', error);
       },
       complete: () => {
         console.log('Resident creation completed');
-      }
+      },
     });
   }
 
   getPhotoUrl(user: User) {
-    if(user.avatar == undefined) {
-      return  "assets/user.png"; //TODO: path works?
-    }
-    else return user.avatar;
+    if (user.avatar == undefined) {
+      return 'assets/user.png'; //TODO: path works?
+    } else return user.avatar;
   }
 }

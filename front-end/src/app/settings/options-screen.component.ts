@@ -30,7 +30,9 @@ export class OptionsScreenComponent {
   }
 
   public settingsChanged(): boolean {
-    return JSON.stringify(this.settings) !== JSON.stringify(this.defaultSettings);
+    return (
+      JSON.stringify(this.settings) !== JSON.stringify(this.defaultSettings)
+    );
   }
 
   toggleMute() {

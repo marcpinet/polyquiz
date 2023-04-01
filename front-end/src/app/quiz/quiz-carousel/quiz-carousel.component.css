@@ -1,12 +1,8 @@
 ::ng-deep .carousel-arrow {
-  background-color: #BAD7E9 !important;
+  background-color: #bad7e9 !important;
   width: 6% !important;
   height: 80% !important;
   border-radius: 0 !important;
   position: absolute;
   transform: translate(-5%, -35%);
 }
-
-
-
-
