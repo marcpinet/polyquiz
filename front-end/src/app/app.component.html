@@ -1,15 +1,20 @@
-<!-- TODO: Uncomment this when implemented carousel into quizlist -->
-<div  *ngIf="router.url =='/quizlist'">
-  <app-navbar></app-navbar>
-  <div>
-    <router-outlet></router-outlet>
+<!-- TODO: To redo this when implemented carousel into quizlist -->
+<div class="overflow-hidden">
+  <app-navbar
+    *ngIf="router.url !== '/' && router.url !== '/login'"
+  ></app-navbar>
+  <div *ngIf="router.url == '/quizlist'">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div
+    class="w-full h-screen overflow-hidden"
+    *ngIf="router.url !== '/quizlist'"
+  >
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
-
-<div class="overflow-hidden" *ngIf="router.url !=='/quizlist'">
-  <app-navbar *ngIf="router.url !== '/' && router.url !== '/login'"></app-navbar>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
-</div>
-

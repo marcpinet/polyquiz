@@ -12,18 +12,18 @@
     <div class="grid grid-cols-2 grid-rows-2 gap-x-14 gap-y-6 w-5/6 mx-auto" *ngIf="!question.answers[0].answer_image">
       <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg col-span-1 row-span-1 p-4"><app-game-answer [answer]="question.answers[0]" (click)="this.answerSelected = 0" letter="A."/></div>
       <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] col-span-1 row-span-1 p-4 rounded-lg"> <app-game-answer [answer]="question.answers[1]" (click)="this.answerSelected = 1" letter="B." /></div>
-      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] col-span-1 row-span-1 p-4 rounded-lg" *ngIf="this.question.answers.length == 4"> <app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C." class="h-20"/></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] col-span-1 row-span-1 p-4 rounded-lg" *ngIf="this.question.answers.length >= 3"> <app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C." class="h-20"/></div>
       <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] col-span-1 row-span-1 p-4 rounded-lg" *ngIf="this.question.answers.length == 4"> <app-game-answer [answer]="question.answers[3]" (click)="this.answerSelected = 3" letter="D." class="h-20"/></div>
     </div>
 
 
     <!-- Answers with images -->
-
+    <!-- TODO: Fix for it not to be grid but like div inline that self-ajouts gap between themself to fit screen -->
     <div class="grid grid-cols-4 mx-auto gap-10 pl-2 pr-2" *ngIf="question.answers[0].answer_image">
       <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[0]" (click)="this.answerSelected = 0" letter="A."/></div>
       <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[1]" (click)="this.answerSelected = 1" letter="B." /></div>
-      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C." class="h-20"/></div>
-      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4"><app-game-answer [answer]="question.answers[3]" (click)="this.answerSelected = 3" letter="D." class="h-20"/></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4" *ngIf="this.question.answers.length >= 3"><app-game-answer [answer]="question.answers[2]" (click)="this.answerSelected = 2" letter="C." class="h-20"/></div>
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF]  rounded-lg p-4" *ngIf="this.question.answers.length ==4"><app-game-answer [answer]="question.answers[3]" (click)="this.answerSelected = 3" letter="D." class="h-20"/></div>
     </div>
 
 
