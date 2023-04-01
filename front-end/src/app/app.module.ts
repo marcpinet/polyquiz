@@ -21,6 +21,7 @@ import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { QuizDetailsCarouselComponent } from './quiz/quiz-details-carousel/quiz-details-carousel.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     UserProfileComponent,
     QuizDetailsCarouselComponent,
     NavbarComponent,
+    ThemeCarouselComponent
   ],
   imports: [
     BrowserModule,
