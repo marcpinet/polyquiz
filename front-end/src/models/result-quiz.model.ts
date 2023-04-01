@@ -1,4 +1,5 @@
-export interface Result { //Result of of quiz's play round
+export interface Result {
+  //Result of of quiz's play round
   id: number;
   user_id: number;
   quiz_id: string;
@@ -9,5 +10,3 @@ export interface Result { //Result of of quiz's play round
   date: Date;
   time_per_question: number;
 }
-
-

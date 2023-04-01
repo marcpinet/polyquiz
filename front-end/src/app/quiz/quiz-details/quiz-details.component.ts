@@ -12,7 +12,7 @@ export class QuizDetailsComponent {
   constructor(private router: Router) {}
 
   onClick() {
-    console.log("send: " + this.quiz.id);
+    console.log('send: ' + this.quiz.id);
     this.router.navigate(['/game', this.quiz.id]);
   }
 }

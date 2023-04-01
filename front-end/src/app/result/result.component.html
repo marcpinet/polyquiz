@@ -1,7 +1,11 @@
-
 <div class="mx-auto">
-  <h1 class="text-[#EB455F] font-bold justify-center text-center text-2xl">{{quiz.name}}</h1>
-  <div style="transform: scale(0.7)" class="grid grid-cols-4 grid-rows-2 gap-4 -mt-2">
+  <h1 class="text-[#EB455F] font-bold justify-center text-center text-2xl">
+    {{ quiz.name }}
+  </h1>
+  <div
+    style="transform: scale(0.7)"
+    class="grid grid-cols-4 grid-rows-2 gap-4 -mt-2"
+  >
     <div
       class="col-span-2 row-span-2 flex flex-col items-center justify-center rounded-lg bg-[#90C1DF] pl-2 pr-2"
     >
@@ -66,7 +70,7 @@
 </div>
 
 <button
-  class=" block mx-auto w-64 h-16 px-4 py-2 bg-[#2B3467] text-white rounded hover:bg-[#324299] text-3xl"
+  class="block mx-auto w-64 h-16 px-4 py-2 bg-[#2B3467] text-white rounded hover:bg-[#324299] text-3xl"
   (click)="replay()"
 >
   <i class="fa-solid fa-rotate-right text-3xl text-[#EB455F]"></i>

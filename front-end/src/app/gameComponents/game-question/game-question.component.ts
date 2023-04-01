@@ -6,28 +6,25 @@ import { GamePageComponent } from '../game-page/game-page.component';
   selector: 'app-game-question',
   templateUrl: './game-question.component.html',
 })
-export class GameQuestionComponent{
-
+export class GameQuestionComponent {
   answerSelected = -1;
 
-    @Input()
-    question: Question;
-    @Output()
-    selectAnswer = new EventEmitter<number>();
+  @Input()
+  question: Question;
+  @Output()
+  selectAnswer = new EventEmitter<number>();
 
+  constructor() {
+    this.question = {} as Question;
+  }
 
+  checkAnswer(answer: number) {
+    this.answerSelected = answer;
+  }
 
-    constructor(){
-      this.question = {} as Question;
-    }
-
-    checkAnswer(answer: number){
-        this.answerSelected = answer;
-    }
-
-    nextQuestion(){
-      let ans = this.answerSelected;
-      this.answerSelected = -1;
-      this.selectAnswer.emit(ans);
-    }
+  nextQuestion() {
+    let ans = this.answerSelected;
+    this.answerSelected = -1;
+    this.selectAnswer.emit(ans);
+  }
 }

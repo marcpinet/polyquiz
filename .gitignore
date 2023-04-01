@@ -48,3 +48,6 @@ Thumbs.db
 
 # Session files
 backend/sessions
+
+# Angular cache
+**/*.angular.js

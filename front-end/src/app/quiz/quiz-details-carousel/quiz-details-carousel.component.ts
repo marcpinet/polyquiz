@@ -12,7 +12,7 @@ export class QuizDetailsCarouselComponent {
   constructor(private router: Router) {}
 
   onClick() {
-    console.log("send2: " + this.quiz.id);
+    console.log('send2: ' + this.quiz.id);
     this.router.navigate(['/game', this.quiz.id]);
   }
 }

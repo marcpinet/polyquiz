@@ -4,7 +4,7 @@ export interface User {
   lastName: string;
   userName: string;
   password: string;
-  userType: "patient" | "admin" | "superAdmin";
+  userType: 'patient' | 'admin' | 'superAdmin';
   //avatar: File | null;
   avatar: string;
 }

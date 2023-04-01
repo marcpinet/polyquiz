@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject,  Observable, forkJoin } from 'rxjs';
+import { BehaviorSubject, Subject, Observable, forkJoin } from 'rxjs';
 import { Result } from '../models/result-quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ResultService {
   private resultUrl = serverUrl + '/results';
   private httpOptions = httpOptionsBase;
   private results: Result[] = [];
-  public results$: BehaviorSubject<Result[]> = new BehaviorSubject<Result[]>([]);
+  public results$: BehaviorSubject<Result[]> = new BehaviorSubject<Result[]>(
+    []
+  );
   public resultSelected$: Subject<Result> = new Subject();
   public resultId = 0;
 
@@ -21,16 +23,16 @@ export class ResultService {
 
   retrieveResults(): void {
     this.http.get<Result[]>(this.resultUrl).subscribe({
-      next: resultList => {
+      next: (resultList) => {
         this.results = resultList;
         this.results$.next(this.results);
       },
-      error: error => {
+      error: (error) => {
         console.error('Failed to retrieve results', error);
       },
       complete: () => {
         console.log('Result retrieval completed');
-      }
+      },
     });
   }
 

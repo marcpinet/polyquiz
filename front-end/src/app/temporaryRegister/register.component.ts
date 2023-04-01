@@ -10,10 +10,15 @@ import { Resident } from 'src/models/resident.model';
 export class RegisterComponent implements OnInit {
   public residentForm: FormGroup;
   symptomes = [
-    {name: 'Le tremblement de repos', value: 'tremblement', id: 0, checked: false},
-    {name: 'Akinésie', value: 'akinesie', id: 1, checked: false},
-    {name: 'La rigidité', value: 'rigidite', id: 2, checked: false},
-    {name: 'Autres', value: 'autres', id: 3, checked: false},
+    {
+      name: 'Le tremblement de repos',
+      value: 'tremblement',
+      id: 0,
+      checked: false,
+    },
+    { name: 'Akinésie', value: 'akinesie', id: 1, checked: false },
+    { name: 'La rigidité', value: 'rigidite', id: 2, checked: false },
+    { name: 'Autres', value: 'autres', id: 3, checked: false },
   ];
   constructor(
     private userService: UserService,
@@ -38,23 +43,22 @@ export class RegisterComponent implements OnInit {
       userType: 'patient',
       avatar: [''],
     });
-
   }
 
   ngOnInit() {}
 
   addResident() {
     const symptomeArray = this.symptomes
-    .filter((symptome) => symptome.checked)
-    .map((symptome) => symptome.value);
+      .filter((symptome) => symptome.checked)
+      .map((symptome) => symptome.value);
 
-  const resident: Resident = {
-    userId: Date.now(),
-    id: this.residentForm.value.residentNum,
-    genre: this.residentForm.value.genre,
-    symptome: symptomeArray,
-    dateOfBirth: this.residentForm.value.dateOfBirth,
-  };
+    const resident: Resident = {
+      userId: Date.now(),
+      id: this.residentForm.value.residentNum,
+      genre: this.residentForm.value.genre,
+      symptome: symptomeArray,
+      dateOfBirth: this.residentForm.value.dateOfBirth,
+    };
     const user: User = {
       id: resident.userId,
       userName: this.residentForm.value.userName,
@@ -77,6 +81,9 @@ export class RegisterComponent implements OnInit {
     const symptomeArray = this.symptomes
       .filter((symptome) => symptome.checked)
       .map((symptome) => symptome.value);
-    this.residentForm.setControl('symptome', this.formBuilder.array(symptomeArray));
+    this.residentForm.setControl(
+      'symptome',
+      this.formBuilder.array(symptomeArray)
+    );
   }
 }

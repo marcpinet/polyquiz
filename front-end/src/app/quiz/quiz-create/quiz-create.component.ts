@@ -2,8 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Resident } from 'src/models/resident.model';
 import { Router } from '@angular/router';
-import {Question, Theme, Quiz, Answer} from 'src/models/quiz.model';
-import {QuizService} from 'src/services/quiz.service';
+import { Question, Theme, Quiz, Answer } from 'src/models/quiz.model';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-register',
@@ -18,11 +18,11 @@ export class QuizCreateComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {
     this.quizForm = this.formBuilder.group({
       quizImage: ['', Validators.required],
-      quizName: ['', [ Validators.required]],
+      quizName: ['', [Validators.required]],
       quizDifficulty: ['', Validators.required],
       quizDescription: ['', Validators.required],
       quizEstimatedTime: ['', Validators.required],
@@ -33,8 +33,5 @@ export class QuizCreateComponent implements OnInit {
 
   ngOnInit() {}
 
-  public addQuiz(): void {
-  }
-
-
+  public addQuiz(): void {}
 }
