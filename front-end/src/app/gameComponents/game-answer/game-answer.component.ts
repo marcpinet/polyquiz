@@ -6,7 +6,6 @@ import { Answer } from '../../../models/quiz.model';
 @Component({
   selector: 'app-game-answer',
   templateUrl: './game-answer.component.html',
-  styleUrls: ['./game-answer.component.scss'],
 })
 export class GameAnswerComponent{
 
