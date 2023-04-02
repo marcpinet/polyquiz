@@ -4,7 +4,8 @@ const ResidentRouter = require("./users/residents");
 const QuizzesRouter = require("./quizzes");
 const ThemeRouter = require("./themes");
 const ResultRouter = require("./results");
-
+const Settings = require("./settings");
+const InitSettings = require("./settings/initsettings");
 const router = new Router();
 const fs = require("fs");
 const multipart = require("connect-multiparty");
@@ -38,4 +39,6 @@ router.use("/residents", ResidentRouter);
 router.use("/quizzes", QuizzesRouter);
 router.use("/themes", ThemeRouter);
 router.use("/results", ResultRouter);
+router.use("/settings", Settings);
+router.use("/initsettings", InitSettings);
 module.exports = router;

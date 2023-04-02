@@ -24,7 +24,7 @@
             Bienvenue à PolyQuiz
           </h3>
         </div>
-        <form class="px-8 pt-6 pb-8 mb-4 bg-[#FCFEFF]">
+        <form class="px-8 pt-6 pb-8 mb-4 bg-[#FCFEFF]" [formGroup]="loginForm">
           <div class="mb-4">
             <label
               class="block mb-2 text-lg font-bold text-[#2B3467]"
@@ -36,7 +36,7 @@
               class="w-full px-4 py-4 text-lg leading-tight text-[#2B3467] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
-              placeholder="Entrez votre username"
+              placeholder="Entrez votre username" [formControlName]="'userName'"
             />
           </div>
           <div class="mb-4">
@@ -51,6 +51,7 @@
               id="password"
               type="password"
               placeholder="Entrez votre mot de passe"
+              [formControlName]="'password'"
             />
             <!--TODO: input can have class = border-red-500 if error -->
             <!-- <p class="text-xs italic text-red-500">Veuillez entrer votre mot de passe.</p> -->
@@ -58,7 +59,7 @@
           <div class="mb-6 text-center">
             <button
               class="w-full px-4 py-4 font-bold text-white text-xl bg-indigo-800 rounded-full hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
-              type="button"
+              type="button" (click)="login()"
             >
               Se connecter
             </button>
