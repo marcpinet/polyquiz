@@ -32,12 +32,12 @@ Coming soon...
 3. Go to the root of the project. Open your Terminal and install the dependencies:
 
     ```bash
-    npm install && cd backend && npm install && cd ../front-end && npm install
+    npm install && cd backend && npm install && cd ../frontend && npm install
     ```
 
 ### Running
 
-After that, you can proceed to start the program by running `npm run dev` at the root of the project. This will start both the backend and the front-end.
+After that, you can proceed to start the program by running `npm run dev` at the root of the project. This will start both the backend and the frontend.
 
 ### Continuous Integration
 
