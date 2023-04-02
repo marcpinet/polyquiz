@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   ) {
     this.residentForm = this.formBuilder.group({
       residentNum: ['', Validators.required],
-      genre: [[], Validators.required],
+      sexes: [[], Validators.required],
       symptome: this.formBuilder.array([], Validators.required),
       dateOfBirth: ['', Validators.required],
       firstName: ['', [Validators.maxLength(20), Validators.required]],
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
     const resident: Resident = {
       userId: Date.now(),
       id: this.residentForm.value.residentNum,
-      genre: this.residentForm.value.genre,
+      sexe: this.residentForm.value.sexe,
       symptome: symptomeArray,
       dateOfBirth: this.residentForm.value.dateOfBirth,
     };
