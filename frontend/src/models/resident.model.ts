@@ -1,7 +1,7 @@
 export interface Resident {
   userId: number;
   id: number;
-  genre: string;
+  sexe: string;
   symptome: string[];
   dateOfBirth: Date;
 }
