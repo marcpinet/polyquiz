@@ -51,3 +51,6 @@ backend/sessions
 
 # Angular cache
 **/*.angular/
+
+# Session
+sessions/
