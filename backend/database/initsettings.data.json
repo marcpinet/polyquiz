@@ -2,8 +2,8 @@
   {
     "user_id": 1680382334270,
     "sound_effect": false,
-    "mouseOptions": "aucun",
-    "microphone": true,
+    "mouseOptions": "none",
+    "microphone": false,
     "confirm": false,
     "keyboard": false,
     "id": 1680382869828

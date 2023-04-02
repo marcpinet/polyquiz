@@ -15,11 +15,10 @@ export class OptionsScreenComponent implements OnDestroy {
   spacebarClick: boolean;
 
   public defaultSettings = {
-    vocal: true,
+    vocal: false,
     spacebarClick: false,
-    mouseClickType: 'doubleClick',
-    mouseSpeed: 5,
-    confirmDialog: true,
+    mouseClickType: 'none',
+    confirmDialog: false,
   };
 
   public settings = { ...this.defaultSettings };
