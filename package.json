@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon backend/app/index.js",
-    "client": "npm run start --prefix front-end",
-    "build-client": "npm run build --prefix front-end",
+    "client": "npm run start --prefix frontend",
+    "build-client": "npm run build --prefix frontend",
     "dev": "concurrently \" npm run server \" \" npm run client \"",
     "build": "npm run build-client",
     "test": "echo \"Error: no test specified\" && exit 1",

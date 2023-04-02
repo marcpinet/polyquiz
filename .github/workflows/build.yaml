@@ -31,9 +31,9 @@ jobs:
       run: |
         cd backend
         npm ci
-    - name: Install front-end dependencies
+    - name: Install frontend dependencies
       run: |
-        cd front-end
+        cd frontend
         npm ci
     - run: npm install -g @angular/cli
     - run: npm run build
