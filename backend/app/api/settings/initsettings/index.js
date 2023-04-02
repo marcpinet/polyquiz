@@ -13,14 +13,6 @@ router.get("/", (req, res) => {
   }
 });
 
-router.get("/:settingsId", (req, res) => {
-  try {
-    res.status(200).json(InitSettings.getById(req.params.settingsId));
-  } catch (err) {
-    manageAllErrors(res, err);
-  }
-});
-
 router.post("/", (req, res) => {
   try {
     const initSettings = InitSettings.create({ ...req.body });
@@ -30,18 +22,22 @@ router.post("/", (req, res) => {
   }
 });
 
-router.put("/:settingsId", (req, res) => {
+router.get('/:user_id', (req, res) => {
   try {
-    res.status(200).json(InitSettings.update(req.params.settingsId, req.body));
+    const user_id = parseInt(req.params.user_id); 
+    const settings = InitSettings.findOne({ user_id });
+    res.status(200).json(settings);
   } catch (err) {
-    manageAllErrors(res, err);
+    res.status(404).json(err);
   }
 });
 
-router.delete("/:settingsId", (req, res) => {
+router.put('/:user_id', (req, res) => {
   try {
-    InitSettings.delete(req.params.settingsId);
-    res.status(204).end();
+    const user_id = parseInt(req.params.user_id); 
+    const settings = InitSettings.findOne({ user_id });;
+    const result = InitSettings.update(settings.id, req.body);
+    res.status(200).json(result)
   } catch (err) {
     manageAllErrors(res, err);
   }

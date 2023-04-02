@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 
 const SESSION_LIFETIME = 1000 * 60 * 60 * 24 * 30; //a month
 const SESSION_NAME = "login";
-const SESSION_SECRET = "ps6 login";
+const SESSION_SECRET = "ps6login";
 
 var FileStore = require("session-file-store")(session);
 
@@ -94,5 +94,61 @@ router.delete("/:userId", (req, res) => {
     manageAllErrors(res, err);
   }
 });
+
+router.post('/login', async (req, res) => {
+  try {
+    const { userName, password } = req.body;
+    const existingUser = await User.findOne({ userName });
+    if (!existingUser) {
+      return res.status(409).json({ error: "userName doesn't exist" });
+    }
+    if (await bcrypt.compare(password, existingUser.password)) {
+      req.session.userId = existingUser.id;
+      return res.status(200).json(existingUser)
+    } else {
+      return res.status(200).json({ 'errors': 'Wrong password' })
+    }
+  } catch (err) {
+    console.log(err)
+    manageAllErrors(res, err)
+  }
+});
+
+router.get('/login', async (req, res) => {
+  try {
+    console.log(req.session.userId);
+    if (req.session.userId !== undefined) {
+      const existingUser = await User.findOne({ id: req.session.userId });
+      console.log(existingUser);
+      return res.status(200).json(existingUser);
+    }
+    if (req.body.username !== undefined) {
+      const existingUser = await User.findOne({ userName });
+      console.log(existingUser);
+      return res.status(200).json(existingUser);
+    }
+    return res.status(200).json({});
+  } catch (err) {
+    console.log(err);
+    manageAllErrors(res, err)
+  }
+});
+
+router.get('/logout', (req, res) => {
+  try {
+      req.session.destroy(err => {
+          if (err) {
+              return res.status(200).json({'success': false})
+          }
+          res.clearCookie(SESSION_NAME);
+          console.log('Logged out');
+          return res.status(200).json({'success': true})
+      })
+  } catch (err) {
+      manageAllErrors(res, err)
+  }
+});
+
+
 
 module.exports = router;
