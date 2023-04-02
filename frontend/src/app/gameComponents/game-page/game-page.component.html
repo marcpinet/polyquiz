@@ -14,14 +14,14 @@
         <div
           class="progress_bar"
           role="progressbar"
-          [style.width]="(compteur / quiz.questions.length) * 100 + '%'"
+          [style.width]="((compteur+1) / quiz.questions.length) * 100 + '%'"
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"
         ></div>
       </div>
       <div class="progression">
-        <p>{{ compteur }}/{{ quiz.questions.length }}</p>
+        <p>{{ compteur+1 }}/{{ quiz.questions.length }}</p>
       </div>
     </div>
     <div class="h-screen">
