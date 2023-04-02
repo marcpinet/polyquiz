@@ -9,6 +9,10 @@ import { Subscription } from 'rxjs';
 export class OptionsScreenComponent implements OnDestroy {
   isMuted: boolean = false;
   private letterASubscription: Subscription;
+  selectedMouseOption: string;
+  vocal: boolean;
+  confirmDialog: boolean;
+  spacebarClick: boolean;
 
   public defaultSettings = {
     vocal: true,
@@ -29,6 +33,11 @@ export class OptionsScreenComponent implements OnDestroy {
         this.handleClick(speechText);
       }
     );
+
+    this.selectedMouseOption = this.settings.mouseClickType;
+    this.vocal = this.settings.vocal;
+    this.confirmDialog = this.settings.confirmDialog;
+    this.spacebarClick = this.settings.spacebarClick;
   }
 
   public resetSettings(): void {
@@ -38,13 +47,26 @@ export class OptionsScreenComponent implements OnDestroy {
   public saveSettings(): void {
     console.log('Settings saved:', this.settings);
 
-    // TODO: Update the settings
+    this.settings.confirmDialog = this.confirmDialog;
+    this.settings.spacebarClick = this.spacebarClick;
+    this.settings.vocal = this.vocal;
+    this.settings.mouseClickType = this.selectedMouseOption;
   }
 
   public settingsChanged(): boolean {
     return (
       JSON.stringify(this.settings) !== JSON.stringify(this.defaultSettings)
     );
+  }
+
+  ngOnDestroy() {
+    this.letterASubscription.unsubscribe();
+  }
+
+  handleClick(speechText: string) {
+    console.log('Clicked!');
+    console.log('User speech:', speechText);
+    // Code to execute when the click is triggered
   }
 
   toggleMute() {
@@ -59,17 +81,33 @@ export class OptionsScreenComponent implements OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    this.letterASubscription.unsubscribe();
+  setMouseOption(option: string) {
+    this.selectedMouseOption = option;
   }
 
-  listenAndClick() {
+  enableVocal() {
+    this.vocal = true;
     this.speechService.startRecognition();
   }
 
-  handleClick(speechText: string) {
-    console.log('Clicked!');
-    console.log('User speech:', speechText);
-    // Code to execute when the click is triggered
+  disableVocal() {
+    this.vocal = false;
+    this.speechService.stopRecognition();
+  }
+
+  enableConfirmDialog() {
+    this.confirmDialog = true;
+  }
+
+  disableConfirmDialog() {
+    this.confirmDialog = false;
+  }
+
+  enableSpacebarClick() {
+    this.spacebarClick = true;
+  }
+
+  disableSpacebarClick() {
+    this.spacebarClick = false;
   }
 }
