@@ -75,7 +75,6 @@ export class GamePageComponent implements OnInit {
     const result: Result = {
       id: this.resultService.resultId,
       quiz_id: this.quiz.id,
-      score: this.score,
       date: new Date(),
       user_id: 1,
       right_answers: this.score,

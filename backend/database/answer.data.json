@@ -12,12 +12,6 @@
     "id": 1679880466043
   },
   {
-    "answer_text": "Paris",
-    "isCorrect": false,
-    "questionId": 1679879479685,
-    "id": 1679880542766
-  },
-  {
     "answer_text": "Bretagne",
     "isCorrect": false,
     "questionId": 1679880026855,
@@ -49,13 +43,13 @@
   },
   {
     "answer_image": "https://www.touropia.com/gfx/b/2013/02/sacre_coeur.jpg",
-    "isCorrect": true,
+    "isCorrect": false,
     "questionId": 1679880139299,
     "id": 1679880803844
   },
   {
     "answer_image": "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg",
-    "isCorrect": false,
+    "isCorrect": true,
     "questionId": 1679880139299,
     "id": 1679880822971
   },
