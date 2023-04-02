@@ -41,6 +41,12 @@ export class OptionsScreenComponent implements OnDestroy {
 
   public resetSettings(): void {
     this.settings = { ...this.defaultSettings };
+
+    // Mettre à jour les autres variables liées aux paramètres
+    this.selectedMouseOption = this.settings.mouseClickType;
+    this.vocal = this.settings.vocal;
+    this.confirmDialog = this.settings.confirmDialog;
+    this.spacebarClick = this.settings.spacebarClick;
   }
 
   public saveSettings(): void {
