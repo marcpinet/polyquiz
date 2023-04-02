@@ -29,17 +29,35 @@
     </div>
     <div class="button-container flex flex-grow h-12 my-auto">
       <button
-        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300"
+        (click)="setMouseOption('doubleClick')"
+        [ngStyle]="{
+          'background-color':
+            selectedMouseOption === 'doubleClick' ? '#2b3467' : '#bad7e9',
+          color: selectedMouseOption === 'doubleClick' ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Double-Clique
       </button>
       <button
-        class="bg-[#bad7e9] flex-grow border-l border-r border-l-[#2b3467] border-r-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+        (click)="setMouseOption('longPress')"
+        [ngStyle]="{
+          'background-color':
+            selectedMouseOption === 'longPress' ? '#2b3467' : '#bad7e9',
+          color: selectedMouseOption === 'longPress' ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Pression longue
       </button>
       <button
-        class="bg-[#bad7e9] flex-grow p-0 border-l border-l-[#2b3467] text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+        (click)="setMouseOption('none')"
+        [ngStyle]="{
+          'background-color':
+            selectedMouseOption === 'none' ? '#2b3467' : '#bad7e9',
+          color: selectedMouseOption === 'none' ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Aucun
       </button>
@@ -56,13 +74,25 @@
       Action au microphone
     </div>
     <div class="button-container flex flex-grow h-12 my-auto">
-      <button (click)="listenAndClick()"
-        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300 border-r-[#2b3467] border-r"
+      <button
+        (click)="enableVocal()"
+        [ngStyle]="{
+          'background-color':
+            vocal ? '#2b3467' : '#bad7e9',
+          color: vocal ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Activé
       </button>
       <button
-        class="bg-[#bad7e9] flex-grow border-l border-l-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+        (click)="disableVocal()"
+        [ngStyle]="{
+          'background-color':
+            !vocal ? '#2b3467' : '#bad7e9',
+          color: !vocal ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Déactivé
       </button>
@@ -80,12 +110,24 @@
     </div>
     <div class="button-container flex flex-grow h-12 my-auto">
       <button
-        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300 border-r-[#2b3467] border-r"
+        (click)="enableConfirmDialog()"
+        [ngStyle]="{
+          'background-color':
+            confirmDialog ? '#2b3467' : '#bad7e9',
+          color: confirmDialog ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Activé
       </button>
       <button
-        class="bg-[#bad7e9] flex-grow border-l border-l-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+        (click)="disableConfirmDialog()"
+        [ngStyle]="{
+          'background-color':
+            !confirmDialog ? '#2b3467' : '#bad7e9',
+          color: !confirmDialog ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Déactivé
       </button>
@@ -103,12 +145,24 @@
     </div>
     <div class="button-container flex flex-grow h-12 my-auto">
       <button
-        class="bg-[#bad7e9] text-xl flex-grow font-semibold p-0 hover:bg-[#90C1DF] transition-colors duration-300 border-r-[#2b3467] border-r"
+        (click)="enableSpacebarClick()"
+        [ngStyle]="{
+          'background-color':
+            spacebarClick ? '#2b3467' : '#bad7e9',
+          color: spacebarClick ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Activé
       </button>
       <button
-        class="bg-[#bad7e9] flex-grow border-l border-l-[#2b3467] p-0 text-xl font-semibold hover:bg-[#90C1DF] transition-colors duration-300"
+        (click)="disableSpacebarClick()"
+        [ngStyle]="{
+          'background-color':
+            !spacebarClick ? '#2b3467' : '#bad7e9',
+          color: !spacebarClick ? 'white' : '#2b3467'
+        }"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
       >
         Déactivé
       </button>
