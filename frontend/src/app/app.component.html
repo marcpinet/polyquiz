@@ -4,7 +4,7 @@
   <app-navbar
     *ngIf="router.url !== '/' && router.url !== '/login'"
   ></app-navbar>
-  <div *ngIf="router.url == '/quizlist' || router.url =='/tempo-register'">
+  <div *ngIf="router.url == '/quizlist' || router.url =='/tempo-register' || router.url =='/profile'">
     <div>
       <router-outlet></router-outlet>
     </div>
@@ -12,7 +12,7 @@
 
   <div
     class="w-full h-screen overflow-hidden"
-    *ngIf="router.url !== '/quizlist'"
+    *ngIf="router.url !== '/quizlist' && router.url !=='/tempo-register' && router.url !=='/profile'"
   >
     <div>
       <router-outlet></router-outlet>
