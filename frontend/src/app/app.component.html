@@ -4,7 +4,7 @@
   <app-navbar
     *ngIf="router.url !== '/' && router.url !== '/login'"
   ></app-navbar>
-  <div *ngIf="router.url == '/quizlist'">
+  <div *ngIf="router.url == '/quizlist' || router.url =='/tempo-register'">
     <div>
       <router-outlet></router-outlet>
     </div>
