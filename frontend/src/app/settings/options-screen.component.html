@@ -1,17 +1,17 @@
-<div class="bg-[#fcffe7] pl-2 pr-2 rounded">
+<div class="bg-[#fcffe7] pl-2 pr-2 rounded mt-1">
   <div class="container mx-auto flex justify-between items-center">
-    <h1 class="font-semibold text-2xl text-[#2B3467]">Paramètres</h1>
+    <h1 class="font-semibold text-4xl text-[#2B3467]">Paramètres</h1>
     <button
       id="mute-button"
       (click)="toggleMute()"
       class="bg-[#2B3467] hover:bg-[#1a2357] text-white rounded-md px-5 py-2.5 font-semibold"
     >
-      <i class="fa fa-volume-up text-3xl"></i>
+      <i class="fa fa-volume-up text-5xl"></i>
       <!-- <span>{{ isMuted ? 'Effet sonore désactivé' : 'Effet sonore activé' }}</span> -->
     </button>
     <button
       (click)="resetSettings()"
-      class="bg-[#EB455F] hover:bg-[#991c2f] text-white rounded-md px-5 py-4 font-semibold"
+      class="bg-[#EB455F] hover:bg-[#991c2f] text-white rounded-md px-5 py-5 text-2xl font-semibold"
     >
       Réinitialiser
     </button>
@@ -19,15 +19,15 @@
   <hr class="h-px mb-2 bg-gray-200 border-0 dark:bg-gray-700" />
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
   >
     <div
-      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-2xl font-semibold border-r border-r-[#2b3467]"
+      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-2xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-arrow-pointer text-[#EB455F] mr-2"></i>
       Options de clic souris
     </div>
-    <div class="button-container flex flex-grow h-12 my-auto">
+    <div class="button-container flex flex-grow h-20 my-auto">
       <button
         (click)="setMouseOption('doubleClick')"
         [ngStyle]="{
@@ -65,15 +65,15 @@
   </div>
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-15 mb-3 items-center justify-center"
   >
     <div
-      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-2xl font-semibold border-r border-r-[#2b3467]"
+      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-2xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-microphone text-[#EB455F] mr-2"></i>
       Action au microphone
     </div>
-    <div class="button-container flex flex-grow h-12 my-auto">
+    <div class="button-container flex flex-grow h-20 my-auto">
       <button
         (click)="enableVocal()"
         [ngStyle]="{
@@ -100,15 +100,15 @@
   </div>
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
   >
     <div
-      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-xl font-semibold border-r border-r-[#2b3467]"
+      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-check text-[#EB455F] mr-2"></i>
       Confirmer avant d'envoyer
     </div>
-    <div class="button-container flex flex-grow h-12 my-auto">
+    <div class="button-container flex flex-grow h-20 my-auto">
       <button
         (click)="enableConfirmDialog()"
         [ngStyle]="{
@@ -135,15 +135,15 @@
   </div>
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-12 mb-3 items-center justify-center"
+    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
   >
     <div
-      class="-mt-1 w-80 pb-5 title py-3 my-auto px-5 bg-[#2b3467] text-white h-12 text-xl font-semibold border-r border-r-[#2b3467]"
+      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-keyboard text-[#EB455F] mr-2"></i>
       Jouer quiz avec la clavier
     </div>
-    <div class="button-container flex flex-grow h-12 my-auto">
+    <div class="button-container flex flex-grow h-20 my-auto">
       <button
         (click)="enableSpacebarClick()"
         [ngStyle]="{
@@ -172,7 +172,7 @@
   <div class="flex justify-center mt-3">
     <button
       (click)="saveSettings()"
-      class="px-8 py-4 font-semibold border border-[#EB455F] rounded-lg bg-[#BAD7E9] text-[#2b3467] hover:bg-[#2b3467] hover:text-white transition text-2xl"
+      class="px-8 py-4 font-semibold border border-[#EB455F] rounded-lg bg-[#BAD7E9] text-[#2b3467] hover:bg-[#2b3467] hover:text-white transition text-4xl"
     >
       Sauvegarder
     </button>
