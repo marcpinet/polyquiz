@@ -6,36 +6,27 @@
     </div>
   </div>
 
-
-
   <div class="flex mx-auto gap-16 pl-2 pr-2 h-screen mx-6 my-6 items-stretch items-center justify-items-center justify-center" *ngIf="this.answerSelected == -1">
-
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg py-4 flex justify-center items-center flex-col h-1/2 flex-1" (click)="this.answerSelected = 0">
+    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg py-4 flex justify-center items-center flex-col h-1/2 flex-1" (click)="answerSelected = 0; ">
       <app-game-answer [answer]="question.answers[0]" letter="A." />
     </div>
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" (click)="this.answerSelected = 1">
+    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" (click)="answerSelected = 1; ">
       <app-game-answer [answer]="question.answers[1]"  letter="B." />
     </div>
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" *ngIf="this.question.answers.length >= 3" (click)="this.answerSelected = 2">
+    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" *ngIf="this.question.answers.length >= 3" (click)="answerSelected = 2; ">
       <app-game-answer [answer]="question.answers[2]"  letter="C." />
     </div>
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" *ngIf="this.question.answers.length == 4" (click)="this.answerSelected = 3">
+    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" *ngIf="this.question.answers.length == 4" (click)="answerSelected = 3; ">
       <app-game-answer [answer]="question.answers[3]" letter="D." />
     </div>
-
   </div>
 
-
-
-
-
-
-  <div class="flex justify-center items-center mt-6 flex-grow" *ngIf="this.answerSelected != -1">
-    <div  class="flex pl-10 pr-10 bg-[#ed667b]">
-      <img *ngIf="this.question.explain_image != undefined" (click)="this.nextQuestion()" alt="image d'explication de réponse" src="{{this.question.explain_image}}" class="h-44 pt-3" />
-      <p (click)="this.nextQuestion()" class="text-lg md:text-xl text-[#2B3467] leading-tight p-10 md:p-20 md:pt-10 md:pb-20 font-semibold">
-        {{this.question.explain_text}}
-      </p>
-    </div>
+  <div class="h-screen bg-[#90C1DF] px-10 flex flex-col text-center pt-2" *ngIf="this.answerSelected != -1" (click)="this.nextQuestion()">
+    <img *ngIf="this.question.explain_image != undefined" alt="image d'explication de réponse" src="{{this.question.explain_image}}" class="h-44 max-w-full object-scale-down" />
+    <span class="text-3xl text-[#2B3467] font-semibold">La bonne réponse est:<span class="text-3xl text-[#EB455F] font-bold ml-2">{{this.goodAnswer}}</span> </span>
+    <p class="text-3xl text-[#2B3467] font-semibold">
+      {{this.question.explain_text}}
+    </p>
   </div>
+
 </div>
