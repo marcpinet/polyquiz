@@ -18,7 +18,7 @@ export class GamePageComponent implements OnInit {
   selectedAnswer: string;
   answerGood = false;
   startTime: Date;
-
+  goodAnswer: string;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -35,12 +35,19 @@ export class GamePageComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  updateGoodAnswer() {
+    this.goodAnswer = this.quiz.questions[this.compteur].answers.find(
+      (answer) => answer.isCorrect
+    ).answer_text;
+  }
+
   checkAnswer(answer: number) {
     this.answerSelected = true;
     this.selectedAnswer =
       this.quiz.questions[this.compteur].answers[answer].answer_text;
     this.answerGood =
       this.quiz.questions[this.compteur].answers[answer].isCorrect;
+    this.updateGoodAnswer();
     this.nextQuestion();
   }
 

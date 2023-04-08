@@ -68,6 +68,11 @@ export class SettingService {
     });
   }
 
+  updateSettings(settings: Settings): Observable<Settings> {
+    const urlWithId = this.settingsUrl + '/' + settings.id;
+    return this.http.put<Settings>(urlWithId, settings, this.httpOptions);
+  }
+
   addSetting(settings: Settings): Observable<Settings> {
     this.settingsId++;
     return this.http.post<Settings>(this.settingsUrl, settings, this.httpOptions);
