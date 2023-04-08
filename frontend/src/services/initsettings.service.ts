@@ -36,6 +36,8 @@ export class InitSettingService {
     });
   }
 
+  
+
   setSelectedInitSetting(initsettingsId: string): void {
     const urlWithId = this.initsettingsUrl + '/' + initsettingsId;
     this.http.get<InitSettings>(urlWithId).subscribe((initsettings) => {

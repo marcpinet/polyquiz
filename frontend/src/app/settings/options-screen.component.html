@@ -1,13 +1,13 @@
-<div class="bg-[#fcffe7] pl-2 pr-2 rounded mt-1">
+<div class="bg-[#fcffe7] pl-2 pr-2 rounded mt-1" *ngIf="settings !==undefined && initSettings !==undefined">
   <div class="container mx-auto flex justify-between items-center">
     <h1 class="font-semibold text-4xl text-[#2B3467]">Paramètres</h1>
     <button
       id="mute-button"
-      (click)="toggleMute()"
+      (click)="soundEffect()"
       class="bg-[#2B3467] hover:bg-[#1a2357] text-white rounded-md px-5 py-2.5 font-semibold"
     >
-      <i class="fa fa-volume-up text-5xl"></i>
-      <!-- <span>{{ isMuted ? 'Effet sonore désactivé' : 'Effet sonore activé' }}</span> -->
+      <i class="fa {{sound_effect ? 'fa-volume-up' : 'fa-volume-mute'}} text-5xl"></i>
+      <!-- <span>{{ sound_effect ? 'Effet sonore désactivé' : 'Effet sonore activé' }}</span> -->
     </button>
     <button
       (click)="resetSettings()"
@@ -19,7 +19,7 @@
   <hr class="h-px mb-2 bg-gray-200 border-0 dark:bg-gray-700" />
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
+    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
   >
     <div
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-2xl font-semibold border-r border-r-[#2b3467]"
@@ -29,43 +29,28 @@
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
-        (click)="setMouseOption('doubleClick')"
-        [ngStyle]="{
-          'background-color':
-            selectedMouseOption === 'doubleClick' ? '#2b3467' : '#bad7e9',
-          color: selectedMouseOption === 'doubleClick' ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setMouseOption('doubleClique')"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'doubleClique' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Double-Clique
       </button>
       <button
-        (click)="setMouseOption('longPress')"
-        [ngStyle]="{
-          'background-color':
-            selectedMouseOption === 'longPress' ? '#2b3467' : '#bad7e9',
-          color: selectedMouseOption === 'longPress' ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setMouseOption('pressionLongue')"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'pressionLongue' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Pression longue
       </button>
       <button
-        (click)="setMouseOption('none')"
-        [ngStyle]="{
-          'background-color':
-            selectedMouseOption === 'none' ? '#2b3467' : '#bad7e9',
-          color: selectedMouseOption === 'none' ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setMouseOption('aucun')"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Aucun
       </button>
     </div>
   </div>
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-15 mb-3 items-center justify-center"
+    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-15 mb-3 items-center justify-center"
   >
     <div
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-2xl font-semibold border-r border-r-[#2b3467]"
@@ -75,32 +60,22 @@
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
-        (click)="enableVocal()"
-        [ngStyle]="{
-          'background-color':
-            vocal ? '#2b3467' : '#bad7e9',
-          color: vocal ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setMicrophone(true)"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Activé
       </button>
       <button
-        (click)="disableVocal()"
-        [ngStyle]="{
-          'background-color':
-            !vocal ? '#2b3467' : '#bad7e9',
-          color: !vocal ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setMicrophone(false)"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!microphone ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Déactivé
       </button>
     </div>
   </div>
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
+    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
   >
     <div
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
@@ -110,32 +85,22 @@
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
-        (click)="enableConfirmDialog()"
-        [ngStyle]="{
-          'background-color':
-            confirmDialog ? '#2b3467' : '#bad7e9',
-          color: confirmDialog ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setConfirmAnswer(true)"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Activé
       </button>
       <button
-        (click)="disableConfirmDialog()"
-        [ngStyle]="{
-          'background-color':
-            !confirmDialog ? '#2b3467' : '#bad7e9',
-          color: !confirmDialog ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setConfirmAnswer(false)"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Déactivé
       </button>
     </div>
   </div>
 
   <div
-    class="flex border bg-[#2b3467] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
+    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
   >
     <div
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
@@ -145,25 +110,15 @@
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
-        (click)="enableSpacebarClick()"
-        [ngStyle]="{
-          'background-color':
-            spacebarClick ? '#2b3467' : '#bad7e9',
-          color: spacebarClick ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setKeyBoardControl(true)"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Activé
       </button>
       <button
-        (click)="disableSpacebarClick()"
-        [ngStyle]="{
-          'background-color':
-            !spacebarClick ? '#2b3467' : '#bad7e9',
-          color: !spacebarClick ? 'white' : '#2b3467'
-        }"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[#1a2357] transition-colors duration-300"
-      >
+        (click)="setKeyBoardControl(false)"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        >
         Déactivé
       </button>
     </div>

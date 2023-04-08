@@ -1,118 +1,89 @@
 import { Component, Renderer2, OnDestroy } from '@angular/core';
-import { SpeechService } from '../../services/speech.service';
 import { Subscription } from 'rxjs';
+import { InitSettings, Settings } from 'src/models/settings.model';
+import { InitSettingService } from 'src/services/initsettings.service';
+import { SettingService } from 'src/services/settings.service';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-options-screen',
   templateUrl: './options-screen.component.html',
 })
-export class OptionsScreenComponent implements OnDestroy {
-  isMuted: boolean = false;
-  private letterASubscription: Subscription;
-  selectedMouseOption: string;
-  vocal: boolean;
-  confirmDialog: boolean;
-  spacebarClick: boolean;
+export class OptionsScreenComponent {
+  sound_effect: boolean;
+  keyboard_control: boolean;
+  mouse_option: 'doubleClique' | 'pressionLongue' | 'aucun';
+  microphone: boolean;
+  confirm_answer: boolean;
 
-  public defaultSettings = {
-    vocal: false,
-    spacebarClick: false,
-    mouseClickType: 'none',
-    confirmDialog: false,
-  };
-
-  public settings = { ...this.defaultSettings };
+  initSettings: InitSettings;
+  settings: Settings;
 
   constructor(
-    private renderer: Renderer2,
-    private speechService: SpeechService
+    private initSettingService: InitSettingService,
+    private settingService: SettingService,
+    private authService: AuthService,
+    private renderer: Renderer2
   ) {
-    this.letterASubscription = this.speechService.letterADetected.subscribe(
-      (speechText) => {
-        this.handleClick(speechText);
-      }
-    );
+    const userId = this.authService.user.id;
+    console.log('userId', userId);
+    this.initSettingService.setSelectedInitSetting(userId.toString());
+    this.initSettingService.initsettingsSelected$.subscribe((initSettings) => {
+      this.initSettings = initSettings;
+      console.log('initSettings', initSettings);
+    });
+    this.settingService.setSelectedSetting(userId.toString());
+    this.settingService.settingsSelected$.subscribe((settings) => {
+      this.settings = settings;
+      console.log('settings', settings);
+      this.renderSettings();
+    });
 
-    this.selectedMouseOption = this.settings.mouseClickType;
-    this.vocal = this.settings.vocal;
-    this.confirmDialog = this.settings.confirmDialog;
-    this.spacebarClick = this.settings.spacebarClick;
   }
 
-  public resetSettings(): void {
-    this.settings = { ...this.defaultSettings };
-
-    // Mettre à jour les autres variables liées aux paramètres
-    this.selectedMouseOption = this.settings.mouseClickType;
-    this.vocal = this.settings.vocal;
-    this.confirmDialog = this.settings.confirmDialog;
-    this.spacebarClick = this.settings.spacebarClick;
+  renderSettings() {
+    this.sound_effect = this.settings.sound_effect;
+    this.keyboard_control = this.settings.keyboard_control;
+    this.mouse_option = this.settings.mouse_option;
+    this.microphone = this.settings.microphone;
+    this.confirm_answer = this.settings.confirm_answer;
   }
 
-  public saveSettings(): void {
+  resetSettings() {
+    this.sound_effect = this.initSettings.sound_effect;
+    this.keyboard_control = this.initSettings.keyboard_control;
+    this.mouse_option = this.initSettings.mouse_option;
+    this.microphone = this.initSettings.microphone;
+    this.confirm_answer = this.initSettings.confirm_answer;
+  }
+
+  soundEffect() {
+    this.sound_effect = !this.sound_effect;
+  }
+
+  setMouseOption(option: 'doubleClique' | 'pressionLongue' | 'aucun') {
+    this.mouse_option = option;
+  }
+
+  setMicrophone(boolean: boolean) {
+    this.microphone = boolean;
+  }
+
+  setConfirmAnswer(boolean: boolean) {
+    this.confirm_answer = boolean;
+  }
+
+  setKeyBoardControl(boolean: boolean) {
+    this.keyboard_control = boolean;
+  }
+
+  saveSettings() {
+    this.settings.sound_effect = this.sound_effect;
+    this.settings.keyboard_control = this.keyboard_control;
+    this.settings.mouse_option = this.mouse_option;
+    this.settings.microphone = this.microphone;
+    this.settings.confirm_answer = this.confirm_answer;
+    this.settingService.updateSettings(this.settings); //TODO: not working yet
     console.log('Settings saved:', this.settings);
-
-    this.settings.confirmDialog = this.confirmDialog;
-    this.settings.spacebarClick = this.spacebarClick;
-    this.settings.vocal = this.vocal;
-    this.settings.mouseClickType = this.selectedMouseOption;
-  }
-
-  public settingsChanged(): boolean {
-    return (
-      JSON.stringify(this.settings) !== JSON.stringify(this.defaultSettings)
-    );
-  }
-
-  ngOnDestroy() {
-    this.letterASubscription.unsubscribe();
-  }
-
-  handleClick(speechText: string) {
-    console.log('Clicked!');
-    console.log('User speech:', speechText);
-    // Code to execute when the click is triggered
-  }
-
-  toggleMute() {
-    this.isMuted = !this.isMuted;
-    const buttonIcon = this.renderer.selectRootElement('#mute-button i');
-    if (this.isMuted) {
-      this.renderer.removeClass(buttonIcon, 'fa-volume-up');
-      this.renderer.addClass(buttonIcon, 'fa-volume-mute');
-    } else {
-      this.renderer.removeClass(buttonIcon, 'fa-volume-mute');
-      this.renderer.addClass(buttonIcon, 'fa-volume-up');
-    }
-  }
-
-  setMouseOption(option: string) {
-    this.selectedMouseOption = option;
-  }
-
-  enableVocal() {
-    this.vocal = true;
-    this.speechService.startRecognition();
-  }
-
-  disableVocal() {
-    this.vocal = false;
-    this.speechService.stopRecognition();
-  }
-
-  enableConfirmDialog() {
-    this.confirmDialog = true;
-  }
-
-  disableConfirmDialog() {
-    this.confirmDialog = false;
-  }
-
-  enableSpacebarClick() {
-    this.spacebarClick = true;
-  }
-
-  disableSpacebarClick() {
-    this.spacebarClick = false;
   }
 }
