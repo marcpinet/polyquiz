@@ -38,7 +38,6 @@ export class OptionsScreenComponent {
       console.log('settings', settings);
       this.renderSettings();
     });
-
   }
 
   renderSettings() {
@@ -52,7 +51,7 @@ export class OptionsScreenComponent {
   resetSettings() {
     this.sound_effect = this.initSettings.sound_effect;
     this.keyboard_control = this.initSettings.keyboard_control;
-    this.mouse_option = this.initSettings.mouse_option;
+    this.mouse_option = this.initSettings.mouse_option || 'aucun'; // TODO: Idk why but this is undefined, so I have to set it to 'aucun' to avoid the red outline not being displayed in the settings when clicking on the reset button
     this.microphone = this.initSettings.microphone;
     this.confirm_answer = this.initSettings.confirm_answer;
   }
@@ -83,7 +82,15 @@ export class OptionsScreenComponent {
     this.settings.mouse_option = this.mouse_option;
     this.settings.microphone = this.microphone;
     this.settings.confirm_answer = this.confirm_answer;
-    this.settingService.updateSettings(this.settings); //TODO: not working yet
-    console.log('Settings saved:', this.settings);
+    this.settingService.updateSettings(this.settings).subscribe({
+      next: (updatedSettings) => {
+        console.log('Settings updated:', updatedSettings);
+        this.settings = updatedSettings;
+        this.renderSettings();
+      },
+      error: (error) => {
+        console.error('Error updating settings:', error);
+      },
+    });
   }
 }
