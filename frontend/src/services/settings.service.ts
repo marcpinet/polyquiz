@@ -16,14 +16,12 @@ export class SettingService {
     Settings[]
   >([]);
   public settingsSelected$: Subject<Settings> = new Subject();
-  public settingsId = 0;
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private authService: AuthService
   ) {
-    this.retrieveSettings();
   }
 
   setCurrentUserSettings() {
@@ -66,12 +64,4 @@ export class SettingService {
     return this.http.put<Settings>(urlWithId, settings, this.httpOptions);
   }
 
-  addSetting(settings: Settings): Observable<Settings> {
-    this.settingsId++;
-    return this.http.post<Settings>(
-      this.settingsUrl,
-      settings,
-      this.httpOptions
-    );
-  }
 }
