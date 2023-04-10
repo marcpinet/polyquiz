@@ -2,7 +2,7 @@
   {
     "user_id": 1680382334270,
     "sound_effect": false,
-    "mouseOptions": "none",
+    "mouse_option": "aucun",
     "microphone": false,
     "confirm": false,
     "keyboard": false,

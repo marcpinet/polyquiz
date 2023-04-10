@@ -11,9 +11,9 @@ export class InitSettingService {
   private initsettingsUrl = serverUrl + '/initsettings';
   private httpOptions = httpOptionsBase;
   private initsettings: InitSettings[] = [];
-  public initsettings$: BehaviorSubject<InitSettings[]> = new BehaviorSubject<InitSettings[]>(
-    []
-  );
+  public initsettings$: BehaviorSubject<InitSettings[]> = new BehaviorSubject<
+    InitSettings[]
+  >([]);
   public initsettingsSelected$: Subject<InitSettings> = new Subject();
   public initsettingsId = 0;
 
@@ -36,8 +36,6 @@ export class InitSettingService {
     });
   }
 
-  
-
   setSelectedInitSetting(initsettingsId: string): void {
     const urlWithId = this.initsettingsUrl + '/' + initsettingsId;
     this.http.get<InitSettings>(urlWithId).subscribe((initsettings) => {
@@ -47,6 +45,10 @@ export class InitSettingService {
 
   addInitSetting(initsettings: InitSettings): Observable<InitSettings> {
     this.initsettingsId++;
-    return this.http.post<InitSettings>(this.initsettingsUrl, initsettings, this.httpOptions);
+    return this.http.post<InitSettings>(
+      this.initsettingsUrl,
+      initsettings,
+      this.httpOptions
+    );
   }
 }

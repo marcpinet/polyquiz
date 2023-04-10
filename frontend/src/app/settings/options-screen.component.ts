@@ -38,7 +38,6 @@ export class OptionsScreenComponent {
       console.log('settings', settings);
       this.renderSettings();
     });
-
   }
 
   renderSettings() {
@@ -83,7 +82,15 @@ export class OptionsScreenComponent {
     this.settings.mouse_option = this.mouse_option;
     this.settings.microphone = this.microphone;
     this.settings.confirm_answer = this.confirm_answer;
-    this.settingService.updateSettings(this.settings); //TODO: not working yet
-    console.log('Settings saved:', this.settings);
+    this.settingService.updateSettings(this.settings).subscribe({
+      next: (updatedSettings) => {
+        console.log('Settings updated:', updatedSettings);
+        this.settings = updatedSettings;
+        this.renderSettings();
+      },
+      error: (error) => {
+        console.error('Error updating settings:', error);
+      },
+    });
   }
 }

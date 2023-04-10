@@ -12,19 +12,20 @@ export class SettingService {
   private settingsUrl = serverUrl + '/settings';
   private httpOptions = httpOptionsBase;
   public settings: Settings = null;
-  public settings$: BehaviorSubject<Settings[]> = new BehaviorSubject<Settings[]>(
-    []
-  );
+  public settings$: BehaviorSubject<Settings[]> = new BehaviorSubject<
+    Settings[]
+  >([]);
   public settingsSelected$: Subject<Settings> = new Subject();
-  public settingsId = 0;
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {
-    // this.retrieveSettings();
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private authService: AuthService
+  ) {
   }
 
   setCurrentUserSettings() {
     return new Promise((resolve, reject) => {
-
       if (this.settings !== undefined) {
         return resolve(true);
       }
@@ -35,31 +36,21 @@ export class SettingService {
         const urlWithId = this.settingsUrl + '/' + uid;
 
         this.http.get<Settings>(urlWithId).subscribe((settings) => {
-  this.settings = settings;
-  this.settings$.next([this.settings]);
-  resolve(true);
-});
-
+          this.settings = settings;
+          this.settings$.next([this.settings]);
+          resolve(true);
+        });
       } else {
         resolve(false);
       }
     });
   }
 
-  // retrieveSettings(): void {
-  //   this.http.get<Settings[]>(this.settingsUrl).subscribe({
-  //     next: (settingsList) => {
-  //       this.settings = settingsList;
-  //       this.settings$.next(this.settings);
-  //     },
-  //     error: (error) => {
-  //       console.error('Failed to retrieve settings', error);
-  //     },
-  //     complete: () => {
-  //       console.log('Settings retrieval completed');
-  //     },
-  //   });
-  // }
+  retrieveSettings(): void {
+    this.http.get<Settings[]>(this.settingsUrl).subscribe((settings) => {
+      this.settings$.next(settings);
+    });
+  }
 
   setSelectedSetting(settingsId: string): void {
     const urlWithId = this.settingsUrl + '/' + settingsId;
@@ -69,12 +60,8 @@ export class SettingService {
   }
 
   updateSettings(settings: Settings): Observable<Settings> {
-    const urlWithId = this.settingsUrl + '/' + settings.id;
+    const urlWithId = this.settingsUrl + '/' + settings.user_id;
     return this.http.put<Settings>(urlWithId, settings, this.httpOptions);
   }
 
-  addSetting(settings: Settings): Observable<Settings> {
-    this.settingsId++;
-    return this.http.post<Settings>(this.settingsUrl, settings, this.httpOptions);
-  }
 }
