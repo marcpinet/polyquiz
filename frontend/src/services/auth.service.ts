@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.user;
+    return this.user !== null && this.user.hasOwnProperty('id');
   }
 
   login(user: User) {
