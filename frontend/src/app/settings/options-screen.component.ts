@@ -51,7 +51,7 @@ export class OptionsScreenComponent {
   resetSettings() {
     this.sound_effect = this.initSettings.sound_effect;
     this.keyboard_control = this.initSettings.keyboard_control;
-    this.mouse_option = this.initSettings.mouse_option || 'aucun'; // TODO: Idk why but this is undefined, so I have to set it to 'aucun' to avoid the red outline not being displayed in the settings when clicking on the reset button
+    this.mouse_option = this.initSettings.mouse_option;
     this.microphone = this.initSettings.microphone;
     this.confirm_answer = this.initSettings.confirm_answer;
   }
