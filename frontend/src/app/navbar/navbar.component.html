@@ -32,9 +32,9 @@
   </div>
   <div class="flex items-center py-2 mr-2 btn" (click)="navigateProfile()">
     <img
-      src="https://cdn4.iconfinder.com/data/icons/occupation-and-people-avatar-vol-2-2/128/man_avatar_user_old_people_senior_elderly-512.png"
+      src="{{this.user.avatar}}"
       class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 w-16"
     />
-    <p class="text-lg font-bold text-[#2B3467] mt-1">John Doe</p>
+    <p class="text-lg font-bold text-[#2B3467] mt-1">{{this.user.lastName}} {{this.user.firstName}}</p>
   </div>
 </nav>

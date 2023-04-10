@@ -6,14 +6,14 @@
       <div class="w-full flex justify-center">
         <div class="relative mr-5">
           <img
-            src="https://cdn4.iconfinder.com/data/icons/occupation-and-people-avatar-vol-2-2/128/man_avatar_user_old_people_senior_elderly-512.png"
+            src="{{this.user.avatar}}"
             class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
           />
         </div>
       </div>
       <div class="w-full text-center mt-20">
         <h3 class="text-2xl text-[#2b3467] font-bold leading-normal mb-1">
-          John Doe
+          {{this.user.lastName}} {{this.user.firstName}}
         </h3>
       </div>
     </div>
@@ -29,12 +29,12 @@
       <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
         <i class="fa-sharp fa-solid fa-cake-candles"></i>
             Date de naissance
-            <div class="text-[#EB455F]">22/02/1930</div>
+            <div class="text-[#EB455F]">{{this.resident.dateOfBirth}}</div>
       </div>
       <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
         <i class="fa-solid fa-venus-mars"></i>
         Sexe
-        <div class="text-[#EB455F]">Mâle</div>
+        <div class="text-[#EB455F]">{{this.resident.sexe}}</div>
       </div>
     </div>
 

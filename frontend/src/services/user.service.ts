@@ -20,6 +20,7 @@ export class UserService {
   >([]);
 
   constructor(private http: HttpClient, private router: Router) {
+    //TODO: Simplify later to only get one necessary user and not the whole list :v
     this.retrieveUsers();
     this.retrieveResidents();
   }
