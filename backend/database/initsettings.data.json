@@ -4,7 +4,7 @@
     "sound_effect": true,
     "mouse_option": "aucun",
     "microphone": false,
-    "confirm_answer": true,
+    "confirm_answer": false,
     "keyboard_control": false,
     "id": 1680382869828
   }

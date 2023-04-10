@@ -4,6 +4,7 @@ import { Result } from 'src/models/result-quiz.model';
 import { ResultService } from 'src/services/result.service';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-result',
@@ -35,7 +36,16 @@ export class ResultComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    Swal.fire({
+      imageUrl: 'https://media.tenor.com/jUvfeD4L62sAAAAC/minions-yehey.gif',
+      title: 'Félicitations ! Vous avez terminé le quiz !',
+      background:'#BAD7E9',
+      color: '#2B3467',
+      showConfirmButton: false,
+      timer: 2000
+    })
+  }
 
   compilTime(time: number) {
     var tmp = '';

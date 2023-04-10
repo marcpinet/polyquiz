@@ -65,6 +65,7 @@ export class GamePageComponent implements OnInit {
     this.answerGood = false;
     this.compteur++;
     if (this.isLastQuestion()) {
+      
       this.endGame();
     }
   }
