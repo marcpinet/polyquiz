@@ -3,12 +3,14 @@ import { QuizCarousel } from '../../quiz/quiz-carousel/quiz-carousel.component';
 import { OptionsScreenComponent } from 'src/app/settings/options-screen.component';
 import { MesResultatsComponent } from 'src/app/mesResultats/mes-resultat.component';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'src/services/auth.service';
+import { User } from 'src/models/user.model';
 @Component({
   selector: 'app-main',
   templateUrl: './mainpage.component.html',
 })
 export class MainPage {
+  user: User;
   currentTab = 'QUIZ';
   @ViewChild('resultBtn') resultBtn: ElementRef;
 
@@ -22,7 +24,11 @@ export class MainPage {
     PARAMETRES: OptionsScreenComponent,
   };
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private authService: AuthService) {
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   get selectedComponent() {
     return this.components[this.currentTab] || QuizCarousel;
