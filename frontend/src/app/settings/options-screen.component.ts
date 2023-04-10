@@ -1,10 +1,9 @@
-import { Component, Renderer2, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component} from '@angular/core';
 import { InitSettings, Settings } from 'src/models/settings.model';
 import { InitSettingService } from 'src/services/initsettings.service';
 import { SettingService } from 'src/services/settings.service';
 import { AuthService } from 'src/services/auth.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-options-screen',
   templateUrl: './options-screen.component.html',
@@ -23,7 +22,6 @@ export class OptionsScreenComponent {
     private initSettingService: InitSettingService,
     private settingService: SettingService,
     private authService: AuthService,
-    private renderer: Renderer2
   ) {
     const userId = this.authService.user.id;
     console.log('userId', userId);
@@ -85,6 +83,12 @@ export class OptionsScreenComponent {
       next: (updatedSettings) => {
         console.log('Settings updated:', updatedSettings);
         this.settings = updatedSettings;
+        Swal.fire({
+          icon: 'success',
+          title: 'Paramètres sauvegardés',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.renderSettings();
       },
       error: (error) => {

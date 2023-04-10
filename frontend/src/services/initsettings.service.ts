@@ -10,30 +10,11 @@ import { Router } from '@angular/router';
 export class InitSettingService {
   private initsettingsUrl = serverUrl + '/initsettings';
   private httpOptions = httpOptionsBase;
-  private initsettings: InitSettings[] = [];
-  public initsettings$: BehaviorSubject<InitSettings[]> = new BehaviorSubject<
-    InitSettings[]
-  >([]);
+  public initsettings: InitSettings = null;
+  public initsettings$: BehaviorSubject<InitSettings> = new BehaviorSubject(this.initsettings);
   public initsettingsSelected$: Subject<InitSettings> = new Subject();
-  public initsettingsId = 0;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.retrieveInitSettings();
-  }
-
-  retrieveInitSettings(): void {
-    this.http.get<InitSettings[]>(this.initsettingsUrl).subscribe({
-      next: (initsettingsList) => {
-        this.initsettings = initsettingsList;
-        this.initsettings$.next(this.initsettings);
-      },
-      error: (error) => {
-        console.error('Failed to retrieve initsettings', error);
-      },
-      complete: () => {
-        console.log('InitSettings retrieval completed');
-      },
-    });
   }
 
   setSelectedInitSetting(initsettingsId: string): void {
@@ -43,12 +24,4 @@ export class InitSettingService {
     });
   }
 
-  addInitSetting(initsettings: InitSettings): Observable<InitSettings> {
-    this.initsettingsId++;
-    return this.http.post<InitSettings>(
-      this.initsettingsUrl,
-      initsettings,
-      this.httpOptions
-    );
-  }
 }

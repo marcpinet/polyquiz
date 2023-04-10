@@ -25,7 +25,7 @@ export class GameQuestionComponent implements OnInit {
     this.updateGoodAnswer();
   }
 
-  updateGoodAnswer() {
+  updateGoodAnswer() { //TODO: fix delayed good answer lol
     this.goodAnswer = this.question.answers.find(
       (answer) => answer.isCorrect
     ).answer_text;
