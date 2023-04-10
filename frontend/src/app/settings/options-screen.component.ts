@@ -32,8 +32,7 @@ export class OptionsScreenComponent {
       this.initSettings = initSettings;
       console.log('initSettings', initSettings);
     });
-    this.settingService.setSelectedSetting(userId.toString());
-    this.settingService.settingsSelected$.subscribe((settings) => {
+    this.settingService.settings$.subscribe((settings) => {
       this.settings = settings;
       console.log('settings', settings);
       this.renderSettings();

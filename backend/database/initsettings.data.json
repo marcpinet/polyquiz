@@ -1,11 +1,11 @@
 [
   {
     "user_id": 1680382334270,
-    "sound_effect": false,
+    "sound_effect": true,
     "mouse_option": "aucun",
     "microphone": false,
-    "confirm": false,
-    "keyboard": false,
+    "confirm_answer": true,
+    "keyboard_control": false,
     "id": 1680382869828
   }
 ]

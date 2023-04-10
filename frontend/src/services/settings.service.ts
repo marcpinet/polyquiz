@@ -12,9 +12,7 @@ export class SettingService {
   private settingsUrl = serverUrl + '/settings';
   private httpOptions = httpOptionsBase;
   public settings: Settings = null;
-  public settings$: BehaviorSubject<Settings[]> = new BehaviorSubject<
-    Settings[]
-  >([]);
+  public settings$: BehaviorSubject<Settings> = new BehaviorSubject(this.settings);
   public settingsSelected$: Subject<Settings> = new Subject();
 
   constructor(
@@ -26,6 +24,7 @@ export class SettingService {
 
   setCurrentUserSettings() {
     return new Promise((resolve, reject) => {
+
       if (this.settings !== undefined) {
         return resolve(true);
       }
@@ -37,25 +36,12 @@ export class SettingService {
 
         this.http.get<Settings>(urlWithId).subscribe((settings) => {
           this.settings = settings;
-          this.settings$.next([this.settings]);
+          this.settings$.next(this.settings);
           resolve(true);
         });
       } else {
         resolve(false);
       }
-    });
-  }
-
-  retrieveSettings(): void {
-    this.http.get<Settings[]>(this.settingsUrl).subscribe((settings) => {
-      this.settings$.next(settings);
-    });
-  }
-
-  setSelectedSetting(settingsId: string): void {
-    const urlWithId = this.settingsUrl + '/' + settingsId;
-    this.http.get<Settings>(urlWithId).subscribe((settings) => {
-      this.settingsSelected$.next(settings);
     });
   }
 

@@ -122,8 +122,8 @@ router.get('/login', async (req, res) => {
       console.log(existingUser);
       return res.status(200).json(existingUser);
     }
-    if (req.body.username !== undefined) {
-      const existingUser = await User.findOne({ userName });
+    if (req.body.userName !== undefined) {
+      const existingUser = await User.findOne({userName: userName });
       console.log(existingUser);
       return res.status(200).json(existingUser);
     }

@@ -12,17 +12,21 @@ import { ResultComponent } from './result/result.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouteGuardService } from 'src/services/route-guard.service';
+import { LoggedInRouteGuardService } from 'src/services/loggedin-route-guard-service';
+
 const routes: Routes = [
   { path: 'quizlist',canActivate: [RouteGuardService], component: QuizListComponent },
   { path: 'game/:id',canActivate: [RouteGuardService], component: GamePageComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'tempo-register', component: RegisterComponent }, //only do this for the moment, to be implement only in admin's interface later
-  { path: 'tempo-quiz-create', component: QuizCreateComponent },
-  { path: '', component: MainPage },
+  { path: 'login',canActivate: [LoggedInRouteGuardService], component: LoginComponent },
+  { path: '',canActivate: [RouteGuardService], component: MainPage },
   { path: 'settings',canActivate: [RouteGuardService], component: OptionsScreenComponent },
   { path: 'result/:id',canActivate: [RouteGuardService], component: ResultComponent },
   { path: 'profile',canActivate: [RouteGuardService], component: UserProfileComponent },
   { path: 'navbar',canActivate: [RouteGuardService], component: NavbarComponent },
+
+  //temporary routes for testing
+  { path: 'tempo-register', component: RegisterComponent }, //only do this for the moment, to be implement only in admin's interface later
+  { path: 'tempo-quiz-create', component: QuizCreateComponent },
 ];
 
 @NgModule({
