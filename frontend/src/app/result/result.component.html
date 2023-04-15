@@ -1,5 +1,5 @@
 <div class="mx-auto">
-  <h1 class="text-[#EB455F] font-bold justify-center text-center text-2xl">
+  <h1 class="text-[#EB455F] font-bold justify-center text-center text-4xl">
     {{ quiz.name }}
   </h1>
   <div
@@ -21,11 +21,11 @@
         </div>
       </div>
       <span class="mt-4 text-center text-[#2B3467] flex flex-wrap items-center">
-        <p class="font-bold text-2xl ml-2 mr-2">Félicitations!</p>
+        <p class="font-bold text-4xl ml-2 mr-2">Félicitations!</p>
       </span>
-      <span class="text-2xl text-[#2B3467] font-bold ml-2 mr-2"
+      <span class="text-4xl text-[#2B3467] font-bold ml-2 mr-2"
         >Vous avez passé ce quizz avec un résultat de
-        <span class="font-bold text-2xl text-[#EB455F]"
+        <span class="font-bold text-4xl text-[#EB455F]"
           >{{ (this.result.right_answers / (this.result.right_answers + this.result.wrong_answers) * 100).toFixed(2) }}%</span
         >
       </span>
@@ -37,7 +37,7 @@
       <div class="text-4xl text-white font-bold mt-2">
         {{ this.result.right_answers }}
       </div>
-      <div class="text-white">Réponses correctes</div>
+      <div class="text-white text-lg">Réponses correctes</div>
     </div>
     <div
       class="col-start-4 row-start-1 p-2 rounded-lg bg-[#cf615c] shadow-md flex flex-col items-center"
@@ -46,7 +46,7 @@
       <div class="text-4xl text-white font-bold mt-2">
         {{ this.result.wrong_answers }}
       </div>
-      <div class="text-white">Réponses fausses</div>
+      <div class="text-white text-lg">Réponses fausses</div>
     </div>
     <div
       class="col-start-3 row-start-2 p-4 rounded-lg bg-[#db975b] shadow-md flex flex-col items-center"
@@ -55,7 +55,7 @@
       <div class="text-4xl text-white font-bold mt-2">
         {{ this.compilTime(this.result.play_time) }}
       </div>
-      <div class="text-white">Temps total</div>
+      <div class="text-white text-lg">Temps total</div>
     </div>
     <div
       class="col-start-4 row-start-2 p-4 rounded-lg bg-[#4b7ead] shadow-md flex flex-col items-center"
@@ -64,13 +64,13 @@
       <div class="text-4xl text-white font-bold mt-2">
         {{ this.compilTime(this.result.time_per_question) }}
       </div>
-      <div class="text-white">Temps moyen par question</div>
+      <div class="text-white text-lg">Temps moyen par question</div>
     </div>
   </div>
 </div>
 
 <button
-  class="block mx-auto w-64 h-16 px-4 py-2 bg-[#2B3467] text-white rounded hover:bg-[#324299] text-3xl"
+  class="block mx-auto w-64 h-32 px-4 py-2 bg-[#2B3467] text-white rounded hover:bg-[#324299] text-4xl rounded-md"
   (click)="replay()"
 >
   <i class="fa-solid fa-rotate-right text-3xl text-[#EB455F]"></i>
