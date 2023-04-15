@@ -4,7 +4,7 @@
     <div class="flex flex-col justify-between items-center h-full w-full">
       <img
         src="../../assets/images/Poly.png"
-        class="w-28 h-28 rounded-full shadow flex-none"
+        class="w-40 h-40 rounded-full shadow flex-none"
       />
       <ul
         class="w-full h-full flex flex-col justify-center items-center flex-grow"
@@ -19,7 +19,7 @@
             data-tab="QUIZ"
           >
             <i
-              class="fa-solid fa-puzzle-piece text-4xl align-middle"
+              class="fa-solid fa-puzzle-piece text-6xl align-middle"
               [ngClass]="{
                 'text-[#EB455F]': currentTab === 'QUIZ',
                 'text-[#2B3467]': currentTab !== 'QUIZ'
@@ -28,13 +28,13 @@
             ></i>
 
             <i
-              class="fa-solid fa-puzzle-piece text-4xl align-middle"
+              class="fa-solid fa-puzzle-piece text-6xl align-middle"
               [ngClass]="{ 'text-[#EB455F]': currentTab === 'QUIZ' }"
               *ngIf="currentTab === 'QUIZ'"
             ></i>
 
             <span
-              class="font-semibold align-middle text-2xl"
+              class="font-semibold align-middle text-4xl"
               [ngClass]="{
                 'text-[#EB455F]': currentTab === 'QUIZ',
                 'text-[#2B3467]': currentTab !== 'QUIZ'
@@ -44,7 +44,7 @@
             >
 
             <span
-              class="font-semibold align-middle text-2xl"
+              class="font-semibold align-middle text-4xl"
               [ngClass]="{ 'text-white': currentTab === 'QUIZ' }"
               *ngIf="currentTab === 'QUIZ'"
               >Quiz</span
@@ -61,7 +61,7 @@
             data-tab="RESULTAT"
           >
             <i
-              class="fa-sharp fa-solid fa-trophy text-4xl align-middle"
+              class="fa-sharp fa-solid fa-trophy text-6xl align-middle"
               [ngClass]="{
                 'text-[#EB455F]': currentTab === 'RESULTAT',
                 'text-[#2B3467]': currentTab !== 'RESULTAT'
@@ -69,12 +69,12 @@
               *ngIf="currentTab !== 'RESULTAT'"
             ></i>
             <i
-              class="fa-sharp fa-solid fa-trophy text-4xl align-middle"
+              class="fa-sharp fa-solid fa-trophy text-6xl align-middle"
               [ngClass]="{ 'text-[#EB455F]': currentTab === 'RESULTAT' }"
               *ngIf="currentTab === 'RESULTAT'"
             ></i>
             <span
-              class="font-semibold align-middle text-2xl"
+              class="font-semibold align-middle text-4xl"
               [ngClass]="{
                 'text-[#EB455F]': currentTab === 'RESULTAT',
                 'text-[#2B3467]': currentTab !== 'RESULTAT'
@@ -83,7 +83,7 @@
               >Mes résultats</span
             >
             <span
-              class="font-semibold align-middle text-2xl"
+              class="font-semibold align-middle text-4xl"
               [ngClass]="{ 'text-white': currentTab === 'RESULTAT' }"
               *ngIf="currentTab === 'RESULTAT'"
               >Mes résultats</span
@@ -101,7 +101,7 @@
             data-tab="PARAMETRES"
           >
             <i
-              class="fa fa-cog text-4xl align-middle"
+              class="fa fa-cog text-6xl align-middle"
               [ngClass]="{
                 'text-[#EB455F]': currentTab === 'PARAMETRES',
                 'text-[#2B3467]': currentTab !== 'PARAMETRES'
@@ -109,12 +109,12 @@
               *ngIf="currentTab !== 'PARAMETRES'"
             ></i>
             <i
-              class="fa fa-cog text-4xl align-middle"
+              class="fa fa-cog text-6xl align-middle"
               [ngClass]="{ 'text-[#EB455F]': currentTab === 'PARAMETRES' }"
               *ngIf="currentTab === 'PARAMETRES'"
             ></i>
             <span
-              class="font-semibold align-middle text-2xl"
+              class="font-semibold align-middle text-4xl"
               [ngClass]="{
                 'text-[#EB455F]': currentTab === 'PARAMETRES',
                 'text-[#2B3467]': currentTab !== 'PARAMETRES'
@@ -123,7 +123,7 @@
               >Paramètres</span
             >
             <span
-              class="font-semibold align-middle text-2xl"
+              class="font-semibold align-middle text-4xl"
               [ngClass]="{ 'text-white': currentTab === 'PARAMETRES' }"
               *ngIf="currentTab === 'PARAMETRES'"
               >Paramètres</span
@@ -141,12 +141,12 @@
     >
       <div>
         <button
-          class="flex items-center w-full px-6 py-6 m-0 font-bold text-[#2B3467] text-2xl bg-[#BAD7E9] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+          class="flex items-center w-full px-6 py-6 m-0 font-bold text-[#2B3467] text-5xl bg-[#BAD7E9] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
           type="button"
           onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('div').css('color', '#FCFFE7');"
           onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('div').css('color', '#2B3467');"
         >
-          <i class="fa-regular fa-circle-question text-[#2B3467] text-3xl"></i>
+          <i class="fa-regular fa-circle-question text-[#2B3467] text-5xl"></i>
           <div class="m-1">Aide</div>
         </button>
       </div>
@@ -154,9 +154,9 @@
       <div class="flex items-center py-2 mr-2" (click)="navigateProfile()">
         <img
           src="{{this.user.avatar}}"
-          class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-20 w-20"
+          class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32"
         />
-        <p class="text-2xl font-bold text-[#2B3467] mt-1">{{this.user.lastName}} {{this.user.firstName}}</p>
+        <p class="text-3xl font-bold text-[#2B3467] mt-1">{{this.user.lastName}} {{this.user.firstName}}</p>
       </div>
     </nav>
     <!-- Begin of RightSide (Quiz, Parameters or Mes Resultats)-->

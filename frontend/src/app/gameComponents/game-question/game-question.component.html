@@ -1,32 +1,62 @@
-<div class="bg-[#2B3467] rounded-md h-full">
-  <div class="flex pl-10 pr-10 justify-center items-center">
-    <img src="{{this.question.question_image}}" *ngIf="this.question.question_image != undefined" alt="image de la question" class="h-32 image border border-solid border-white rounded-md mt-1">
+<div class="bg-[#2B3467] rounded-md h-full flex flex-col">
+  <div class="flex pl-10 pr-10 justify-center items-center mb-2">
+    <img
+      src="{{ this.question.question_image }}"
+      *ngIf="this.question.question_image != undefined"
+      alt="image de la question"
+      class="h-40 image border border-solid border-white rounded-md mt-1"
+    />
     <div>
-      <h1 class="text-3xl text-white font-semibold leading-tight pl-2 pt-2">{{this.question.question_text}}</h1>
+      <h1 class="text-4xl text-white font-semibold leading-tight pl-2 pt-2">
+        {{ this.question.question_text }}
+      </h1>
     </div>
   </div>
 
-  <div class="flex mx-auto gap-16 pl-2 pr-2 h-screen mx-6 my-6 items-stretch items-center justify-items-center justify-center" *ngIf="this.answerSelected == -1">
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg py-4 flex justify-center items-center flex-col h-1/2 flex-1" (click)="answerSelected = 0; ">
-      <app-game-answer [answer]="question.answers[0]" letter="A." />
-    </div>
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" (click)="answerSelected = 1; ">
-      <app-game-answer [answer]="question.answers[1]"  letter="B." />
-    </div>
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" *ngIf="this.question.answers.length >= 3" (click)="answerSelected = 2; ">
-      <app-game-answer [answer]="question.answers[2]"  letter="C." />
-    </div>
-    <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1" *ngIf="this.question.answers.length == 4" (click)="answerSelected = 3; ">
-      <app-game-answer [answer]="question.answers[3]" letter="D." />
+  <div class="flex-1 h-full">
+    <div
+      class="flex mx-auto gap-24 pl-2 pr-2 h-screen mx-6 my-6 items-stretch items-center justify-items-center justify-center"
+      *ngIf="this.answerSelected == -1"
+    >
+      <div
+        class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
+        (click)="answerSelected = 0"
+      >
+        <app-game-answer [answer]="question.answers[0]" letter="A." />
+      </div>
+      <div
+        class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
+        (click)="answerSelected = 1"
+      >
+        <app-game-answer [answer]="question.answers[1]" letter="B." />
+      </div>
+      <div
+        class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
+        *ngIf="this.question.answers.length >= 3"
+        (click)="answerSelected = 2"
+      >
+        <app-game-answer [answer]="question.answers[2]" letter="C." />
+      </div>
+      <div
+        class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
+        *ngIf="this.question.answers.length == 4"
+        (click)="answerSelected = 3"
+      >
+        <app-game-answer [answer]="question.answers[3]" letter="D." />
+      </div>
     </div>
   </div>
 
-  <div class="h-screen bg-[#90C1DF] px-10 flex flex-col text-center pt-2" *ngIf="this.answerSelected != -1" (click)="this.nextQuestion()">
-    <img *ngIf="this.question.explain_image != undefined" alt="image d'explication de réponse" src="{{this.question.explain_image}}" class="h-44 max-w-full object-scale-down" />
-    <span class="text-3xl text-[#2B3467] font-semibold">La bonne réponse est:<span class="text-3xl text-[#EB455F] font-bold ml-2">{{this.goodAnswer}}</span> </span>
-    <p class="text-3xl text-[#2B3467] font-semibold">
-      {{this.question.explain_text}}
-    </p>
+  <div class="flex-shrink-0 h-full bg-[#90C1DF]">
+    <div class="px-10 flex flex-col mt-10" *ngIf="this.answerSelected != -1" (click)="this.nextQuestion()">
+      <img *ngIf="this.question.explain_image != undefined" alt="image d'explication de réponse" src="{{ this.question.explain_image }}" class="h-44 max-w-full object-scale-down" />
+      <span class="text-4xl text-[#2B3467] font-semibold justify-center items-center text-center">
+        La bonne réponse est:
+        <span class="text-4xl text-[#EB455F] font-bold ml-2">{{ this.goodAnswer }}</span>
+      </span>
+      <p class="text-4xl text-[#2B3467] font-semibold">{{ this.question.explain_text }}</p>
+    </div>
   </div>
+
 
 </div>
