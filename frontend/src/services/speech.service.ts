@@ -1,13 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-declare var webkitSpeechRecognition: any;
+declare let webkitSpeechRecognition: any;
 
 @Injectable({
   providedIn: 'root',
 })
 export class SpeechService {
   recognition: any = webkitSpeechRecognition;
-  letterADetected: EventEmitter<string> = new EventEmitter();
+  speech: EventEmitter<string> = new EventEmitter();
 
   constructor() {
     this.recognition = new webkitSpeechRecognition();
@@ -20,7 +20,8 @@ export class SpeechService {
       this.recognition.onresult = (event) => {
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;
-          this.letterADetected.emit(transcript);
+          console.log(transcript);
+          this.speech.emit(transcript);
         }
       };
 

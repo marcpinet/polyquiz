@@ -12,19 +12,19 @@ export class SettingService {
   private settingsUrl = serverUrl + '/settings';
   private httpOptions = httpOptionsBase;
   public settings: Settings = null;
-  public settings$: BehaviorSubject<Settings> = new BehaviorSubject(this.settings);
+  public settings$: BehaviorSubject<Settings> = new BehaviorSubject(
+    this.settings
+  );
   public settingsSelected$: Subject<Settings> = new Subject();
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private authService: AuthService
-  ) {
-  }
+  ) {}
 
   setCurrentUserSettings() {
     return new Promise((resolve, reject) => {
-
       if (this.settings !== undefined) {
         return resolve(true);
       }
@@ -50,4 +50,8 @@ export class SettingService {
     return this.http.put<Settings>(urlWithId, settings, this.httpOptions);
   }
 
+  setSettings(settings: Settings) {
+    this.settings = settings;
+    this.settings$.next(this.settings);
+  }
 }
