@@ -57,7 +57,10 @@ export class AppComponent implements OnDestroy {
         return index !== -1 ? noAccents[index] : char;
       })
       .join('')
-      .replace(/\s+/g, '_');
+      .replace(/\s+/g, '_')
+      .replace("'", '_')
+      .replace('*', '_')
+      .replace('-', '_');
     return newText;
   }
 
@@ -67,36 +70,17 @@ export class AppComponent implements OnDestroy {
     const words = normalizedTranscript
       .split('_')
       .filter((word) => !wordsToRemove.includes(word));
-    const combinations = this.generateCombinations(words);
 
-    for (const combination of combinations) {
-      if (this.findAndClickButton([combination])) {
-        return;
+    for (let length = 1; length <= words.length; length++) {
+      for (let index = 0; index <= words.length - length; index++) {
+        const combination = words.slice(index, index + length).join('_');
+        if (this.findAndClickButton([combination])) {
+          return;
+        }
       }
     }
 
     console.warn('Aucun bouton trouvé pour les mots du transcript');
-  }
-
-  private generateCombinations(arr: string[]): string[] {
-    const result: string[] = [];
-
-    const generate = (n: number, prefix: string) => {
-      if (n === 0) {
-        result.push(prefix);
-        return;
-      }
-
-      for (const element of arr) {
-        generate(n - 1, prefix + (prefix.length > 0 ? '_' : '') + element);
-      }
-    };
-
-    for (let i = 1; i <= arr.length; i++) {
-      generate(i, '');
-    }
-
-    return result;
   }
 
   private findAndClickButton(words: string[]): boolean {
