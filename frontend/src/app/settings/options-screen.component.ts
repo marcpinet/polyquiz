@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { InitSettings, Settings } from 'src/models/settings.model';
 import { InitSettingService } from 'src/services/initsettings.service';
 import { SettingService } from 'src/services/settings.service';
@@ -21,7 +21,7 @@ export class OptionsScreenComponent {
   constructor(
     private initSettingService: InitSettingService,
     private settingService: SettingService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     const userId = this.authService.user.id;
     console.log('userId', userId);
@@ -83,12 +83,13 @@ export class OptionsScreenComponent {
       next: (updatedSettings) => {
         console.log('Settings updated:', updatedSettings);
         this.settings = updatedSettings;
+        this.settingService.setSettings(this.settings);
         Swal.fire({
           icon: 'success',
           title: 'Paramètres sauvegardés',
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
         this.renderSettings();
       },
       error: (error) => {

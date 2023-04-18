@@ -12,7 +12,8 @@
     <button
       (click)="resetSettings()"
       class="bg-[#EB455F] hover:bg-[#991c2f] text-white rounded-md px-5 py-5 text-2xl font-semibold"
-    >
+      id="reinitialiser"
+      >
       Réinitialiser
     </button>
   </div>
@@ -31,18 +32,21 @@
       <button
         (click)="setMouseOption('doubleClique')"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'doubleClique' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_double_clic"
         >
         Double-Clique
       </button>
       <button
         (click)="setMouseOption('pressionLongue')"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'pressionLongue' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_pression_longue"
         >
         Pression longue
       </button>
       <button
         (click)="setMouseOption('aucun')"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="desactiver_option_souris"
         >
         Aucun
       </button>
@@ -62,14 +66,16 @@
       <button
         (click)="setMicrophone(true)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_microphone"
         >
         Activé
       </button>
       <button
         (click)="setMicrophone(false)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!microphone ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="desactiver_microphone"
         >
-        Déactivé
+        Désactivé
       </button>
     </div>
   </div>
@@ -81,20 +87,22 @@
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-check text-[#EB455F] mr-2"></i>
-      Confirmer avant d'envoyer
+      Confirmation avant de valider
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
         (click)="setConfirmAnswer(true)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_confirmation"
         >
         Activé
       </button>
       <button
         (click)="setConfirmAnswer(false)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="desactiver_confirmation"
         >
-        Déactivé
+        Désactivé
       </button>
     </div>
   </div>
@@ -112,14 +120,16 @@
       <button
         (click)="setKeyBoardControl(true)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_clavier"
         >
         Activé
       </button>
       <button
         (click)="setKeyBoardControl(false)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="desactiver_clavier"
         >
-        Déactivé
+        Désactivé
       </button>
     </div>
   </div>
@@ -128,6 +138,7 @@
     <button
       (click)="saveSettings()"
       class="px-8 py-4 font-semibold border border-[#EB455F] rounded-lg bg-[#BAD7E9] text-[#2b3467] hover:bg-[#2b3467] hover:text-white transition text-4xl"
+      id="sauvegarder"
     >
       Sauvegarder
     </button>
