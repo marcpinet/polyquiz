@@ -46,12 +46,6 @@ export class AppComponent implements OnDestroy {
 
   /* Gestion reconnaissance vocale */
 
-  private handleKeyBoardControl() {
-    if (this.userSettings && this.userSettings.keyboard_control) {
-      document.addEventListener('click', this.onClick.bind(this), true);
-    }
-  }
-
   private handleSpeechRecognition() {
     if (this.userSettings && this.userSettings.microphone) {
       try {
@@ -184,6 +178,12 @@ export class AppComponent implements OnDestroy {
       });
       element.dispatchEvent(clickEvent);
       console.log('Clic sur', element);
+    }
+  }
+
+  private handleKeyBoardControl() {
+    if (this.userSettings && this.userSettings.keyboard_control) {
+      document.addEventListener('click', this.onClick.bind(this), true);
     }
   }
 }
