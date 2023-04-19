@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
       checked: false,
     },
     { name: 'Akinésie', value: 'akinesie', id: 1, checked: false },
-    { name: 'La rigidité', value: 'rigidite', id: 2, checked: false },
+    { name: 'Rigidité', value: 'rigidite', id: 2, checked: false },
     { name: 'Autres', value: 'autres', id: 3, checked: false },
   ];
   constructor(

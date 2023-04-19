@@ -1,13 +1,13 @@
 [
   {
-    "question_text": "VRAI ou FAUX? La ville du Vatican, capital du Vatican, a le taux de crime le plus faible au monde",
-    "explain_text": "Le Vatican n’abrite que 1 000 résidents officiels, et son taux de crime est le plus élevé au monde, puisqu’on y commet plus de crimes par personne que dans n’importe quel autre pays. Ces crimes sont généralement des vols à l’étalage, à l’arraché ou à la tire.",
+    "question_text": "VRAI ou FAUX? La ville du Vatican, capitale du Vatican, a le taux de crime le plus faible au monde.",
+    "explain_text": "Le Vatican ne possède que 1 000 habitants déclarés, et son taux de crime est le plus élevé au monde, puisqu'on y commet plus de crimes par personne que dans n'importe quel autre pays. Ces crimes sont généralement des vols à l'étalage, à l'arrachée ou par pickpocket.",
     "quizId": 1679875889425,
     "question_image": "https://th.bing.com/th/id/OIP.3zJIGLsCgv7TCbWm8vCW2QHaE8?pid=ImgDet&rs=1",
     "id": 1679879479685
   },
   {
-    "question_text": "Comment il s'appelle la capitale de Pologne?",
+    "question_text": "Comment il s'appelle la capitale de Pologne ?",
     "explain_text": "Capitale de la Pologne depuis 1596, Varsovie est située au centre-est du pays. Ville fascinante, pleine de contradictions, considérée par beaucoup comme inébranlable, Varsovie trouve son âme dans des lieux qui aujourd'hui ne sont plus.",
     "explain_image": "https://www.strasbourg.aeroport.fr/wp-content/uploads/2022/06/varsovie.1572978.w630-2.jpg",
     "quizId": 1679875889425,
@@ -15,7 +15,7 @@
     "id": 1679880026855
   },
   {
-    "question_text": "Quel est le symbôle de Paris?",
+    "question_text": "Quel est le symbole de Paris ?",
     "explain_text": "La Tour Eiffel est le symbole de Paris et, par extension, de la France. Construite pour l'Exposition Universelle de Paris de 1889, elle est le monument le plus visité au monde.",
     "explain_image": "https://www.merveilles-du-monde.com/Tour-Eiffel/images/Photos/Tour-Eiffel-010.jpg",
     "quizId": 1679875889425,
