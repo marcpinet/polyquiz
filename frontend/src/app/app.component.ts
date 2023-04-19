@@ -162,11 +162,12 @@ export class AppComponent implements OnDestroy {
     if (
       this.userSettings &&
       ((this.userSettings.keyboard_control && !this.spaceKeyPressed) ||
-        this.userSettings.mouse_option !== 'aucun') &&
+        this.userSettings.mouse_option === 'doubleClique' ||
+        this.userSettings.mouse_option === 'pressionLongue') &&
       ((!this.isDoubleClickEnabled &&
-        this.userSettings.mouse_option == 'doubleClique') ||
+        this.userSettings.mouse_option === 'doubleClique') ||
         (!this.isPressionLongueEnabled &&
-          this.userSettings.mouse_option == 'pressionLongue'))
+          this.userSettings.mouse_option === 'pressionLongue'))
     ) {
       event.preventDefault();
       event.stopPropagation();
