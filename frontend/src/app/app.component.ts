@@ -18,7 +18,8 @@ export class AppComponent implements OnDestroy {
   private mouseY: number;
   private spaceKeyPressed: boolean = false;
   private isDoubleClickEnabled = false;
-
+  private longClickTimeout: any;
+  private isPressionLongueEnabled = false;
   constructor(
     public router: Router,
     private speechService: SpeechService,
@@ -31,6 +32,7 @@ export class AppComponent implements OnDestroy {
           this.handleSpeechRecognition();
           this.handleKeyBoardControl();
           this.handleDoubleClick();
+          this.handlePressionLongue();
         }
       );
     });
@@ -156,8 +158,10 @@ export class AppComponent implements OnDestroy {
       this.userSettings &&
       ((this.userSettings.keyboard_control && !this.spaceKeyPressed) ||
         this.userSettings.mouse_option !== 'aucun') &&
-      !this.isDoubleClickEnabled &&
-      this.userSettings.mouse_option == 'doubleClique'
+      ((!this.isDoubleClickEnabled &&
+        this.userSettings.mouse_option == 'doubleClique') ||
+        (!this.isPressionLongueEnabled &&
+          this.userSettings.mouse_option == 'pressionLongue'))
     ) {
       event.preventDefault();
       event.stopPropagation();
@@ -183,6 +187,10 @@ export class AppComponent implements OnDestroy {
         this.isDoubleClickEnabled = true;
         element.dispatchEvent(clickEvent);
         this.isDoubleClickEnabled = false;
+      } else if (this.userSettings.mouse_option === 'pressionLongue') {
+        this.isPressionLongueEnabled = true;
+        element.dispatchEvent(clickEvent);
+        this.isPressionLongueEnabled = false;
       } else {
         element.dispatchEvent(clickEvent);
       }
@@ -224,6 +232,45 @@ export class AppComponent implements OnDestroy {
       event.preventDefault();
       event.stopPropagation();
       this.clickElementUnderCursor();
+    }
+  }
+
+  private handlePressionLongue() {
+    if (
+      this.userSettings &&
+      this.userSettings.mouse_option === 'pressionLongue'
+    ) {
+      document.addEventListener('mousedown', this.onMouseDown.bind(this), true);
+    } else {
+      document.removeEventListener(
+        'mousedown',
+        this.onMouseDown.bind(this),
+        true
+      );
+    }
+  }
+
+  @HostListener('window:mouseup', ['$event'])
+  onMouseUp(event: MouseEvent): void {
+    if (
+      this.userSettings &&
+      this.userSettings.mouse_option === 'pressionLongue'
+    ) {
+      clearTimeout(this.longClickTimeout);
+    }
+  }
+
+  private onMouseDown(event: MouseEvent): void {
+    clearTimeout(this.longClickTimeout);
+
+    this.longClickTimeout = setTimeout(() => {
+      this.clickElementUnderCursor();
+      this.isPressionLongueEnabled = true;
+    }, 1500); // 1.5 secondesl
+
+    if (event.button === 2) {
+      // Prevent default right-click behavior
+      event.preventDefault();
     }
   }
 }
