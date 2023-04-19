@@ -8,5 +8,75 @@
     "wrong_answers": 2,
     "play_time": 3,
     "time_per_question": 1
+  },
+  {
+    "id": 1681943558640,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-19T22:32:38.620Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 26,
+    "time_per_question": 8.666666666666666
+  },
+  {
+    "id": 1681944057307,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-19T22:40:57.294Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 7,
+    "time_per_question": 2.3333333333333335
+  },
+  {
+    "id": 1681944098840,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-19T22:41:38.827Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 12,
+    "time_per_question": 4
+  },
+  {
+    "id": 1681944144356,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-19T22:42:24.336Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 40,
+    "time_per_question": 13.333333333333334
+  },
+  {
+    "id": 1681944463138,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-19T22:47:43.124Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 3,
+    "time_per_question": 1
+  },
+  {
+    "id": 1681945129385,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-19T22:58:49.309Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 3,
+    "time_per_question": 1
+  },
+  {
+    "id": 1681945239683,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-19T23:00:39.671Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 3,
+    "time_per_question": 1
   }
 ]

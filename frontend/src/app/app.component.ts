@@ -4,6 +4,7 @@ import { SpeechService } from '../services/speech.service';
 import { SettingService } from '../services/settings.service';
 import { Subscription } from 'rxjs';
 import { Settings } from 'src/models/settings.model';
+import writtenNumber from 'written-number';
 
 @Component({
   selector: 'app-root',
@@ -66,6 +67,9 @@ export class AppComponent implements OnDestroy {
     const noAccents = 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn';
     const newText = text
       .trim()
+      .replace(/\d+/g, (match) =>
+        writtenNumber(parseInt(match), { lang: 'fr' })
+      )
       .split('')
       .map((char) => {
         const index = accents.indexOf(char);
@@ -130,6 +134,7 @@ export class AppComponent implements OnDestroy {
   }
 
   /* Gestion barre espace clavier */
+
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent): void {
     if (

@@ -10,25 +10,22 @@ import { SettingService } from 'src/services/settings.service';
 export class GameQuestionComponent implements OnInit {
   answerSelected = -1;
   microphoneActivated = false;
-  goodAnswer: string;
   @Input()
   question: Question;
   @Output()
   selectAnswer = new EventEmitter<number>();
 
-  constructor( private settingService: SettingService) {
+  constructor(private settingService: SettingService) {
     this.question = {} as Question;
-
   }
 
-  ngOnInit(): void {
-    this.updateGoodAnswer();
-  }
+  ngOnInit(): void {}
 
-  updateGoodAnswer() { //TODO: fix delayed good answer lol
-    this.goodAnswer = this.question.answers.find(
+  get goodAnswer(): string | undefined {
+    const correctAnswer = this.question.answers?.find(
       (answer) => answer.isCorrect
-    ).answer_text;
+    );
+    return correctAnswer ? correctAnswer.answer_text : undefined;
   }
 
   checkAnswer(answer: number) {
@@ -38,7 +35,5 @@ export class GameQuestionComponent implements OnInit {
   nextQuestion() {
     this.selectAnswer.emit(this.answerSelected);
     this.answerSelected = -1;
-    this.updateGoodAnswer();
   }
-
 }
