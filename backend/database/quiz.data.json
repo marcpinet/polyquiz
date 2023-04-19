@@ -4,24 +4,24 @@
     "name": "Les capitales européennes",
     "difficulty": "Moyen",
     "image": "https://edoc.coe.int/10944/map-of-the-council-of-europe-46-member-states.jpg",
-    "description": "Bienvenue au jeu de quiz sur les capitales européennes ! Testez vos connaissances sur les villes capitales, gagnez des points pour chaque bonne réponse et devenez le vainqueur. Parfait pour les amateurs de géographie, voyages et histoire. Jouez dès maintenant !",
+    "description": "Testez vos connaissances sur les villes capitales. Parfait pour les amateurs de géographie, de voyages ou d'histoire. Jouez dès maintenant !",
     "estimated_time": 15,
     "themeId": 1679918457070
   },
   {
-    "name": "Le coup du monde de football",
+    "name": "La Coupe du monde de football",
     "difficulty": "Difficile",
     "image": "https://www.isspf.com/wp-content/uploads/2022/09/shutterstock_2190840355-scaled.jpg",
-    "description": "Bienvenue au jeu de quiz sur le coup du monde de football",
+    "description": "Amateur de football ? Testez vos connaissances sur la Coupe du monde de football !",
     "estimated_time": 20,
     "themeId": 1679998829002,
     "id": 1679916495824
   },
   {
-    "name": "Les Volcans",
+    "name": "Les volcans",
     "difficulty": "Difficile",
     "image": "https://imageio.forbes.com/specials-images/imageserve/60708b35c49cab8e47fb7e60/Volcano-Smoke/960x0.jpg?format=jpg&width=960",
-    "description": "Bienvenue au jeu de quiz sur les volcans",
+    "description": "La géologie vous passionne ? Testez vos connaissances sur les volcans !",
     "estimated_time": 25,
     "themeId": 1679918457070,
     "id": 1680002047198
@@ -30,7 +30,7 @@
     "name": "Animaux du désert",
     "difficulty": "Moyen",
     "image": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Suricates%2C_Namibia-2.jpg",
-    "description": "Bienvenue au jeu de quiz sur les animaux du désert",
+    "description": "Les animaux du désert sont fascinants. Testez vos connaissances sur ces animaux !",
     "estimated_time": 12,
     "themeId": 1680001941231,
     "id": 1680002234117
@@ -39,7 +39,7 @@
     "name": "Les éléphants",
     "difficulty": "Moyen",
     "image": "https://www.clairedahan.fr/wp-content/uploads/2017/06/La_Legende_Des_Aveugles_Et_Elephant.jpg",
-    "description": "Bienvenue au jeu de quiz sur les éléphants",
+    "description": "Un peu de culture générale sur les éléphants !",
     "estimated_time": 10,
     "themeId": 1680001941231,
     "id": 1680002766579
@@ -48,7 +48,7 @@
     "name": "La reine Élisabeth II",
     "difficulty": "Facile",
     "image": "https://ichef.bbci.co.uk/news/640/cpsprodpb/18510/production/_118400699_gettyimages-515984032.jpg",
-    "description": "Bienvenue au jeu de quiz sur la reine Élisabeth II",
+    "description": "Toujours aussi populaire malgré sa mort, la reine Élisabeth II demure une figure emblématique du Royaume-Uni. Testez vos connaissances sur cette reine !",
     "estimated_time": 12,
     "themeId": 1680001828941,
     "id": 1680002987645

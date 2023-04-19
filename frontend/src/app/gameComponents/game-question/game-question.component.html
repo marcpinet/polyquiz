@@ -51,7 +51,7 @@
     <div class="px-10 flex flex-col mt-10" *ngIf="this.answerSelected != -1" (click)="this.nextQuestion()">
       <img *ngIf="this.question.explain_image != undefined" alt="image d'explication de réponse" src="{{ this.question.explain_image }}" class="h-44 max-w-full object-scale-down" />
       <span class="text-4xl text-[#2B3467] font-semibold justify-center items-center text-center">
-        La bonne réponse est:
+        La bonne réponse est :
         <span class="text-4xl text-[#EB455F] font-bold ml-2">{{ this.goodAnswer }}</span>
       </span>
       <p class="text-4xl text-[#2B3467] font-semibold">{{ this.question.explain_text }}</p>

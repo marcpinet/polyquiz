@@ -10,7 +10,7 @@
     </div>
   </carousel>
 
-  <p class="text-2xl mt-2 font-bold text-[#EB455F] ">Quiz que vous pouvez aimer</p>
+  <p class="text-2xl mt-2 font-bold text-[#EB455F] ">Quiz que vous pourriez aimer</p>
   <carousel [cellsToShow]="3" [loop]="true" [height]="200" [margin]="-80">
     <div class="carousel-cell mt-3 mb-2 mr-20" *ngFor="let quiz of quizList">
       <!-- TODO: replace quiz with recommened quiz based on user's history -->
@@ -21,7 +21,7 @@
     </div>
   </carousel>
 
-  <p class="text-2xl mt-2 font-bold text-[#2B3467] ">Explorez par thèmes</p>
+  <p class="text-2xl mt-2 font-bold text-[#2B3467] ">Explorez par thème</p>
   <carousel [cellsToShow]="3" [loop]="true" [height]="180" >
     <div class="carousel-cell  mt-4 mb-2 ml-2" *ngFor="let theme of themeList">
       <app-theme-carousel [theme]="theme" class="w-full"></app-theme-carousel>

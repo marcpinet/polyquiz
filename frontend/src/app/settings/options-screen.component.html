@@ -26,7 +26,7 @@
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-2xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-arrow-pointer text-[#EB455F] mr-2"></i>
-      Options de clic souris
+      Options de clic de la souris
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
@@ -34,7 +34,7 @@
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'doubleClique' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
         id="activer_double_clic"
         >
-        Double-Clique
+        Double-clique
       </button>
       <button
         (click)="setMouseOption('pressionLongue')"
@@ -46,7 +46,7 @@
       <button
         (click)="setMouseOption('aucun')"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="desactiver_option_souris"
+        id="desactiver_souris"
         >
         Aucun
       </button>
@@ -114,7 +114,7 @@
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-keyboard text-[#EB455F] mr-2"></i>
-      Jouer quiz avec la clavier
+      Jouer les quiz avec le clavier
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
