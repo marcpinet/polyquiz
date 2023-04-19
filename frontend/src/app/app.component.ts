@@ -40,7 +40,11 @@ export class AppComponent implements OnDestroy {
 
   private handleSpeechRecognition(settings: Settings) {
     if (settings && settings.microphone) {
-      this.speechService.startRecognition();
+      try {
+        this.speechService.startRecognition();
+      } catch (error) {
+        console.warn('Speech recognition already active');
+      }
     } else {
       this.speechService.stopRecognition();
     }
@@ -51,16 +55,16 @@ export class AppComponent implements OnDestroy {
     const accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ';
     const noAccents = 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn';
     const newText = text
+      .trim()
       .split('')
       .map((char) => {
         const index = accents.indexOf(char);
         return index !== -1 ? noAccents[index] : char;
       })
       .join('')
+      .toLowerCase()
       .replace(/\s+/g, '_')
-      .replace("'", '_')
-      .replace('*', '_')
-      .replace('-', '_');
+      .replace(/[^a-zA-Z0-9_]/g, '_');
     return newText;
   }
 
@@ -70,17 +74,34 @@ export class AppComponent implements OnDestroy {
     const words = normalizedTranscript
       .split('_')
       .filter((word) => !wordsToRemove.includes(word));
+    const combinations = this.generateCombinations(words);
 
-    for (let length = 1; length <= words.length; length++) {
-      for (let index = 0; index <= words.length - length; index++) {
-        const combination = words.slice(index, index + length).join('_');
-        if (this.findAndClickButton([combination])) {
-          return;
-        }
+    for (const combination of combinations) {
+      if (this.findAndClickButton([combination])) {
+        return;
       }
     }
 
     console.warn('Aucun bouton trouvé pour les mots du transcript');
+  }
+
+  private generateCombinations(
+    words: string[],
+    prefix: string[] = [],
+    index: number = 0
+  ): string[] {
+    if (index === words.length) {
+      return prefix.length === 0 ? [] : [prefix.join('_')];
+    }
+
+    const withWord = this.generateCombinations(
+      words,
+      [...prefix, words[index]],
+      index + 1
+    );
+    const withoutWord = this.generateCombinations(words, prefix, index + 1);
+
+    return withWord.concat(withoutWord);
   }
 
   private findAndClickButton(words: string[]): boolean {

@@ -8,6 +8,7 @@ declare let webkitSpeechRecognition: any;
 export class SpeechService {
   recognition: any = webkitSpeechRecognition;
   speech: EventEmitter<string> = new EventEmitter();
+  private isStopped = false; // Ajoutez cette variable
 
   constructor() {
     this.recognition = new webkitSpeechRecognition();
@@ -26,16 +27,30 @@ export class SpeechService {
       };
 
       this.recognition.onerror = (error) => {
-        console.error('Recognition error:', error.error);
+        if (error.error !== 'no-speech') {
+          console.log('Error occurred in recognition: ' + error.error);
+        }
       };
+
+      this.restartRecognitionOnEnd();
     }
   }
 
   startRecognition(): void {
+    this.isStopped = false;
     this.recognition?.start();
   }
 
   stopRecognition(): void {
+    this.isStopped = true;
     this.recognition?.stop();
+  }
+
+  private restartRecognitionOnEnd() {
+    this.recognition.onend = () => {
+      if (!this.isStopped) {
+        this.startRecognition();
+      }
+    };
   }
 }
