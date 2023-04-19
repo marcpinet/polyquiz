@@ -114,20 +114,20 @@
       class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
     >
       <i class="fa-solid fa-keyboard text-[#EB455F] mr-2"></i>
-      Jouer les quiz avec le clavier
+      Clics avec barre espace
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
         (click)="setKeyBoardControl(true)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_clavier"
+        id="activer_espace"
         >
         Activé
       </button>
       <button
         (click)="setKeyBoardControl(false)"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="desactiver_clavier"
+        id="desactiver_espace"
         >
         Désactivé
       </button>

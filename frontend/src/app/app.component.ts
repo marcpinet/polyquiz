@@ -21,17 +21,21 @@ export class AppComponent implements OnDestroy {
   private isDoubleClickEnabled = false;
   private longClickTimeout: any;
   private isPressionLongueEnabled = false;
+  private boundOnDoubleClick: any;
+  private boundOnMouseDown: any;
   constructor(
     public router: Router,
     private speechService: SpeechService,
     private settingsService: SettingService
   ) {
+    this.boundOnDoubleClick = this.onDoubleClick.bind(this);
+    this.boundOnMouseDown = this.onMouseDown.bind(this);
     this.settingsService.setCurrentUserSettings().then(() => {
       this.settingsSubscription = this.settingsService.settings$.subscribe(
         (settings) => {
           this.userSettings = settings;
           this.handleSpeechRecognition();
-          this.handleKeyBoardControl();
+          this.handleClickOption();
           this.handleDoubleClick();
           this.handlePressionLongue();
         }
@@ -161,16 +165,20 @@ export class AppComponent implements OnDestroy {
   onClick(event: MouseEvent): void {
     if (
       this.userSettings &&
-      ((this.userSettings.keyboard_control && !this.spaceKeyPressed) ||
+      (this.userSettings.keyboard_control ||
         this.userSettings.mouse_option === 'doubleClique' ||
-        this.userSettings.mouse_option === 'pressionLongue') &&
-      ((!this.isDoubleClickEnabled &&
-        this.userSettings.mouse_option === 'doubleClique') ||
-        (!this.isPressionLongueEnabled &&
-          this.userSettings.mouse_option === 'pressionLongue'))
+        this.userSettings.mouse_option === 'pressionLongue')
     ) {
-      event.preventDefault();
-      event.stopPropagation();
+      if (
+        (this.userSettings.keyboard_control && !this.spaceKeyPressed) ||
+        (this.userSettings.mouse_option === 'doubleClique' &&
+          !this.isDoubleClickEnabled) ||
+        (this.userSettings.mouse_option === 'pressionLongue' &&
+          !this.isPressionLongueEnabled)
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
     }
   }
 
@@ -204,8 +212,12 @@ export class AppComponent implements OnDestroy {
     }
   }
 
-  private handleKeyBoardControl() {
-    if (this.userSettings && this.userSettings.keyboard_control) {
+  private handleClickOption() {
+    if (
+      (this.userSettings && this.userSettings.keyboard_control) ||
+      this.userSettings.mouse_option === 'doubleClique' ||
+      this.userSettings.mouse_option === 'pressionLongue'
+    ) {
       document.addEventListener('click', this.onClick.bind(this), true);
     }
   }
@@ -215,18 +227,9 @@ export class AppComponent implements OnDestroy {
       this.userSettings &&
       this.userSettings.mouse_option === 'doubleClique'
     ) {
-      document.addEventListener(
-        'dblclick',
-        this.onDoubleClick.bind(this),
-        true
-      );
+      document.addEventListener('dblclick', this.boundOnDoubleClick, true);
     } else {
-      // Remove the event listener for double click
-      document.removeEventListener(
-        'dblclick',
-        this.onDoubleClick.bind(this),
-        true
-      );
+      document.removeEventListener('dblclick', this.boundOnDoubleClick, true);
     }
   }
 
@@ -246,13 +249,9 @@ export class AppComponent implements OnDestroy {
       this.userSettings &&
       this.userSettings.mouse_option === 'pressionLongue'
     ) {
-      document.addEventListener('mousedown', this.onMouseDown.bind(this), true);
+      document.addEventListener('mousedown', this.boundOnMouseDown, true);
     } else {
-      document.removeEventListener(
-        'mousedown',
-        this.onMouseDown.bind(this),
-        true
-      );
+      document.removeEventListener('mousedown', this.boundOnMouseDown, true);
     }
   }
 
@@ -267,16 +266,17 @@ export class AppComponent implements OnDestroy {
   }
 
   private onMouseDown(event: MouseEvent): void {
-    clearTimeout(this.longClickTimeout);
+    if (this.userSettings.mouse_option === 'pressionLongue') {
+      clearTimeout(this.longClickTimeout);
 
-    this.longClickTimeout = setTimeout(() => {
-      this.clickElementUnderCursor();
-      this.isPressionLongueEnabled = true;
-    }, 1500); // 1.5 secondesl
+      this.longClickTimeout = setTimeout(() => {
+        this.isPressionLongueEnabled = true;
+        this.clickElementUnderCursor();
+      }, 1500);
 
-    if (event.button === 2) {
-      // Prevent default right-click behavior
-      event.preventDefault();
+      if (event.button === 2) {
+        event.preventDefault();
+      }
     }
   }
 }
