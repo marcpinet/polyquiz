@@ -17,6 +17,7 @@ export class AppComponent implements OnDestroy {
   private mouseX: number;
   private mouseY: number;
   private spaceKeyPressed: boolean = false;
+  private isDoubleClickEnabled = false;
 
   constructor(
     public router: Router,
@@ -29,6 +30,7 @@ export class AppComponent implements OnDestroy {
           this.userSettings = settings;
           this.handleSpeechRecognition();
           this.handleKeyBoardControl();
+          this.handleDoubleClick();
         }
       );
     });
@@ -128,7 +130,6 @@ export class AppComponent implements OnDestroy {
   }
 
   /* Gestion barre espace clavier */
-
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent): void {
     if (
@@ -153,8 +154,10 @@ export class AppComponent implements OnDestroy {
   onClick(event: MouseEvent): void {
     if (
       this.userSettings &&
-      this.userSettings.keyboard_control &&
-      !this.spaceKeyPressed
+      ((this.userSettings.keyboard_control && !this.spaceKeyPressed) ||
+        this.userSettings.mouse_option !== 'aucun') &&
+      !this.isDoubleClickEnabled &&
+      this.userSettings.mouse_option == 'doubleClique'
     ) {
       event.preventDefault();
       event.stopPropagation();
@@ -176,7 +179,13 @@ export class AppComponent implements OnDestroy {
         clientX: this.mouseX,
         clientY: this.mouseY,
       });
-      element.dispatchEvent(clickEvent);
+      if (this.userSettings.mouse_option === 'doubleClique') {
+        this.isDoubleClickEnabled = true;
+        element.dispatchEvent(clickEvent);
+        this.isDoubleClickEnabled = false;
+      } else {
+        element.dispatchEvent(clickEvent);
+      }
       console.log('Clic sur', element);
     }
   }
@@ -184,6 +193,37 @@ export class AppComponent implements OnDestroy {
   private handleKeyBoardControl() {
     if (this.userSettings && this.userSettings.keyboard_control) {
       document.addEventListener('click', this.onClick.bind(this), true);
+    }
+  }
+
+  private handleDoubleClick() {
+    if (
+      this.userSettings &&
+      this.userSettings.mouse_option === 'doubleClique'
+    ) {
+      document.addEventListener(
+        'dblclick',
+        this.onDoubleClick.bind(this),
+        true
+      );
+    } else {
+      // Remove the event listener for double click
+      document.removeEventListener(
+        'dblclick',
+        this.onDoubleClick.bind(this),
+        true
+      );
+    }
+  }
+
+  private onDoubleClick(event: MouseEvent): void {
+    if (
+      this.userSettings &&
+      this.userSettings.mouse_option === 'doubleClique'
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.clickElementUnderCursor();
     }
   }
 }
