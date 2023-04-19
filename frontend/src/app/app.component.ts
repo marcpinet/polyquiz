@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpeechService } from '../services/speech.service';
 import { SettingService } from '../services/settings.service';
@@ -13,6 +13,9 @@ import { Settings } from 'src/models/settings.model';
 export class AppComponent implements OnDestroy {
   private settingsSubscription: Subscription;
   private speechSubscription: Subscription;
+  private userSettings: Settings;
+  private mouseX: number;
+  private mouseY: number;
 
   constructor(
     public router: Router,
@@ -22,7 +25,8 @@ export class AppComponent implements OnDestroy {
     this.settingsService.setCurrentUserSettings().then(() => {
       this.settingsSubscription = this.settingsService.settings$.subscribe(
         (settings) => {
-          this.handleSpeechRecognition(settings);
+          this.userSettings = settings;
+          this.handleSpeechRecognition();
         }
       );
     });
@@ -38,8 +42,10 @@ export class AppComponent implements OnDestroy {
     this.speechSubscription.unsubscribe();
   }
 
-  private handleSpeechRecognition(settings: Settings) {
-    if (settings && settings.microphone) {
+  /* Gestion reconnaissance vocale */
+
+  private handleSpeechRecognition() {
+    if (this.userSettings && this.userSettings.microphone) {
       try {
         this.speechService.startRecognition();
       } catch (error) {
@@ -117,5 +123,39 @@ export class AppComponent implements OnDestroy {
     }
 
     return false;
+  }
+
+  /* Gestion barre espace clavier */
+
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent): void {
+    if (
+      this.userSettings &&
+      this.userSettings.keyboard_control &&
+      event.code === 'Space'
+    ) {
+      this.clickElementUnderCursor();
+      event.preventDefault(); // Empêche le comportement par défaut (scroll)
+    }
+  }
+
+  @HostListener('window:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent): void {
+    this.mouseX = event.clientX;
+    this.mouseY = event.clientY;
+  }
+
+  private clickElementUnderCursor(): void {
+    const element = document.elementFromPoint(this.mouseX, this.mouseY);
+    if (element) {
+      const clickEvent = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        clientX: this.mouseX,
+        clientY: this.mouseY,
+      });
+      element.dispatchEvent(clickEvent);
+      console.log('Clic sur', element);
+    }
   }
 }
