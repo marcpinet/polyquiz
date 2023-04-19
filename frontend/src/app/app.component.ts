@@ -16,6 +16,7 @@ export class AppComponent implements OnDestroy {
   private userSettings: Settings;
   private mouseX: number;
   private mouseY: number;
+  private spaceKeyPressed: boolean = false;
 
   constructor(
     public router: Router,
@@ -27,6 +28,7 @@ export class AppComponent implements OnDestroy {
         (settings) => {
           this.userSettings = settings;
           this.handleSpeechRecognition();
+          this.handleKeyBoardControl();
         }
       );
     });
@@ -134,8 +136,28 @@ export class AppComponent implements OnDestroy {
       this.userSettings.keyboard_control &&
       event.code === 'Space'
     ) {
+      this.spaceKeyPressed = true;
       this.clickElementUnderCursor();
-      event.preventDefault(); // Empêche le comportement par défaut (scroll)
+      event.preventDefault();
+    }
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  onKeyUp(event: KeyboardEvent): void {
+    if (event.code === 'Space') {
+      this.spaceKeyPressed = false;
+    }
+  }
+
+  @HostListener('window:click', ['$event'])
+  onClick(event: MouseEvent): void {
+    if (
+      this.userSettings &&
+      this.userSettings.keyboard_control &&
+      !this.spaceKeyPressed
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
     }
   }
 
@@ -156,6 +178,12 @@ export class AppComponent implements OnDestroy {
       });
       element.dispatchEvent(clickEvent);
       console.log('Clic sur', element);
+    }
+  }
+
+  private handleKeyBoardControl() {
+    if (this.userSettings && this.userSettings.keyboard_control) {
+      document.addEventListener('click', this.onClick.bind(this), true);
     }
   }
 }
