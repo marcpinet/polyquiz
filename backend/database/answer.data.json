@@ -196,24 +196,28 @@
     "id": 1681982312609
   },
   {
+    "answer_text": "Le varan",
     "answer_image": "https://inaturalist-open-data.s3.amazonaws.com/photos/4948584/original.jpg",
     "isCorrect": false,
     "questionId": 1681981658009,
     "id": 1681982400296
   },
   {
+    "answer_text": "Le fennec",
     "answer_image": "https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/WBUB6LGREDPST6SWJJGIFJ24HU.jpg",
     "isCorrect": false,
     "questionId": 1681981658009,
     "id": 1681982411577
   },
   {
+    "answer_text": "Le dromadaire",
     "answer_image": "https://desertmaroc.com/acaciavoyages/wp-content/uploads/2021/02/dromadaire.png",
     "isCorrect": false,
     "questionId": 1681981658009,
     "id": 1681982419538
   },
   {
+    "answer_text": "Le bonobo",
     "answer_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Bonobo1_CincinnatiZoo.jpg/1200px-Bonobo1_CincinnatiZoo.jpg",
     "isCorrect": true,
     "questionId": 1681981658009,
