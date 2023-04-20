@@ -78,5 +78,25 @@
     "wrong_answers": 0,
     "play_time": 3,
     "time_per_question": 1
+  },
+  {
+    "id": 1681951270734,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-20T00:41:10.719Z",
+    "user_id": 1,
+    "right_answers": 2,
+    "wrong_answers": 1,
+    "play_time": 21,
+    "time_per_question": 7
+  },
+  {
+    "id": 1681951873161,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-20T00:51:13.140Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 23,
+    "time_per_question": 7.666666666666667
   }
 ]

@@ -1,3 +1,5 @@
+<!-- WARNING : Every question must include an answer_text so the user (if micorphone activated) can select the answer with his voice -->
+
 <div class="bg-[#2B3467] rounded-md h-full flex flex-col">
   <div class="flex pl-10 pr-10 justify-center items-center mb-2">
     <img
@@ -21,14 +23,14 @@
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
         (click)="answerSelected = 0"
-        id="un"
+        [attr.id]="normalizeText(question.answers[0].answer_text)"
       >
         <app-game-answer [answer]="question.answers[0]" letter="A." />
       </div>
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
         (click)="answerSelected = 1"
-        id="deux"
+        [attr.id]="normalizeText(question.answers[1].answer_text)"
       >
         <app-game-answer [answer]="question.answers[1]" letter="B." />
       </div>
@@ -36,7 +38,7 @@
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
         *ngIf="this.question.answers.length >= 3"
         (click)="answerSelected = 2"
-        id="trois"
+        [attr.id]="normalizeText(question.answers[2].answer_text)"
       >
         <app-game-answer [answer]="question.answers[2]" letter="C." />
       </div>
@@ -44,7 +46,7 @@
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
         *ngIf="this.question.answers.length == 4"
         (click)="answerSelected = 3"
-        id="quatre"
+        [attr.id]="normalizeText(question.answers[3].answer_text)"
       >
         <app-game-answer [answer]="question.answers[3]" letter="D." />
       </div>
