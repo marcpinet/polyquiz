@@ -62,5 +62,341 @@
     "isCorrect": false,
     "questionId": 1679880139299,
     "id": 1679880837917
+  },
+  {
+    "answer_text": "L'Allemagne",
+    "isCorrect": false,
+    "questionId": 1681981465403,
+    "id": 1681981941682
+  },
+  {
+    "answer_text": "La France",
+    "isCorrect": false,
+    "questionId": 1681981465403,
+    "id": 1681981951521
+  },
+  {
+    "answer_text": "Le Brésil",
+    "isCorrect": true,
+    "questionId": 1681981465403,
+    "id": 1681981960690
+  },
+  {
+    "answer_text": "L'Argentine",
+    "isCorrect": false,
+    "questionId": 1681981465403,
+    "id": 1681981968688
+  },
+  {
+    "answer_text": "Pelé",
+    "isCorrect": false,
+    "questionId": 1681981527186,
+    "id": 1681982026511
+  },
+  {
+    "answer_text": "Just Fontaine",
+    "isCorrect": true,
+    "questionId": 1681981527186,
+    "id": 1681982034479
+  },
+  {
+    "answer_text": "Diego Maradona",
+    "isCorrect": false,
+    "questionId": 1681981527186,
+    "id": 1681982044691
+  },
+  {
+    "answer_text": "Zlatan Ibrahimovic",
+    "isCorrect": false,
+    "questionId": 1681981527186,
+    "id": 1681982055069
+  },
+  {
+    "answer_text": "Le Mexique",
+    "isCorrect": false,
+    "questionId": 1681981558624,
+    "id": 1681982101339
+  },
+  {
+    "answer_text": "L'Espagne",
+    "isCorrect": false,
+    "questionId": 1681981558624,
+    "id": 1681982107735
+  },
+  {
+    "answer_text": "Le Portugal",
+    "isCorrect": false,
+    "questionId": 1681981558624,
+    "id": 1681982115735
+  },
+  {
+    "answer_text": "L'Uruguay",
+    "isCorrect": true,
+    "questionId": 1681981558624,
+    "id": 1681982124157
+  },
+  {
+    "answer_text": "Vrai",
+    "isCorrect": true,
+    "questionId": 1681981592579,
+    "id": 1681982158410
+  },
+  {
+    "answer_text": "Faux",
+    "isCorrect": false,
+    "questionId": 1681981592579,
+    "id": 1681982166283
+  },
+  {
+    "answer_text": "Le Vésuve",
+    "isCorrect": true,
+    "questionId": 1681981608229,
+    "id": 1681982204494
+  },
+  {
+    "answer_text": "Le Python de la Fournaise",
+    "isCorrect": false,
+    "questionId": 1681981608229,
+    "id": 1681982214744
+  },
+  {
+    "answer_text": "Le Stromboli",
+    "isCorrect": false,
+    "questionId": 1681981608229,
+    "id": 1681982235154
+  },
+  {
+    "answer_text": "Le Mosychlos",
+    "isCorrect": false,
+    "questionId": 1681981608229,
+    "id": 1681982243211
+  },
+  {
+    "answer_text": "Ardente / Eruptive",
+    "isCorrect": false,
+    "questionId": 1681981624575,
+    "id": 1681982269346
+  },
+  {
+    "answer_text": "Volcanique / Magmatique",
+    "isCorrect": false,
+    "questionId": 1681981624575,
+    "id": 1681982289364
+  },
+  {
+    "answer_text": "Destructrice / Sismique",
+    "isCorrect": false,
+    "questionId": 1681981624575,
+    "id": 1681982304099
+  },
+  {
+    "answer_text": "Effusive / Explosive",
+    "isCorrect": true,
+    "questionId": 1681981624575,
+    "id": 1681982312609
+  },
+  {
+    "answer_image": "https://inaturalist-open-data.s3.amazonaws.com/photos/4948584/original.jpg",
+    "isCorrect": false,
+    "questionId": 1681981658009,
+    "id": 1681982400296
+  },
+  {
+    "answer_image": "https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/WBUB6LGREDPST6SWJJGIFJ24HU.jpg",
+    "isCorrect": false,
+    "questionId": 1681981658009,
+    "id": 1681982411577
+  },
+  {
+    "answer_image": "https://desertmaroc.com/acaciavoyages/wp-content/uploads/2021/02/dromadaire.png",
+    "isCorrect": false,
+    "questionId": 1681981658009,
+    "id": 1681982419538
+  },
+  {
+    "answer_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Bonobo1_CincinnatiZoo.jpg/1200px-Bonobo1_CincinnatiZoo.jpg",
+    "isCorrect": true,
+    "questionId": 1681981658009,
+    "id": 1681982428519
+  },
+  {
+    "answer_text": "Vrai",
+    "isCorrect": true,
+    "questionId": 1681981680172,
+    "id": 1681982455674
+  },
+  {
+    "answer_text": "Faux",
+    "isCorrect": false,
+    "questionId": 1681981680172,
+    "id": 1681982462119
+  },
+  {
+    "answer_text": "Le scorpion empereur noir",
+    "isCorrect": false,
+    "questionId": 1681981697897,
+    "id": 1681982488701
+  },
+  {
+    "answer_text": "Le scorpion jaune à queue large",
+    "isCorrect": true,
+    "questionId": 1681981697897,
+    "id": 1681982494897
+  },
+  {
+    "answer_text": "Le rodeur mortel",
+    "isCorrect": false,
+    "questionId": 1681981697897,
+    "id": 1681982504803
+  },
+  {
+    "answer_text": "Le scorpion du Languedoc",
+    "isCorrect": false,
+    "questionId": 1681981697897,
+    "id": 1681982511848
+  },
+  {
+    "answer_text": "L'éléphant de savane",
+    "isCorrect": false,
+    "questionId": 1681981729437,
+    "id": 1681982541745
+  },
+  {
+    "answer_text": "L'éléphant de forêt",
+    "isCorrect": false,
+    "questionId": 1681981729437,
+    "id": 1681982550451
+  },
+  {
+    "answer_text": "L'éléphant indien",
+    "isCorrect": false,
+    "questionId": 1681981729437,
+    "id": 1681982556793
+  },
+  {
+    "answer_text": "L'éléphant d'Afrique",
+    "isCorrect": true,
+    "questionId": 1681981729437,
+    "id": 1681982565946
+  },
+  {
+    "answer_text": "L'Ivoire",
+    "isCorrect": true,
+    "questionId": 1681981743411,
+    "id": 1681982587461
+  },
+  {
+    "answer_text": "L'os",
+    "isCorrect": false,
+    "questionId": 1681981743411,
+    "id": 1681982597389
+  },
+  {
+    "answer_text": "L'argent",
+    "isCorrect": false,
+    "questionId": 1681981743411,
+    "id": 1681982620310
+  },
+  {
+    "answer_text": "Le cuivre",
+    "isCorrect": false,
+    "questionId": 1681981743411,
+    "id": 1681982625920
+  },
+  {
+    "answer_text": "Elles sont généralement plus imposantes que les mâles",
+    "isCorrect": false,
+    "questionId": 1681981754092,
+    "id": 1681982655114
+  },
+  {
+    "answer_text": "Elles ne possèdent pas de défenses",
+    "isCorrect": true,
+    "questionId": 1681981754092,
+    "id": 1681982663470
+  },
+  {
+    "answer_text": "Ce sont les plus petits éléphants adultes existants sur Terre",
+    "isCorrect": false,
+    "questionId": 1681981754092,
+    "id": 1681982674732
+  },
+  {
+    "answer_text": "Ce sont des éléphants qui dorment exclusivement dans l'eau",
+    "isCorrect": false,
+    "questionId": 1681981754092,
+    "id": 1681982681324
+  },
+  {
+    "answer_text": "60 ans",
+    "isCorrect": false,
+    "questionId": 1681981798999,
+    "id": 1681983097798
+  },
+  {
+    "answer_text": "65 ans",
+    "isCorrect": false,
+    "questionId": 1681981798999,
+    "id": 1681983103766
+  },
+  {
+    "answer_text": "70 ans",
+    "isCorrect": true,
+    "questionId": 1681981798999,
+    "id": 1681983110291
+  },
+  {
+    "answer_text": "75 ans",
+    "isCorrect": false,
+    "questionId": 1681981798999,
+    "id": 1681983117031
+  },
+  {
+    "answer_text": "Le titre de roi pour le conjoint de l'héritière de la couronne n'existe pas",
+    "isCorrect": true,
+    "questionId": 1681981812907,
+    "id": 1681983138942
+  },
+  {
+    "answer_text": "Avant de se marier avec Elisabeth II, il était marié à une autre souveraine",
+    "isCorrect": false,
+    "questionId": 1681981812907,
+    "id": 1681983159813
+  },
+  {
+    "answer_text": "Philip possédait un casier judiciaire",
+    "isCorrect": false,
+    "questionId": 1681981812907,
+    "id": 1681983171108
+  },
+  {
+    "answer_text": "En tant que souveraine, Elisabeth II a toujours refusé que son mari accède au titre de roi",
+    "isCorrect": false,
+    "questionId": 1681981812907,
+    "id": 1681983182506
+  },
+  {
+    "answer_text": "90 ans",
+    "isCorrect": false,
+    "questionId": 1681981831159,
+    "id": 1681983201703
+  },
+  {
+    "answer_text": "92 ans",
+    "isCorrect": false,
+    "questionId": 1681981831159,
+    "id": 1681983207674
+  },
+  {
+    "answer_text": "94 ans",
+    "isCorrect": false,
+    "questionId": 1681981831159,
+    "id": 1681983214235
+  },
+  {
+    "answer_text": "96 ans",
+    "isCorrect": true,
+    "questionId": 1681981831159,
+    "id": 1681983219957
   }
 ]

@@ -7,7 +7,7 @@
     "id": 1679879479685
   },
   {
-    "question_text": "Comment il s'appelle la capitale de Pologne ?",
+    "question_text": "Comment s'appelle la capitale de Pologne ?",
     "explain_text": "Capitale de la Pologne depuis 1596, Varsovie est située au centre-est du pays. Ville fascinante, pleine de contradictions, considérée par beaucoup comme inébranlable, Varsovie trouve son âme dans des lieux qui aujourd'hui ne sont plus.",
     "explain_image": "https://www.strasbourg.aeroport.fr/wp-content/uploads/2022/06/varsovie.1572978.w630-2.jpg",
     "quizId": 1679875889425,
@@ -20,5 +20,115 @@
     "explain_image": "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg",
     "quizId": 1679875889425,
     "id": 1679880139299
+  },
+  {
+    "question_text": "Quel est le pays ayant remporté le plus de coupe du mondes?",
+    "explain_text": "Avec 5 titres (1958,1962,1970,1994,2002), le brésil est la nation ayant remporté le plus de coupes du monde (5). Elle devance notamment l'Italie et l'Allemagne, toute deux titrées 4 fois.",
+    "quizId": 1679916495824,
+    "question_image": "https://static.actu.fr/uploads/2019/09/Troph%C3%A9e-coupe-du-monde-football-%C2%A9Daniel-Flickr-854x568.jpg",
+    "explain_image": "https://upload.wikimedia.org/wikipedia/fr/thumb/3/30/CBF_2019.svg/1200px-CBF_2019.svg.png",
+    "id": 1681981465403
+  },
+  {
+    "question_text": "Qui est le joueur ayant inscrit le plus de buts dans une seule phase finale de coupe du monde?",
+    "explain_text": "Avec 13 buts inscrit en 6 matchs lors de l'édition 1958, le français Just Fontaine est le joueur ayant inscrit le plus de but sur une même phase finale de coupe du monde.",
+    "quizId": 1679916495824,
+    "question_image": "https://i.f1g.fr/media/cms/2847x1601_crop/2022/11/24/db421a0a1c9da7fa7624febc6a6bbbdda74baccfdd583226c4a7a25560e1e90b.jpg",
+    "explain_image": "https://images.beinsports.com/eMTKSmqLbTfxlDV6AFzd_ASJ53c=/full-fit-in/1000x0/4638785-JUST-FONTAINE.png",
+    "id": 1681981527186
+  },
+  {
+    "question_text": "Quelle équipe a remporté la première édition de la coupe du monde (1930)",
+    "explain_text": "C'est l'Uruguay qui a remporté la première coupe du monde de l'histoire, chez elle.",
+    "quizId": 1679916495824,
+    "explain_image": "https://upload.wikimedia.org/wikipedia/fr/thumb/e/e8/Association_uruguayenne_football.svg/1200px-Association_uruguayenne_football.svg.png",
+    "id": 1681981558624
+  },
+  {
+    "question_text": "VRAI OU FAUX? Il existe des volcans sous-marin",
+    "explain_text": "Il n'y a pas que les volcans terrestres, les volcans sous-marin existent bien. Par exemple, le volcan Kolumbo se situe dans la mer Égée.",
+    "quizId": 1680002047198,
+    "explain_image": "https://focus.courrierinternational.com/2022/02/04/0/0/922/521/1280/0/60/0/1da43cf_1644007460426-volcan-0.jpg",
+    "id": 1681981592579
+  },
+  {
+    "question_text": "Comment s'appelle le volcan bordant la baie de Naples, responsable de la destruction de Pompéi en 79?",
+    "explain_text": "Il s'agit du Vésuve, ou Vesuvio en Italien.",
+    "quizId": 1680002047198,
+    "explain_image": "https://www.hotelvesuvio.com/wp-content/uploads/2021/12/pourquoi-vesuve-volcans-plus-surveille-monde.jpg",
+    "id": 1681981608229
+  },
+  {
+    "question_text": "Quels sont les deux types d'éruptions volcaniques existants?",
+    "explain_text": "Une éruption effusive correspond à la projection d'une lave très fluide. Une éruption explosive correspond à de violentes explosions et à la formation d'une grande quantité de cendres et de nuées ardentes.",
+    "quizId": 1680002047198,
+    "explain_image": "https://static1.assistancescolaire.com/ele/images/fde07sc15i02.png",
+    "id": 1681981624575
+  },
+  {
+    "question_text": "Parmi ces 4 animaux, sélectionnez celui qui ne vit PAS dans le désert?",
+    "explain_text": "Au contraire du varan, du fennec et du dromadaire, le bonobo ne vit pas dans le désert, mais dans les forêts équatoriales de la République Démocratique du Congo.",
+    "quizId": 1680002234117,
+    "explain_image": "https://www.monde-animal.fr/wp-content/uploads/2020/12/fiche-animale-monde-animal-bonobo.jpg.webp",
+    "id": 1681981658009
+  },
+  {
+    "question_text": "VRAI OU FAUX? On peut trouver certains types de baleines dans les eaux bordant certains déserts?",
+    "explain_text": "L'antarctique étant un désert de glace, la réponse est vrai.",
+    "quizId": 1680002234117,
+    "explain_image": "https://www.voyage-antarctique.com/wp-content/uploads/antarctique-humpback-whale-1280x800.jpeg",
+    "id": 1681981680172
+  },
+  {
+    "question_text": "Quel est le scorpion le plus dangereux du monde?",
+    "explain_text": "Vivant au Maghreb dans les zones désertiques, le scorpion jaune à queue large est réputé pour être le scorpion le plus dangereux qui existe, du fait de la toxicité de son venin.",
+    "quizId": 1680002234117,
+    "explain_image": "https://cdn.futura-sciences.com/buildsv6/images/largeoriginal/1/b/e/1be6634483_57303_buthus-occitanus-wiki-auteur-malpolon-httpcommonswikimediaorgwikifilebuthus-occitanus-wikijpg.jpg",
+    "id": 1681981697897
+  },
+  {
+    "question_text": "Quels sont les plus gros éléphants du monde?",
+    "explain_text": "Pouvant peser jusqu'à 6 tonnes, l'éléphant d'afrique est le plus gros éléphant existant.",
+    "quizId": 1680002766579,
+    "explain_image": "https://upload.wikimedia.org/wikipedia/commons/e/ec/African_elephant.jpg",
+    "id": 1681981729437
+  },
+  {
+    "question_text": "Quel est le matériau qui compose principalement les défenses de l'éléphant?",
+    "explain_text": "Les défenses de l'éléphant sont majoritairement composées d'ivoire. Matériau précieux, il est la raison pour laquelle les braconneurs chassent autant d'éléphants.",
+    "quizId": 1680002766579,
+    "explain_image": "https://cdn.shopify.com/s/files/1/0328/6833/5754/files/Untitled_design_-_2022-07-03T233551.036_600x600.png?v=1656866196",
+    "id": 1681981743411
+  },
+  {
+    "question_text": "Quelle est la particularité des éléphants d'Asie femelle?",
+    "explain_text": "Les éléphants d'Asie femelles ne possèdent pas de défense. Ce n'est pas le cas de tous les éléphants femelles, car celles d'Afrique en possèdent bien.",
+    "quizId": 1680002766579,
+    "explain_image": "https://www.anigaido.com/media/zoo_animaux/1-100/96/eleacutephant-d-asie-1-julien-pierre-xl.jpg",
+    "id": 1681981754092
+  },
+  {
+    "question_text": "Combien de temps a duré le règne de la Reine Elisabeth II?",
+    "explain_text": "Avec un peu plus de 70 ans de règne, la reine Elisabeth II est le monarque européen de l'ère moderne avec le deuxième règne le plus long, juste derrière le roi français Louis XIV (72 ans).",
+    "quizId": 1680002987645,
+    "question_image": "https://atlantico-media.s3.eu-west-3.amazonaws.com/000_9_Q26_RE_8580b420b2.jpg",
+    "explain_image": "https://www.herodote.net/Images/ElisabethII_1952.jpg",
+    "id": 1681981798999
+  },
+  {
+    "question_text": "Pourquoi le mari de la reine, Philip Mountbatten, n'était pas roi?",
+    "explain_text": "Tout simplement parce que le titre de roi pour le conjoint de la reine n'existe pas. En effet, le protocole de la couronne anglaise ne prévoit pas l'attribution d'un tel titre au conjoint d'une reine",
+    "quizId": 1680002987645,
+    "question_image": "https://cache.marieclaire.fr/data/photo/w1000_ci/6a/love-story-elizabeth-ii-prince-philip.jpg",
+    "explain_image": "https://cdn-s-www.leprogres.fr/images/83A3BA37-F9A8-418C-94CB-78CD9B0CB689/NW_detail_M/title-1576680650.jpg",
+    "id": 1681981812907
+  },
+  {
+    "question_text": "A quel âge s'est éteinte Elisabeth II en septembre 2022?",
+    "explain_text": "La reine Elisabeth II s'est éteinte à l'âge de 96 ans.",
+    "quizId": 1680002987645,
+    "question_image": "https://img.20mn.fr/t05xan3rRZ24_yJdF-zorSk/1200x768_reine-elisabeth-ii",
+    "explain_image": "https://imgr.starmag.com/2022/09/elizabeth-ii-buckingham-palace-annonce-le-deces-de-la-reine.jpg",
+    "id": 1681981831159
   }
 ]
