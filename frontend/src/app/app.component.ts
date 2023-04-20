@@ -89,11 +89,36 @@ export class AppComponent implements OnDestroy {
   }
 
   private handleClickBySpeech(transcript: string) {
-    const wordsToRemove = ['le', 'la', 'les', 'de', 'des'];
+    const wordsToRemove = [
+      'le',
+      'la',
+      'les',
+      'de',
+      'des',
+      'un',
+      'une',
+      'ou',
+      'alors',
+    ];
     const normalizedTranscript = this.normalizeText(transcript);
     const words = normalizedTranscript
       .split('_')
       .filter((word) => !wordsToRemove.includes(word));
+
+    // If there are more than 18 words, we don't want to try to find a button
+    if (words.length > 18) {
+      console.warn("Phrase trop longue -> risque d'overflow");
+      return;
+    }
+
+    // If there are both "Vrai" and "Faux" in the transcript, we don't want to try to find a button
+    if (words.includes('vrai') && words.includes('faux')) {
+      console.warn(
+        "Phrase contient 'Vrai' et 'Faux' -> on n'en tient pas compte"
+      );
+      return;
+    }
+
     const combinations = this.generateCombinations(words);
 
     for (const combination of combinations) {
