@@ -272,7 +272,7 @@ export class AppComponent implements OnDestroy {
       this.longClickTimeout = setTimeout(() => {
         this.isPressionLongueEnabled = true;
         this.clickElementUnderCursor();
-      }, 1500);
+      }, 800);
 
       if (event.button === 2) {
         event.preventDefault();
