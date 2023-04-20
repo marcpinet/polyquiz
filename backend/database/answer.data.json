@@ -36,24 +36,28 @@
     "id": 1679880626635
   },
   {
+    "answer_text": "Arc de Triomphe",
     "answer_image": "https://www.planetware.com/wpimages/2021/02/france-paris-top-attractions-arc-de-triomphe.jpg",
     "isCorrect": false,
     "questionId": 1679880139299,
     "id": 1679880778488
   },
   {
+    "answer_text": "Sacre Coeur",
     "answer_image": "https://www.touropia.com/gfx/b/2013/02/sacre_coeur.jpg",
     "isCorrect": false,
     "questionId": 1679880139299,
     "id": 1679880803844
   },
   {
+    "answer_text": "Tour Eiffel",
     "answer_image": "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg",
     "isCorrect": true,
     "questionId": 1679880139299,
     "id": 1679880822971
   },
   {
+    "answer_text": "Musée du Louvre",
     "answer_image": "https://www.planetware.com/wpimages/2022/02/france-paris-top-tourist-attractions-musee-du-louvre.jpg",
     "isCorrect": false,
     "questionId": 1679880139299,
