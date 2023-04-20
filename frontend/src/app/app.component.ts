@@ -102,6 +102,14 @@ export class AppComponent implements OnDestroy {
       }
     }
 
+    for (const combination of combinations.filter(
+      (c) => c.split('_').length === 1
+    )) {
+      if (this.findAndClickButton([combination], true)) {
+        return;
+      }
+    }
+
     console.warn('Aucun bouton trouvé pour les mots du transcript');
   }
 
@@ -124,7 +132,10 @@ export class AppComponent implements OnDestroy {
     return withWord.concat(withoutWord);
   }
 
-  private findAndClickButton(words: string[]): boolean {
+  private findAndClickButton(
+    words: string[],
+    data_number: boolean = false
+  ): boolean {
     for (const word of words) {
       if (word && word.length > 0 && word[0] !== '#') {
         const buttonElement = document.querySelector(`#${word}`);
@@ -132,6 +143,21 @@ export class AppComponent implements OnDestroy {
         if (buttonElement) {
           buttonElement.dispatchEvent(new MouseEvent('click'));
           return true;
+        }
+      }
+    }
+
+    if (data_number) {
+      for (const word of words) {
+        if (word && word.length > 0 && word[0] !== '#') {
+          const buttonElement = document.querySelector(
+            `[data-number="${word}"]`
+          );
+
+          if (buttonElement) {
+            buttonElement.dispatchEvent(new MouseEvent('click'));
+            return true;
+          }
         }
       }
     }

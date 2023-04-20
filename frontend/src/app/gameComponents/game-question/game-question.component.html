@@ -24,6 +24,7 @@
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
         (click)="answerSelected = 0"
         [attr.id]="normalizeText(question.answers[0].answer_text)"
+        data-number="un"
       >
         <app-game-answer [answer]="question.answers[0]" letter="A." />
       </div>
@@ -31,6 +32,7 @@
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
         (click)="answerSelected = 1"
         [attr.id]="normalizeText(question.answers[1].answer_text)"
+        data-number="deux"
       >
         <app-game-answer [answer]="question.answers[1]" letter="B." />
       </div>
@@ -39,6 +41,7 @@
         *ngIf="this.question.answers.length >= 3"
         (click)="answerSelected = 2"
         [attr.id]="normalizeText(question.answers[2].answer_text)"
+        data-number="trois"
       >
         <app-game-answer [answer]="question.answers[2]" letter="C." />
       </div>
@@ -47,6 +50,7 @@
         *ngIf="this.question.answers.length == 4"
         (click)="answerSelected = 3"
         [attr.id]="normalizeText(question.answers[3].answer_text)"
+        data-number="quatre"
       >
         <app-game-answer [answer]="question.answers[3]" letter="D." />
       </div>
