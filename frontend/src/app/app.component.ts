@@ -292,7 +292,10 @@ export class AppComponent implements OnDestroy {
   }
 
   private onMouseDown(event: MouseEvent): void {
-    if (this.userSettings.mouse_option === 'pressionLongue') {
+    if (
+      this.userSettings &&
+      this.userSettings.mouse_option === 'pressionLongue'
+    ) {
       clearTimeout(this.longClickTimeout);
 
       this.longClickTimeout = setTimeout(() => {
