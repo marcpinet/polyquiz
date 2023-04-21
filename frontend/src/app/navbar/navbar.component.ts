@@ -23,4 +23,12 @@ export class NavbarComponent implements OnInit {
   navigateProfile() {
     this.router.navigate(['/profile']);
   }
+
+  navigateSettings() {
+    this.router.navigate(['/settings']);
+  }
+
+  navigateHelp() {
+    this.router.navigate(['/help']);
+  }
 }

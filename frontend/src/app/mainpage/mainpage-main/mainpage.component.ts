@@ -53,4 +53,8 @@ export class MainPage {
   navigateProfile() {
     this.router.navigate(['/profile']);
   }
+
+  navigateHelp() {
+    this.router.navigate(['/help']);
+  }
 }
