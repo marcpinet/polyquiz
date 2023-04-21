@@ -22,6 +22,7 @@ import { UserProfileComponent } from './userProfile/user-profile.component';
 import { QuizDetailsCarouselComponent } from './quiz/quiz-details-carousel/quiz-details-carousel.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.component';
+import { HelpComponent } from './help/help.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.com
     UserProfileComponent,
     QuizDetailsCarouselComponent,
     NavbarComponent,
-    ThemeCarouselComponent
+    ThemeCarouselComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,

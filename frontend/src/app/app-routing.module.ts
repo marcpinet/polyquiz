@@ -13,16 +13,46 @@ import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouteGuardService } from 'src/services/route-guard.service';
 import { LoggedInRouteGuardService } from 'src/services/loggedin-route-guard-service';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
-  { path: 'quizlist',canActivate: [RouteGuardService], component: QuizListComponent },
-  { path: 'game/:id',canActivate: [RouteGuardService], component: GamePageComponent },
-  { path: 'login',canActivate: [LoggedInRouteGuardService], component: LoginComponent },
-  { path: '',canActivate: [RouteGuardService], component: MainPage },
-  { path: 'settings',canActivate: [RouteGuardService], component: OptionsScreenComponent },
-  { path: 'result/:id',canActivate: [RouteGuardService], component: ResultComponent },
-  { path: 'profile',canActivate: [RouteGuardService], component: UserProfileComponent },
-  { path: 'navbar',canActivate: [RouteGuardService], component: NavbarComponent },
+  {
+    path: 'quizlist',
+    canActivate: [RouteGuardService],
+    component: QuizListComponent,
+  },
+  {
+    path: 'game/:id',
+    canActivate: [RouteGuardService],
+    component: GamePageComponent,
+  },
+  {
+    path: 'login',
+    canActivate: [LoggedInRouteGuardService],
+    component: LoginComponent,
+  },
+  { path: '', canActivate: [RouteGuardService], component: MainPage },
+  {
+    path: 'settings',
+    canActivate: [RouteGuardService],
+    component: OptionsScreenComponent,
+  },
+  {
+    path: 'result/:id',
+    canActivate: [RouteGuardService],
+    component: ResultComponent,
+  },
+  {
+    path: 'profile',
+    canActivate: [RouteGuardService],
+    component: UserProfileComponent,
+  },
+  {
+    path: 'navbar',
+    canActivate: [RouteGuardService],
+    component: NavbarComponent,
+  },
+  { path: 'help', canActivate: [RouteGuardService], component: HelpComponent },
 
   //temporary routes for testing
   { path: 'tempo-register', component: RegisterComponent }, //only do this for the moment, to be implement only in admin's interface later
