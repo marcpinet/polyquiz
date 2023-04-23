@@ -58,13 +58,14 @@
   </div>
 
   <div class="flex-shrink-0 h-full bg-[#90C1DF]">
-    <div class="px-10 flex flex-col mt-10" *ngIf="this.answerSelected != -1" (click)="this.nextQuestion()">
+    <div class="px-10 flex flex-col mt-10" *ngIf="this.answerSelected != -1">
       <img *ngIf="this.question.explain_image != undefined" alt="image d'explication de réponse" src="{{ this.question.explain_image }}" class="h-44 max-w-full object-scale-down" />
       <span class="text-4xl text-[#2B3467] font-semibold justify-center items-center text-center">
-        La bonne réponse est :
-        <span class="text-4xl text-[#EB455F] font-bold ml-2">{{ this.goodAnswer }}</span>
-      </span>
+      La bonne réponse est :
+      <span class="text-4xl text-[#EB455F] font-bold ml-2">{{ this.goodAnswer }}</span>
+    </span>
       <p class="text-4xl text-[#2B3467] font-semibold">{{ this.question.explain_text }}</p>
+      <button class="block mx-auto my-10 py-6 px-12 bg-[#EB455F] text-white text-2xl font-semibold rounded-full hover:bg-red-700 focus:outline-none focus:shadow-outline w-3/4 h-3/4" id="suivant" (click)="this.nextQuestion()">Suivant</button>
     </div>
   </div>
 
