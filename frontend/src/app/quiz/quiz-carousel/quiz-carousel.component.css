@@ -6,3 +6,7 @@
   position: absolute;
   transform: translate(-5%, -35%);
 }
+
+.carousel {
+  z-index: 1;
+}
