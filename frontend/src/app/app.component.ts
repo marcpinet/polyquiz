@@ -56,7 +56,7 @@ export class AppComponent implements OnDestroy {
   /* Gestion reconnaissance vocale */
 
   private handleSpeechRecognition() {
-    if (this.userSettings && this.userSettings.microphone) {
+    if (this.userSettings && this.userSettings.microphone !== 'aucun') {
       try {
         this.speechService.startRecognition();
       } catch (error) {
