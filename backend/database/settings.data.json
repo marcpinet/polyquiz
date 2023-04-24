@@ -3,7 +3,7 @@
     "user_id": 1680382334270,
     "sound_effect": true,
     "mouse_option": "aucun",
-    "microphone": "aucun",
+    "microphone": "withAntiBruit",
     "confirm_answer": false,
     "id": 1680382869828
   },
