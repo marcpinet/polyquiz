@@ -71,18 +71,25 @@
     </div>
     <div class="button-container flex flex-grow h-20 my-auto">
       <button
-        (click)="setMicrophone(true)"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_microphone"
+        (click)="setMicrophone('withAntiBruit')"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='withAntiBruit' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_double_clic"
         >
-        Activé
+        Activé avec anti-bruit
       </button>
       <button
-        (click)="setMicrophone(false)"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!microphone ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="desactiver_microphone"
+        (click)="setMicrophone('withoutAntiBruit')"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='withoutAntiBruit' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_pression_longue"
         >
-        Désactivé
+        Activé sans anti-bruit
+      </button>
+      <button
+        (click)="setMicrophone('aucun')"
+        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
+        id="activer_pression_longue"
+        >
+        Aucun
       </button>
     </div>
   </div>
