@@ -258,5 +258,25 @@
     "wrong_answers": 3,
     "play_time": 3,
     "time_per_question": 1
+  },
+  {
+    "id": 1682347640724,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-24T14:47:20.695Z",
+    "user_id": 1,
+    "right_answers": 2,
+    "wrong_answers": 1,
+    "play_time": 12,
+    "time_per_question": 4
+  },
+  {
+    "id": 1682347784571,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-24T14:49:44.508Z",
+    "user_id": 1,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 12,
+    "time_per_question": 4
   }
 ]
