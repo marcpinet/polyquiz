@@ -15,7 +15,7 @@ export class OptionsScreenComponent {
     | 'pressionLongue'
     | 'keyboard_control'
     | 'aucun';
-  microphone: boolean;
+  microphone: 'withAntiBruit' | 'withoutAntiBruit' | 'aucun';
   confirm_answer: boolean;
 
   initSettings: InitSettings;
@@ -64,8 +64,8 @@ export class OptionsScreenComponent {
     this.mouse_option = option;
   }
 
-  setMicrophone(boolean: boolean) {
-    this.microphone = boolean;
+  setMicrophone(option: 'withAntiBruit' | 'withoutAntiBruit' | 'aucun') {
+    this.microphone = option;
   }
 
   setConfirmAnswer(boolean: boolean) {

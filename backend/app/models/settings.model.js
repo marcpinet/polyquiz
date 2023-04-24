@@ -5,6 +5,6 @@ module.exports = new BaseModel("Settings", {
   user_id: Joi.number().required(),
   sound_effect: Joi.boolean().required(),
   mouse_option: Joi.string().required(),
-  microphone: Joi.boolean().required(),
+  microphone: Joi.string().required(),
   confirm_answer: Joi.boolean().required(),
 });

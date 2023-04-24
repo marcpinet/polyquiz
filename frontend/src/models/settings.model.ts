@@ -7,7 +7,7 @@ export interface Settings {
     | 'pressionLongue'
     | 'keyboard_control'
     | 'aucun';
-  microphone: boolean;
+  microphone: 'withAntiBruit' | 'withoutAntiBruit' | 'aucun';
   confirm_answer: boolean;
 }
 
@@ -21,6 +21,6 @@ export interface InitSettings {
     | 'pressionLongue'
     | 'keyboard_control'
     | 'aucun';
-  microphone: boolean;
+  microphone: 'withAntiBruit' | 'withoutAntiBruit' | 'aucun';
   confirm_answer: boolean;
 }
