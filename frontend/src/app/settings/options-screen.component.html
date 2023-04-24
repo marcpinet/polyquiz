@@ -73,21 +73,21 @@
       <button
         (click)="setMicrophone('withAntiBruit')"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='withAntiBruit' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_double_clic"
+        id="avec_antibruit"
         >
         Activé avec anti-bruit
       </button>
       <button
         (click)="setMicrophone('withoutAntiBruit')"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='withoutAntiBruit' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_pression_longue"
+        id="sans_antibruit"
         >
         Activé sans anti-bruit
       </button>
       <button
         (click)="setMicrophone('aucun')"
         class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_pression_longue"
+        id="desactiver_microphone"
         >
         Aucun
       </button>

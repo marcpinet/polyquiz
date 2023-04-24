@@ -35,7 +35,9 @@ export class AppComponent implements OnDestroy {
         (settings) => {
           this.userSettings = settings;
           this.handleSpeechRecognition();
-          this.handleClickOption();
+          try {
+            this.handleClickOption();
+          } catch (error) {}
           this.handleDoubleClick();
           this.handlePressionLongue();
         }
@@ -60,7 +62,7 @@ export class AppComponent implements OnDestroy {
       try {
         this.speechService.startRecognition();
       } catch (error) {
-        console.warn('Speech recognition already active');
+        this.speechService.restart();
       }
     } else {
       this.speechService.stopRecognition();
