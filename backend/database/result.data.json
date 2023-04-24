@@ -298,5 +298,15 @@
     "wrong_answers": 3,
     "play_time": 18,
     "time_per_question": 6
+  },
+  {
+    "id": 1682404464880,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-25T06:34:24.835Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 184,
+    "time_per_question": 61.333333333333336
   }
 ]

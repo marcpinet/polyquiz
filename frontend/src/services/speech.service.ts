@@ -12,7 +12,6 @@ export class SpeechService {
   private isStopped = false;
   private userSettings: any;
   private settingsSubscription: any;
-  private recognizedWords: string[] = [];
 
   constructor(private settingsService: SettingService) {
     this.recognition = new webkitSpeechRecognition();
@@ -33,24 +32,8 @@ export class SpeechService {
       this.recognition.onresult = (event) => {
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;
-
-          if (this.userSettings.microphone === 'withAntiBruit') {
-            const words = transcript.split(' ');
-            this.recognizedWords.push(...words);
-
-            if (this.recognizedWords.length >= 18) {
-              console.log(transcript);
-              this.speech.emit(transcript);
-              this.recognizedWords = [];
-              this.stopRecognition();
-              try {
-                this.startRecognition();
-              } catch (error) {}
-            }
-          } else {
-            console.log(transcript);
-            this.speech.emit(transcript);
-          }
+          console.log(transcript);
+          this.speech.emit(transcript);
         }
       };
 
@@ -64,7 +47,7 @@ export class SpeechService {
     }
   }
 
-  restart(): void {
+  public restart(): void {
     this.stopRecognition();
     try {
       this.startRecognition();

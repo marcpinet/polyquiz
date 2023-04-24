@@ -23,6 +23,8 @@ export class AppComponent implements OnDestroy {
   private isPressionLongueEnabled = false;
   private boundOnDoubleClick: any;
   private boundOnMouseDown: any;
+  private lastClickTimestamp: number = 0;
+
   constructor(
     public router: Router,
     private speechService: SpeechService,
@@ -157,8 +159,10 @@ export class AppComponent implements OnDestroy {
       if (word && word.length > 0 && word[0] !== '#') {
         const buttonElement = document.querySelector(`#${word}`);
 
-        if (buttonElement) {
+        if (Date.now() - this.lastClickTimestamp > 1000 && buttonElement) {
           buttonElement.dispatchEvent(new MouseEvent('click'));
+          this.speechService.restart();
+          this.lastClickTimestamp = Date.now();
           return true;
         }
       }
