@@ -1,3 +1,9 @@
+<ng-container
+  *ngIf="
+    quiz !== undefined &&
+    result !== undefined
+  "
+>
 <div class="mx-auto">
   <h1 class="text-[#EB455F] font-bold justify-center text-center text-4xl">
     {{ quiz.name }}
@@ -76,3 +82,4 @@
   <i class="fa-solid fa-rotate-right text-3xl text-[#EB455F]"></i>
   Rejouer
 </button>
+</ng-container>
