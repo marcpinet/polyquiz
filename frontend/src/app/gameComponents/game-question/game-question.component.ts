@@ -41,17 +41,7 @@ export class GameQuestionComponent implements OnInit {
   protected normalizeText(text: string): string {
     const accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ';
     const noAccents = 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn';
-    const wordsToRemove = [
-      'le',
-      'la',
-      'les',
-      'de',
-      'des',
-      'un',
-      'une',
-      'ou',
-      'alors',
-    ];
+    const wordsToRemove = [];
     const newText = text
       .trim()
       .replace(/\d+/g, (match) =>
