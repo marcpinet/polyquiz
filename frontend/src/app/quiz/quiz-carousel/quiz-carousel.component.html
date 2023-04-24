@@ -1,19 +1,8 @@
 <!-- Begin of Carousel Quiz List -->
 <div class="ml-1">
   <p class="text-2xl font-bold text-[#2B3467] ">Nouveaux quiz</p>
-  <carousel [cellsToShow]="3" [loop]="true" [height]="200" [margin]="-80">
+  <carousel [cellsToShow]="3" [loop]="true" [height]="270" [margin]="-80">
     <div class="carousel-cell mt-3 mb-2 mr-20" *ngFor="let quiz of quizList">
-      <app-quiz-details-carousel
-        [quiz]="quiz"
-        class="w-full"
-      ></app-quiz-details-carousel>
-    </div>
-  </carousel>
-
-  <p class="text-2xl mt-2 font-bold text-[#EB455F] ">Quiz que vous pourriez aimer</p>
-  <carousel [cellsToShow]="3" [loop]="true" [height]="200" [margin]="-80">
-    <div class="carousel-cell mt-3 mb-2 mr-20" *ngFor="let quiz of quizList">
-      <!-- TODO: replace quiz with recommened quiz based on user's history -->
       <app-quiz-details-carousel
         [quiz]="quiz"
         class="w-full"
