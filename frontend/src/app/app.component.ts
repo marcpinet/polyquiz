@@ -89,17 +89,7 @@ export class AppComponent implements OnDestroy {
   }
 
   private handleClickBySpeech(transcript: string) {
-    const wordsToRemove = [
-      'le',
-      'la',
-      'les',
-      'de',
-      'des',
-      'un',
-      'une',
-      'ou',
-      'alors',
-    ];
+    const wordsToRemove = [];
     const normalizedTranscript = this.normalizeText(transcript);
     const words = normalizedTranscript
       .split('_')

@@ -8,7 +8,7 @@ declare let webkitSpeechRecognition: any;
 export class SpeechService {
   recognition: any = webkitSpeechRecognition;
   speech: EventEmitter<string> = new EventEmitter();
-  private isStopped = false; // Ajoutez cette variable
+  private isStopped = false;
 
   constructor() {
     this.recognition = new webkitSpeechRecognition();
