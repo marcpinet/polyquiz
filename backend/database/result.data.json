@@ -178,5 +178,25 @@
     "wrong_answers": 1,
     "play_time": 3,
     "time_per_question": 1
+  },
+  {
+    "id": 1682317377293,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-24T06:22:57.256Z",
+    "user_id": 1,
+    "right_answers": 2,
+    "wrong_answers": 1,
+    "play_time": 69,
+    "time_per_question": 23
+  },
+  {
+    "id": 1682317836944,
+    "quiz_id": 1679875889425,
+    "date": "2023-04-24T06:30:36.904Z",
+    "user_id": 1,
+    "right_answers": 1,
+    "wrong_answers": 2,
+    "play_time": 10,
+    "time_per_question": 3.3333333333333335
   }
 ]
