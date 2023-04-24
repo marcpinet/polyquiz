@@ -4,7 +4,10 @@ import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { ResultService } from 'src/services/result.service';
 import { Result } from 'src/models/result-quiz.model';
-
+import { Subscription } from 'rxjs';
+import { SettingService } from 'src/services/settings.service';
+import Swal from 'sweetalert2';
+import { Settings } from 'src/models/settings.model';
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
@@ -19,11 +22,14 @@ export class GamePageComponent implements OnInit {
   answerGood = false;
   startTime: Date;
   goodAnswer: string;
+  private userSettings: Settings;
+  private settingsSubscription: Subscription;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private quizService: QuizService,
-    private resultService: ResultService
+    private resultService: ResultService,
+    private settingsService: SettingService
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
@@ -31,6 +37,13 @@ export class GamePageComponent implements OnInit {
     console.log(this.quiz);
     this.startTime = new Date();
     console.log(this.score);
+    this.settingsService.setCurrentUserSettings().then(() => {
+      this.settingsSubscription = this.settingsService.settings$.subscribe(
+        (settings) => {
+          this.userSettings = settings;
+        }
+      );
+    });
   }
 
   ngOnInit(): void {}
@@ -65,7 +78,6 @@ export class GamePageComponent implements OnInit {
     this.answerGood = false;
     this.compteur++;
     if (this.isLastQuestion()) {
-      
       this.endGame();
     }
   }
