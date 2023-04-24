@@ -7,5 +7,14 @@
     "password": "$2b$10$StznTIGo3w7IKsX1Bez45elaEA2YDKndpad6t2CEG12PNGQZ/V4aW",
     "userType": "patient",
     "avatar": "https://static.vecteezy.com/system/resources/previews/002/563/180/non_2x/old-man-person-avatar-character-free-vector.jpg"
+  },
+  {
+    "userName": "admin",
+    "firstName": "Tom",
+    "lastName": "Niget",
+    "password": "$2b$10$5fAhksq19V7IvYsSVHoiw.X/mLqrU0SsQIQws1S3ShTgKpRvOKBte",
+    "userType": "admin",
+    "avatar": "https://cdn-icons-png.flaticon.com/512/5556/5556499.png",
+    "id": 1682318674112
   }
 ]
