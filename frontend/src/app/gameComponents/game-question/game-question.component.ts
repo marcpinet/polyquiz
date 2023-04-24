@@ -40,6 +40,8 @@ export class GameQuestionComponent implements OnInit {
   ngOnInit(): void {}
 
   playAudio() {
+    if (this.userSettings && !this.userSettings.sound_effect) return;
+
     const correctAnswerIndex = this.question.answers?.findIndex(
       (answer) => answer.isCorrect
     );
