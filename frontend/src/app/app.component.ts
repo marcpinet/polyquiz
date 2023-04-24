@@ -196,7 +196,7 @@ export class AppComponent implements OnDestroy {
   onKeyDown(event: KeyboardEvent): void {
     if (
       this.userSettings &&
-      this.userSettings.keyboard_control &&
+      this.userSettings.mouse_option == 'keyboard_control' &&
       event.code === 'Space'
     ) {
       this.spaceKeyPressed = true;
@@ -216,12 +216,13 @@ export class AppComponent implements OnDestroy {
   onClick(event: MouseEvent): void {
     if (
       this.userSettings &&
-      (this.userSettings.keyboard_control ||
+      (this.userSettings.mouse_option == 'keyboard_control' ||
         this.userSettings.mouse_option === 'doubleClique' ||
         this.userSettings.mouse_option === 'pressionLongue')
     ) {
       if (
-        (this.userSettings.keyboard_control && !this.spaceKeyPressed) ||
+        (this.userSettings.mouse_option == 'keyboard_control' &&
+          !this.spaceKeyPressed) ||
         (this.userSettings.mouse_option === 'doubleClique' &&
           !this.isDoubleClickEnabled) ||
         (this.userSettings.mouse_option === 'pressionLongue' &&
@@ -265,7 +266,8 @@ export class AppComponent implements OnDestroy {
 
   private handleClickOption() {
     if (
-      (this.userSettings && this.userSettings.keyboard_control) ||
+      (this.userSettings &&
+        this.userSettings.mouse_option == 'keyboard_control') ||
       this.userSettings.mouse_option === 'doubleClique' ||
       this.userSettings.mouse_option === 'pressionLongue'
     ) {
