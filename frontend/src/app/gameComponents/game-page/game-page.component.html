@@ -6,7 +6,7 @@
   "
 >
   <div id="base">
-    <h1 class="text-[#EB455F] font-bold justify-center text-center text-3xl">
+    <h1 class="text-[#EB455F] font-bold justify-center text-center text-3xl" id="quiz_name">
       {{ quiz.name }}
     </h1>
     <div class="progress_case">
@@ -18,9 +18,10 @@
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"
+          id = "progress_bar"
         ></div>
       </div>
-      <div class="progression">
+      <div class="progression" id="progression_count">
         <p>{{ compteur+1 }}/{{ quiz.questions.length }}</p>
       </div>
     </div>
@@ -29,6 +30,7 @@
         <app-game-question
           [question]="quiz.questions[compteur]"
           (selectAnswer)="checkAnswer($event)"
+          id = "game_question"
         ></app-game-question>
       </div>
     </div>
