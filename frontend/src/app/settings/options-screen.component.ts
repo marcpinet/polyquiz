@@ -10,8 +10,11 @@ import Swal from 'sweetalert2';
 })
 export class OptionsScreenComponent {
   sound_effect: boolean;
-  keyboard_control: boolean;
-  mouse_option: 'doubleClique' | 'pressionLongue' | 'aucun';
+  mouse_option:
+    | 'doubleClique'
+    | 'pressionLongue'
+    | 'keyboard_control'
+    | 'aucun';
   microphone: boolean;
   confirm_answer: boolean;
 
@@ -39,7 +42,6 @@ export class OptionsScreenComponent {
 
   renderSettings() {
     this.sound_effect = this.settings.sound_effect;
-    this.keyboard_control = this.settings.keyboard_control;
     this.mouse_option = this.settings.mouse_option;
     this.microphone = this.settings.microphone;
     this.confirm_answer = this.settings.confirm_answer;
@@ -47,7 +49,6 @@ export class OptionsScreenComponent {
 
   resetSettings() {
     this.sound_effect = this.initSettings.sound_effect;
-    this.keyboard_control = this.initSettings.keyboard_control;
     this.mouse_option = this.initSettings.mouse_option;
     this.microphone = this.initSettings.microphone;
     this.confirm_answer = this.initSettings.confirm_answer;
@@ -57,7 +58,9 @@ export class OptionsScreenComponent {
     this.sound_effect = !this.sound_effect;
   }
 
-  setMouseOption(option: 'doubleClique' | 'pressionLongue' | 'aucun') {
+  setMouseOption(
+    option: 'doubleClique' | 'pressionLongue' | 'keyboard_control' | 'aucun'
+  ) {
     this.mouse_option = option;
   }
 
@@ -69,13 +72,8 @@ export class OptionsScreenComponent {
     this.confirm_answer = boolean;
   }
 
-  setKeyBoardControl(boolean: boolean) {
-    this.keyboard_control = boolean;
-  }
-
   saveSettings() {
     this.settings.sound_effect = this.sound_effect;
-    this.settings.keyboard_control = this.keyboard_control;
     this.settings.mouse_option = this.mouse_option;
     this.settings.microphone = this.microphone;
     this.settings.confirm_answer = this.confirm_answer;

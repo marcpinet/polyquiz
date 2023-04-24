@@ -7,6 +7,4 @@ module.exports = new BaseModel("Settings", {
   mouse_option: Joi.string().required(),
   microphone: Joi.boolean().required(),
   confirm_answer: Joi.boolean().required(),
-  keyboard_control: Joi.boolean().required(),
-  
 });
