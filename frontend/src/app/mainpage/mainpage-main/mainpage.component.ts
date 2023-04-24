@@ -1,11 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { QuizCarousel } from '../../quiz/quiz-carousel/quiz-carousel.component';
 import { OptionsScreenComponent } from 'src/app/settings/options-screen.component';
 import { MesResultatsComponent } from 'src/app/mesResultats/mes-resultat.component';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
+import { QuizListComponent } from 'src/app/quiz/quizlist/quizlist.component';
 @Component({
   selector: 'app-main',
   templateUrl: './mainpage.component.html',
@@ -20,7 +20,7 @@ export class MainPage {
   }
 
   components = {
-    QUIZ: QuizCarousel,
+    QUIZ: QuizListComponent,
     RESULTAT: MesResultatsComponent,
     PARAMETRES: OptionsScreenComponent,
   };
@@ -32,7 +32,7 @@ export class MainPage {
   }
 
   get selectedComponent() {
-    return this.components[this.currentTab] || QuizCarousel;
+    return this.components[this.currentTab] || QuizListComponent;
   }
 
   loadTabComponent(tab: string) {
