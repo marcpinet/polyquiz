@@ -121,11 +121,14 @@ export class AppComponent implements OnDestroy {
       }
     }
 
-    for (const combination of combinations.filter(
-      (c) => c.split('_').length === 1
-    )) {
-      if (this.findAndClickButton([combination], true)) {
-        return;
+    // For numbers in transcript
+    for (const digit of transcript) {
+      if (Number(digit) >= 0 && Number(digit) <= 4) {
+        // Convert digit to written number
+        const writtenNumber = this.normalizeText(digit);
+        if (this.findAndClickButton([writtenNumber], true)) {
+          return;
+        }
       }
     }
 
@@ -158,7 +161,6 @@ export class AppComponent implements OnDestroy {
     for (const word of words) {
       if (word && word.length > 0 && word[0] !== '#') {
         const buttonElement = document.querySelector(`#${word}`);
-
         if (Date.now() - this.lastClickTimestamp > 1000 && buttonElement) {
           buttonElement.dispatchEvent(new MouseEvent('click'));
           this.speechService.restart();
