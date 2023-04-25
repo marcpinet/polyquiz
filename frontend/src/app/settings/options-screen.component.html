@@ -1,159 +1,113 @@
-<div class="bg-[#fcffe7] pl-2 pr-2 rounded mt-1" *ngIf="settings !==undefined && initSettings !==undefined">
+<div class="bg-[#fcffe7] pl-2 pr-2 rounded mt-1" *ngIf="settings !== undefined && initSettings !== undefined">
   <div class="container mx-auto flex justify-between items-center">
     <h1 class="font-semibold text-4xl text-[#2B3467]">Paramètres</h1>
-    <button
-      id="mute-button"
-      (click)="soundEffect()"
-      class="bg-[#2B3467] hover:bg-[#1a2357] text-white rounded-md px-5 py-2.5 font-semibold"
-    >
-      <i class="fa {{sound_effect ? 'fa-volume-up' : 'fa-volume-mute'}} text-5xl"></i>
+    <button id="mute-button" (click)="soundEffect()"
+      class="bg-[#2B3467] hover:bg-[#1a2357] text-white rounded-md px-5 py-2.5 font-semibold">
+      <i class="fa {{
+          sound_effect ? 'fa-volume-up' : 'fa-volume-mute'
+        }} text-5xl"></i>
       <!-- <span>{{ sound_effect ? 'Effet sonore désactivé' : 'Effet sonore activé' }}</span> -->
     </button>
-    <button
-      (click)="resetSettings()"
-      class="bg-[#EB455F] hover:bg-[#991c2f] text-white rounded-md px-5 py-5 text-2xl font-semibold"
-      id="reinitialiser"
-      >
+    <button (click)="resetSettings()"
+      class="bg-[#EB455F] hover:bg-[#991c2f] text-white rounded-md px-5 py-5 text-2xl font-semibold" id="reinitialiser">
       Réinitialiser
     </button>
   </div>
   <hr class="h-px mb-2 bg-gray-200 border-0 dark:bg-gray-700" />
 
   <div
-    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
-  >
+    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-36 mb-6 items-center justify-center">
     <div
-      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-2xl font-semibold border-r border-r-[#2b3467]"
-    >
-      <i class="fa-solid fa-arrow-pointer text-[#EB455F] mr-2"></i>
+      class="-mt-1 w-72 py-3 my-auto px-5 bg-[#2b3467] text-white h-36 text-3xl font-semibold border-r border-r-[#2b3467] flex justify-center items-center">
+      <i class="fa-solid fa-arrow-pointer text-[#EB455F] mr-5"></i>
       Options de clic de la souris
     </div>
-    <div class="button-container flex flex-grow h-20 my-auto">
-      <button
-        (click)="setMouseOption('doubleClique')"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'doubleClique' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_double_clic"
-        >
+    <div class="button-container flex flex-grow h-36 my-auto">
+      <button (click)="setMouseOption('doubleClique')" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          mouse_option === 'doubleClique'
+            ? 'bg-[#90C1DF] border border-[#EB455F]'
+            : ''
+        }}" id="activer_double_clic">
         Double-clique
       </button>
-      <button
-        (click)="setMouseOption('pressionLongue')"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'pressionLongue' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_pression_longue"
-        >
+      <button (click)="setMouseOption('pressionLongue')" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          mouse_option === 'pressionLongue'
+            ? 'bg-[#90C1DF] border border-[#EB455F]'
+            : ''
+        }}" id="activer_pression_longue">
         Pression longue
       </button>
-      <button
-        (click)="setMouseOption('keyboard_control')"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'keyboard_control' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_pression_longue"
-        >
+      <button (click)="setMouseOption('keyboard_control')" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          mouse_option === 'keyboard_control'
+            ? 'bg-[#90C1DF] border border-[#EB455F]'
+            : ''
+        }}" id="activer_pression_longue">
         Clics avec barre espace
       </button>
-      <button
-        (click)="setMouseOption('aucun')"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{mouse_option === 'aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="desactiver_souris"
-        >
+      <button (click)="setMouseOption('aucun')" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          mouse_option === 'aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''
+        }}" id="desactiver_souris">
         Aucun
       </button>
     </div>
   </div>
 
   <div
-    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-15 mb-3 items-center justify-center"
-  >
+    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-36 mb-6 items-center justify-center">
     <div
-      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-2xl font-semibold border-r border-r-[#2b3467]"
-    >
-      <i class="fa-solid fa-microphone text-[#EB455F] mr-2"></i>
+      class="-mt-1 w-72 py-3 my-auto px-5 bg-[#2b3467] text-white h-36 text-3xl font-semibold border-r border-r-[#2b3467] flex justify-center items-center">
+      <i class="fa-solid fa-microphone text-[#EB455F] mr-5"></i>
       Action au microphone
     </div>
-    <div class="button-container flex flex-grow h-20 my-auto">
-      <button
-        (click)="setMicrophone('withAntiBruit')"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='withAntiBruit' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="avec_antibruit"
-        >
+    <div class="button-container flex flex-grow h-36 my-auto">
+      <button (click)="setMicrophone('withAntiBruit')" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          microphone === 'withAntiBruit'
+            ? 'bg-[#90C1DF] border border-[#EB455F]'
+            : ''
+        }}" id="avec_antibruit">
         Activé avec anti-bruit
       </button>
-      <button
-        (click)="setMicrophone('withoutAntiBruit')"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='withoutAntiBruit' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="sans_antibruit"
-        >
+      <button (click)="setMicrophone('withoutAntiBruit')" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          microphone === 'withoutAntiBruit'
+            ? 'bg-[#90C1DF] border border-[#EB455F]'
+            : ''
+        }}" id="sans_antibruit">
         Activé sans anti-bruit
       </button>
-      <button
-        (click)="setMicrophone('aucun')"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{microphone==='aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="desactiver_microphone"
-        >
+      <button (click)="setMicrophone('aucun')" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          microphone === 'aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''
+        }}" id="desactiver_microphone">
         Aucun
       </button>
     </div>
   </div>
 
+
   <div
-    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
-  >
+    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-36 mb-6 items-center justify-center">
     <div
-      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
-    >
-      <i class="fa-solid fa-check text-[#EB455F] mr-2"></i>
+      class="-mt-1 w-72 py-3 my-auto px-5 bg-[#2b3467] text-white h-36 text-3xl font-semibold border-r border-r-[#2b3467] flex justify-center items-center">
+      <i class="fa-solid fa-check text-red-500 mr-5"></i>
       Confirmation avant de valider
     </div>
-    <div class="button-container flex flex-grow h-20 my-auto">
-      <button
-        (click)="setConfirmAnswer(true)"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_confirmation"
-        >
+    <div class="button-container flex flex-grow h-36 my-auto">
+      <button (click)="setConfirmAnswer(true)" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''
+        }}" id="activer_confirmation">
         Activé
       </button>
-      <button
-        (click)="setConfirmAnswer(false)"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="desactiver_confirmation"
-        >
+      <button (click)="setConfirmAnswer(false)" class="text-2xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          !confirm_answer ? 'bg-[#90C1DF] border border-[#EB455F]' : ''
+        }}" id="desactiver_confirmation">
         Désactivé
       </button>
     </div>
   </div>
 
-  <!-- <div
-    class="flex border bg-[#BAD7E9] border-[#2b3467] rounded-md overflow-hidden h-20 mb-3 items-center justify-center"
-  >
-    <div
-      class="-mt-1 w-80 pb-5  py-3 my-auto px-5 bg-[#2b3467] text-white h-20 text-xl font-semibold border-r border-r-[#2b3467]"
-    >
-      <i class="fa-solid fa-keyboard text-[#EB455F] mr-2"></i>
-      Clics avec barre espace
-    </div>
-    <div class="button-container flex flex-grow h-20 my-auto">
-      <button
-        (click)="setKeyBoardControl(true)"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="activer_espace"
-        >
-        Activé
-      </button>
-      <button
-        (click)="setKeyBoardControl(false)"
-        class="text-xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{!keyboard_control ? 'bg-[#90C1DF] border border-[#EB455F]' : ''}}"
-        id="desactiver_espace"
-        >
-        Désactivé
-      </button>
-    </div>
-  </div> -->
-
-  <div class="flex justify-center mt-3">
-    <button
-      (click)="saveSettings()"
-      class="px-8 py-4 font-semibold border border-[#EB455F] rounded-lg bg-[#BAD7E9] text-[#2b3467] hover:bg-[#2b3467] hover:text-white transition text-4xl"
-      id="sauvegarder"
-    >
+  <div class="flex justify-center mt-4">
+    <button (click)="saveSettings()"
+      class="px-16 py-16 font-semibold border border-[#EB455F] rounded-lg bg-[#BAD7E9] text-[#2b3467] hover:bg-[#2b3467] hover:text-white transition text-4xl"
+      id="sauvegarder">
       Sauvegarder
     </button>
   </div>
