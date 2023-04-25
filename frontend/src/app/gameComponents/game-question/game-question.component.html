@@ -2,15 +2,11 @@
 
 <div class="bg-[#2B3467] rounded-md h-full flex flex-col">
   <div class="flex pl-10 pr-10 justify-center items-center mb-2">
-    <img
-      src="{{ this.question.question_image }}"
-      *ngIf="this.question.question_image != undefined"
-      alt="image de la question"
-      class="h-40 image border border-solid border-white rounded-md mt-1"
-      id = "questionImage"
-    />
+    <img src="{{ this.question.question_image }}" *ngIf="this.question.question_image != undefined"
+      alt="image de la question" class="h-40 image border border-solid border-white rounded-md mt-1"
+      id="questionImage" />
     <div>
-      <h1 class="text-4xl text-white font-semibold leading-tight pl-2 pt-2" id ="questionText">
+      <h1 class="text-4xl text-white font-semibold leading-tight pl-2 pt-2" id="questionText">
         {{ this.question.question_text }}
       </h1>
     </div>
@@ -19,59 +15,48 @@
   <div class="flex-1 h-full">
     <div
       class="flex mx-auto gap-24 pl-2 pr-2 h-screen mx-6 my-6 items-stretch items-center justify-items-center justify-center"
-      *ngIf="this.answerSelected == -1"
-      id = "answers"
-    >
+      *ngIf="this.answerSelected == -1" id="answers">
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        (click)="selectAnswerClick(0)"
-        [attr.id]="normalizeText(question.answers[0].answer_text)"
-        data-number="un"
-        id = "answer1"
-      >
-        <app-game-answer [answer]="question.answers[0]" letter="A." />
+        (click)="selectAnswerClick(0)" [attr.id]="normalizeText(question.answers[0].answer_text)" data-number="un"
+        id="answer1">
+        <app-game-answer [answer]="question.answers[0]" letter="1." />
       </div>
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        (click)="selectAnswerClick(1)"
-        [attr.id]="normalizeText(question.answers[1].answer_text)"
-        data-number="deux"
-        id = "answer2"
-      >
-        <app-game-answer [answer]="question.answers[1]" letter="B." />
+        (click)="selectAnswerClick(1)" [attr.id]="normalizeText(question.answers[1].answer_text)" data-number="deux"
+        id="answer2">
+        <app-game-answer [answer]="question.answers[1]" letter="2." />
       </div>
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        *ngIf="this.question.answers.length >= 3"
-        (click)="selectAnswerClick(2)"
-        [attr.id]="normalizeText(question.answers[2].answer_text)"
-        data-number="trois"
-        id = "answer3"
-      >
-        <app-game-answer [answer]="question.answers[2]" letter="C." />
+        *ngIf="this.question.answers.length >= 3" (click)="selectAnswerClick(2)"
+        [attr.id]="normalizeText(question.answers[2].answer_text)" data-number="trois" id="answer3">
+        <app-game-answer [answer]="question.answers[2]" letter="3." />
       </div>
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        *ngIf="this.question.answers.length == 4"
-        (click)="selectAnswerClick(3)"
-        [attr.id]="normalizeText(question.answers[3].answer_text)"
-        data-number="quatre"
-        id = "answer4"
-      >
-        <app-game-answer [answer]="question.answers[3]" letter="D." />
+        *ngIf="this.question.answers.length == 4" (click)="selectAnswerClick(3)"
+        [attr.id]="normalizeText(question.answers[3].answer_text)" data-number="quatre" id="answer4">
+        <app-game-answer [answer]="question.answers[3]" letter="4." />
       </div>
     </div>
   </div>
 
   <div class="flex-shrink-0 h-full bg-[#90C1DF]">
     <div class="px-10 flex flex-col mt-10" *ngIf="this.answerSelected != -1">
-      <img *ngIf="this.question.explain_image != undefined" alt="image d'explication de réponse" src="{{ this.question.explain_image }}" class="h-44 max-w-full object-scale-down" id="questionExplainationImage" />
+      <img *ngIf="this.question.explain_image != undefined" alt="image d'explication de réponse"
+        src="{{ this.question.explain_image }}" class="h-44 max-w-full object-scale-down"
+        id="questionExplainationImage" />
       <span class="text-4xl text-[#2B3467] font-semibold justify-center items-center text-center">
-      La bonne réponse est :
-      <span class="text-4xl text-[#EB455F] font-bold ml-2">{{ this.goodAnswer }}</span>
-    </span>
-      <p class="text-4xl text-[#2B3467] font-semibold" id="questionExplainationText">{{ this.question.explain_text }}</p>
-      <button class="block mx-auto my-10 py-10 px-12 bg-[#EB455F] text-white text-2xl font-semibold rounded-full hover:bg-red-700 focus:outline-none focus:shadow-outline w-3/4 h-3/4" id="suivant" (click)="this.nextQuestion()">Suivant</button>
+        La bonne réponse est :
+        <span class="text-4xl text-[#EB455F] font-bold ml-2">{{ this.goodAnswer }}</span>
+      </span>
+      <p class="text-4xl text-[#2B3467] font-semibold" id="questionExplainationText">{{ this.question.explain_text }}
+      </p>
+      <button
+        class="block mx-auto my-10 py-10 px-12 bg-[#EB455F] text-white text-2xl font-semibold rounded-full hover:bg-red-700 focus:outline-none focus:shadow-outline w-3/4 h-3/4"
+        id="suivant" (click)="this.nextQuestion()">Suivant</button>
     </div>
   </div>
 </div>
