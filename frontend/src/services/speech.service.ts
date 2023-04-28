@@ -32,11 +32,8 @@ export class SpeechService {
       this.recognition.onresult = (event) => {
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;
-
-          if (this.userSettings.microphone === 'withAntiBruit') {
-            console.log(transcript);
-            this.speech.emit(transcript);
-          }
+          console.log(transcript);
+          this.speech.emit(transcript);
         }
       };
 

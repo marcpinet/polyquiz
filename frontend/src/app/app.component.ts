@@ -24,7 +24,7 @@ export class AppComponent implements OnDestroy {
   private boundOnDoubleClick: any;
   private boundOnMouseDown: any;
   private lastClickTimestamp: number = 0;
-
+  private click_sound: HTMLAudioElement = new Audio();
   constructor(
     public router: Router,
     private speechService: SpeechService,
@@ -32,6 +32,7 @@ export class AppComponent implements OnDestroy {
   ) {
     this.boundOnDoubleClick = this.onDoubleClick.bind(this);
     this.boundOnMouseDown = this.onMouseDown.bind(this);
+    this.click_sound.src = 'assets/sounds/mouse-click.mp3';
     this.settingsService.setCurrentUserSettings().then(() => {
       this.settingsSubscription = this.settingsService.settings$.subscribe(
         (settings) => {
@@ -121,11 +122,14 @@ export class AppComponent implements OnDestroy {
       }
     }
 
-    for (const combination of combinations.filter(
-      (c) => c.split('_').length === 1
-    )) {
-      if (this.findAndClickButton([combination], true)) {
-        return;
+    // For numbers in transcript
+    for (const digit of transcript) {
+      if (Number(digit) >= 0 && Number(digit) <= 4) {
+        // Convert digit to written number
+        const writtenNumber = this.normalizeText(digit);
+        if (this.findAndClickButton([writtenNumber], true)) {
+          return;
+        }
       }
     }
 
@@ -158,9 +162,9 @@ export class AppComponent implements OnDestroy {
     for (const word of words) {
       if (word && word.length > 0 && word[0] !== '#') {
         const buttonElement = document.querySelector(`#${word}`);
-
         if (Date.now() - this.lastClickTimestamp > 1000 && buttonElement) {
           buttonElement.dispatchEvent(new MouseEvent('click'));
+          this.play_sound();
           this.speechService.restart();
           this.lastClickTimestamp = Date.now();
           return true;
@@ -177,6 +181,7 @@ export class AppComponent implements OnDestroy {
 
           if (buttonElement) {
             buttonElement.dispatchEvent(new MouseEvent('click'));
+            this.play_sound();
             return true;
           }
         }
@@ -226,7 +231,11 @@ export class AppComponent implements OnDestroy {
       ) {
         event.preventDefault();
         event.stopPropagation();
+      } else {
+        this.play_sound();
       }
+    } else {
+      this.play_sound();
     }
   }
 
@@ -256,6 +265,7 @@ export class AppComponent implements OnDestroy {
       } else {
         element.dispatchEvent(clickEvent);
       }
+      this.play_sound();
       console.log('Clic sur', element);
     }
   }
@@ -329,6 +339,12 @@ export class AppComponent implements OnDestroy {
       if (event.button === 2) {
         event.preventDefault();
       }
+    }
+  }
+  private play_sound() {
+    if (this.userSettings.sound_effect) {
+      this.click_sound.load();
+      this.click_sound.play();
     }
   }
 }
