@@ -11,6 +11,86 @@
       >
         <li
           class="w-full h-1/3 flex-grow"
+          (click)="loadTabComponent('RESIDENT')"
+          id="resident-btn"
+        >
+          <button
+            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            data-tab="RESIDENT"
+          >
+            <i
+              class="fa-sharp fa-solid fa-hospital-user text-6xl align-middle"
+              [ngClass]="{
+                'text-[#EB455F]': currentTab === 'RESIDENT',
+                'text-[#2B3467]': currentTab !== 'RESIDENT'
+              }"
+              *ngIf="currentTab !== 'RESIDENT'"
+            ></i>
+            <i
+              class="fa-sharp fa-solid fa-hospital-user text-6xl align-middle"
+              [ngClass]="{ 'text-[#EB455F]': currentTab === 'RESIDENT' }"
+              *ngIf="currentTab === 'RESIDENT'"
+            ></i>
+            <span
+              class="font-semibold align-middle text-4xl"
+              [ngClass]="{
+                'text-[#EB455F]': currentTab === 'RESIDENT',
+                'text-[#2B3467]': currentTab !== 'RESIDENT'
+              }"
+              *ngIf="currentTab !== 'RESIDENT'"
+              >Mes résidents</span
+            >
+            <span
+              class="font-semibold align-middle text-4xl"
+              [ngClass]="{ 'text-white': currentTab === 'RESIDENT' }"
+              *ngIf="currentTab === 'RESIDENT'"
+              >Mes résidents</span
+            >
+          </button>
+        </li>
+
+        <li
+          class="w-full h-1/3 flex-grow"
+          (click)="loadTabComponent('GESTION_QUIZ')"
+          id="gestion-quiz-btn"
+        >
+          <button
+            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            data-tab="GESTION_QUIZ"
+          >
+            <i
+              class="fa-sharp fa-solid fa-pen text-6xl align-middle"
+              [ngClass]="{
+                'text-[#EB455F]': currentTab === 'GESTION_QUIZ',
+                'text-[#2B3467]': currentTab !== 'GESTION_QUIZ'
+              }"
+              *ngIf="currentTab !== 'GESTION_QUIZ'"
+            ></i>
+            <i
+              class="fa-sharp fa-solid fa-pen text-6xl align-middle"
+              [ngClass]="{ 'text-[#EB455F]': currentTab === 'GESTION_QUIZ' }"
+              *ngIf="currentTab === 'GESTION_QUIZ'"
+            ></i>
+            <span
+              class="font-semibold align-middle text-4xl"
+              [ngClass]="{
+                'text-[#EB455F]': currentTab === 'GESTION_QUIZ',
+                'text-[#2B3467]': currentTab !== 'GESTION_QUIZ'
+              }"
+              *ngIf="currentTab !== 'GESTION_QUIZ'"
+              >Gestion Quiz</span
+            >
+            <span
+              class="font-semibold align-middle text-4xl"
+              [ngClass]="{ 'text-white': currentTab === 'GESTION_QUIZ' }"
+              *ngIf="currentTab === 'GESTION_QUIZ'"
+              >Gestion Quiz</span
+            >
+          </button>
+        </li>
+
+        <li
+          class="w-full h-1/3 flex-grow"
           (click)="loadTabComponent('QUIZ')"
           id="result-btn"
         >
@@ -153,10 +233,12 @@
 
       <div class="flex items-center py-2 mr-2" (click)="navigateProfile()">
         <img
-          src="{{this.user.avatar}}"
+          src="{{ this.user.avatar }}"
           class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32"
         />
-        <p class="text-3xl font-bold text-[#2B3467] mt-1">{{this.user.firstName}} {{this.user.lastName}}</p>
+        <p class="text-3xl font-bold text-[#2B3467] mt-1">
+          {{ this.user.firstName }} {{ this.user.lastName }}
+        </p>
       </div>
     </nav>
     <!-- Begin of RightSide (Quiz, Parameters or Mes Resultats)-->

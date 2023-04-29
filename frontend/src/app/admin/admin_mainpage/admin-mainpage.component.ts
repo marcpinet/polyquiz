@@ -6,23 +6,27 @@ import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
 import { QuizListComponent } from 'src/app/quiz/quizlist/quizlist.component';
+import { GestionQuizComponent } from '../gestionQuiz/gestion-quiz.component';
+import { ResidentComponent } from '../mesResidents/resident.component';
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-mainpage.component.html',
 })
 export class AdminMainPage {
   user: User;
-  currentTab = 'QUIZ';
+  currentTab = 'RESIDENT';
   @ViewChild('resultBtn') resultBtn: ElementRef;
 
   ngAfterViewInit() {
-    this.loadTabComponent('QUIZ');
+    this.loadTabComponent('RESIDENT');
   }
 
   components = {
     QUIZ: QuizListComponent,
     RESULTAT: MesResultatsComponent,
     PARAMETRES: OptionsScreenComponent,
+    GESTION_QUIZ: GestionQuizComponent,
+    RESIDENT: ResidentComponent,
   };
 
   constructor(public router: Router, private authService: AuthService) {
@@ -54,10 +58,6 @@ export class AdminMainPage {
   navigateProfile() {
     this.router.navigate(['/profile']);
   }
-
-  // navigateHelp() {
-  //   this.router.navigate(['/help']);
-  // }
 
   helpPopup() {
     console.log('aaa');
