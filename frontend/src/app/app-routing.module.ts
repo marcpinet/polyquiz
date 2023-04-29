@@ -64,7 +64,7 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [RouteGuardAdminService],
     component: AdminMainPage,
-  }, //AdminRouteGuardService to be implemented later
+  },
 ];
 
 @NgModule({
