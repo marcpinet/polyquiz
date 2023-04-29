@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainPage } from './mainpage/mainpage-main/mainpage.component';
 import { ResultComponent } from './result/result.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './temporaryRegister/register.component';
+import { RegisterComponent } from './admin/addResident/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
 import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
 import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
