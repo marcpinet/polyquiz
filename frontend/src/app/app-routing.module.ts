@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuizDetailsComponent } from './quiz/quiz-details/quiz-details.component';
 import { QuizListComponent } from './quiz/quizlist/quizlist.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './temporaryRegister/register.component';
+import { RegisterComponent } from './admin/addResident/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
 import { MainPage } from './mainpage/mainpage-main/mainpage.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
@@ -56,7 +56,7 @@ const routes: Routes = [
   { path: 'help', canActivate: [RouteGuardService], component: HelpComponent },
 
   //temporary routes for testing
-  { path: 'tempo-register', component: RegisterComponent }, //only do this for the moment, to be implement only in admin's interface later
+
   { path: 'tempo-quiz-create', component: QuizCreateComponent },
 
   //admin routes
@@ -64,6 +64,11 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [RouteGuardAdminService],
     component: AdminMainPage,
+  },
+  {
+    path: 'admin/add-resident',
+    canActivate: [RouteGuardAdminService],
+    component: RegisterComponent,
   },
 ];
 
