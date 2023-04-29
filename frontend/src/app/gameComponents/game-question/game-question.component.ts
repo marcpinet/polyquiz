@@ -12,8 +12,8 @@ import { Settings } from 'src/models/settings.model';
   templateUrl: './game-question.component.html',
 })
 export class GameQuestionComponent implements OnInit {
-  audioObjR: HTMLAudioElement = new Audio();
-  audioObjW: HTMLAudioElement = new Audio();
+  // audioObjR: HTMLAudioElement = new Audio();
+  // audioObjW: HTMLAudioElement = new Audio();
   answerSelected = -1;
   microphoneActivated = false;
   private userSettings: Settings;
@@ -26,8 +26,8 @@ export class GameQuestionComponent implements OnInit {
 
   constructor(private settingsService: SettingService) {
     this.question = {} as Question;
-    this.audioObjR.src = '../../assets/sounds/right_answer.mp3';
-    this.audioObjW.src = '../../assets/sounds/wrong_answer.mp3';
+    // this.audioObjR.src = '../../assets/sounds/right_answer.mp3';
+    // this.audioObjW.src = '../../assets/sounds/wrong_answer.mp3';
     this.settingsService.setCurrentUserSettings().then(() => {
       this.settingsSubscription = this.settingsService.settings$.subscribe(
         (settings) => {
@@ -39,23 +39,23 @@ export class GameQuestionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  playAudio() {
-    if (this.userSettings && !this.userSettings.sound_effect) return;
+  // playAudio() {
+  //   if (this.userSettings && !this.userSettings.sound_effect) return;
 
-    const correctAnswerIndex = this.question.answers?.findIndex(
-      (answer) => answer.isCorrect
-    );
+  //   const correctAnswerIndex = this.question.answers?.findIndex(
+  //     (answer) => answer.isCorrect
+  //   );
 
-    if (this.answerSelected === -1) return;
+  //   if (this.answerSelected === -1) return;
 
-    if (correctAnswerIndex && this.answerSelected === correctAnswerIndex) {
-      this.audioObjR.load();
-      this.audioObjR.play();
-    } else {
-      this.audioObjW.load();
-      this.audioObjW.play();
-    }
-  }
+  //   if (correctAnswerIndex && this.answerSelected === correctAnswerIndex) {
+  //     this.audioObjR.load();
+  //     this.audioObjR.play();
+  //   } else {
+  //     this.audioObjW.load();
+  //     this.audioObjW.play();
+  //   }
+  // }
 
   get goodAnswer(): string | undefined {
     const correctAnswer = this.question.answers?.find(
@@ -99,14 +99,14 @@ export class GameQuestionComponent implements OnInit {
             timer: 1500,
           });
           this.answerSelected = answer;
-          this.playAudio();
+          //this.playAudio();
         } else if (result.isDenied) {
           Swal.fire("La réponse n'a pas été enregistrée", '', 'info');
         }
       });
     } else {
       this.answerSelected = answer;
-      this.playAudio();
+      //this.playAudio();
     }
   }
 
