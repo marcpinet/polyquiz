@@ -1,6 +1,6 @@
 <!-- TODO: To redo this when implemented carousel into quizlist -->
 <div>
-  <app-navbar *ngIf="router.url !== '/' && router.url !== '/login'"></app-navbar>
+  <app-navbar *ngIf="router.url !== '/' && router.url !== '/login' && router.url!='/admin'"></app-navbar>
   <div *ngIf="
       router.url == '/quizlist' ||
       router.url == '/tempo-register' ||

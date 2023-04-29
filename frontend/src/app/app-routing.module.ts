@@ -15,7 +15,7 @@ import { RouteGuardService } from 'src/services/route-guard.service';
 import { LoggedInRouteGuardService } from 'src/services/loggedin-route-guard-service';
 import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
-
+import { RouteGuardAdminService } from 'src/services/route-guard-admin.service';
 const routes: Routes = [
   {
     path: 'quizlist',
@@ -60,7 +60,11 @@ const routes: Routes = [
   { path: 'tempo-quiz-create', component: QuizCreateComponent },
 
   //admin routes
-  { path: 'admin', canActivate: [RouteGuardService], component: AdminMainPage }, //AdminRouteGuardService to be implemented later
+  {
+    path: 'admin',
+    canActivate: [RouteGuardAdminService],
+    component: AdminMainPage,
+  }, //AdminRouteGuardService to be implemented later
 ];
 
 @NgModule({
