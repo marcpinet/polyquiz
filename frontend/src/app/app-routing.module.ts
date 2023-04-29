@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouteGuardService } from 'src/services/route-guard.service';
 import { LoggedInRouteGuardService } from 'src/services/loggedin-route-guard-service';
 import { HelpComponent } from './help/help.component';
+import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,9 @@ const routes: Routes = [
   //temporary routes for testing
   { path: 'tempo-register', component: RegisterComponent }, //only do this for the moment, to be implement only in admin's interface later
   { path: 'tempo-quiz-create', component: QuizCreateComponent },
+
+  //admin routes
+  { path: 'admin', canActivate: [RouteGuardService], component: AdminMainPage }, //AdminRouteGuardService to be implemented later
 ];
 
 @NgModule({

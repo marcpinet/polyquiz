@@ -23,6 +23,9 @@ import { QuizDetailsCarouselComponent } from './quiz/quiz-details-carousel/quiz-
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.component';
 import { HelpComponent } from './help/help.component';
+import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
+import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
+import { ResidentComponent } from './admin/mesResidents/resident.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,9 @@ import { HelpComponent } from './help/help.component';
     NavbarComponent,
     ThemeCarouselComponent,
     HelpComponent,
+    AdminMainPage,
+    GestionQuizComponent,
+    ResidentComponent,
   ],
   imports: [
     BrowserModule,
