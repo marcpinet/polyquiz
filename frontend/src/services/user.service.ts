@@ -67,6 +67,11 @@ export class UserService {
     );
   }
 
+  getUserFromResident(resident: Resident): User {
+    console.log(resident);
+    return this.users.find((user) => user.id == resident.userId);
+  }
+
   createResident(resident: Resident, user: User): void {
     forkJoin([
       //create both resident and user or none
