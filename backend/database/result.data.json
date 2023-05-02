@@ -318,5 +318,95 @@
     "wrong_answers": 1,
     "play_time": 14,
     "time_per_question": 4.666666666666667
+  },
+  {
+    "id": 1683051426102,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:17:06.079Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 3,
+    "time_per_question": 1
+  },
+  {
+    "id": 1683051480006,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:17:59.967Z",
+    "user_id": 1,
+    "right_answers": 1,
+    "wrong_answers": 2,
+    "play_time": 18,
+    "time_per_question": 6
+  },
+  {
+    "id": 1683052464479,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:34:24.450Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 13,
+    "time_per_question": 4.333333333333333
+  },
+  {
+    "id": 1683052926909,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:42:06.889Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 11,
+    "time_per_question": 3.6666666666666665
+  },
+  {
+    "id": 1683052945403,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:42:25.383Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 16,
+    "time_per_question": 5.333333333333333
+  },
+  {
+    "id": 1683053039732,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:43:59.701Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 12,
+    "time_per_question": 4
+  },
+  {
+    "id": 1683053565521,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:52:45.480Z",
+    "user_id": 1,
+    "right_answers": 1,
+    "wrong_answers": 2,
+    "play_time": 14,
+    "time_per_question": 4.666666666666667
+  },
+  {
+    "id": 1683053619285,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T18:53:39.171Z",
+    "user_id": 1,
+    "right_answers": 1,
+    "wrong_answers": 2,
+    "play_time": 22,
+    "time_per_question": 7.333333333333333
+  },
+  {
+    "id": 1683054363065,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-02T19:06:03.021Z",
+    "user_id": 1,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 49,
+    "time_per_question": 16.333333333333332
   }
 ]
