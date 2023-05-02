@@ -10,12 +10,14 @@ import { Settings } from 'src/models/settings.model';
 @Component({
   selector: 'app-game-question',
   templateUrl: './game-question.component.html',
+  styleUrls: ['./game-question.component.scss'],
 })
 export class GameQuestionComponent implements OnInit {
   // audioObjR: HTMLAudioElement = new Audio();
   // audioObjW: HTMLAudioElement = new Audio();
   answerSelected = -1;
   microphoneActivated = false;
+  buttonStates: boolean[] = [false, false, false, false];
   private userSettings: Settings;
   private settingsSubscription: Subscription;
 
@@ -74,40 +76,44 @@ export class GameQuestionComponent implements OnInit {
   }
 
   selectAnswerClick(answer: number) {
-    if (this.userSettings.confirm_answer) {
-      let htmlTxt = `<h1 class="text-6xl text-[#2B3467] font-bold mb-4">Vous voulez choisir ${this.question.answers[answer].answer_text} ?</h1>`;
-      if (this.question.answers[answer].answer_image) {
-        htmlTxt += `<img src="${this.question.answers[answer].answer_image}" class="w-1/2 mx-auto">`;
-      }
-      Swal.fire({
-        html: htmlTxt,
-        showDenyButton: true,
-        showCancelButton: false,
-        width: 1700,
-        padding: '4em',
-        confirmButtonText:
-          '<span id="oui" style="font-size: 150px; padding: 150px 150px; ">Oui</span>',
-        denyButtonText:
-          '<span id="non" style="font-size: 150px; padding: 150px 150px;">Non</span>', // add non-breaking spaces between span tags to create more space between buttons
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Votre réponse a été enregistrée',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          this.answerSelected = answer;
-          //this.playAudio();
-        } else if (result.isDenied) {
-          Swal.fire("La réponse n'a pas été enregistrée", '', 'info');
+    this.buttonStates[answer] = true;
+    setTimeout(() => {
+      if (this.userSettings.confirm_answer) {
+        let htmlTxt = `<h1 class="text-6xl text-[#2B3467] font-bold mb-4">Vous voulez choisir ${this.question.answers[answer].answer_text} ?</h1>`;
+        if (this.question.answers[answer].answer_image) {
+          htmlTxt += `<img src="${this.question.answers[answer].answer_image}" class="w-1/2 mx-auto">`;
         }
-      });
-    } else {
-      this.answerSelected = answer;
-      //this.playAudio();
-    }
+        Swal.fire({
+          html: htmlTxt,
+          showDenyButton: true,
+          showCancelButton: false,
+          width: 1700,
+          padding: '4em',
+          confirmButtonText:
+            '<span id="oui" style="font-size: 150px; padding: 150px 150px; ">Oui</span>',
+          denyButtonText:
+            '<span id="non" style="font-size: 150px; padding: 150px 150px;">Non</span>', // add non-breaking spaces between span tags to create more space between buttons
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Votre réponse a été enregistrée',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            this.answerSelected = answer;
+            //this.playAudio();
+          } else if (result.isDenied) {
+            Swal.fire("La réponse n'a pas été enregistrée", '', 'info');
+          }
+        });
+      } else {
+        this.answerSelected = answer;
+        //this.playAudio();
+      }
+      this.buttonStates[answer] = false;
+    }, 1500);
   }
 
   protected normalizeText(text: string): string {
