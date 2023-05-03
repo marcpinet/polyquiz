@@ -7,16 +7,13 @@ import { User } from 'src/models/user.model';
   selector: 'app-residents-list-tr',
   templateUrl: './resident-list-tr.component.html',
 })
-export class ResidentListTrComponent implements OnInit {
+export class ResidentListTrComponent {
   @Input() resident: Resident;
-  user: User;
+  @Input() user: User;
+
   constructor(private router: Router, public userService: UserService) {}
 
   onClick() {
     console.log(this.resident.id + 'clicked');
-  }
-
-  ngOnInit() {
-    this.user = this.userService.getUserFromResident(this.resident);
   }
 }

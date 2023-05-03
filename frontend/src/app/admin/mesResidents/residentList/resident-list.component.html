@@ -16,8 +16,10 @@
           <th scope="col" class="px-6 py-4 font-medium text-[#2B3467] text-xl">Résident</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-100 border-t border-[#2B3467]" *ngFor="let resident of residentsList">
-          <app-residents-list-tr [resident]="resident"></app-residents-list-tr>
+      <tbody class="divide-y divide-gray-100 border-t border-[#2B3467]" *ngFor="let resident of residentsList; let i = index" >
+        <ng-container *ngIf="usersList[i]">
+          <app-residents-list-tr [resident]="resident" [user]="usersList[i]"></app-residents-list-tr>
+        </ng-container>
       </tbody>
     </table>
   </div>

@@ -73,23 +73,41 @@ export class UserService {
   }
 
   createResident(resident: Resident, user: User): void {
-    forkJoin([
-      //create both resident and user or none
-      this.addUser(user),
-      this.addResident(resident),
-    ]).subscribe({
+    forkJoin([this.addUser(user), this.addResident(resident)]).subscribe({
       next: ([addedUser, addedResident]) => {
         console.log('Both user and resident were added successfully');
         this.users.push(addedUser);
         this.users$.next(this.users);
         this.residents.push(addedResident);
         this.residents$.next(this.residents);
+
+        // Update the resident's userId to the id of the added user
+        addedResident.userId = addedUser.id;
+
+        // Update the resident on the server with the new userId
+        this.http
+          .put<Resident>(
+            `${this.residentUrl}/${addedResident.id}`,
+            addedResident,
+            this.httpOptions
+          )
+          .subscribe({
+            next: () => {
+              console.log('Resident was updated with new userId');
+            },
+            error: (error) => {
+              console.error('Failed to update resident with new userId', error);
+            },
+            complete: () => {
+              console.log('Resident update completed');
+            },
+          });
       },
       error: (error) => {
-        console.error('Failed to create resident', error);
+        console.error('Failed to create resident and user', error);
       },
       complete: () => {
-        console.log('Resident creation completed');
+        console.log('Resident and user creation completed');
       },
     });
   }
