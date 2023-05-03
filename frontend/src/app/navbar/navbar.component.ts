@@ -18,7 +18,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {}
 
   navigateMain() {
-    this.router.navigate(['/']);
+    if (this.user.userType == 'admin') {
+      this.router.navigate(['/admin']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
   navigateProfile() {
