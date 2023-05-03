@@ -1,6 +1,6 @@
 <ng-container *ngIf="user!=undefined && resident!=undefined">
   <div
-    class="relative max-w-md mx-auto md:max-w-4xl mt-6 min-w-0 break-words bg-[#BAD7E9] w-full mb-6 shadow-lg rounded-xl scale-60">
+    class="m-6 mr-16 bg-[#90C1DF] w-full shadow-lg rounded-xl ">
     <div class="px-6 mt-16">
       <div class="flex flex-wrap justify-center">
         <div class="w-full flex justify-center">
@@ -17,20 +17,20 @@
       </div>
 
       <div class="flex justify-center">
-        <button class="bg-white hover:bg-[#90C1DF] text-[#EB455F] font-bold py-6 px-12 rounded-lg text-2xl"
+        <button class="bg-[#2B3467] text-white font-bold py-6 px-12 rounded-lg text-2xl"
           (click)="navigateModifyUser()">
-          <i class="fa-solid fa-pen"></i>
+          <i class="fa-solid fa-pen text-[#EB455F]"></i>
           Modifier le profil
         </button>
       </div>
 
       <div class="flex gap-6 justify-center mt-6">
-        <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
+        <div class="bg-white text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
           <i class="fa-sharp fa-solid fa-cake-candles"></i>
           Date de naissance
           <div class="text-[#EB455F]">{{this.resident.dateOfBirth}}</div>
         </div>
-        <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
+        <div class="bg-white text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
           <i class="fa-solid fa-venus-mars"></i>
           Sexe
           <div class="text-[#EB455F]">{{this.resident.sexe}}</div>
@@ -47,7 +47,7 @@
 
       <!-- Stats -->
       <h1 class="text-3xl text-[#2b3467] font-bold mt-2">Statistiques</h1>
-      
+
 
     </div>
   </div>
