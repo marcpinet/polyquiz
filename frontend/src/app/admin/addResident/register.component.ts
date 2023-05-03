@@ -53,7 +53,6 @@ export class RegisterComponent implements OnInit {
       .map((symptome) => symptome.value);
 
     const resident: Resident = {
-      userId: Date.now(),
       id: this.residentForm.value.residentNum,
       sexe: this.residentForm.value.sexe,
       symptome: symptomeArray,

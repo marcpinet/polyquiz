@@ -26,6 +26,7 @@ import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from './admin/mesResidents/resident.component';
+import { ResidentListComponent } from './admin/mesResidents/residentList/resident-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { ResidentComponent } from './admin/mesResidents/resident.component';
     AdminMainPage,
     GestionQuizComponent,
     ResidentComponent,
+    ResidentListComponent,
   ],
   imports: [
     BrowserModule,
