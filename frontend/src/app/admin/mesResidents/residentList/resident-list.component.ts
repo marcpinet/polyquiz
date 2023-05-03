@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Resident } from 'src/models/resident.model';
 import { UserService } from 'src/services/user.service';
@@ -7,7 +7,7 @@ import { User } from 'src/models/user.model';
   selector: 'app-residents-list',
   templateUrl: './resident-list.component.html',
 })
-export class ResidentListComponent implements OnInit {
+export class ResidentListComponent {
   public residentsList: Resident[] = [];
   public usersList: User[] = [];
 
@@ -20,5 +20,7 @@ export class ResidentListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  navigateResidentStats(userId: number) {
+    this.router.navigate(['/admin/stats-resident/', userId]);
+  }
 }

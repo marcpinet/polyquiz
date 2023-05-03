@@ -23,8 +23,8 @@
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-100 border-t border-[#2B3467]"
-        *ngFor="let resident of residentsList; let i = index">
-        <ng-container *ngIf="usersList[i]">
+        *ngFor="let resident of residentsList; let i = index" (click)="navigateResidentStats(resident.id)">
+        <ng-container *ngIf="usersList[i]" >
           <tr class="hover:bg-[#90C1DF]">
             <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">{{ resident.id }}</td>
             <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">

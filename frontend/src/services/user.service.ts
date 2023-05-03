@@ -117,4 +117,8 @@ export class UserService {
       return 'assets/user.png'; //TODO: path works?
     } else return user.avatar;
   }
+
+  getResidentById(id: number): Resident {
+    return this.residents.find((resident) => resident.id == id);
+  }
 }

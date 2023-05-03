@@ -16,6 +16,7 @@ import { LoggedInRouteGuardService } from 'src/services/loggedin-route-guard-ser
 import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { RouteGuardAdminService } from 'src/services/route-guard-admin.service';
+import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
 const routes: Routes = [
   {
     path: 'quizlist',
@@ -69,6 +70,11 @@ const routes: Routes = [
     path: 'admin/add-resident',
     canActivate: [RouteGuardAdminService],
     component: RegisterComponent,
+  },
+  {
+    path: 'admin/stats-resident/:id',
+    canActivate: [RouteGuardAdminService],
+    component: StatsResidentComponent,
   },
 ];
 
