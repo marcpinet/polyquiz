@@ -10,6 +10,7 @@ import { UserService } from 'src/services/user.service';
 export class StatsResidentComponent {
   resident: Resident;
   user: User;
+  symptomes: string[];
   constructor(
     public router: Router,
     private userService: UserService,
@@ -17,6 +18,9 @@ export class StatsResidentComponent {
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.resident = this.userService.getResidentById(parseInt(id));
+    this.symptomes = this.resident.symptome;
     this.user = this.userService.getUserFromResident(this.resident);
   }
+
+  navigateModifyUser() {}
 }
