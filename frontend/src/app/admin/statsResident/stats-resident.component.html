@@ -2,13 +2,13 @@
   <div class="w-4/5 m-6 bg-[#90C1DF] shadow-lg rounded-xl pl-6 pb-6 mx-auto">
     <div class="px-6 mt-16">
       <div class="flex flex-wrap justify-center">
-        <div class="w-full flex justify-center">
-          <div class="relative mr-5">
+        <div class="w-full flex justify-center mr-16">
+          <div class="relative">
             <img src="{{ this.user.avatar }}"
               class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[200px]" />
           </div>
         </div>
-        <div class="w-full text-center mt-24">
+        <div class="w-full text-center mt-32">
           <h3 class="text-3xl text-[#2b3467] font-bold leading-normal mb-1">
             {{ this.user.firstName }} {{ this.user.lastName }}
           </h3>
@@ -22,13 +22,13 @@
         </button>
       </div>
 
-      <div class="flex gap-6 justify-center mt-6">
-        <div class="bg-white text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
+      <div class="flex justify-center mt-6">
+        <div class="bg-white text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl mr-2">
           <i class="fa-sharp fa-solid fa-cake-candles"></i>
           Date de naissance
           <div class="text-[#EB455F]">{{ this.resident.dateOfBirth }}</div>
         </div>
-        <div class="bg-white text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl">
+        <div class="bg-white text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl ml-2">
           <i class="fa-solid fa-venus-mars"></i>
           Sexe
           <div class="text-[#EB455F]">{{ this.resident.sexe }}</div>
@@ -44,34 +44,34 @@
       </span>
 
       <!-- Stats -->
-      <h1 class="text-3xl text-[#2b3467] font-bold mt-2">Statistiques</h1>
+      <h1 class="text-3xl text-[#2b3467] font-bold mt-2 mb-1">Statistiques</h1>
 
-      <div class="w-2/3 mx-auto bg-white rounded-xl">
+      <div class="w-4/5 mx-auto bg-white rounded-xl">
         <canvas baseChart class="chart" [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType"
           (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
 
-      <div class="w-2/3 mx-auto bg-white rounded-xl mt-2">
+      <div class="w-4/5 mx-auto bg-white rounded-xl mt-2">
         <div class="p-2 rounded-xl">
-          <div class="flex border-b-2 border-gray-300 py-2">
+          <div class="flex border-b-2 border-[#2B3467] py-2">
           <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Temps moyen par question</div>
           <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">1m3s</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
-          <div class="flex border-b-2 border-gray-300 py-2">
+          <div class="flex border-b-2 border-[#2B3467] py-2">
           <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés</div>
           <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">25</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
-          <div class="flex border-b-2 border-gray-300 py-2">
+          <div class="flex border-b-2 border-[#2B3467] py-2">
           <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés moyen par question</div>
           <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">0.25 (1 chaque 4 questions)</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
-          <div class="flex border-b-2 border-gray-300 py-2">
+          <div class="flex border-b-2 border-[#2B3467] py-2">
           <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de quiz joués</div>
           <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">120</div>
           </div>
