@@ -52,6 +52,13 @@ export class QuizListComponent implements OnInit {
     }
   }
 
+  resetFilters(): void {
+    this.selectedDifficulty = 'Difficulté';
+    this.selectedTheme = 'Thème';
+    this.selectedDone = 'Fait/Non fait';
+    this.filteredQuizList = [...this.quizList];
+  }
+
   onDoneClick(status: string): void {
     this.selectedDone = status;
     this.showDoneFilter = false;
