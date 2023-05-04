@@ -71,6 +71,12 @@ export class QuizListComponent implements OnInit {
     // Implémenter la logique de filtrage du thème ici
   }
 
+  randomQuiz(): void {
+    const randomIndex = Math.floor(Math.random() * this.quizList.length);
+    const randomQuiz = this.quizList[randomIndex];
+    this.filteredQuizList = [randomQuiz];
+  }
+
   populateThemes(): void {
     const themeIds = new Set<number>();
     for (const quiz of this.quizList) {
