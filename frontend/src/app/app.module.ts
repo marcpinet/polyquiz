@@ -27,6 +27,8 @@ import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from './admin/mesResidents/resident.component';
 import { ResidentListComponent } from './admin/mesResidents/residentList/resident-list.component';
+import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,7 @@ import { ResidentListComponent } from './admin/mesResidents/residentList/residen
     GestionQuizComponent,
     ResidentComponent,
     ResidentListComponent,
+    StatsResidentComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { ResidentListComponent } from './admin/mesResidents/residentList/residen
     HttpClientModule,
     FormsModule,
     IvyCarouselModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -49,5 +49,14 @@
     ],
     "dateOfBirth": "1940-05-02",
     "userId": 1683119138951
+  },
+  {
+    "sexe": "masculin",
+    "symptome": [
+      "autres"
+    ],
+    "dateOfBirth": "1933-03-20",
+    "id": 1683121125662,
+    "userId": 1683121125734
   }
 ]

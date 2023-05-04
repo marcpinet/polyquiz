@@ -34,5 +34,14 @@
     "userType": "patient",
     "avatar": "https://t4.ftcdn.net/jpg/02/91/45/39/360_F_291453953_sR3vaTlxA022LtxovSOnnO4sW5VX5mto.jpg",
     "id": 1683119138951
+  },
+  {
+    "userName": "roshiroshi",
+    "firstName": "Master",
+    "lastName": "Roshi",
+    "password": "$2b$10$VuLPNvjpx7qzAbeEe0n9dum9b3QTf51j2zG24qV4702WOCDQEc8DO",
+    "userType": "patient",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGZc7ykoSBZ2rnLSUsfsgXOQl1x-Q9OQSoA&usqp=CAU",
+    "id": 1683121125734
   }
 ]
