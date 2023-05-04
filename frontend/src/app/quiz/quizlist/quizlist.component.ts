@@ -21,6 +21,9 @@ export class QuizListComponent implements OnInit {
   public selectedDifficulty: string = 'Difficulté';
   public selectedDone: string = 'Fait / Non fait';
   public selectedTheme: string = 'Thème';
+  public showDurationFilter = false;
+  public selectedDuration = 'Durée';
+  public durations = ['< 5 min', '5 min < 10 min', '> 10 min'];
 
   public filteredQuizList: Quiz[] = [];
 
@@ -42,20 +45,42 @@ export class QuizListComponent implements OnInit {
     this.filterQuizzes();
   }
 
+  onDurationClick(duration: string): void {
+    this.selectedDuration = duration;
+    this.showDurationFilter = false;
+    this.filterQuizzes();
+  }
+
   filterQuizzes(): void {
-    if (this.selectedDifficulty === 'Difficulté') {
-      this.filteredQuizList = [...this.quizList];
-    } else {
-      this.filteredQuizList = this.quizList.filter(
-        (quiz) => quiz.difficulty === this.selectedDifficulty
-      );
-    }
+    this.filteredQuizList = this.quizList.filter((quiz) => {
+      let difficultyMatch = true;
+      let doneMatch = true;
+      let themeMatch = true;
+      let durationMatch = true;
+
+      if (this.selectedDifficulty !== 'Difficulté') {
+        difficultyMatch = quiz.difficulty === this.selectedDifficulty;
+      }
+
+      if (this.selectedDuration !== 'Durée') {
+        if (this.selectedDuration === '< 5 min') {
+          durationMatch = quiz.estimated_time < 5;
+        } else if (this.selectedDuration === '5 min < 10 min') {
+          durationMatch = quiz.estimated_time >= 5 && quiz.estimated_time <= 10;
+        } else if (this.selectedDuration === '> 10 min') {
+          durationMatch = quiz.estimated_time > 10;
+        }
+      }
+
+      return difficultyMatch && doneMatch && themeMatch && durationMatch;
+    });
   }
 
   resetFilters(): void {
     this.selectedDifficulty = 'Difficulté';
     this.selectedTheme = 'Thème';
     this.selectedDone = 'Fait/Non fait';
+    this.selectedDuration = 'Durée';
     this.filteredQuizList = [...this.quizList];
   }
 
