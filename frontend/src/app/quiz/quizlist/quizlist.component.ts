@@ -13,6 +13,17 @@ export class QuizListComponent implements OnInit {
   public quizList: Quiz[] = [];
   public themes: Theme[] = [];
 
+  public showDifficultyFilter = false;
+  public showDoneFilter = false;
+  public showThemeFilter = false;
+  public difficulties = ['Facile', 'Moyen', 'Difficile'];
+  public done = ['Fait', 'Non fait'];
+  public selectedDifficulty: string = 'Difficulté';
+  public selectedDone: string = 'Fait / Non fait';
+  public selectedTheme: string = 'Thème';
+
+  public filteredQuizList: Quiz[] = [];
+
   constructor(
     private router: Router,
     public quizService: QuizService,
@@ -20,8 +31,37 @@ export class QuizListComponent implements OnInit {
   ) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
+      this.filteredQuizList = [...this.quizList]; // Initialise la liste filtrée avec tous les quiz
       this.populateThemes();
     });
+  }
+
+  onDifficultyClick(difficulty: string): void {
+    this.selectedDifficulty = difficulty;
+    this.showDifficultyFilter = false;
+    this.filterQuizzes();
+  }
+
+  filterQuizzes(): void {
+    if (this.selectedDifficulty === 'Difficulté') {
+      this.filteredQuizList = [...this.quizList];
+    } else {
+      this.filteredQuizList = this.quizList.filter(
+        (quiz) => quiz.difficulty === this.selectedDifficulty
+      );
+    }
+  }
+
+  onDoneClick(status: string): void {
+    this.selectedDone = status;
+    this.showDoneFilter = false;
+    // Implémenter la logique de filtrage du status ici
+  }
+
+  onThemeClick(theme: Theme): void {
+    this.selectedTheme = theme.name;
+    this.showThemeFilter = false;
+    // Implémenter la logique de filtrage du thème ici
   }
 
   populateThemes(): void {

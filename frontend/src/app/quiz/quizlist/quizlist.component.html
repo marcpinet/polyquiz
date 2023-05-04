@@ -1,12 +1,73 @@
 <div class="h-screen flex flex-col">
   <div class="my-1">
     <div class="font-semibold text-2xl text-[#2B3467] ml-2">Filtres :</div>
+    <div class="flex">
+      <div class="relative">
+        <button
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+          (click)="showDifficultyFilter = !showDifficultyFilter"
+        >
+          {{ selectedDifficulty }}
+        </button>
+        <div
+          class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white divide-y divide-gray-100"
+          *ngIf="showDifficultyFilter"
+        >
+          <button
+            *ngFor="let difficulty of difficulties"
+            class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            (click)="onDifficultyClick(difficulty)"
+          >
+            {{ difficulty }}
+          </button>
+        </div>
+      </div>
+      <div class="relative mx-2">
+        <button
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+          (click)="showDoneFilter = !showDoneFilter"
+        >
+          {{ selectedDone }}
+        </button>
+        <div
+          class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white divide-y divide-gray-100"
+          *ngIf="showDoneFilter"
+        >
+          <button
+            *ngFor="let status of done"
+            class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            (click)="onDoneClick(status)"
+          >
+            {{ status }}
+          </button>
+        </div>
+      </div>
+      <div class="relative">
+        <button
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+          (click)="showThemeFilter = !showThemeFilter"
+        >
+          {{ selectedTheme }}
+        </button>
+        <div
+          class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white divide-y divide-gray-100"
+          *ngIf="showThemeFilter"
+        >
+          <button
+            *ngFor="let theme of themes"
+            class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            (click)="onThemeClick(theme)"
+          >
+            {{ theme.name }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="flex-1 overflow-y-auto">
     <ul>
-      <li *ngFor="let quiz of quizList">
+      <li *ngFor="let quiz of filteredQuizList">
         <app-quiz-details [quiz]="quiz"></app-quiz-details>
       </li>
     </ul>
   </div>
-</div>
