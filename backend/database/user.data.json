@@ -43,5 +43,23 @@
     "userType": "patient",
     "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGZc7ykoSBZ2rnLSUsfsgXOQl1x-Q9OQSoA&usqp=CAU",
     "id": 1683121125734
+  },
+  {
+    "userName": "emmaw",
+    "firstName": "Watson",
+    "lastName": "Emma",
+    "password": "$2b$10$h0kexUoQiRdWwcCJ6exTMeSsL1tsZavVj5uW5pOa8C/8uMJbsyGJG",
+    "userType": "patient",
+    "avatar": "https://cdn.pixabay.com/photo/2020/03/31/05/41/phone-4986359__480.jpg",
+    "id": 1683322819612
+  },
+  {
+    "userName": "timmyt",
+    "firstName": "Thompson",
+    "lastName": "Timmy",
+    "password": "$2b$10$5/Nz63UV559PYX5QUGC61e/nLL5bkxh/YWTnN6LI2GA4E82OoBJSi",
+    "userType": "patient",
+    "avatar": "https://m.economictimes.com/thumb/msid-62307600,width-1200,height-900,resizemode-4,imgsize-152954/old-man.jpg",
+    "id": 1683322954499
   }
 ]
