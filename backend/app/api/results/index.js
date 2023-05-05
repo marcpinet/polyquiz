@@ -22,6 +22,15 @@ router.get("/:resultId", (req, res) => {
   }
 });
 
+router.get("/user/:userId", (req, res) => {
+  try {
+    res.status(200).json(Result.getByUserId(req.params.userId));
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     //TODO: Update future stats here

@@ -29,6 +29,7 @@ import { ResidentComponent } from './admin/mesResidents/resident.component';
 import { ResidentListComponent } from './admin/mesResidents/residentList/resident-list.component';
 import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
 import { NgChartsModule } from 'ng2-charts';
+import { PlayedQuizComponent } from './playedQuiz/played-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { NgChartsModule } from 'ng2-charts';
     ResidentComponent,
     ResidentListComponent,
     StatsResidentComponent,
+    PlayedQuizComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-
+import { User } from 'src/models/user.model';
 @Injectable({
   providedIn: 'root',
 })
