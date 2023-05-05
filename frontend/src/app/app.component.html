@@ -3,7 +3,7 @@
   <div *ngIf="
       router.url == '/tempo-register' ||
       router.url == '/profile' ||
-      router.url.startsWith('/admin/') ||
+      router.url.startsWith('/admin') ||
       router.url == '/'
     ">
     <div>
@@ -14,7 +14,7 @@
   <div *ngIf="
       router.url !== '/tempo-register' &&
       router.url !== '/profile' &&
-      !router.url.startsWith('/admin/') &&
+      !router.url.startsWith('/admin') &&
       router.url !== '/'
     ">
     <div class="w-full h-screen overflow-hidden">
