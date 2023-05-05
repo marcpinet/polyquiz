@@ -4,7 +4,7 @@ import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { ResultService } from 'src/services/result.service';
 import { Result } from 'src/models/result-quiz.model';
-
+import { AuthService } from 'src/services/auth.service';
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
@@ -19,12 +19,14 @@ export class GamePageComponent implements OnInit {
   answerGood = false;
   startTime: Date;
   goodAnswer: string;
+  userId: number;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private quizService: QuizService,
-    private resultService: ResultService
+    private resultService: ResultService,
+    private authService: AuthService
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
@@ -32,6 +34,9 @@ export class GamePageComponent implements OnInit {
     console.log(this.quiz);
     this.startTime = new Date();
     console.log(this.score);
+    this.authService.user$.subscribe((user) => {
+      this.userId = user.id;
+    });
   }
 
   ngOnInit(): void {}
@@ -84,7 +89,7 @@ export class GamePageComponent implements OnInit {
       id: this.resultService.resultId,
       quiz_id: this.quiz.id,
       date: new Date(),
-      user_id: 1,
+      user_id: this.userId,
       right_answers: this.score,
       wrong_answers: this.quiz.questions.length - this.score,
       play_time: this.getElapsedTimeInSeconds(),
