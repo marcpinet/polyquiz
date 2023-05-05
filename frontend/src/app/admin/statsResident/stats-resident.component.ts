@@ -6,6 +6,10 @@ import { UserService } from 'src/services/user.service';
 import { BaseChartDirective } from 'ng2-charts';
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { default as Annotation } from 'chartjs-plugin-annotation';
+import { Quiz } from 'src/models/quiz.model';
+import { Result } from 'src/models/result-quiz.model';
+import { QuizService } from 'src/services/quiz.service';
+import { ResultService } from 'src/services/result.service';
 
 @Component({
   selector: 'app-mes-stats-residents',
@@ -16,16 +20,40 @@ export class StatsResidentComponent {
   resident: Resident;
   user: User;
   symptomes: string[];
+  playedQuizzes: Map<Quiz, Result[]> = new Map<Quiz, Result[]>();
+
   constructor(
     public router: Router,
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private quizService: QuizService,
+    private resultService: ResultService
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.resident = this.userService.getResidentById(parseInt(id));
     this.symptomes = this.resident.symptome;
     this.user = this.userService.getUserFromResident(this.resident);
     Chart.register(Annotation);
+    this.resultService.getResultsByUser(this.user).subscribe((results) => {
+      // Create a set of unique quiz IDs played by the user
+      let quizIds = new Set<string>();
+      for (let i = 0; i < results.length; i++) {
+        let result = results[i];
+        quizIds.add(result.quiz_id);
+      }
+
+      // For each unique quiz ID, fetch the quiz object and results associated with it
+      let quizIdsArray = Array.from(quizIds);
+      for (let i = 0; i < quizIdsArray.length; i++) {
+        let quizId = quizIdsArray[i];
+        this.quizService.getQuizById(quizId).subscribe((quiz) => {
+          let quizResults = results.filter(
+            (result) => result.quiz_id === quizId
+          );
+          this.playedQuizzes.set(quiz, quizResults);
+        });
+      }
+    });
   }
 
   navigateModifyUser() {}

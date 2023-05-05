@@ -4,8 +4,7 @@
       <div class="flex flex-wrap justify-center">
         <div class="w-full flex justify-center mr-16">
           <div class="relative">
-            <img src="{{ this.user.avatar }}"
-              class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[200px]" />
+            <img src="{{ this.user.avatar }}" class="shadow-xl rounded-full align-middle absolute -m-16 -ml-20 lg:-ml-16 max-w-[200px] max-h-[200px]">
           </div>
         </div>
         <div class="w-full text-center mt-32">
@@ -44,7 +43,7 @@
       </span>
 
       <!-- Stats -->
-      <h1 class="text-3xl text-[#2b3467] font-bold mt-2 mb-1">Statistiques</h1>
+      <h1 class="text-3xl text-[#2b3467] font-bold mt-2 mb-2">Statistiques</h1>
 
       <div class="w-4/5 mx-auto bg-white rounded-xl">
         <canvas baseChart class="chart" [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType"
@@ -79,8 +78,10 @@
       </div>
 
       <!-- Quiz -->
-      <h1 class="text-3xl text-[#2b3467] font-bold mt-2">Quiz</h1>
-
+      <h1 class="text-3xl text-[#2b3467] font-bold mt-2 mb-2">Quiz</h1>
+      <div *ngFor="let entry of playedQuizzes | keyvalue">
+        <app-played-quiz [quiz]="entry.key" [results]="entry.value"></app-played-quiz>
+      </div>
     </div>
   </div>
 </ng-container>
