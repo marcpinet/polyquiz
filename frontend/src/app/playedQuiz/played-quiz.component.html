@@ -1,46 +1,33 @@
-{{quiz.id}}
-<div
-    class="flex border bg-[#90C1DF] border-[#2b3467] rounded-md overflow-hidden h-64 mb-6 items-center justify-center">
-
-
-    <div
-      class="w-96 py-3  px-5 bg-[#2b3467] text-white h-64 border-r border-r-[#2b3467]">
-      <app-quiz-details-stats [quiz]="quiz" class="w-full h-full"></app-quiz-details-stats>
-    </div>
-
-
-    <div class="button-container flex flex-grow h-64 my-auto">
-      <button class="text-3xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4" >
-        <div>
-          <i class="fa-solid fa-star text-[#2b3467] mb-1 text-4xl"></i>
-        </div>
-        <div class="font-bold text-[#2b3467]">Score</div>
-        <div class="text-white font-bold text-5xl">6000</div>
-      </button>
-
-      <!-- <button class="text-3xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4" >
-        <div>
-          <i class="fa-regular fa-star text-[#2b3467] mb-1"></i>
-        </div>
-        <div class="font-bold text-[#2b3467]">Classement</div>
-        <div class="text-white font-bold text-5xl">Classement</div>
-      </button> TODO later =w= -->
-
-      <button class="text-3xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4" >
-        <div>
-          <i class="fa-solid fa-percent text-[#2b3467] mb-1 text-4xl"></i>
-        </div>
-        <div class="font-bold text-[#2b3467]">Taux de réussite</div>
-        <div class="text-white font-bold text-5xl">75%</div>
-      </button>
-
-      <button class="text-3xl flex-grow font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4" >
-        <div>
-          <i class="fa-solid fa-rotate-left text-[#2b3467] mb-1 text-4xl"></i>
-        </div>
-        <div class="font-bold text-[#2b3467]">Nombre d'essaies</div>
-        <div class="text-white font-bold text-5xl">3</div>
-      </button>
-
-    </div>
+<div class="flex border bg-[#90C1DF] border-[#2b3467] rounded-md overflow-hidden h-64 mb-6 items-center justify-center">
+  <div class="w-96 py-3 px-5 bg-[#2b3467] text-white h-64 border-r border-r-[#2b3467]">
+    <app-quiz-details-stats [quiz]="quiz" class="w-full h-full"></app-quiz-details-stats>
   </div>
+
+  <div class="button-container flex h-64 my-auto flex-1">
+    <button class="text-3xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4">
+      <div>
+        <i class="fa-solid fa-star text-[#2b3467] mb-1 text-4xl"></i>
+      </div>
+      <div class="font-bold text-[#2b3467]">Score</div>
+      <div class="text-white font-bold text-5xl">6000</div>
+    </button>
+
+    <!-- TODO: classment here later -->
+
+    <button class="text-3xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4">
+      <div>
+        <i class="fa-solid fa-percent text-[#2b3467] mb-1 text-4xl"></i>
+      </div>
+      <div class="font-bold text-[#2b3467]">Taux de réussite</div>
+      <div class="text-white font-bold text-5xl">75%</div>
+    </button>
+
+    <button class="text-3xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4">
+      <div>
+        <i class="fa-solid fa-rotate-left text-[#2b3467] mb-1 text-4xl"></i>
+      </div>
+      <div class="font-bold text-[#2b3467]">Nombre d'essaies</div>
+      <div class="text-white font-bold text-5xl">3</div>
+    </button>
+  </div>
+</div>
