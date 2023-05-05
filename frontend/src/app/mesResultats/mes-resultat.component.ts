@@ -24,17 +24,22 @@ export class MesResultatsComponent implements OnInit {
     });
 
     this.resultService.getResultsByUser(this.user).subscribe((results) => {
+      // Create a set of unique quiz IDs played by the user
+      let quizIds = new Set<string>();
       for (let i = 0; i < results.length; i++) {
         let result = results[i];
-        let quizId = result.quiz_id;
+        quizIds.add(result.quiz_id);
+      }
 
+      // For each unique quiz ID, fetch the quiz object and results associated with it
+      let quizIdsArray = Array.from(quizIds);
+      for (let i = 0; i < quizIdsArray.length; i++) {
+        let quizId = quizIdsArray[i];
         this.quizService.getQuizById(quizId).subscribe((quiz) => {
-          if (!this.playedQuizzes.has(quiz)) {
-            this.playedQuizzes.set(quiz, [result]);
-          } else {
-            let results = this.playedQuizzes.get(quiz);
-            results.push(result);
-          }
+          let quizResults = results.filter(
+            (result) => result.quiz_id === quizId
+          );
+          this.playedQuizzes.set(quiz, quizResults);
         });
       }
     });
