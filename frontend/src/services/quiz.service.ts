@@ -92,4 +92,9 @@ export class QuizService {
       .delete<Question>(questionUrl, this.httpOptions)
       .subscribe(() => this.setSelectedQuiz(quiz.id));
   }
+
+  getQuizById(quizId: string) {
+    const urlWithId = this.quizUrl + '/' + quizId;
+    return this.http.get<Quiz>(urlWithId);
+  }
 }

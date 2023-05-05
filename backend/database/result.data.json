@@ -8,5 +8,15 @@
     "wrong_answers": 1,
     "play_time": 9,
     "time_per_question": 3
+  },
+  {
+    "id": 1683274642177,
+    "quiz_id": 1679875889425,
+    "date": "2023-05-05T08:17:22.151Z",
+    "user_id": 1680382334270,
+    "right_answers": 2,
+    "wrong_answers": 1,
+    "play_time": 16,
+    "time_per_question": 5.333333333333333
   }
 ]

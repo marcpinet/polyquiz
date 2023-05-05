@@ -39,6 +39,8 @@
         </div>
       </div>
     </div>
-    <app-played-quiz></app-played-quiz>
+    <div *ngFor="let entry of playedQuizzes | keyvalue">
+      <app-played-quiz [quiz]="entry.key" [results]="entry.value"></app-played-quiz>
+    </div>
   </div>
 </div>
