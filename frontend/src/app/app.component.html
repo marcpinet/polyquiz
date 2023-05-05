@@ -1,11 +1,10 @@
-<!-- TODO: To redo this when implemented carousel into quizlist -->
 <div>
   <app-navbar *ngIf="router.url !== '/' && router.url !== '/login' && router.url!='/admin'"></app-navbar>
   <div *ngIf="
-      router.url == '/quizlist' ||
       router.url == '/tempo-register' ||
       router.url == '/profile' ||
-      router.url.startsWith('/admin/')
+      router.url.startsWith('/admin/') ||
+      router.url == '/'
     ">
     <div>
       <router-outlet></router-outlet>
@@ -13,10 +12,10 @@
   </div>
 
   <div *ngIf="
-      router.url !== '/quizlist' &&
       router.url !== '/tempo-register' &&
       router.url !== '/profile' &&
-      !router.url.startsWith('/admin/')
+      !router.url.startsWith('/admin/') &&
+      router.url !== '/'
     ">
     <div class="w-full h-screen overflow-hidden">
       <router-outlet></router-outlet>

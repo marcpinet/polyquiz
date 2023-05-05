@@ -1,6 +1,4 @@
-<div
-  class="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-[#BAD7E9] w-full mb-6 shadow-lg rounded-xl"
->
+<div class="w-6/7 m-6 bg-[#90C1DF] shadow-lg rounded-xl pl-6 pb-6 mx-auto">
   <div class="px-6">
     <div class="flex flex-wrap justify-center">
       <div class="w-full flex justify-center">
@@ -12,7 +10,7 @@
         </div>
       </div>
       <div class="w-full text-center mt-20 ml-3">
-        <h3 class="text-2xl text-[#2b3467] font-bold leading-normal mb-1">
+        <h3 class="text-3xl text-[#2b3467] font-bold leading-normal mb-1">
           {{this.user.firstName}} {{this.user.lastName}}
         </h3>
       </div>
@@ -38,6 +36,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div *ngFor="let entry of playedQuizzes | keyvalue">
+      <app-played-quiz [quiz]="entry.key" [results]="entry.value"></app-played-quiz>
     </div>
   </div>
 </div>

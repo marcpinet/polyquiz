@@ -4,7 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-
+import { User } from 'src/models/user.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -91,5 +91,10 @@ export class QuizService {
     this.http
       .delete<Question>(questionUrl, this.httpOptions)
       .subscribe(() => this.setSelectedQuiz(quiz.id));
+  }
+
+  getQuizById(quizId: string) {
+    const urlWithId = this.quizUrl + '/' + quizId;
+    return this.http.get<Quiz>(urlWithId);
   }
 }

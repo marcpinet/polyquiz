@@ -110,4 +110,11 @@ module.exports = class BaseModel {
     if (!item) return false;
     return item;
   }
+
+  getByUserId(id) {
+    if (typeof id === "string") id = parseInt(id);
+    const items = this.items.filter((item) => item.user_id === id);
+    if (!items) return false;
+    return items;
+  }
 };

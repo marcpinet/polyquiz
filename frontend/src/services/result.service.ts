@@ -4,6 +4,7 @@ import { BehaviorSubject, Subject, Observable, forkJoin } from 'rxjs';
 import { Result } from '../models/result-quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
+import { User } from 'src/models/user.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -46,6 +47,11 @@ export class ResultService {
   addResult(result: Result): Observable<Result> {
     this.resultId++;
     return this.http.post<Result>(this.resultUrl, result, this.httpOptions);
+  }
+
+  getResultsByUser(user: User): Observable<Result[]> {
+    const urlWithId = this.resultUrl + '/user/' + user.id;
+    return this.http.get<Result[]>(urlWithId);
   }
 
   // createResult(result: Result): void {

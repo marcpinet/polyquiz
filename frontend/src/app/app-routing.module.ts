@@ -19,11 +19,6 @@ import { RouteGuardAdminService } from 'src/services/route-guard-admin.service';
 import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
 const routes: Routes = [
   {
-    path: 'quizlist',
-    canActivate: [RouteGuardService],
-    component: QuizListComponent,
-  },
-  {
     path: 'game/:id',
     canActivate: [RouteGuardService],
     component: GamePageComponent,

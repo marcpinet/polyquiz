@@ -14,12 +14,10 @@ import { RegisterComponent } from './admin/addResident/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
 import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
 import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
-import { QuizCarousel } from './quiz/quiz-carousel/quiz-carousel.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
-import { QuizDetailsCarouselComponent } from './quiz/quiz-details-carousel/quiz-details-carousel.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.component';
 import { HelpComponent } from './help/help.component';
@@ -29,6 +27,8 @@ import { ResidentComponent } from './admin/mesResidents/resident.component';
 import { ResidentListComponent } from './admin/mesResidents/residentList/resident-list.component';
 import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
 import { NgChartsModule } from 'ng2-charts';
+import { PlayedQuizComponent } from './playedQuiz/played-quiz.component';
+import { QuizDetailsStatsComponent } from './quiz/quiz-details-stats/quiz-details-stats.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,13 +40,11 @@ import { NgChartsModule } from 'ng2-charts';
     LoginComponent,
     RegisterComponent,
     MainPage,
-    QuizCarousel,
     OptionsScreenComponent,
     QuizCreateComponent,
     MesResultatsComponent,
     ResultComponent,
     UserProfileComponent,
-    QuizDetailsCarouselComponent,
     NavbarComponent,
     ThemeCarouselComponent,
     HelpComponent,
@@ -55,6 +53,8 @@ import { NgChartsModule } from 'ng2-charts';
     ResidentComponent,
     ResidentListComponent,
     StatsResidentComponent,
+    PlayedQuizComponent,
+    QuizDetailsStatsComponent,
   ],
   imports: [
     BrowserModule,
