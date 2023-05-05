@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import { Resident } from '../models/resident.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root',
 })
@@ -94,6 +95,14 @@ export class UserService {
           .subscribe({
             next: () => {
               console.log('Resident was updated with new userId');
+              Swal.fire({
+                title: 'Succès',
+                text: 'Resident a été ajouté avec succès',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+              }).then(() => {
+                this.router.navigate(['/admin']);
+              });
             },
             error: (error) => {
               console.error('Failed to update resident with new userId', error);

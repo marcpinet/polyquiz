@@ -58,5 +58,25 @@
     "dateOfBirth": "1933-03-20",
     "id": 1683121125662,
     "userId": 1683121125734
+  },
+  {
+    "sexe": "feminin",
+    "symptome": [
+      "akinesie",
+      "rigidite"
+    ],
+    "dateOfBirth": "1950-05-02",
+    "id": 1683322819530,
+    "userId": 1683322819612
+  },
+  {
+    "sexe": "masculin",
+    "symptome": [
+      "tremblement",
+      "autres"
+    ],
+    "dateOfBirth": "1944-02-05",
+    "id": 1683322954418,
+    "userId": 1683322954499
   }
 ]
