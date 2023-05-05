@@ -136,7 +136,8 @@ export class GameQuestionComponent implements OnInit {
       .replace(/[^a-zA-Z0-9_]/g, '_')
       .split('_')
       .filter((word) => !wordsToRemove.includes(word))
-      .join('_');
+      .join('_')
+      .replace(/_{2,}/g, '_'); // Remove consecutive underscores;
     return newText;
   }
 }
