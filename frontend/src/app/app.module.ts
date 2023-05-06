@@ -29,6 +29,8 @@ import { StatsResidentComponent } from './admin/statsResident/stats-resident.com
 import { NgChartsModule } from 'ng2-charts';
 import { PlayedQuizComponent } from './playedQuiz/played-quiz.component';
 import { QuizDetailsStatsComponent } from './quiz/quiz-details-stats/quiz-details-stats.component';
+import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
+import { ThemesComponent } from './admin/themes/themes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +57,8 @@ import { QuizDetailsStatsComponent } from './quiz/quiz-details-stats/quiz-detail
     StatsResidentComponent,
     PlayedQuizComponent,
     QuizDetailsStatsComponent,
+    QuizzesAdminComponent,
+    ThemesComponent,
   ],
   imports: [
     BrowserModule,

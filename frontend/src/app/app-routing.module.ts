@@ -17,6 +17,8 @@ import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { RouteGuardAdminService } from 'src/services/route-guard-admin.service';
 import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
+import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
+import { ThemesComponent } from './admin/themes/themes.component';
 const routes: Routes = [
   {
     path: 'game/:id',
@@ -70,6 +72,16 @@ const routes: Routes = [
     path: 'admin/stats-resident/:id',
     canActivate: [RouteGuardAdminService],
     component: StatsResidentComponent,
+  },
+  {
+    path: 'admin/quiz',
+    canActivate: [RouteGuardAdminService],
+    component: QuizzesAdminComponent,
+  },
+  {
+    path: 'admin/theme',
+    canActivate: [RouteGuardAdminService],
+    component: ThemesComponent,
   },
 ];
 
