@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
-import { Quiz } from 'src/models/quiz.model';
+import { Quiz, Theme } from 'src/models/quiz.model';
 import { ThemesService } from 'src/services/theme.service';
-import { Theme } from 'src/models/quiz.model';
 import Swal from 'sweetalert2';
+import { UserService } from '../../../services/user.service';
+import { ResultService } from '../../../services/result.service';
+import { AuthService } from '../../../services/auth.service';
+import { forkJoin, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'quizlist',
@@ -28,13 +31,28 @@ export class QuizListComponent implements OnInit {
   constructor(
     private router: Router,
     public quizService: QuizService,
-    private themeService: ThemesService
+    private themeService: ThemesService,
+    private userService: UserService,
+    private resultService: ResultService,
+    private authService: AuthService
   ) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.filteredQuizList = [...this.quizList]; // Initialise la liste filtrée avec tous les quiz
       this.populateThemes();
     });
+  }
+
+  getCurrentUserId(): number {
+    let currentUserId: number;
+
+    this.authService.user$.subscribe((user) => {
+      if (user) {
+        currentUserId = user.id;
+      }
+    });
+
+    return currentUserId;
   }
 
   filterQuizzes(): void {
@@ -55,6 +73,16 @@ export class QuizListComponent implements OnInit {
           durationMatch = quiz.estimated_time >= 5 && quiz.estimated_time <= 10;
         } else if (this.selectedDuration === '> 10 min') {
           durationMatch = quiz.estimated_time > 10;
+        }
+      }
+
+      if (this.selectedDone !== 'Fait / Non fait') {
+        if (this.selectedDone === 'Fait') {
+          doneMatch = quiz.status === 'done';
+        } else if (this.selectedDone === 'Non fait') {
+          doneMatch = quiz.status === 'not_done';
+        } else if (this.selectedDone === 'En cours') {
+          doneMatch = quiz.status === 'in_progress';
         }
       }
 
@@ -167,5 +195,23 @@ export class QuizListComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const currentUserId = this.getCurrentUserId();
+
+    this.quizService.quizzes$
+      .pipe(
+        switchMap((quizzes) => {
+          const statusObservables = quizzes.map((quiz) => {
+            return this.resultService
+              .getUserQuizStatus(currentUserId, quiz.id)
+              .pipe(tap((status) => (quiz.status = status)));
+          });
+          return forkJoin(statusObservables);
+        })
+      )
+      .subscribe(() => {
+        this.filteredQuizList = [...this.quizList];
+        this.populateThemes();
+      });
+  }
 }

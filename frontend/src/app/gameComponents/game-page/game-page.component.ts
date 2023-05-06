@@ -1,10 +1,11 @@
-import { asNativeElements, Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { ResultService } from 'src/services/result.service';
 import { Result } from 'src/models/result-quiz.model';
 import { AuthService } from 'src/services/auth.service';
+
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
@@ -95,6 +96,7 @@ export class GamePageComponent implements OnInit {
       play_time: this.getElapsedTimeInSeconds(),
       time_per_question:
         this.getElapsedTimeInSeconds() / this.quiz.questions.length,
+      status: 'in_progress',
     };
 
     this.resultService.addResult(result).subscribe((result) => {
