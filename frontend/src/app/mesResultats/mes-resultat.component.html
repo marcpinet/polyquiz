@@ -25,14 +25,14 @@
           >
             <i class="fa-regular fa-star text-[#2b3467] mb-1 text-4xl"></i>
             <div class="text-[#2b3467]" >Score</div>
-            <div class="text-white font-bold text-3xl">5600</div>
+            <div class="text-white font-bold text-3xl">{{ totalScore !== null ? totalScore : '-' }}</div>
           </div>
           <div
             class="-mt-1 flex flex-col items-center justify-center w-80 pb-5 title py-3 my-auto px-5 bg-[#EB455F] min-h-12 text-2xl font-semibold border-l border-l-[#2b3467] border-l-4"
           >
             <i class="fa-solid fa-percent text-[#2b3467] mb-1 text-4xl"></i>
             <div class="text-[#2b3467]">Taux de réussite</div>
-            <div class="text-white font-bold text-3xl">80%</div>
+            <div class="text-white font-bold text-3xl">{{ successRate !== null ? successRate.toFixed(1) + '%' : '-%' }}</div>
           </div>
         </div>
       </div>

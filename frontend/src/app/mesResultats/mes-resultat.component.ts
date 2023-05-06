@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/user.model';
 import { Result } from 'src/models/result-quiz.model';
@@ -14,6 +14,9 @@ export class MesResultatsComponent implements OnInit {
   user: User;
   playedQuizzes: Map<Quiz, Result[]> = new Map<Quiz, Result[]>();
 
+  totalScore: number | null = null;
+  successRate: number | null = null;
+
   constructor(
     private authService: AuthService,
     private quizService: QuizService,
@@ -23,26 +26,58 @@ export class MesResultatsComponent implements OnInit {
       this.user = user;
     });
 
-    this.resultService.getResultsByUser(this.user).subscribe((results) => {
-      // Create a set of unique quiz IDs played by the user
-      let quizIds = new Set<string>();
-      for (let i = 0; i < results.length; i++) {
-        let result = results[i];
-        quizIds.add(result.quiz_id);
-      }
+    this.resultService
+      .getResultsByUser(this.user)
+      .subscribe(async (results) => {
+        let totalQuestions = 0;
+        let totalCorrectAnswers = 0;
+        let totalPoints = 0;
 
-      // For each unique quiz ID, fetch the quiz object and results associated with it
-      let quizIdsArray = Array.from(quizIds);
-      for (let i = 0; i < quizIdsArray.length; i++) {
-        let quizId = quizIdsArray[i];
-        this.quizService.getQuizById(quizId).subscribe((quiz) => {
+        // Create a set of unique quiz IDs played by the user
+        let quizIds = new Set<string>();
+        for (const element of results) {
+          let result = element;
+          quizIds.add(result.quiz_id);
+        }
+
+        // For each unique quiz ID, fetch the quiz object and results associated with it
+        let quizIdsArray = Array.from(quizIds);
+        for (const element of quizIdsArray) {
+          let quizId = element;
+          const quiz = await this.quizService.getQuizById(quizId).toPromise();
           let quizResults = results.filter(
             (result) => result.quiz_id === quizId
           );
           this.playedQuizzes.set(quiz, quizResults);
-        });
-      }
-    });
+
+          for (const result of quizResults) {
+            const questions = result.right_answers + result.wrong_answers;
+            totalQuestions += questions;
+            totalCorrectAnswers += result.right_answers;
+
+            // Attribution d'un multiplicateur de points en fonction de la difficulté
+            let pointMultiplier = 0;
+            switch (quiz.difficulty) {
+              case 'Facile':
+                pointMultiplier = 10;
+                break;
+              case 'Moyen':
+                pointMultiplier = 20;
+                break;
+              case 'Difficile':
+                pointMultiplier = 30;
+                break;
+              default:
+                break;
+            }
+
+            totalPoints += result.right_answers * pointMultiplier;
+          }
+        }
+
+        this.totalScore = totalPoints;
+        this.successRate = (totalCorrectAnswers / totalQuestions) * 100;
+      });
   }
 
   ngOnInit() {}
