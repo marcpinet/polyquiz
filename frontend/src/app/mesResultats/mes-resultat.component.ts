@@ -33,14 +33,12 @@ export class MesResultatsComponent implements OnInit {
         let totalCorrectAnswers = 0;
         let totalPoints = 0;
 
-        // Create a set of unique quiz IDs played by the user
         let quizIds = new Set<string>();
         for (const element of results) {
           let result = element;
           quizIds.add(result.quiz_id);
         }
 
-        // For each unique quiz ID, fetch the quiz object and results associated with it
         let quizIdsArray = Array.from(quizIds);
         for (const element of quizIdsArray) {
           let quizId = element;
@@ -55,27 +53,27 @@ export class MesResultatsComponent implements OnInit {
             totalQuestions += questions;
             totalCorrectAnswers += result.right_answers;
 
-            // Attribution d'un multiplicateur de points en fonction de la difficulté
             let pointMultiplier = 0;
             switch (quiz.difficulty) {
               case 'Facile':
-                pointMultiplier = 10;
+                pointMultiplier = 100;
                 break;
               case 'Moyen':
-                pointMultiplier = 20;
+                pointMultiplier = 200;
                 break;
               case 'Difficile':
-                pointMultiplier = 30;
+                pointMultiplier = 300;
                 break;
               default:
                 break;
             }
 
-            totalPoints += result.right_answers * pointMultiplier;
+            const correctPercentage = result.right_answers / questions;
+            totalPoints += correctPercentage * pointMultiplier;
           }
         }
 
-        this.totalScore = totalPoints;
+        this.totalScore = Math.round(totalPoints);
         this.successRate = (totalCorrectAnswers / totalQuestions) * 100;
       });
   }

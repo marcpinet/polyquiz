@@ -29,26 +29,26 @@ export class PlayedQuizComponent implements OnInit {
       totalQuestions += questions;
       totalCorrectAnswers += result.right_answers;
 
-      // Attribution d'un multiplicateur de points en fonction de la difficulté
       let pointMultiplier = 0;
       switch (this.quiz.difficulty) {
         case 'Facile':
-          pointMultiplier = 10;
+          pointMultiplier = 100;
           break;
         case 'Moyen':
-          pointMultiplier = 20;
+          pointMultiplier = 200;
           break;
         case 'Difficile':
-          pointMultiplier = 30;
+          pointMultiplier = 300;
           break;
         default:
           break;
       }
 
-      totalPoints += result.right_answers * pointMultiplier;
+      const correctPercentage = result.right_answers / questions;
+      totalPoints += correctPercentage * pointMultiplier;
     }
 
-    this.totalScore = totalPoints;
+    this.totalScore = Math.round(totalPoints);
     const successRateString = Number(
       (totalCorrectAnswers / totalQuestions) * 100
     ).toFixed(2);
