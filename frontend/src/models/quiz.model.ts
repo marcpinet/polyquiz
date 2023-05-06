@@ -8,7 +8,6 @@ export interface Quiz {
   themeId: number;
   theme?: Theme;
   questions: Question[];
-  status?: string;
 }
 
 export interface Question {

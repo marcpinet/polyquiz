@@ -20,7 +20,6 @@ export class ResultComponent implements OnInit {
   average_time = 1;
   result: Result;
   quiz: Quiz;
-  status: 'done' | 'in_progress' | 'not_done';
 
   constructor(
     private route: ActivatedRoute,
@@ -41,11 +40,11 @@ export class ResultComponent implements OnInit {
     Swal.fire({
       imageUrl: 'https://media.tenor.com/jUvfeD4L62sAAAAC/minions-yehey.gif',
       title: 'Félicitations ! Vous avez terminé le quiz !',
-      background: '#BAD7E9',
+      background:'#BAD7E9',
       color: '#2B3467',
       showConfirmButton: false,
-      timer: 2000,
-    });
+      timer: 2000
+    })
   }
 
   compilTime(time: number) {

@@ -8,5 +8,4 @@ export interface Result {
   play_time: number;
   date: Date;
   time_per_question: number;
-  status: 'done' | 'in_progress' | 'not_done';
 }

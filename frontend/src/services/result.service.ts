@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Observable, forkJoin } from 'rxjs';
 import { Result } from '../models/result-quiz.model';
-import { httpOptionsBase, serverUrl } from '../configs/server.config';
+import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user.model';
-
 @Injectable({
   providedIn: 'root',
 })
 export class ResultService {
+  private resultUrl = serverUrl + '/results';
+  private httpOptions = httpOptionsBase;
+  private results: Result[] = [];
   public results$: BehaviorSubject<Result[]> = new BehaviorSubject<Result[]>(
     []
   );
   public resultSelected$: Subject<Result> = new Subject();
   public resultId = 0;
-  private resultUrl = serverUrl + '/results';
-  private httpOptions = httpOptionsBase;
-  private results: Result[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
     this.retrieveResults();
@@ -53,26 +52,6 @@ export class ResultService {
   getResultsByUser(user: User): Observable<Result[]> {
     const urlWithId = this.resultUrl + '/user/' + user.id;
     return this.http.get<Result[]>(urlWithId);
-  }
-
-  getUserQuizStatus(
-    userId: number,
-    quizId: string
-  ): Observable<'done' | 'in_progress' | 'not_done'> {
-    return this.http.get<Result[]>(this.resultUrl).pipe(
-      map((results) => {
-        const userResults = results.filter(
-          (result) => result.user_id === userId && result.quiz_id === quizId
-        );
-        if (userResults.length === 0) {
-          return 'not_done';
-        }
-        const inProgressResult = userResults.find(
-          (result) => result.status === 'in_progress'
-        );
-        return inProgressResult ? 'in_progress' : 'done';
-      })
-    );
   }
 
   // createResult(result: Result): void {
