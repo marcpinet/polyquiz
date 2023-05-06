@@ -21,6 +21,10 @@ export class StatsResidentComponent {
   user: User;
   symptomes: string[];
   playedQuizzes: Map<Quiz, Result[]> = new Map<Quiz, Result[]>();
+  timePerQuestionData = [];
+  wrongClicksData = [];
+  playedQuizzesData = [];
+  playedQuizzesTotal: number = 0;
 
   constructor(
     public router: Router,
@@ -35,34 +39,60 @@ export class StatsResidentComponent {
     this.user = this.userService.getUserFromResident(this.resident);
     Chart.register(Annotation);
     this.resultService.getResultsByUser(this.user).subscribe((results) => {
-      // Create a set of unique quiz IDs played by the user
       let quizIds = new Set<string>();
-      for (let i = 0; i < results.length; i++) {
-        let result = results[i];
+
+      for (let result of results) {
         quizIds.add(result.quiz_id);
       }
 
-      // For each unique quiz ID, fetch the quiz object and results associated with it
       let quizIdsArray = Array.from(quizIds);
-      for (let i = 0; i < quizIdsArray.length; i++) {
-        let quizId = quizIdsArray[i];
+
+      for (let quizId of quizIdsArray) {
         this.quizService.getQuizById(quizId).subscribe((quiz) => {
           let quizResults = results.filter(
             (result) => result.quiz_id === quizId
           );
           this.playedQuizzes.set(quiz, quizResults);
+
+          this.playedQuizzesTotal += quizResults.length;
+
+          // Calculate data for the charts
+          let totalTime = 0;
+          let totalQuestions = 0;
+
+          let i = 0;
+          for (let result of quizResults) {
+            totalTime += result.time_per_question;
+            totalQuestions += result.right_answers + result.wrong_answers;
+            i++;
+          }
+
+          this.timePerQuestionData.push(totalTime / i);
+          this.wrongClicksData.push(0);
+          this.playedQuizzesData.push(quizResults.length);
         });
+      }
+
+      const { dateLabels, quizzesPlayed, timePerQuestion } =
+        this.generateStats(results);
+      this.lineChartData.labels = dateLabels;
+      this.lineChartData.datasets[0].data = timePerQuestion;
+      this.lineChartData.datasets[2].data = quizzesPlayed;
+
+      this.lineChartData.datasets[1].data = this.wrongClicksData;
+
+      if (this.chart) {
+        this.chart.update();
       }
     });
   }
 
   navigateModifyUser() {}
 
-  //TODO: Replace this data with real data later
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [],
         label: 'Temps par question',
         backgroundColor: 'rgba(148,159,177,0.2)',
         borderColor: 'rgba(148,159,177,1)',
@@ -73,7 +103,7 @@ export class StatsResidentComponent {
         fill: 'origin',
       },
       {
-        data: [28, 48, 40, 19, 86, 27, 90],
+        data: [],
         label: 'Clics erronés',
         backgroundColor: 'rgba(77,83,96,0.2)',
         borderColor: 'rgba(77,83,96,1)',
@@ -84,7 +114,7 @@ export class StatsResidentComponent {
         fill: 'origin',
       },
       {
-        data: [180, 480, 770, 90, 1000, 270, 400],
+        data: [],
         label: 'Nombre de quiz joués',
         yAxisID: 'y1',
         backgroundColor: 'rgba(255,0,0,0.3)',
@@ -96,15 +126,7 @@ export class StatsResidentComponent {
         fill: 'origin',
       },
     ],
-    labels: [
-      '11/2022',
-      '12/2022',
-      '01/2023',
-      '02/2023',
-      '03/2023',
-      '04/2023',
-      '05/2023',
-    ],
+    labels: [],
   };
 
   public lineChartOptions: ChartConfiguration['options'] = {
@@ -134,6 +156,68 @@ export class StatsResidentComponent {
     },
   };
 
+  generateStats(results: Result[]): {
+    dateLabels: string[];
+    quizzesPlayed: number[];
+    timePerQuestion: number[];
+  } {
+    const dateLabels: string[] = [];
+    const quizzesPlayed: number[] = [];
+    const timePerQuestion: number[] = [];
+    const allQuestionTime = [];
+    const quizCountByMonth: { [key: string]: number } = {};
+
+    const sortedResults = results.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+
+    const firstDate = new Date(sortedResults[0].date);
+    const lastDate = new Date(sortedResults[sortedResults.length - 1].date);
+
+    let currentDate = new Date(
+      firstDate.getFullYear(),
+      firstDate.getMonth(),
+      1
+    );
+
+    while (currentDate <= lastDate) {
+      const monthYearLabel = `${
+        currentDate.getMonth() + 1
+      }/${currentDate.getFullYear()}`;
+
+      if (!quizCountByMonth[monthYearLabel]) {
+        quizCountByMonth[monthYearLabel] = 0;
+      }
+
+      currentDate.setMonth(currentDate.getMonth() + 1);
+    }
+
+    for (const result of results) {
+      const date = new Date(result.date);
+      const monthYearLabel = `${date.getMonth() + 1}/${date.getFullYear()}`;
+
+      // For allQuestionTime, each array inside this array corresponds to a month
+      if (!allQuestionTime[monthYearLabel]) {
+        allQuestionTime[monthYearLabel] = [];
+      }
+
+      allQuestionTime[monthYearLabel].push(result.time_per_question);
+
+      quizCountByMonth[monthYearLabel]++;
+    }
+
+    for (const [monthYearLabel, count] of Object.entries(quizCountByMonth)) {
+      dateLabels.push(monthYearLabel);
+      quizzesPlayed.push(count);
+    }
+
+    for (const [monthYearLabel, times] of Object.entries(allQuestionTime)) {
+      timePerQuestion.push(this.med(times));
+    }
+
+    return { dateLabels, quizzesPlayed, timePerQuestion };
+  }
+
   public lineChartType: ChartType = 'line';
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
@@ -156,5 +240,17 @@ export class StatsResidentComponent {
     active?: {}[];
   }): void {
     console.log(event, active);
+  }
+
+  med(array: any[]) {
+    if (array.length === 0) {
+      return 0;
+    }
+    let sum = 0;
+    for (const element of array) {
+      sum += element;
+    }
+
+    return Number((sum / array.length).toFixed(2));
   }
 }

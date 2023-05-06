@@ -53,26 +53,32 @@
       <div class="w-4/5 mx-auto bg-white rounded-xl mt-2">
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-          <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Temps moyen par question</div>
-          <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">1m3s</div>
+            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Temps moyen par question</div>
+            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">{{ med(timePerQuestionData) }} secondes</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-          <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés</div>
-          <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">25</div>
+            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés totaux</div>
+            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">0</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-          <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés moyen par question</div>
-          <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">0.25 (1 chaque 4 questions)</div>
+            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés moyen par question</div>
+            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">0</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-          <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de quiz joués</div>
-          <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">120</div>
+            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de quiz joués différents</div>
+            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">{{ playedQuizzes.size }}</div>
+          </div>
+        </div>
+        <div class="p-2 rounded-xl">
+          <div class="flex border-b-2 border-[#2B3467] py-2">
+            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de quiz joués totaux</div>
+            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">{{ playedQuizzesTotal }}</div>
           </div>
         </div>
       </div>
