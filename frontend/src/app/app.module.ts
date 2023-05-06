@@ -31,6 +31,7 @@ import { PlayedQuizComponent } from './playedQuiz/played-quiz.component';
 import { QuizDetailsStatsComponent } from './quiz/quiz-details-stats/quiz-details-stats.component';
 import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
 import { ThemesComponent } from './admin/themes/themes.component';
+import { ThemeListComponent } from './admin/themes/themeList/theme-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { ThemesComponent } from './admin/themes/themes.component';
     QuizDetailsStatsComponent,
     QuizzesAdminComponent,
     ThemesComponent,
+    ThemeListComponent,
   ],
   imports: [
     BrowserModule,
