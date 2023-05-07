@@ -5,6 +5,7 @@
   <div class="relative h-0" style="padding-top: 50%">
     <img
       class="absolute inset-0 h-full w-full object-cover object-center"
+      [class.gray-filter]="played"
       src="{{ quiz.image }}"
       alt="Quiz Image"
     />
