@@ -74,7 +74,7 @@
     "wrong_answers": 0,
     "play_time": 3,
     "time_per_question": 1,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1681945239683,
@@ -85,7 +85,7 @@
     "wrong_answers": 0,
     "play_time": 3,
     "time_per_question": 1,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1681951270734,
@@ -96,7 +96,7 @@
     "wrong_answers": 1,
     "play_time": 21,
     "time_per_question": 7,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1681951873161,
@@ -107,7 +107,7 @@
     "wrong_answers": 0,
     "play_time": 23,
     "time_per_question": 7.666666666666667,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1681983231274,
@@ -239,7 +239,7 @@
     "wrong_answers": 2,
     "play_time": 5,
     "time_per_question": 1.6666666666666667,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1682321628915,
@@ -250,7 +250,7 @@
     "wrong_answers": 3,
     "play_time": 65,
     "time_per_question": 21.666666666666668,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1682321634828,
@@ -261,7 +261,7 @@
     "wrong_answers": 2,
     "play_time": 4,
     "time_per_question": 1.3333333333333333,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1682321641671,
@@ -272,7 +272,7 @@
     "wrong_answers": 1,
     "play_time": 4,
     "time_per_question": 1.3333333333333333,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1682321652149,
@@ -283,7 +283,7 @@
     "wrong_answers": 3,
     "play_time": 3,
     "time_per_question": 1,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1682347640724,
@@ -294,7 +294,7 @@
     "wrong_answers": 1,
     "play_time": 12,
     "time_per_question": 4,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1682347784571,
@@ -404,7 +404,7 @@
     "wrong_answers": 3,
     "play_time": 16,
     "time_per_question": 5.333333333333333,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1683053039732,
@@ -415,7 +415,7 @@
     "wrong_answers": 3,
     "play_time": 12,
     "time_per_question": 4,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1683053565521,
@@ -426,7 +426,7 @@
     "wrong_answers": 2,
     "play_time": 14,
     "time_per_question": 4.666666666666667,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1683053619285,
@@ -437,7 +437,7 @@
     "wrong_answers": 2,
     "play_time": 22,
     "time_per_question": 7.333333333333333,
-    "click_error": -1
+    "click_error": 0
   },
   {
     "id": 1683054363065,
@@ -536,6 +536,6 @@
     "wrong_answers": 3,
     "play_time": 8,
     "time_per_question": 2.6666666666666665,
-    "click_error": -1
+    "click_error": 0
   }
 ]

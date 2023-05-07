@@ -68,18 +68,16 @@ export class StatsResidentComponent {
           }
 
           this.timePerQuestionData.push(totalTime / i);
-          this.wrongClicksData.push(0);
           this.playedQuizzesData.push(quizResults.length);
         });
       }
 
-      const { dateLabels, quizzesPlayed, timePerQuestion } =
+      const { dateLabels, quizzesPlayed, timePerQuestion, clickErrors } =
         this.generateStats(results);
       this.lineChartData.labels = dateLabels;
       this.lineChartData.datasets[0].data = timePerQuestion;
+      this.lineChartData.datasets[1].data = clickErrors;
       this.lineChartData.datasets[2].data = quizzesPlayed;
-
-      this.lineChartData.datasets[1].data = this.wrongClicksData;
 
       if (this.chart) {
         this.chart.update();
@@ -160,9 +158,11 @@ export class StatsResidentComponent {
     dateLabels: string[];
     quizzesPlayed: number[];
     timePerQuestion: number[];
+    clickErrors: number[];
   } {
     const dateLabels: string[] = [];
     const quizzesPlayed: number[] = [];
+    const clickErrors: number[] = [];
     const timePerQuestion: number[] = [];
     const allQuestionTime = [];
     const quizCountByMonth: { [key: string]: number } = {};
@@ -192,6 +192,8 @@ export class StatsResidentComponent {
       currentDate.setMonth(currentDate.getMonth() + 1);
     }
 
+    let t = -1;
+
     for (const result of results) {
       const date = new Date(result.date);
       const monthYearLabel = `${date.getMonth() + 1}/${date.getFullYear()}`;
@@ -199,12 +201,17 @@ export class StatsResidentComponent {
       // For allQuestionTime, each array inside this array corresponds to a month
       if (!allQuestionTime[monthYearLabel]) {
         allQuestionTime[monthYearLabel] = [];
+        if (t !== -1) clickErrors.push(t);
+        t = 0;
       }
 
       allQuestionTime[monthYearLabel].push(result.time_per_question);
 
       quizCountByMonth[monthYearLabel]++;
+
+      t += result.click_error;
     }
+    clickErrors.push(t);
 
     for (const [monthYearLabel, count] of Object.entries(quizCountByMonth)) {
       dateLabels.push(monthYearLabel);
@@ -215,7 +222,7 @@ export class StatsResidentComponent {
       timePerQuestion.push(this.med(times));
     }
 
-    return { dateLabels, quizzesPlayed, timePerQuestion };
+    return { dateLabels, quizzesPlayed, timePerQuestion, clickErrors };
   }
 
   public lineChartType: ChartType = 'line';
