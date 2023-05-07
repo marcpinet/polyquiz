@@ -16,7 +16,7 @@ export class ThemeListComponent {
     });
   }
 
-  navigateThemeModif(themeId: number) {
+  navigateThemeModif(themeId: string) {
     this.router.navigate(['/admin/theme/modif/' + themeId]);
   }
 }

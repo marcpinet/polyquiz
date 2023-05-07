@@ -8,7 +8,6 @@ export class ThemesComponent {
   constructor(private router: Router) {}
 
   navigateAddTheme() {
-    console.log('Navigate to add theme');
-    //TODO later
+    this.router.navigate(['/admin/theme/add']);
   }
 }
