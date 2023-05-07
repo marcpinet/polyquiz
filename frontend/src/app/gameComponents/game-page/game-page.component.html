@@ -29,7 +29,7 @@
       <div class="h-full">
         <app-game-question
           [question]="quiz.questions[compteur]"
-          (selectAnswer)="checkAnswer($event)"
+          (selectAnswer)="checkAnswer($event)" (clickError)="onQuestionClickError($event)"
           id = "game_question"
         ></app-game-question>
       </div>

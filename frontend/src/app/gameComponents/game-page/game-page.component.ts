@@ -20,6 +20,7 @@ export class GamePageComponent implements OnInit {
   startTime: Date;
   goodAnswer: string;
   userId: number;
+  click_error = -1;
 
   constructor(
     private router: Router,
@@ -55,6 +56,10 @@ export class GamePageComponent implements OnInit {
       this.quiz.questions[this.compteur].answers[answer].isCorrect;
     this.updateGoodAnswer();
     this.nextQuestion();
+  }
+
+  onQuestionClickError(errorCount: number) {
+    this.click_error = errorCount;
   }
 
   updateScore() {
@@ -95,6 +100,7 @@ export class GamePageComponent implements OnInit {
       play_time: this.getElapsedTimeInSeconds(),
       time_per_question:
         this.getElapsedTimeInSeconds() / this.quiz.questions.length,
+      click_error: this.click_error,
     };
 
     this.resultService.addResult(result).subscribe((result) => {

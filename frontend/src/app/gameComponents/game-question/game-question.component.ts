@@ -20,11 +20,14 @@ export class GameQuestionComponent implements OnInit {
   buttonStates: boolean[] = [false, false, false, false];
   private userSettings: Settings;
   private settingsSubscription: Subscription;
+  click_error = 0;
 
   @Input()
   question: Question;
   @Output()
   selectAnswer = new EventEmitter<number>();
+  @Output()
+  clickError = new EventEmitter<number>();
 
   constructor(private settingsService: SettingService) {
     this.question = {} as Question;
@@ -105,7 +108,14 @@ export class GameQuestionComponent implements OnInit {
             this.answerSelected = answer;
             //this.playAudio();
           } else if (result.isDenied) {
-            Swal.fire("La réponse n'a pas été enregistrée", '', 'info');
+            this.click_error++;
+            this.clickError.emit(this.click_error);
+            Swal.fire({
+              icon: 'info',
+              title: "La réponse n'a pas été enregistrée",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           }
         });
       } else {
