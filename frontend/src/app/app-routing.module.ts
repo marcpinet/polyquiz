@@ -19,6 +19,8 @@ import { RouteGuardAdminService } from 'src/services/route-guard-admin.service';
 import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
 import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
 import { ThemesComponent } from './admin/themes/themes.component';
+import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
+import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
 const routes: Routes = [
   {
     path: 'game/:id',
@@ -82,6 +84,16 @@ const routes: Routes = [
     path: 'admin/theme',
     canActivate: [RouteGuardAdminService],
     component: ThemesComponent,
+  },
+  {
+    path: 'admin/theme/add',
+    canActivate: [RouteGuardAdminService],
+    component: AddThemeComponent,
+  },
+  {
+    path: 'admin/theme/modif/:id',
+    canActivate: [RouteGuardAdminService],
+    component: ModifyThemeComponent,
   },
 ];
 

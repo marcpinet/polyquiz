@@ -1,0 +1,18 @@
+<div
+  (click)="onClick()"
+  class="transform overflow-hidden rounded-lg bg-[#2B3467] dark:bg-[#2B3467] shadow-md duration-300"
+>
+  <div class="relative h-0" style="padding-top: 40%">
+    <img
+      class="absolute inset-0 h-full w-full object-cover object-center"
+      src="{{ theme.image }}"
+      alt="Theme Image"
+    />
+  </div>
+  <div class="-mt-1 items-center justify-between bg-[#2B3467] dark:bg-[#2B3467] pl-2 pb-1 rounded-b-lg text-center">
+    <h2 class="text-2xl font-bold text-white">
+      {{ theme.name }}
+    </h2>
+  </div>
+
+</div>

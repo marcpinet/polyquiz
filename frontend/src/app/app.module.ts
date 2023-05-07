@@ -19,7 +19,7 @@ import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.component';
+import { ThemeAdminComponent } from './quiz/theme-admin/theme-admin.component';
 import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
@@ -31,6 +31,9 @@ import { PlayedQuizComponent } from './playedQuiz/played-quiz.component';
 import { QuizDetailsStatsComponent } from './quiz/quiz-details-stats/quiz-details-stats.component';
 import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
 import { ThemesComponent } from './admin/themes/themes.component';
+import { ThemeListComponent } from './admin/themes/themeList/theme-list.component';
+import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
+import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,7 @@ import { ThemesComponent } from './admin/themes/themes.component';
     ResultComponent,
     UserProfileComponent,
     NavbarComponent,
-    ThemeCarouselComponent,
+    ThemeAdminComponent,
     HelpComponent,
     AdminMainPage,
     GestionQuizComponent,
@@ -59,6 +62,9 @@ import { ThemesComponent } from './admin/themes/themes.component';
     QuizDetailsStatsComponent,
     QuizzesAdminComponent,
     ThemesComponent,
+    ThemeListComponent,
+    AddThemeComponent,
+    ModifyThemeComponent,
   ],
   imports: [
     BrowserModule,
