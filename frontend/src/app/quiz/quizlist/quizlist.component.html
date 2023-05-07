@@ -5,7 +5,7 @@
   <div class="flex-1 overflow-y-auto">
     <ul>
       <li *ngFor="let quiz of quizList">
-        <app-quiz-details [quiz]="quiz"></app-quiz-details>
+        <app-quiz-details [quiz]="quiz" [played]="hasPlayedQuiz(quiz.id)"></app-quiz-details>
       </li>
     </ul>
   </div>
