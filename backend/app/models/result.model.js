@@ -9,4 +9,5 @@ module.exports = new BaseModel("Result", {
   play_time: Joi.number().required(), //by seconds
   date: Joi.date().required(),
   time_per_question: Joi.number().required(),
+  click_error: Joi.number().required().default(-1),
 });

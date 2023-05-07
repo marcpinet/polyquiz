@@ -8,4 +8,5 @@ export interface Result {
   play_time: number;
   date: Date;
   time_per_question: number;
+  click_error: number;
 }
