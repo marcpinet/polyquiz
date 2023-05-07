@@ -34,6 +34,7 @@ import { ThemesComponent } from './admin/themes/themes.component';
 import { ThemeListComponent } from './admin/themes/themeList/theme-list.component';
 import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
 import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
+import { QuizListAdminComponent } from './admin/quizzes/quizList/quiz-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.comp
     ThemeListComponent,
     AddThemeComponent,
     ModifyThemeComponent,
+    QuizListAdminComponent,
   ],
   imports: [
     BrowserModule,
