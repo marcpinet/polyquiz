@@ -11,7 +11,10 @@ import { QuizService } from 'src/services/quiz.service';
 })
 export class QuestionCreateComponent implements OnInit {
   @Output() loadTabComponent = new EventEmitter<string>();
-  @Output() addQuestionAnswer = new EventEmitter<{ question: Question, answers: Answer[] }>();
+  @Output() addQuestionAnswer = new EventEmitter<{
+    question: Question;
+    answers: Answer[];
+  }>();
 
   public questionForm: FormGroup;
   question: Question;
@@ -26,6 +29,8 @@ export class QuestionCreateComponent implements OnInit {
     this.questionForm = this.formBuilder.group({
       questionImage: ['', Validators.required],
       questionText: ['', Validators.required],
+      explainText: ['', Validators.required],
+      explainImage: ['', Validators.required],
       'Réponse 1': ['', Validators.required],
       'Réponse 1 image': ['', Validators.required],
       'Réponse 2': ['', Validators.required],
@@ -51,9 +56,9 @@ export class QuestionCreateComponent implements OnInit {
       id: this.generateQuestionId(),
       question_text: this.questionForm.get('questionText').value,
       question_image: this.questionForm.get('questionImage').value,
-      explain_text: 'Paris is the capital and most populous city of France.',
-      explain_image: 'https://i.imgur.com/3Q3wJYh.png'
-    }
+      explain_text: this.questionForm.get('explainText').value,
+      explain_image: this.questionForm.get('explainImage').value,
+    };
     this.answers.push({
       isCorrect: true,
       answer_text: this.questionForm.get('Réponse 1').value,
@@ -92,6 +97,4 @@ export class QuestionCreateComponent implements OnInit {
 
     this.addQuestionAnswer.emit({ this.question, this.answers });
   }
-
-
 }
