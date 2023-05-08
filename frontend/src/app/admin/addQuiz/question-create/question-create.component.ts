@@ -46,14 +46,8 @@ export class QuestionCreateComponent implements OnInit {
 
   ngOnInit() {}
 
-  ///
-  private generateQuestionId(): string {
-    return '1';
-  }
-
   public addQuestion(): void {
     this.question = {
-      id: this.generateQuestionId(),
       question_text: this.questionForm.get('questionText').value,
       question_image: this.questionForm.get('questionImage').value,
       explain_text: this.questionForm.get('explainText').value,

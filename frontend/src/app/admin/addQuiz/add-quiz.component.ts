@@ -33,22 +33,19 @@ export class AddQuizComponent implements OnInit {
     private router: Router
   ) {}
 
-  uploadQuiz() {
-    //remember to change questions quizId here
-  }
-
   loadTabComponent(tabName: string) {
     this.currentTab = tabName;
   }
 
   loadQuiz(quiz: Quiz) {
     this.quiz = quiz;
+    this.quizService.createQuiz(this.quiz, this.questionsAnswers);
+    console.log(this.questionsAnswers);
     console.log(this.quiz);
   }
 
   addQuestionAnswer(question: Question, answers: Answer[]) {
     this.questionsAnswers.set(question, answers);
-    console.log(this.questionsAnswers);
   }
 
   ngOnInit() {}

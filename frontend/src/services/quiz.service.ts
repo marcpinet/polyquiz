@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, forkJoin, of, Observable } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import { User } from 'src/models/user.model';
+import { Answer } from '../models/quiz.model';
+import { switchMap, map, tap, mapTo } from 'rxjs/operators';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
@@ -30,10 +33,11 @@ export class QuizService {
 
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
+  private answerPath = 'answers';
 
   private httpOptions = httpOptionsBase;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.retrieveQuizzes();
   }
 
@@ -52,12 +56,6 @@ export class QuizService {
     });
   }
 
-  addQuiz(quiz: Quiz): void {
-    this.http
-      .post<Quiz>(this.quizUrl, quiz, this.httpOptions)
-      .subscribe(() => this.retrieveQuizzes());
-  }
-
   setSelectedQuiz(quizId: string): void {
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
@@ -70,13 +68,6 @@ export class QuizService {
     this.http
       .delete<Quiz>(urlWithId, this.httpOptions)
       .subscribe(() => this.retrieveQuizzes());
-  }
-
-  addQuestion(quiz: Quiz, question: Question): void {
-    const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
-    this.http
-      .post<Question>(questionUrl, question, this.httpOptions)
-      .subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
   deleteQuestion(quiz: Quiz, question: Question): void {
@@ -96,5 +87,90 @@ export class QuizService {
   getQuizById(quizId: string) {
     const urlWithId = this.quizUrl + '/' + quizId;
     return this.http.get<Quiz>(urlWithId);
+  }
+
+  addQuestion(quizId: string, question: Question): Observable<Question> {
+    const url = `${this.quizUrl}/${quizId}/${this.questionsPath}`;
+    return this.http.post<Question>(url, question, this.httpOptions);
+  }
+
+  addQuiz(quiz: Quiz): Observable<Quiz> {
+    return this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions);
+  }
+
+  createQuiz(quiz: Quiz, questionAnswers: Map<Question, Answer[]>) {
+    // First, create the quiz
+    this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe({
+      next: (createdQuiz) => {
+        console.log('Quiz was created successfully');
+        this.quizzes.push(createdQuiz);
+        this.quizzes$.next(this.quizzes);
+        Swal.fire({
+          title: 'Quiz créé',
+          text: 'Vous allez être redirigé vers la liste des quiz',
+          icon: 'success',
+          timer: 2000,
+        }).then(() => {
+          this.router.navigate(['/admin/quiz']);
+        });
+        questionAnswers.forEach((answers: Answer[], question: Question) => {
+          question.quizId = parseInt(createdQuiz.id);
+          this.http
+            .post<Question>(
+              `${this.quizUrl}/${createdQuiz.id}/${this.questionsPath}`,
+              question,
+              this.httpOptions
+            )
+            .subscribe({
+              next: (createdQuestion) => {
+                console.log('Question was created successfully');
+                question.id = createdQuestion.id;
+                answers.forEach((answer: Answer) => {
+                  this.http
+                    .post<Answer>(
+                      `${this.quizUrl}/${createdQuiz.id}/${this.questionsPath}/${createdQuestion.id}/${this.answerPath}`,
+                      answer,
+                      this.httpOptions
+                    )
+                    .subscribe({
+                      next: (createdAnswer) => {
+                        console.log('Answer was created successfully');
+                      },
+                      error: (error) => {
+                        console.error('Failed to create answer', error);
+                      },
+                    });
+                });
+              },
+              error: (error) => {
+                console.error('Failed to create question', error);
+              },
+            });
+        });
+      },
+      error: (error) => {
+        console.error('Failed to create quiz', error);
+      },
+    });
+  }
+
+  createQuestion(quizId: string, question: Question): Observable<Question> {
+    return this.http.post<Question>(
+      `${this.quizUrl}/${quizId}/${this.questionsPath}`,
+      question,
+      this.httpOptions
+    );
+  }
+
+  createAnswer(
+    quizId: string,
+    questionId: string,
+    answer: Answer
+  ): Observable<Answer> {
+    return this.http.post<Answer>(
+      `${this.quizUrl}/${quizId}/${this.questionsPath}/${questionId}/${this.answerPath}`,
+      answer,
+      this.httpOptions
+    );
   }
 }
