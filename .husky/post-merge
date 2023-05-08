@@ -4,15 +4,18 @@
 IFS=$'\n'
 
 PACKAGE_LOCK_REGEX="(^.*/package-lock\.json)|(^package-lock\.json)"
-PACKAGES=("$(git diff --name-only HEAD@{1} HEAD | grep -E "$PACKAGE_LOCK_REGEX")")
+PACKAGES=($(git diff --name-only HEAD@{1} HEAD | grep -E "$PACKAGE_LOCK_REGEX" || true))
 
-# For each folder that contains a package-lock.json file, run npm install
+# Check if there are modified package-lock.json files
 if [ ${#PACKAGES[@]} -gt 0 ]; then
-  for PACKAGE in $PACKAGES; do
+  # For each folder that contains a package-lock.json file, run npm install
+  for PACKAGE in "${PACKAGES[@]}"; do
     PACKAGE_DIR="$(dirname -- "$PACKAGE")"
-    echo "📦 $package was changed. Running npm install to update your dependencies..."
+    echo "📦 $PACKAGE was changed. Running npm install to update your dependencies..."
     cd "$PACKAGE_DIR" && npm install
   done
+else
+  echo "No package-lock.json files were changed. Exiting without any error."
 fi
 
 exit 0

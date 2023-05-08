@@ -25,6 +25,8 @@ export class StatsResidentComponent {
   wrongClicksData = [];
   playedQuizzesData = [];
   playedQuizzesTotal: number = 0;
+  wrongClicksTotal: number = 0;
+  wrongClicksPerQuestion: number = 0;
 
   constructor(
     public router: Router,
@@ -59,14 +61,18 @@ export class StatsResidentComponent {
           // Calculate data for the charts
           let totalTime = 0;
           let totalQuestions = 0;
+          let totalWrongClicks = 0;
 
           let i = 0;
           for (let result of quizResults) {
             totalTime += result.time_per_question;
+            totalWrongClicks += result.click_error;
             totalQuestions += result.right_answers + result.wrong_answers;
             i++;
           }
 
+          this.wrongClicksTotal += totalWrongClicks;
+          this.wrongClicksPerQuestion = this.wrongClicksTotal / totalQuestions;
           this.timePerQuestionData.push(totalTime / i);
           this.playedQuizzesData.push(quizResults.length);
         });
@@ -209,7 +215,7 @@ export class StatsResidentComponent {
 
       quizCountByMonth[monthYearLabel]++;
 
-      t += result.click_error;
+      if (result.click_error > 0) t += result.click_error;
     }
     clickErrors.push(t);
 
