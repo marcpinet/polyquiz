@@ -22,6 +22,15 @@ router.get("/:resultId", (req, res) => {
   }
 });
 
+router.get("/quiz/:quizId", (req, res) => {
+  try {
+    res.status(200).json(Result.getByQuizId(req.params.quizId));
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 router.get("/user/:userId", (req, res) => {
   try {
     res.status(200).json(Result.getByUserId(req.params.userId));

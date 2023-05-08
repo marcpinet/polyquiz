@@ -117,4 +117,11 @@ module.exports = class BaseModel {
     if (!items) return false;
     return items;
   }
+
+  getByQuizId(id) {
+    if (typeof id === "string") id = parseInt(id);
+    const items = this.items.filter((item) => item.quiz_id === id);
+    if (!items) return false;
+    return items;
+  }
 };
