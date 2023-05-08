@@ -156,7 +156,16 @@ export class StatsResidentComponent {
     },
 
     plugins: {
-      legend: { display: true },
+      legend: {
+        display: true,
+        labels: {
+          boxWidth: 50,
+          boxHeight: 20,
+          font: {
+            size: 24,
+          },
+        },
+      },
     },
   };
 

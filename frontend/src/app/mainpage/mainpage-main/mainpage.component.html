@@ -1,10 +1,10 @@
-<div class="md:flex w-full">
+<div class="md:flex w-full max-h-screen overflow-y-scroll">
   <!-- Left Side -->
   <div class="md:w-1/5 bg-[#BAD7E9] border-r hidden md:block fixed h-screen">
     <div class="flex flex-col justify-between items-center h-full w-full">
       <img
         src="../../assets/images/Poly.png"
-        class="w-40 h-40 rounded-full shadow flex-none"
+        class="w-40 h-40 rounded-full shadow p-2"
       />
       <ul
         class="w-full h-full flex flex-col justify-center items-center flex-grow"
@@ -15,7 +15,7 @@
           id="quiz-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full  bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="QUIZ"
           >
             <i
@@ -57,7 +57,7 @@
           id="result-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full  bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="RESULTAT"
           >
             <i
@@ -97,7 +97,7 @@
           id="param-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full  bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="PARAMETRES"
           >
             <i
@@ -135,13 +135,13 @@
   </div>
 
   <!-- Right Side -->
-  <div class="md:w-4/5 h-screen bg-[#FCFFE7]"  style="margin-left: 20%;">
+  <div class="md:w-4/5 h-screen bg-[#FCFFE7]"  style="margin-left: 21%;">
     <nav
-      class="flex bg-[#FCFFE7] items-center relative justify-between m-1 w-full"
+      class="flex bg-[#FCFFE7] items-center relative justify-between w-full"
     >
       <div (click)="helpPopup()">
         <button
-          class="flex items-center w-full px-6 py-6 m-0 font-bold text-[#2B3467] text-5xl bg-[#BAD7E9] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+          class="flex items-center w-full px-6 py-6 font-bold text-[#2B3467] text-5xl bg-[#BAD7E9] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
           type="button"
           onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('div').css('color', '#FCFFE7');"
           onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('div').css('color', '#2B3467');"
