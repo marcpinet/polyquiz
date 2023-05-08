@@ -138,6 +138,9 @@ export class StatsResidentComponent {
       line: {
         tension: 0.5,
       },
+      point: {
+        radius: 7,
+      },
     },
     scales: {
       // We use this empty structure as a placeholder for dynamic theming.
@@ -164,6 +167,16 @@ export class StatsResidentComponent {
           font: {
             size: 24,
           },
+        },
+      },
+      tooltip: {
+        caretSize: 50,
+        caretPadding: 50,
+        bodyFont: {
+          size: 24,
+        },
+        titleFont: {
+          size: 24,
         },
       },
     },
