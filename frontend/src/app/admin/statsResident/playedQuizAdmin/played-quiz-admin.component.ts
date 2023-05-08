@@ -11,7 +11,7 @@ export class PlayedQuizAdminComponent implements OnInit {
   @Input() quiz: Quiz;
   @Input() results: Result[];
 
-  nbClickError: number | null = null;
+  nbClickErrorPerQuestion: number | null = null;
   averageTimePerQuestion: number | null = null;
   successRate: number | null = null;
   numberOfAttempts: number | null = null;
@@ -21,6 +21,9 @@ export class PlayedQuizAdminComponent implements OnInit {
   ngOnInit() {
     let totalQuestions = 0;
     let totalCorrectAnswers = 0;
+    let totalClickError = 0;
+    let totalQuestionWithConfirmation = 0;
+    let totalTime = 0;
 
     this.numberOfAttempts = this.results.length;
 
@@ -28,26 +31,30 @@ export class PlayedQuizAdminComponent implements OnInit {
       const questions = result.right_answers + result.wrong_answers;
       totalQuestions += questions;
       totalCorrectAnswers += result.right_answers;
-
-      let pointMultiplier = 0;
-      switch (this.quiz.difficulty) {
-        case 'Facile':
-          pointMultiplier = 100;
-          break;
-        case 'Moyen':
-          pointMultiplier = 200;
-          break;
-        case 'Difficile':
-          pointMultiplier = 300;
-          break;
-        default:
-          break;
+      totalTime += result.play_time;
+      if (result.click_error != -1) {
+        totalClickError += result.click_error;
+        totalQuestionWithConfirmation += questions;
       }
     }
-
+    this.averageTimePerQuestion = Number(
+      (totalTime / totalQuestions).toFixed(2)
+    );
+    this.nbClickErrorPerQuestion = Number(
+      (totalClickError / totalQuestionWithConfirmation).toFixed(2)
+    );
     const successRateString = Number(
       (totalCorrectAnswers / totalQuestions) * 100
     ).toFixed(2);
     this.successRate = Number(successRateString);
+  }
+
+  compilTime(time: number) {
+    var tmp = '';
+    if (time > 60) {
+      tmp += Math.floor(time / 60) + 'm';
+    }
+    tmp += (time % 60).toFixed(2) + 's';
+    return tmp;
   }
 }
