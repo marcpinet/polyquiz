@@ -95,6 +95,9 @@ export class QuestionCreateComponent implements OnInit {
     }
     this.loadTabComponent.emit('QUIZ_CREATE');
 
-    this.addQuestionAnswer.emit({ this.question, this.answers });
+    this.addQuestionAnswer.emit({
+      question: this.question,
+      answers: this.answers,
+    });
   }
 }
