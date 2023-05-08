@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
     if (req.body.explain_image) {
       question.explain_image = req.body.explain_image;
     }
-    Question.create(question);
+    question = Question.create(question);
 
     // If answers have been provided in the request, we create the answer and update the response to send.
     if (req.body.answers && req.body.answers.length > 0) {

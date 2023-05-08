@@ -539,14 +539,14 @@
     "click_error": 0
   },
   {
-    "id": 1683551744735,
-    "quiz_id": 1679916495824,
-    "date": "2023-05-08T13:15:44.715Z",
-    "user_id": 1680382334270,
-    "right_answers": 0,
-    "wrong_answers": 3,
-    "play_time": 10,
-    "time_per_question": 3.3333333333333335,
+    "id": 1683563736479,
+    "quiz_id": 1683563481464,
+    "date": "2023-05-08T16:35:36.400Z",
+    "user_id": 1682318674112,
+    "right_answers": 2,
+    "wrong_answers": 0,
+    "play_time": 6,
+    "time_per_question": 3,
     "click_error": -1
   }
 ]

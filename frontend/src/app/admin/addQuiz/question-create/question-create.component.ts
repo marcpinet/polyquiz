@@ -31,55 +31,48 @@ export class QuestionCreateComponent implements OnInit {
       questionText: ['', Validators.required],
       explainText: ['', Validators.required],
       explainImage: ['', Validators.required],
-      'Réponse 1': ['', Validators.required],
-      'Réponse 1 image': ['', Validators.required],
-      'Réponse 2': ['', Validators.required],
-      'Réponse 2 image': ['', Validators.required],
-      'Réponse 3': ['', Validators.required],
-      'Réponse 3 image': ['', Validators.required],
-      'Réponse 4': ['', Validators.required],
-      'Réponse 4 image': ['', Validators.required],
-      validResponse: ['', Validators.required],
+      reponse1: ['', Validators.required],
+      reponse1Image: ['', Validators.required],
+      reponse2: ['', Validators.required],
+      reponse2Image: ['', Validators.required],
+      reponse3: ['', Validators.required],
+      reponse3Image: ['', Validators.required],
+      reponse4: ['', Validators.required],
+      reponse4Image: ['', Validators.required],
+      validreponse: ['', Validators.required],
     });
     console.log('Question create component');
   }
 
   ngOnInit() {}
 
-  ///
-  private generateQuestionId(): string {
-    return '1';
-  }
-
   public addQuestion(): void {
     this.question = {
-      id: this.generateQuestionId(),
       question_text: this.questionForm.get('questionText').value,
-      question_image: this.questionForm.get('questionImage').value,
       explain_text: this.questionForm.get('explainText').value,
-      explain_image: this.questionForm.get('explainImage').value,
     };
-    this.answers.push({
-      isCorrect: true,
-      answer_text: this.questionForm.get('Réponse 1').value,
-      answer_image: this.questionForm.get('Réponse 1 image').value,
-    });
-    this.answers.push({
-      isCorrect: false,
-      answer_text: this.questionForm.get('Réponse 2').value,
-      answer_image: this.questionForm.get('Réponse 2 image').value,
-    });
-    this.answers.push({
-      isCorrect: false,
-      answer_text: this.questionForm.get('Réponse 3').value,
-      answer_image: this.questionForm.get('Réponse 3 image').value,
-    });
-    this.answers.push({
-      isCorrect: false,
-      answer_text: this.questionForm.get('Réponse 4').value,
-      answer_image: this.questionForm.get('Réponse 4 image').value,
-    });
-    switch (this.questionForm.get('validResponse').value) {
+    if (this.questionForm.get('questionImage').value !== '') {
+      this.question.question_image =
+        this.questionForm.get('questionImage').value;
+    }
+    if (this.questionForm.get('explainImage').value !== '') {
+      this.question.explain_image = this.questionForm.get('explainImage').value;
+    }
+
+    for (let i = 1; i <= 4; i++) {
+      const answer_text = this.questionForm.get(`reponse${i}`).value;
+      const answer_image = this.questionForm.get(`reponse${i}Image`).value;
+
+      if (answer_text) {
+        const answer: Answer = { isCorrect: false, answer_text };
+        if (answer_image !== '') {
+          answer.answer_image = answer_image;
+        }
+        this.answers.push(answer);
+      }
+    }
+
+    switch (this.questionForm.get('validreponse').value) {
       default:
         this.answers[0].isCorrect = true;
         break;
@@ -93,6 +86,7 @@ export class QuestionCreateComponent implements OnInit {
         this.answers[3].isCorrect = true;
         break;
     }
+
     this.loadTabComponent.emit('QUIZ_CREATE');
 
     this.addQuestionAnswer.emit({

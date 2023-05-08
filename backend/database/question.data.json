@@ -130,5 +130,18 @@
     "question_image": "https://img.20mn.fr/t05xan3rRZ24_yJdF-zorSk/1200x768_reine-elisabeth-ii",
     "explain_image": "https://imgr.starmag.com/2022/09/elizabeth-ii-buckingham-palace-annonce-le-deces-de-la-reine.jpg",
     "id": 1681981831159
+  },
+  {
+    "question_text": "VRAI OU FAUX? Le temps de gestation chez certaines espèces de bandicoots est de seulement 12 jours.",
+    "explain_text": "La réponse est VRAI. Aussi connus sous le nom de péramélidés, ces marsupiaux de petite taille vivent surtout en Australie et en Nouvelle-Guinée. La femelle donne généralement naissance à deux à six petits par portée.",
+    "quizId": 1683563481464,
+    "question_image": "https://quipoquiz.com/sn_uploads/quizzes/01_wiki_Perameles_gunni.jpg",
+    "id": 1683563481525
+  },
+  {
+    "question_text": "Le quokka peut vivre sans boire d’eau pendant environ un mois.",
+    "explain_text": "La réponse est VRAI. Pour se désaltérer, ce petit marsupial de l’Océanie ingère des plantes succulentes, une espèce végétale riche en eau.",
+    "quizId": 1683563481464,
+    "id": 1683563481532
   }
 ]
