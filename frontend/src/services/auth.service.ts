@@ -4,6 +4,7 @@ import { User } from 'src/models/user.model';
 import { httpOptionsBase, serverUrl } from '../configs/server.config';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,13 @@ export class AuthService {
             }
             resolve('');
           } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur : mauvais identifiant / mot de passe.',
+              showConfirmButton: false,
+              showCancelButton: true,
+              cancelButtonText: '<span>Retour</span>', // add non-breaking spaces between span tags to create more space between buttons
+            }).then((result) => {});
             resolve('Erreur : ' + JSON.parse(JSON.stringify(user)).errors);
           }
         });
