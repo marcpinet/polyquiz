@@ -22,6 +22,12 @@
             placeholder="Entrez l'URL de l'image"
           />
         </div>
+        <img
+          [src]="quizForm.value.quizImage"
+          *ngIf="quizForm.value.quizImage"
+          class="mx-auto object-cover rounded-lg"
+          alt="Quiz image"
+        />
       </div>
     </div>
 
@@ -153,7 +159,9 @@
             formControlName="quizTheme"
             class="w-full flex-grow -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
           >
-            <option *ngFor="let theme of themes" value="{{theme.id}}">{{theme.name}}</option>
+            <option *ngFor="let theme of themes" value="{{ theme.id }}">
+              {{ theme.name }}
+            </option>
           </select>
         </div>
       </div>
@@ -168,24 +176,45 @@
       </div>
     </div>
 
-    <div></div>
-
-    <button
-      class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8"
-      (click)="addQuestion()"
-    >
-      Ajouter une question
-      <i class="fa-sharp fa-solid fa-arrow-right"></i>
-    </button>
-    <button
-      class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8" (click)="addQuiz()"
-    >
-      Sauvegarder
-    </button>
-
+    <!-- Questions List -->
     <div *ngIf="questionsAnswers.size">
+      <div *ngFor="let question of questions">
         Questions List TODO
+        {{ question.question_text }}
+      </div>
     </div>
 
+    <!-- Buttons -->
+    <div *ngIf="!questionsAnswers.size || questionsAnswers.size < 2">
+      <button
+        class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8"
+        (click)="addQuestion()"
+      >
+        Ajouter une question
+        <i class="fa-sharp fa-solid fa-arrow-right"></i>
+      </button>
+      <div class="text-red-600 text-center text-md">
+        Il doit y avoir au moins 2 questions pour créer un quiz.
+      </div>
+    </div>
+
+    <div *ngIf="questionsAnswers.size >= 2">
+      <div class="flex justify-between">
+        <button
+          class="block w-full max-w-md mx-auto text-3xl bg-[#90C1DF] focus:bg-[#90C1DF] text-white rounded-lg font-semibold hover:[#EB455F] focus:outline-none focus:shadow-outline py-4 px-8"
+          (click)="addQuiz()"
+        >
+          <div class="text-[#2B3467]">Sauvegarder</div>
+        </button>
+
+        <button
+          class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8"
+          (click)="addQuestion()"
+        >
+          Ajouter une question
+          <i class="fa-sharp fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
   </form>
 </div>

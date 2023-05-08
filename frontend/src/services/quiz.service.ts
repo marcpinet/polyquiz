@@ -104,6 +104,7 @@ export class QuizService {
         console.log('Quiz was created successfully');
         this.quizzes.push(createdQuiz);
         this.quizzes$.next(this.quizzes);
+        let requestsCompleted = 0;
         questionAnswers.forEach((answers: Answer[], question: Question) => {
           question.quizId = parseInt(createdQuiz.id);
           this.http
@@ -126,30 +127,58 @@ export class QuizService {
                     .subscribe({
                       next: (createdAnswer) => {
                         console.log('Answer was created successfully');
+                        requestsCompleted++;
+                        if (
+                          requestsCompleted ===
+                          questionAnswers.size * answers.length
+                        ) {
+                          Swal.fire({
+                            title: 'Quiz créé',
+                            text: 'Vous allez être redirigé vers la liste des quiz',
+                            icon: 'success',
+                            timer: 2000,
+                            showConfirmButton: false,
+                          }).then(() => {
+                            this.router.navigate(['/admin/quiz']);
+                          });
+                        }
                       },
                       error: (error) => {
                         console.error('Failed to create answer', error);
+                        Swal.fire({
+                          title: 'Erreur',
+                          text: 'Une erreur est survenue lors de la création de la réponse',
+                          icon: 'error',
+                          timer: 2000,
+                          showConfirmButton: false,
+                        });
                       },
                     });
                 });
               },
               error: (error) => {
                 console.error('Failed to create question', error);
+                Swal.fire({
+                  title: 'Erreur',
+                  text: 'Une erreur est survenue lors de la création de la question',
+                  icon: 'error',
+                  timer: 2000,
+                  showConfirmButton: false,
+                });
               },
             });
         });
       },
       error: (error) => {
         console.error('Failed to create quiz', error);
+        Swal.fire({
+          title: 'Erreur',
+          text: 'Une erreur est survenue lors de la création du quiz',
+          icon: 'error',
+          timer: 2000,
+          showConfirmButton: false,
+        });
       },
-    });
-    Swal.fire({
-      title: 'Quiz créé',
-      text: 'Vous allez être redirigé vers la liste des quiz',
-      icon: 'success',
-      timer: 2000,
-    }).then(() => {
-      this.router.navigate(['/admin/quiz']);
     });
   }
 

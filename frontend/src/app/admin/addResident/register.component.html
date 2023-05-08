@@ -77,6 +77,7 @@
             placeholder="Entrez l'URL de la photo"
           />
         </div>
+        <img [src]="residentForm.value.avatar" *ngIf="residentForm.value.avatar" class="mx-auto object-cover rounded-lg" alt="Resident image">
       </div>
     </div>
 

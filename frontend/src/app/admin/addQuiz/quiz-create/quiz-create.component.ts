@@ -19,6 +19,7 @@ export class QuizCreateComponent implements OnInit {
   public quizForm: FormGroup;
   themes: Theme[] = [];
   quiz: Quiz;
+  questions: Question[] = [];
 
   constructor(
     private quizService: QuizService,
@@ -44,11 +45,18 @@ export class QuizCreateComponent implements OnInit {
       this.quiz = changes['quizStored'].currentValue;
       this.updateForm();
     }
+    if ('questionsAnswers' in changes) {
+      this.questionsAnswers = changes['questionsAnswers'].currentValue;
+      this.questions = Array.from(this.questionsAnswers.keys());
+    }
   }
 
   ngOnInit() {
     this.updateForm();
     this.quiz = this.quizStored;
+    if (this.questionsAnswers) {
+      this.questions = Array.from(this.questionsAnswers.keys());
+    }
     console.log(this.quizStored);
   }
 
