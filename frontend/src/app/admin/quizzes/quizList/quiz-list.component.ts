@@ -13,6 +13,7 @@ import { QuizService } from 'src/services/quiz.service';
 export class QuizListAdminComponent {
   public quizList: Quiz[] = [];
   participantCounts: { [quizId: string]: number } = {};
+  totalTries: { [quizId: string]: number } = {};
   constructor(
     public router: Router,
     public quizService: QuizService,
@@ -22,8 +23,14 @@ export class QuizListAdminComponent {
       this.quizList = quizzes;
       this.quizList.forEach((quiz) => {
         const quizId = quiz.id;
-        this.getNumberOfParticipants(quizId).then((count) => {
-          this.participantCounts[quizId] = count;
+        this.getResultsForQuiz(quizId).then((resultList) => {
+          var res = new Set();
+          resultList.forEach((result) => {
+            res.add(result.user_id);
+          });
+          this.participantCounts[quizId] = res.size;
+
+          this.totalTries[quizId] = resultList.length;
         });
       });
     });
@@ -33,20 +40,15 @@ export class QuizListAdminComponent {
     this.router.navigate(['/admin/quiz/modif/' + quizId]);
   }
 
-  async getNumberOfParticipants(quizId: string): Promise<number> {
-    const res = new Set();
+  async getResultsForQuiz(quizId: string): Promise<Result[]> {
     try {
       const resultList = await this.http
         .get<Result[]>(serverUrl + '/results/quiz/' + quizId)
         .toPromise();
-      resultList.forEach((result) => {
-        res.add(result.user_id);
-      });
-      console.log(res);
-      return res.size;
+      return resultList;
     } catch (error) {
       console.error('Failed to retrieve results', error);
-      return 0;
+      return [];
     }
   }
 }

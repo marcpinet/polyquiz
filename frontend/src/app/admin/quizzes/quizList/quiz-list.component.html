@@ -24,7 +24,7 @@
           <i class="fa-solid fa-rotate-left text-[#2b3467] mb-1 text-3xl"></i>
         </div>
         <div class="font-bold text-[#2b3467]">Nombre d'essaies</div>
-        <div class="text-white font-bold text-5xl">3</div>
+        <div class="text-white font-bold text-5xl">{{ totalTries[quiz.id] }}</div>
       </button>
 
       <button class="text-3xl flex-1 font-semibold p-0 bg-[#2B3467] transition-colors duration-300 border-4" (click)="navigateQuizModif(quiz.id)" >
