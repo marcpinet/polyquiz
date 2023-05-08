@@ -27,7 +27,7 @@ export class StatsResidentComponent {
   playedQuizzesTotal: number = 0;
   wrongClicksTotal: number = 0;
   wrongClicksPerQuestion: number = 0;
-
+  totalQuestionWithConfirmation: number = 0;
   constructor(
     public router: Router,
     private userService: UserService,
@@ -51,30 +51,30 @@ export class StatsResidentComponent {
 
       for (let quizId of quizIdsArray) {
         this.quizService.getQuizById(quizId).subscribe((quiz) => {
+          let totalTime = 0;
           let quizResults = results.filter(
             (result) => result.quiz_id === quizId
           );
           this.playedQuizzes.set(quiz, quizResults);
-
           this.playedQuizzesTotal += quizResults.length;
-
-          // Calculate data for the charts
-          let totalTime = 0;
-          let totalQuestions = 0;
-          let totalWrongClicks = 0;
-
           let i = 0;
           for (let result of quizResults) {
             totalTime += result.time_per_question;
-            totalWrongClicks += result.click_error;
-            totalQuestions += result.right_answers + result.wrong_answers;
+            if (result.click_error != -1) {
+              //if activates confirmer avant valider
+              this.wrongClicksTotal += result.click_error;
+              this.totalQuestionWithConfirmation +=
+                result.right_answers + result.wrong_answers;
+            }
+            this.wrongClicksPerQuestion = Number(
+              (
+                this.wrongClicksTotal / this.totalQuestionWithConfirmation
+              ).toFixed(2)
+            );
             i++;
           }
-
-          this.wrongClicksTotal += totalWrongClicks;
-          this.wrongClicksPerQuestion = this.wrongClicksTotal / totalQuestions;
-          this.timePerQuestionData.push(totalTime / i);
           this.playedQuizzesData.push(quizResults.length);
+          this.timePerQuestionData.push(totalTime / i);
         });
       }
 

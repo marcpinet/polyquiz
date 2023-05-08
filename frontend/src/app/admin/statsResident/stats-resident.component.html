@@ -1,5 +1,5 @@
 <ng-container *ngIf="user != undefined && resident != undefined">
-  <div class="w-4/5 m-6 bg-[#90C1DF] shadow-lg rounded-xl pl-6 pb-6 mx-auto">
+  <div class="w-9/10 m-6 bg-[#90C1DF] shadow-lg rounded-xl pl-6 pb-6 mx-auto">
     <div class="px-6 mt-16">
       <div class="flex flex-wrap justify-center">
         <div class="w-full flex justify-center mr-16">
@@ -45,40 +45,40 @@
       <!-- Stats -->
       <h1 class="text-3xl text-[#2b3467] font-bold mt-2 mb-2">Statistiques</h1>
 
-      <div class="w-4/5 mx-auto bg-white rounded-xl">
+      <div class="w-7/8 mx-auto bg-white rounded-xl">
         <canvas baseChart class="chart" [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType"
           (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
 
-      <div class="w-4/5 mx-auto bg-white rounded-xl mt-2">
+      <div class="w-7/8 mx-auto bg-white rounded-xl mt-5">
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Temps moyen par question</div>
-            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">{{ med(timePerQuestionData) }} secondes</div>
+            <div class="flex-1 text-left text-2xl font-bold text-[#2B3467]">Temps moyen par question</div>
+            <div class="flex-1 text-right text-2xl font-bold text-[#EB455F]">{{ med(timePerQuestionData) }} secondes</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés totaux</div>
-            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]"> {{ wrongClicksTotal }} </div>
+            <div class="flex-1 text-left text-2xl font-bold text-[#2B3467]">Nombre de clics erronés totaux</div>
+            <div class="flex-1 text-right text-2xl font-bold text-[#EB455F]"> {{ wrongClicksTotal }} </div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de clics erronés moyen par question</div>
-            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]"> {{ wrongClicksPerQuestion }} </div>
+            <div class="flex-1 text-left text-2xl font-bold text-[#2B3467]">Nombre de clics erronés moyen par question</div>
+            <div class="flex-1 text-right text-2xl font-bold text-[#EB455F]"> {{ wrongClicksPerQuestion }} </div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de quiz joués</div>
-            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">{{ playedQuizzes.size }}</div>
+            <div class="flex-1 text-left text-2xl font-bold text-[#2B3467]">Nombre de quiz joués</div>
+            <div class="flex-1 text-right text-2xl font-bold text-[#EB455F]">{{ playedQuizzes.size }}</div>
           </div>
         </div>
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
-            <div class="flex-1 text-left text-xl font-bold text-[#2B3467]">Nombre de essais totaux</div>
-            <div class="flex-1 text-right text-xl font-bold text-[#EB455F]">{{ playedQuizzesTotal }}</div>
+            <div class="flex-1 text-left text-2xl font-bold text-[#2B3467]">Nombre de essais totaux</div>
+            <div class="flex-1 text-right text-2xl font-bold text-[#EB455F]">{{ playedQuizzesTotal }}</div>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
       <!-- Quiz -->
       <h1 class="text-3xl text-[#2b3467] font-bold mt-2 mb-2">Quiz</h1>
       <div *ngFor="let entry of playedQuizzes | keyvalue">
-        <app-played-quiz [quiz]="entry.key" [results]="entry.value"></app-played-quiz>
+        <app-played-quiz-admin [quiz]="entry.key" [results]="entry.value"></app-played-quiz-admin>
       </div>
     </div>
   </div>
