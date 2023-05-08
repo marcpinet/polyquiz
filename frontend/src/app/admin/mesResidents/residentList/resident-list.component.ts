@@ -33,11 +33,17 @@ export class ResidentListComponent {
   }
 
   searchResident() {
+    if (this.inputValue == '') {
+      this.displayedResident = this.residentsList;
+      this.displayedUsers = this.usersList;
+      return;
+    }
     const filteredUsers = this.usersList.filter((user) => {
       if (user == undefined) return false;
       return (
         user.firstName.toLowerCase().includes(this.inputValue.toLowerCase()) ||
-        user.lastName.toLowerCase().includes(this.inputValue.toLowerCase())
+        user.lastName.toLowerCase().includes(this.inputValue.toLowerCase()) ||
+        user.userName.toLowerCase().includes(this.inputValue.toLowerCase())
       );
     });
     const filteredResidents = this.residentsList.filter((resident) => {

@@ -16,6 +16,7 @@ export class AdminMainPage {
   user: User;
   currentTab = 'RESIDENT';
   @ViewChild('resultBtn') resultBtn: ElementRef;
+  showNotifications = false;
 
   ngAfterViewInit() {
     this.loadTabComponent('RESIDENT');
@@ -114,5 +115,9 @@ export class AdminMainPage {
         '<span style="font-size: 60px; padding: 56px 54px;">Fermer</span>',
       width: 1700,
     });
+  }
+
+  switchNotifications() {
+    this.showNotifications = !this.showNotifications;
   }
 }
