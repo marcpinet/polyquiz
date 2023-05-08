@@ -537,5 +537,16 @@
     "play_time": 8,
     "time_per_question": 2.6666666666666665,
     "click_error": 0
+  },
+  {
+    "id": 1683551744735,
+    "quiz_id": 1679916495824,
+    "date": "2023-05-08T13:15:44.715Z",
+    "user_id": 1680382334270,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 10,
+    "time_per_question": 3.3333333333333335,
+    "click_error": -1
   }
 ]
