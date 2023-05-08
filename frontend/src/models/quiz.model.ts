@@ -1,5 +1,5 @@
 export interface Quiz {
-  id: string;
+  id?: string;
   name: string;
   difficulty: string;
   image: string;
@@ -7,18 +7,18 @@ export interface Quiz {
   estimated_time: number;
   themeId: number;
   theme?: Theme;
-  questions: Question[];
+  questions?: Question[];
 }
 
 export interface Question {
-  id: string;
-  quizId: number;
+  id?: string;
+  quizId?: number;
   question_text: string;
   question_image?: string;
   question_sound?: string;
   explain_text: string;
   explain_image?: string;
-  answers: Answer[];
+  answers?: Answer[];
 }
 
 export interface Answer {

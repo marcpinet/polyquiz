@@ -1,0 +1,283 @@
+<div class="w-full w-full py-10 px-5 md:px-10">
+    <div class="text-center mb-0">
+      <h1 class="font-bold text-3xl text-[#2B3467]">Ajouter Question</h1>
+    </div>
+    <form [formGroup]="questionForm">
+      <!-- Temporary Photo Input -->
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image de la question</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'questionImage'"
+              placeholder="Entrez l'URL de l'image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Question</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'questionText'"
+              placeholder="Entrez la question"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Réponse 1 </label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 1'"
+              placeholder="Entrez la réponse"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image de la réponse</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 1 image'"
+              placeholder="Entrez l'URL de l'image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mr-4 mb-4 rounded-md bg-indigo-200 p-2">
+        <input
+        type="radio"
+        class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+        formControlName="validResponse"
+        name="validResponse"
+        id="valid0"
+        value="0"/>
+          <label for="valid0" class="ml-2 text-sm text-gray-600">Valide</label>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Réponse 2 </label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 2'"
+              placeholder="Entrez la réponse"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image de la réponse</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 2 image'"
+              placeholder="Entrez l'URL de l'image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mr-4 mb-4 rounded-md bg-indigo-200 p-2">
+        <input
+        type="radio"
+        class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+        formControlName="validResponse"
+        name="validResponse"
+        value="1"
+        id="valid1"/>
+          <label for="valid1" class="ml-2 text-sm text-gray-600">Valide</label>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Réponse 3 </label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 3'"
+              placeholder="Entrez la réponse"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image de la réponse</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 3 image'"
+              placeholder="Entrez l'URL de l'image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mr-4 mb-4 rounded-md bg-indigo-200 p-2">
+        <input
+        type="radio"
+        class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+        formControlName="validResponse"
+        name="validResponse"
+        value="2"
+        id="valid2"/>
+          <label for="valid2" class="ml-2 text-sm text-gray-600">Valide</label>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Réponse 4 </label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 4'"
+              placeholder="Entrez la réponse"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image de la réponse</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'Réponse 4 image'"
+              placeholder="Entrez l'URL de l'image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mr-4 mb-4 rounded-md bg-indigo-200 p-2">
+        <input
+        type="radio"
+        class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+        formControlName="validResponse"
+        name="validResponse"
+        value="3"
+        id="valid3"/>
+          <label for="valid3" class="ml-2 text-sm text-gray-600">Valide</label>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <button
+          class="block w-full max-w-xs mx-auto text-xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+          (click)="addQuestion()"
+        >
+          fin
+          <i class="fa-sharp fa-solid fa-arrow-right"></i>
+        </button>
+        </div>
+      </div>
+    </form>
+  </div>

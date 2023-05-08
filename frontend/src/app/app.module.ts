@@ -15,11 +15,10 @@ import { GamePageComponent } from './gameComponents/game-page/game-page.componen
 import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
 import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
-import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ThemeAdminComponent } from './quiz/theme-admin/theme-admin.component';
+import { ThemeAdminComponent } from './admin/themes/theme-admin/theme-admin.component';
 import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
@@ -35,6 +34,9 @@ import { ThemeListComponent } from './admin/themes/themeList/theme-list.componen
 import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
 import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
 import { QuizListAdminComponent } from './admin/quizzes/quizList/quiz-list.component';
+import { QuizCreateComponent } from './admin/addQuiz/quiz-create/quiz-create.component';
+import { QuestionCreateComponent } from './admin/addQuiz/question-create/question-create.component';
+import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,6 @@ import { QuizListAdminComponent } from './admin/quizzes/quizList/quiz-list.compo
     RegisterComponent,
     MainPage,
     OptionsScreenComponent,
-    QuizCreateComponent,
     MesResultatsComponent,
     ResultComponent,
     UserProfileComponent,
@@ -67,6 +68,9 @@ import { QuizListAdminComponent } from './admin/quizzes/quizList/quiz-list.compo
     AddThemeComponent,
     ModifyThemeComponent,
     QuizListAdminComponent,
+    QuizCreateComponent,
+    QuestionCreateComponent,
+    AddQuizComponent,
   ],
   imports: [
     BrowserModule,
