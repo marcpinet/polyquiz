@@ -14,6 +14,7 @@ export class QuizListAdminComponent {
   public quizList: Quiz[] = [];
   participantCounts: { [quizId: string]: number } = {};
   totalTries: { [quizId: string]: number } = {};
+  totalWinrate: { [quizId: string]: number } = {};
   constructor(
     public router: Router,
     public quizService: QuizService,
@@ -24,11 +25,22 @@ export class QuizListAdminComponent {
       this.quizList.forEach((quiz) => {
         const quizId = quiz.id;
         this.getResultsForQuiz(quizId).then((resultList) => {
-          var res = new Set();
+          var participants = new Set();
+          var winrate = 0;
           resultList.forEach((result) => {
-            res.add(result.user_id);
+            participants.add(result.user_id);
+            winrate +=
+              result.right_answers /
+              (result.right_answers + result.wrong_answers);
           });
-          this.participantCounts[quizId] = res.size;
+          this.participantCounts[quizId] = participants.size;
+          if (resultList.length > 0) {
+            this.totalWinrate[quizId] = Math.round(
+              (winrate / resultList.length) * 100
+            );
+          } else {
+            this.totalWinrate[quizId] = 0;
+          }
 
           this.totalTries[quizId] = resultList.length;
         });
