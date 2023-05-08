@@ -99,20 +99,11 @@ export class QuizService {
   }
 
   createQuiz(quiz: Quiz, questionAnswers: Map<Question, Answer[]>) {
-    // First, create the quiz
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe({
       next: (createdQuiz) => {
         console.log('Quiz was created successfully');
         this.quizzes.push(createdQuiz);
         this.quizzes$.next(this.quizzes);
-        Swal.fire({
-          title: 'Quiz créé',
-          text: 'Vous allez être redirigé vers la liste des quiz',
-          icon: 'success',
-          timer: 2000,
-        }).then(() => {
-          this.router.navigate(['/admin/quiz']);
-        });
         questionAnswers.forEach((answers: Answer[], question: Question) => {
           question.quizId = parseInt(createdQuiz.id);
           this.http
@@ -151,6 +142,14 @@ export class QuizService {
       error: (error) => {
         console.error('Failed to create quiz', error);
       },
+    });
+    Swal.fire({
+      title: 'Quiz créé',
+      text: 'Vous allez être redirigé vers la liste des quiz',
+      icon: 'success',
+      timer: 2000,
+    }).then(() => {
+      this.router.navigate(['/admin/quiz']);
     });
   }
 

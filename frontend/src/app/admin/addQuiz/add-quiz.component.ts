@@ -39,6 +39,11 @@ export class AddQuizComponent implements OnInit {
 
   loadQuiz(quiz: Quiz) {
     this.quiz = quiz;
+    console.log(quiz);
+  }
+
+  uploadQuiz(quiz: Quiz) {
+    this.quiz = quiz;
     this.quizService.createQuiz(this.quiz, this.questionsAnswers);
     console.log(this.questionsAnswers);
     console.log(this.quiz);
