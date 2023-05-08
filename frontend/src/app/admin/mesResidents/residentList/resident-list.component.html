@@ -1,41 +1,75 @@
 <div class="mx-auto w-5/6 rounded-lg bg-gray-200 border border-[#2B3467] mb-2">
   <div class="flex items-center">
     <div
-      class="flex items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-5 text-2xl">
+      class="flex items-center justify-center rounded-tl-lg rounded-bl-lg border border-gray-200 bg-white p-5 text-2xl"
+    >
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <input type="text" class="flex-1 bg-white pl-2 text-xl font-semibold outline-0 py-3 h-16" id="" style="width: 75%"
-      placeholder="Entrez le nom du résident ou son numéro d'identification">
-    <button
-      class="bg-blue-500 p-4 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors text-lg h-16"
-      style="width: 25%">Chercher résident</button>
+    <input
+      type="text"
+      class="flex-1 bg-white pl-2 text-xl font-semibold outline-0 py-3 h-16"
+      id=""
+      placeholder="Entrez le nom du résident ou son numéro d'identification"
+      [(ngModel)]="inputValue"
+      (ngModelChange)="searchResident()"
+    />
   </div>
 </div>
 
-<div class="overflow-hidden rounded-lg border border-[#2B3467] shadow-md " style="width: 100%;">
-  <div style="width: 100%; overflow-x: auto;">
-    <table class="w-full border-collapse bg-[#BAD7E9] text-left text-sm text-[#2B3467] text-xl"
-      style="table-layout: fixed;">
+<div
+  class="overflow-hidden rounded-lg border border-[#2B3467] shadow-md"
+  style="width: 100%"
+>
+  <div style="width: 100%; overflow-x: auto">
+    <table
+      class="w-full border-collapse bg-[#BAD7E9] text-left text-sm text-[#2B3467] text-xl"
+      style="table-layout: fixed"
+    >
       <thead class="bg-[#90C1DF]">
         <tr>
-          <th scope="col" class="px-6 py-4 font-medium text-[#2B3467] text-xl" style="width: 25%;">Numéro Résident</th>
-          <th scope="col" class="px-6 py-4 font-medium text-[#2B3467] text-xl" style="width: 75%;">Résident</th>
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-[#2B3467] text-xl"
+            style="width: 25%"
+          >
+            Numéro Résident
+          </th>
+          <th
+            scope="col"
+            class="px-6 py-4 font-medium text-[#2B3467] text-xl"
+            style="width: 75%"
+          >
+            Résident
+          </th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-100 border-t border-[#2B3467]"
-        *ngFor="let resident of residentsList; let i = index" (click)="navigateResidentStats(resident.id)">
-        <ng-container *ngIf="usersList[i]" >
+      <tbody
+        class="divide-y divide-gray-100 border-t border-[#2B3467]"
+        *ngFor="let resident of displayedResident; let i = index"
+        (click)="navigateResidentStats(resident.id)"
+      >
+        <ng-container *ngIf="displayedUsers[i]">
           <tr class="hover:bg-[#90C1DF]">
-            <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">{{ resident.id }}</td>
+            <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">
+              {{ resident.id }}
+            </td>
             <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">
               <div class="flex gap-3">
                 <div class="relative h-14 w-14 mr-2">
-                  <img class="h-full w-full rounded-full object-cover object-center" src="{{usersList[i].avatar}}"
-                    alt="" />
+                  <img
+                    class="h-full w-full rounded-full object-cover object-center"
+                    src="{{ displayedUsers[i].avatar }}"
+                    alt=""
+                  />
                 </div>
                 <div class="text-xl">
-                  <div class="font-medium text-gray-700">{{usersList[i].firstName}} {{usersList[i].lastName}}</div>
-                  <div class="text-[#2B3467]">{{usersList[i].userName}}</div>
+                  <div class="font-medium text-gray-700">
+                    {{ displayedUsers[i].firstName }}
+                    {{ displayedUsers[i].lastName }}
+                  </div>
+                  <div class="text-[#2B3467]">
+                    {{ displayedUsers[i].userName }}
+                  </div>
                 </div>
               </div>
             </td>
