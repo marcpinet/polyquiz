@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QuizDetailsComponent } from './quiz/quiz-details/quiz-details.component';
-import { QuizListComponent } from './quiz/quizlist/quizlist.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './admin/addResident/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
 import { MainPage } from './mainpage/mainpage-main/mainpage.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
-import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { ResultComponent } from './result/result.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -21,6 +18,7 @@ import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
 import { ThemesComponent } from './admin/themes/themes.component';
 import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
 import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
+import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 const routes: Routes = [
   {
     path: 'game/:id',
@@ -54,10 +52,6 @@ const routes: Routes = [
     component: NavbarComponent,
   },
   { path: 'help', canActivate: [RouteGuardService], component: HelpComponent },
-
-  //temporary routes for testing
-
-  { path: 'tempo-quiz-create', component: QuizCreateComponent },
 
   //admin routes
   {
@@ -94,6 +88,11 @@ const routes: Routes = [
     path: 'admin/theme/modif/:id',
     canActivate: [RouteGuardAdminService],
     component: ModifyThemeComponent,
+  },
+  {
+    path: 'admin/quiz/add',
+    canActivate: [RouteGuardAdminService],
+    component: AddQuizComponent,
   },
 ];
 

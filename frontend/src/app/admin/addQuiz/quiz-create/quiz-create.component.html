@@ -153,9 +153,7 @@
             formControlName="quizTheme"
             class="w-full flex-grow -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
           >
-            <option value="theme1">Thème 1</option>
-            <option value="theme2">Thème 2</option>
-            <option value="theme3">Thème 3</option>
+            <option *ngFor="let theme of themes" value="{{theme.id}}">{{theme.name}}</option>
           </select>
         </div>
       </div>
@@ -170,16 +168,25 @@
       </div>
     </div>
 
-    <div class="flex -mx-3">
-      <div class="w-full px-3 mb-5">
-        <button
-          class="block w-full max-w-xs mx-auto text-xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
-          (click)="addQuiz()"
-        >
-          Ajouter une question
-          <i class="fa-sharp fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+    <div></div>
+
+    <button
+      class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8"
+      (click)="addQuestion()" *ngIf="!questionsAnswers.size"
+
+    >
+      Ajouter une question
+      <i class="fa-sharp fa-solid fa-arrow-right"></i>
+    </button>
+    <button
+      class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8" (click)="addQuiz()"
+    >
+      Sauvegarder
+    </button>
+
+    <div *ngIf="questionsAnswers.size">
+        Questions List TODO
     </div>
+
   </form>
 </div>
