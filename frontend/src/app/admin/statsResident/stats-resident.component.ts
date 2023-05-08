@@ -209,7 +209,7 @@ export class StatsResidentComponent {
 
       quizCountByMonth[monthYearLabel]++;
 
-      t += result.click_error;
+      if (result.click_error > 0) t += result.click_error;
     }
     clickErrors.push(t);
 
