@@ -5,6 +5,9 @@ import { Quiz } from 'src/models/quiz.model';
 import { ThemesService } from 'src/services/theme.service';
 import { Theme } from 'src/models/quiz.model';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/services/auth.service';
+import { ResultService } from 'src/services/result.service';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'quizlist',
@@ -13,6 +16,8 @@ import Swal from 'sweetalert2';
 })
 export class QuizListComponent implements OnInit {
   public quizList: Quiz[] = [];
+  public playedQuizIds: string[] = [];
+  public user: User;
   public themes: Theme[] = [];
 
   public difficulties = ['Facile', 'Moyen', 'Difficile'];
@@ -28,13 +33,27 @@ export class QuizListComponent implements OnInit {
   constructor(
     private router: Router,
     public quizService: QuizService,
-    private themeService: ThemesService
+    private themeService: ThemesService,
+    private authService: AuthService,
+    private resultService: ResultService
   ) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.filteredQuizList = [...this.quizList]; // Initialise la liste filtrée avec tous les quiz
       this.populateThemes();
     });
+
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+
+      this.resultService.getResultsByUser(user).subscribe((results) => {
+        this.playedQuizIds = results.map((result) => result.quiz_id);
+      });
+    });
+  }
+
+  hasPlayedQuiz(quizId: string): boolean {
+    return this.playedQuizIds.includes(quizId);
   }
 
   filterQuizzes(): void {

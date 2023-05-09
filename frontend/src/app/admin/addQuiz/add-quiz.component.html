@@ -1,0 +1,3 @@
+<app-quiz-create (loadTabComponent)="loadTabComponent($event)" (loadQuiz)="loadQuiz($event)" *ngIf="currentTab=='QUIZ_CREATE'" (uploadQuiz)="uploadQuiz($event)" [questionsAnswers]="questionsAnswers" [quizStored]="quiz"></app-quiz-create>
+
+<app-question-create (loadTabComponent)="loadTabComponent($event)" *ngIf="currentTab=='QUESTION_CREATE'" (addQuestionAnswer)="addQuestionAnswer($event.question, $event.answers)"></app-question-create>

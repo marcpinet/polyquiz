@@ -15,11 +15,10 @@ import { GamePageComponent } from './gameComponents/game-page/game-page.componen
 import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
 import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
 import { OptionsScreenComponent } from './settings/options-screen.component';
-import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ThemeCarouselComponent } from './quiz/theme-carousel/theme-carousel.component';
+import { ThemeAdminComponent } from './admin/themes/theme-admin/theme-admin.component';
 import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
@@ -31,6 +30,15 @@ import { PlayedQuizComponent } from './playedQuiz/played-quiz.component';
 import { QuizDetailsStatsComponent } from './quiz/quiz-details-stats/quiz-details-stats.component';
 import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
 import { ThemesComponent } from './admin/themes/themes.component';
+import { ThemeListComponent } from './admin/themes/themeList/theme-list.component';
+import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
+import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
+import { QuizListAdminComponent } from './admin/quizzes/quizList/quiz-list.component';
+import { QuizCreateComponent } from './admin/addQuiz/quiz-create/quiz-create.component';
+import { QuestionCreateComponent } from './admin/addQuiz/question-create/question-create.component';
+import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
+import { PlayedQuizAdminComponent } from './admin/statsResident/playedQuizAdmin/played-quiz-admin.component';
+import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,12 +51,11 @@ import { ThemesComponent } from './admin/themes/themes.component';
     RegisterComponent,
     MainPage,
     OptionsScreenComponent,
-    QuizCreateComponent,
     MesResultatsComponent,
     ResultComponent,
     UserProfileComponent,
     NavbarComponent,
-    ThemeCarouselComponent,
+    ThemeAdminComponent,
     HelpComponent,
     AdminMainPage,
     GestionQuizComponent,
@@ -59,6 +66,15 @@ import { ThemesComponent } from './admin/themes/themes.component';
     QuizDetailsStatsComponent,
     QuizzesAdminComponent,
     ThemesComponent,
+    ThemeListComponent,
+    AddThemeComponent,
+    ModifyThemeComponent,
+    QuizListAdminComponent,
+    QuizCreateComponent,
+    QuestionCreateComponent,
+    AddQuizComponent,
+    PlayedQuizAdminComponent,
+    ModifResidentComponent,
   ],
   imports: [
     BrowserModule,

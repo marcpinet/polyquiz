@@ -25,7 +25,9 @@ export class StatsResidentComponent {
   wrongClicksData = [];
   playedQuizzesData = [];
   playedQuizzesTotal: number = 0;
-
+  wrongClicksTotal: number = 0;
+  wrongClicksPerQuestion: number = 0;
+  totalQuestionWithConfirmation: number = 0;
   constructor(
     public router: Router,
     private userService: UserService,
@@ -49,37 +51,39 @@ export class StatsResidentComponent {
 
       for (let quizId of quizIdsArray) {
         this.quizService.getQuizById(quizId).subscribe((quiz) => {
+          let totalTime = 0;
           let quizResults = results.filter(
             (result) => result.quiz_id === quizId
           );
           this.playedQuizzes.set(quiz, quizResults);
-
           this.playedQuizzesTotal += quizResults.length;
-
-          // Calculate data for the charts
-          let totalTime = 0;
-          let totalQuestions = 0;
-
           let i = 0;
           for (let result of quizResults) {
             totalTime += result.time_per_question;
-            totalQuestions += result.right_answers + result.wrong_answers;
+            if (result.click_error != -1) {
+              //if activates confirmer avant valider
+              this.wrongClicksTotal += result.click_error;
+              this.totalQuestionWithConfirmation +=
+                result.right_answers + result.wrong_answers;
+            }
+            this.wrongClicksPerQuestion = Number(
+              (
+                this.wrongClicksTotal / this.totalQuestionWithConfirmation
+              ).toFixed(2)
+            );
             i++;
           }
-
-          this.timePerQuestionData.push(totalTime / i);
-          this.wrongClicksData.push(0);
           this.playedQuizzesData.push(quizResults.length);
+          this.timePerQuestionData.push(totalTime / i);
         });
       }
 
-      const { dateLabels, quizzesPlayed, timePerQuestion } =
+      const { dateLabels, quizzesPlayed, timePerQuestion, clickErrors } =
         this.generateStats(results);
       this.lineChartData.labels = dateLabels;
       this.lineChartData.datasets[0].data = timePerQuestion;
+      this.lineChartData.datasets[1].data = clickErrors;
       this.lineChartData.datasets[2].data = quizzesPlayed;
-
-      this.lineChartData.datasets[1].data = this.wrongClicksData;
 
       if (this.chart) {
         this.chart.update();
@@ -87,7 +91,9 @@ export class StatsResidentComponent {
     });
   }
 
-  navigateModifyUser() {}
+  navigateModifyUser() {
+    this.router.navigate(['/admin/modif-resident/' + this.resident.id]);
+  }
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
@@ -134,6 +140,9 @@ export class StatsResidentComponent {
       line: {
         tension: 0.5,
       },
+      point: {
+        radius: 7,
+      },
     },
     scales: {
       // We use this empty structure as a placeholder for dynamic theming.
@@ -152,7 +161,26 @@ export class StatsResidentComponent {
     },
 
     plugins: {
-      legend: { display: true },
+      legend: {
+        display: true,
+        labels: {
+          boxWidth: 50,
+          boxHeight: 20,
+          font: {
+            size: 24,
+          },
+        },
+      },
+      tooltip: {
+        caretSize: 50,
+        caretPadding: 50,
+        bodyFont: {
+          size: 24,
+        },
+        titleFont: {
+          size: 24,
+        },
+      },
     },
   };
 
@@ -160,9 +188,11 @@ export class StatsResidentComponent {
     dateLabels: string[];
     quizzesPlayed: number[];
     timePerQuestion: number[];
+    clickErrors: number[];
   } {
     const dateLabels: string[] = [];
     const quizzesPlayed: number[] = [];
+    const clickErrors: number[] = [];
     const timePerQuestion: number[] = [];
     const allQuestionTime = [];
     const quizCountByMonth: { [key: string]: number } = {};
@@ -192,6 +222,8 @@ export class StatsResidentComponent {
       currentDate.setMonth(currentDate.getMonth() + 1);
     }
 
+    let t = -1;
+
     for (const result of results) {
       const date = new Date(result.date);
       const monthYearLabel = `${date.getMonth() + 1}/${date.getFullYear()}`;
@@ -199,12 +231,17 @@ export class StatsResidentComponent {
       // For allQuestionTime, each array inside this array corresponds to a month
       if (!allQuestionTime[monthYearLabel]) {
         allQuestionTime[monthYearLabel] = [];
+        if (t !== -1) clickErrors.push(t);
+        t = 0;
       }
 
       allQuestionTime[monthYearLabel].push(result.time_per_question);
 
       quizCountByMonth[monthYearLabel]++;
+
+      if (result.click_error > 0) t += result.click_error;
     }
+    clickErrors.push(t);
 
     for (const [monthYearLabel, count] of Object.entries(quizCountByMonth)) {
       dateLabels.push(monthYearLabel);
@@ -215,7 +252,7 @@ export class StatsResidentComponent {
       timePerQuestion.push(this.med(times));
     }
 
-    return { dateLabels, quizzesPlayed, timePerQuestion };
+    return { dateLabels, quizzesPlayed, timePerQuestion, clickErrors };
   }
 
   public lineChartType: ChartType = 'line';

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { IsActiveMatchOptions, Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
@@ -17,20 +17,66 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
+  isInGame(path: string) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Quitter le quiz ?',
+      html: 'Attention : vous êtes sur le point de quitter le quiz en cours. Voulez-vous vraiment continuer ?',
+      showDenyButton: true,
+      showCancelButton: false,
+      width: 1700,
+      padding: '4em',
+      confirmButtonText:
+        '<span id="oui" style="font-size: 50px; padding: 50px 50px; ">Oui</span>',
+      denyButtonText:
+        '<span id="non" style="font-size: 50px; padding: 50px 50px;">Non</span>', // add non-breaking spaces between span tags to create more space between buttons
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Quiz abandonné.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.router.navigate([path]);
+      } else if (result.isDenied) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Vous restez sur le quiz.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  }
+
   navigateMain() {
     if (this.user.userType == 'admin') {
       this.router.navigate(['/admin']);
     } else {
-      this.router.navigate(['/']);
+      if (this.router.url.match(/^\/game\//)) {
+        this.isInGame('/');
+      } else {
+        this.router.navigate(['/']);
+      }
     }
   }
 
   navigateProfile() {
-    this.router.navigate(['/profile']);
+    if (this.router.url.match(/^\/game\//)) {
+      this.isInGame('/profile');
+    } else {
+      this.router.navigate(['/profile']);
+    }
   }
 
   navigateSettings() {
-    this.router.navigate(['/settings']);
+    if (this.router.url.match(/^\/game\//)) {
+      this.isInGame('/settings');
+    } else {
+      this.router.navigate(['/settings']);
+    }
   }
 
   // navigateHelp() {

@@ -1,12 +1,12 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import {Theme } from 'src/models/quiz.model';
+import { Theme } from 'src/models/quiz.model';
 
 @Component({
-  selector: 'app-theme-carousel',
-  templateUrl: './theme-carousel.component.html',
+  selector: 'app-theme-admin',
+  templateUrl: './theme-admin.component.html',
 })
-export class ThemeCarouselComponent {
+export class ThemeAdminComponent {
   @Input() theme: Theme;
 
   constructor(private router: Router) {}

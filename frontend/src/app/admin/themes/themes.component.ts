@@ -6,4 +6,8 @@ import { Router } from '@angular/router';
 })
 export class ThemesComponent {
   constructor(private router: Router) {}
+
+  navigateAddTheme() {
+    this.router.navigate(['/admin/theme/add']);
+  }
 }

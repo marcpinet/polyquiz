@@ -56,6 +56,8 @@ export class RouteGuardAdminService implements CanActivate {
               icon: 'error',
               title: 'Oops...',
               text: "Vous n'avez pas les droits pour accéder à cette page",
+              showConfirmButton: false,
+              timer: 2000,
             });
             this.router.navigate(['/login']);
           }

@@ -1,10 +1,10 @@
-<div class="md:flex w-full">
+<div class="md:flex w-full max-h-screen overflow-y-scroll">
   <!-- Left Side -->
   <div class="md:w-1/5 bg-[#BAD7E9] border-r hidden md:block fixed h-screen">
     <div class="flex flex-col justify-between items-center h-full w-full">
       <img
         src="../../assets/images/Poly.png"
-        class="w-40 h-40 rounded-full shadow flex-none"
+        class="w-40 h-40 rounded-full shadow flex-none p-2"
       />
       <ul
         class="w-full h-full flex flex-col justify-center items-center flex-grow"
@@ -15,7 +15,7 @@
           id="resident-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="RESIDENT"
           >
             <i
@@ -55,7 +55,7 @@
           id="gestion-quiz-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="GESTION_QUIZ"
           >
             <i
@@ -95,7 +95,7 @@
           id="result-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="QUIZ"
           >
             <i
@@ -137,7 +137,7 @@
           id="result-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="RESULTAT"
           >
             <i
@@ -177,7 +177,7 @@
           id="param-btn"
         >
           <button
-            class="tab-button w-full h-full px-4 py-2 my-2 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
+            class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
             data-tab="PARAMETRES"
           >
             <i
@@ -215,10 +215,8 @@
   </div>
 
   <!-- Right Side -->
-  <div class="md:w-4/5 h-screen bg-[#FCFFE7]"  style="margin-left: 20%;">
-      <nav
-      class="flex bg-[#FCFFE7] items-center relative justify-between m-1 w-full"
-    >
+  <div class="md:w-4/5 h-screen bg-[#FCFFE7]" style="margin-left: 21%">
+    <nav class="flex bg-[#FCFFE7] items-center relative justify-between w-full">
       <div (click)="helpPopup()">
         <button
           class="flex items-center w-full px-6 py-6 m-0 font-bold text-[#2B3467] text-5xl bg-[#BAD7E9] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
@@ -231,16 +229,76 @@
         </button>
       </div>
 
-      <div class="flex items-center py-2 mr-2" (click)="navigateProfile()">
-        <img
-          src="{{ this.user.avatar }}"
-          class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32"
-        />
-        <p class="text-3xl font-bold text-[#2B3467] mt-1">
-          {{ this.user.firstName }} {{ this.user.lastName }}
-        </p>
+      <div class="flex items-center mr-4">
+        <div class="relative mr-6">
+          <button (click)="switchNotifications()" class="focus:outline-none focus:shadow-outline">
+            <i class="far fa-bell text-6xl"></i>
+            <div
+              class="absolute top-0 right-0 -mt-6 -mr-6 rounded-full bg-red-600 text-white h-12 w-12 flex items-center justify-center"
+            >
+              <span class="text-2xl font-bold">2</span>
+            </div>
+          </button>
+
+          <!-- Notifications -->
+          <div
+            class="absolute top-14 right-11 bg-[#BAD7E9] bg-opacity-95 rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]"
+            *ngIf="showNotifications"
+          >
+            <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
+              <div class="flex items-center space-x-4">
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/002/563/180/non_2x/old-man-person-avatar-character-free-vector.jpg"
+                  class="rounded-full h-14 w-14"
+                  alt=""
+                />
+                <div class="flex flex-col space-y-1">
+                  <span class="font-bold">John Doe</span>
+                  <span class="text-sm">a changé ses paramètres</span>
+                </div>
+              </div>
+              <div
+                class="flex-none px-4 py-2 text-stone-600 text-xs md:text-sm"
+              >
+                il y a 17m
+              </div>
+            </div>
+
+            <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0" />
+
+            <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
+              <div class="flex items-center space-x-4">
+                <img
+                  src="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/grandma_elderly_nanny_avatar-512.png"
+                  class="rounded-full h-14 w-14"
+                  alt=""
+                />
+                <div class="flex flex-col space-y-1">
+                  <span class="font-bold">Emma Heart</span>
+                  <span class="text-sm">a changé ses paramètres</span>
+                </div>
+              </div>
+              <div
+                class="flex-none px-4 py-2 text-stone-600 text-xs md:text-sm"
+              >
+                il y a un jour
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center py-2 mr-2" (click)="navigateProfile()">
+          <img
+            src="{{ this.user.avatar }}"
+            class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32"
+          />
+          <p class="text-3xl font-bold text-[#2B3467] mt-1">
+            {{ this.user.firstName }} {{ this.user.lastName }}
+          </p>
+        </div>
       </div>
     </nav>
+
     <!-- Begin of RightSide (Quiz, Parameters or Mes Resultats)-->
     <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
     <!-- End of RightSide-->

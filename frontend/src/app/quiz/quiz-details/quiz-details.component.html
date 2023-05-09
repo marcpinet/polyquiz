@@ -1,15 +1,17 @@
 <div
   (click)="onClick()"
-  class="m-10 w-80 transform overflow-hidden rounded-lg bg-[#2B3467] dark:bg-[#2B3467] shadow-md duration-300 hover:scale-105 hover:shadow-lg"
+  class="m-16 w-80 transform overflow-hidden rounded-lg bg-[#2B3467] dark:bg-[#2B3467] shadow-md duration-300 hover:scale-125 scale-110 hover:shadow-lg border border-8 border-[#90C1DF]" [class.gray-filter]="played"
 >
-  <div class="relative h-0" style="padding-top: 50%">
+  <div class="relative h-0" style="padding-top: 50%" >
     <img
       class="absolute inset-0 h-full w-full object-cover object-center"
       src="{{ quiz.image }}"
       alt="Quiz Image"
     />
+    <p class="absolute top-0 right-0 bg-[#a1a0a0] font-semibold py-3 px-5 rounded-bl-lg" [class.invisible]="!played">Déjà joué</p>
   </div>
-  <div class="p-1">
+
+  <div class="p-1 ">
     <h2 class="mb-1 text-xl font-medium dark:text-[#EB455F] text-[#EB455F]">
       {{ quiz.name }}
     </h2>

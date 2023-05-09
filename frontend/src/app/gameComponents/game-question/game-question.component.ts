@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { SettingService } from 'src/services/settings.service';
 import Swal from 'sweetalert2';
 import { Settings } from 'src/models/settings.model';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-game-question',
@@ -20,11 +21,14 @@ export class GameQuestionComponent implements OnInit {
   buttonStates: boolean[] = [false, false, false, false];
   private userSettings: Settings;
   private settingsSubscription: Subscription;
+  click_error = 0;
 
   @Input()
   question: Question;
   @Output()
   selectAnswer = new EventEmitter<number>();
+  @Output()
+  clickError = new EventEmitter<number>();
 
   constructor(private settingsService: SettingService) {
     this.question = {} as Question;
@@ -105,7 +109,14 @@ export class GameQuestionComponent implements OnInit {
             this.answerSelected = answer;
             //this.playAudio();
           } else if (result.isDenied) {
-            Swal.fire("La réponse n'a pas été enregistrée", '', 'info');
+            this.click_error++;
+            this.clickError.emit(this.click_error);
+            Swal.fire({
+              icon: 'info',
+              title: "La réponse n'a pas été enregistrée",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           }
         });
       } else {
@@ -139,5 +150,37 @@ export class GameQuestionComponent implements OnInit {
       .join('_')
       .replace(/_{2,}/g, '_'); // Remove consecutive underscores;
     return newText;
+  }
+
+  @HostListener('document:click', ['$event'])
+  documentClickHandler(event: MouseEvent) {
+    const clickedElement = event.target as HTMLElement;
+    const isClickableElement =
+      this.isClickableOrContainsClickable(clickedElement);
+
+    if (!isClickableElement) {
+      console.log('PROUT');
+      this.click_error++;
+      this.clickError.emit(this.click_error);
+    }
+  }
+
+  isClickableOrContainsClickable(element: HTMLElement | null): boolean {
+    const clickableDataNumbers = ['un', 'deux', 'trois', 'quatre'];
+
+    if (!element) {
+      return false;
+    }
+
+    if (
+      clickableDataNumbers.includes(
+        element.getAttribute('data-number') || ''
+      ) ||
+      element.id === 'suivant'
+    ) {
+      return true;
+    }
+
+    return this.isClickableOrContainsClickable(element.parentElement);
   }
 }

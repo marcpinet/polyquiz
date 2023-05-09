@@ -1,66 +1,65 @@
 <div class="bg-[#FCFFE7]">
-<div
-  class="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-[#BAD7E9] w-full mb-6 shadow-lg rounded-xl scale-60"
->
-  <div class="px-6 mt-16">
-    <div class="flex flex-wrap justify-center">
-      <div class="w-full flex justify-center">
-        <div class="relative mr-5">
-          <img
-            src="{{this.user.avatar}}"
-            class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
-          />
-        </div>
-      </div>
-      <div class="w-full text-center mt-20">
-        <h3 class="text-2xl text-[#2b3467] font-bold leading-normal mb-1">
-          {{this.user.firstName}} {{this.user.lastName}}
-        </h3>
-      </div>
-    </div>
-
-    <div class="flex justify-center">
-      <button class="bg-white hover:bg-[#90C1DF] text-[#EB455F] font-bold py-6 px-12 rounded-lg text-2xl" (click)="logout()">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Se Déconnecter
-      </button>
-    </div>
-
-    <div class="flex justify-center mt-6">
-      <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl mr-2">
-        <i class="fa-sharp fa-solid fa-cake-candles"></i>
-            Date de naissance
-            <div class="text-[#EB455F]">{{this.resident.dateOfBirth}}</div>
-      </div>
-      <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl ml-2">
-        <i class="fa-solid fa-venus-mars"></i>
-        Sexe
-        <div class="text-[#EB455F]">{{this.resident.sexe}}</div>
-      </div>
-    </div>
-
-
-
-    <!-- Stats -->
-    <h1 class="text-3xl text-[#2b3467] font-bold">Statistiques</h1>
-    <div class="mt-1 text-center">
+  <div
+    class="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-[#BAD7E9] w-full mb-6 shadow-lg rounded-xl scale-60"
+  >
+    <div class="px-6 mt-16">
       <div class="flex flex-wrap justify-center">
-        <div class="flex border bg-[#EB455F] border-[#2b3467] rounded-md overflow-hidden mb-3 items-center justify-center">
-          <div class="-mt-1 flex flex-col items-center justify-center w-80 pb-5 title py-3 my-auto px-5 bg-[#EB455F] text-2xl font-semibold border-r border-r-[#2b3467] border-r-4">
-            <i class="fa-regular fa-star text-[#2b3467] mb-1 text-4xl"></i>
-            <div class="text-[#2b3467]" >Score</div>
-            <div class="text-white font-bold text-3xl">5600</div>
+        <div class="w-full flex justify-center">
+          <div class="relative mr-5">
+            <img
+              src="{{this.user.avatar}}"
+              class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+            />
           </div>
-          <div class="-mt-1 flex flex-col items-center justify-center w-80 pb-5 title py-3 my-auto px-5 bg-[#EB455F] text-2xl font-semibold border-l border-l-[#2b3467] border-l-4">
-            <i class="fa-solid fa-percent text-[#2b3467] mb-1 text-4xl"></i>
-            <div class="text-[#2b3467]">Taux de réussite</div>
-            <div class="text-white font-bold text-3xl">80%</div>
+        </div>
+        <div class="w-full text-center mt-20">
+          <h3 class="text-2xl text-[#2b3467] font-bold leading-normal mb-1">
+            {{this.user.firstName}} {{this.user.lastName}}
+          </h3>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <button class="bg-white hover:bg-[#90C1DF] text-[#EB455F] font-bold py-6 px-12 rounded-lg text-2xl" (click)="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Se Déconnecter
+        </button>
+      </div>
+
+      <div class="flex justify-center mt-6">
+        <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl mr-2">
+          <i class="fa-sharp fa-solid fa-cake-candles"></i>
+              Date de naissance
+              <div class="text-[#EB455F]">{{this.resident.dateOfBirth}}</div>
+        </div>
+        <div class="bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl ml-2">
+          <i class="fa-solid fa-venus-mars"></i>
+          Sexe
+          <div class="text-[#EB455F]">{{this.resident.sexe}}</div>
+        </div>
+      </div>
+
+
+
+      <!-- Stats -->
+      <h1 class="text-3xl text-[#2b3467] font-bold">Statistiques</h1>
+      <div class="mt-1 text-center">
+        <div class="flex flex-wrap justify-center">
+          <div class="flex border bg-[#EB455F] border-[#2b3467] rounded-md overflow-hidden mb-3 items-center justify-center">
+            <div class="-mt-1 flex flex-col items-center justify-center w-80 pb-5 title py-3 my-auto px-5 bg-[#EB455F] text-2xl font-semibold border-r border-r-[#2b3467] border-r-4">
+              <i class="fa-regular fa-star text-[#2b3467] mb-1 text-4xl"></i>
+              <div class="text-[#2b3467]" >Score</div>
+              <div class="text-white font-bold text-3xl">{{ totalScore !== null ? totalScore : '-' }}</div>
+            </div>
+            <div class="-mt-1 flex flex-col items-center justify-center w-80 pb-5 title py-3 my-auto px-5 bg-[#EB455F] text-2xl font-semibold border-l border-l-[#2b3467] border-l-4">
+              <i class="fa-solid fa-percent text-[#2b3467] mb-1 text-4xl"></i>
+              <div class="text-[#2b3467]">Taux de réussite</div>
+              <div class="text-white font-bold text-3xl">{{ successRate !== null ? successRate.toFixed(1) + '%' : '-%' }}</div>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
-
   </div>
-</div>
-</div>
-
+  </div>
