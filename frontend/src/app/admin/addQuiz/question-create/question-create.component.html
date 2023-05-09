@@ -1,7 +1,14 @@
-<div class="w-full w-full py-10 px-5 md:px-10">
+<div class="relative w-full w-full py-10 px-5 md:px-10">
     <div class="text-center mb-0">
       <h1 class="font-bold text-3xl text-[#2B3467]">Ajouter Question</h1>
     </div>
+    <button
+    class="absolute top-0 left-0 block w-full max-w-xs mx-auto text-4xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-4 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+    (click)="return()"
+    >  
+      <i class="fa-sharp fa-solid fa-arrow-left"></i>
+      QUIZ
+    </button>
     <form [formGroup]="questionForm">
       <!-- Temporary Photo Input -->
 

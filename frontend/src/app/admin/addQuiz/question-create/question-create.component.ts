@@ -4,6 +4,7 @@ import { Resident } from 'src/models/resident.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question, Theme, Quiz, Answer } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-question-create',
@@ -92,6 +93,23 @@ export class QuestionCreateComponent implements OnInit {
     this.addQuestionAnswer.emit({
       question: this.question,
       answers: this.answers,
+    });
+  }
+
+  public return(): void {
+    Swal.fire({
+      title: 'Êtes-vous sûr de vouloir quitter ?',
+      text: 'Vous allez perdre toutes les données saisies',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, quitter',
+      cancelButtonText: 'Non, rester',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loadTabComponent.emit('QUIZ_CREATE');
+      } else {
+        return;
+      }
     });
   }
 }
