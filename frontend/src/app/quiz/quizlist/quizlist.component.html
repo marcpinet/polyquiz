@@ -1,51 +1,35 @@
-<div class="h-screen flex flex-col">
-  <div class="my-1">
-    <div class="flex">
-      <button
-        class="bg-blue-500 text-white px-4 py-2 rounded"
-        (click)="openDifficultyFilter()"
-      >
-        {{ selectedDifficulty }}
-      </button>
-      <button
-        class="mx-2 bg-blue-500 text-white px-4 py-2 rounded"
-        (click)="openDoneFilter()"
-      >
-        {{ selectedDone }}
-      </button>
-      <button
-        class="bg-blue-500 text-white px-4 py-2 rounded"
-        (click)="openThemeFilter()"
-      >
-        {{ selectedTheme }}
-      </button>
-      <button
-        class="mx-2 bg-blue-500 text-white px-4 py-2 rounded"
-        (click)="openDurationFilter()"
-      >
-        {{ selectedDuration }}
-      </button>
-    </div>
-    <div class="my-1">
-      <button
-        class="ml-2 bg-red-500 text-white px-2 py-1 rounded"
-        (click)="resetFilters()"
-      >
-        Réinitialiser
-      </button>
-      <button
-        class="ml-2 bg-blue-500 text-white px-2 py-1 rounded"
-        (click)="randomQuiz()"
-      >
-        Quiz aléatoire
-      </button>
-    </div>
+<div class="w-full mt-4" style="display: flex; justify-content: space-between">
+  <div>
+    <span class="text-2xl font-bold text-[#2B3467] ml-2">Filtres: </span>
+    <button class="bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded my* text-xl font-bold" (click)="openDifficultyFilter()">
+      <i class="fa-solid fa-stairs text-2xl mr-1"></i> {{ selectedDifficulty }}
+    </button>
+    <button class="mx-3 bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded text-xl font-bold" (click)="openDoneFilter()">
+      <i class="fa-solid fa-check-circle text-2xl mr-1"></i> {{ selectedDone }}
+    </button>
+    <button class="bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded text-xl font-bold" (click)="openThemeFilter()">
+      <i class="fa-solid fa-palette text-2xl mr-1"></i> {{ selectedTheme }}
+    </button>
+    <button class="mx-3 bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded text-xl font-bold" (click)="openDurationFilter()">
+      <i class="fa-solid fa-clock text-2xl mr-1"></i> {{ selectedDuration }}
+    </button>
   </div>
-  <div class="flex-1 overflow-y-auto">
-    <ul>
-      <li *ngFor="let quiz of filteredQuizList">
-        <app-quiz-details [quiz]="quiz" [played]="hasPlayedQuiz(quiz.id)"></app-quiz-details>
-      </li>
-    </ul>
+  <div>
+    <button class="bg-red-500 text-white px-2 py-6 rounded text-xl font-bold" (click)="resetFilters()">
+      <i class="fa-solid fa-sync-alt text-2xl mr-1"></i> Réinitialiser
+    </button>
+    <button class="mx-3 bg-[#2B3467] text-white px-2 py-6 rounded text-xl font-bold" (click)="randomQuiz()">
+      <i class="fa-solid fa-random text-2xl mr-1 text-[#EB455F]"></i> Quiz Aléatoire
+    </button>
   </div>
 </div>
+
+  <ul>
+    <li *ngFor="let quiz of filteredQuizList">
+      <app-quiz-details
+        [quiz]="quiz"
+        [played]="hasPlayedQuiz(quiz.id)"
+      ></app-quiz-details>
+    </li>
+  </ul>
+

@@ -23,7 +23,7 @@ export class QuizListComponent implements OnInit {
   public difficulties = ['Facile', 'Moyen', 'Difficile'];
   public done = ['Fait', 'Non fait'];
   public selectedDifficulty: string = 'Difficulté';
-  public selectedDone: string = 'Fait / Non fait';
+  public selectedDone: string = 'Progrès';
   public selectedTheme: string = 'Thème';
   public selectedDuration = 'Durée';
   public durations = ['< 5 min', '5 min < 10 min', '> 10 min'];
@@ -84,7 +84,7 @@ export class QuizListComponent implements OnInit {
   resetFilters(): void {
     this.selectedDifficulty = 'Difficulté';
     this.selectedTheme = 'Thème';
-    this.selectedDone = 'Fait/Non fait';
+    this.selectedDone = 'Progrès';
     this.filteredQuizList = [...this.quizList];
   }
 
