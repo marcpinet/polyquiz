@@ -16,12 +16,13 @@ import { User } from 'src/models/user.model';
 })
 export class QuizListComponent implements OnInit {
   public quizList: Quiz[] = [];
+  public themeList: Theme[] = [];
   public playedQuizIds: string[] = [];
   public user: User;
-  public themes: Theme[] = [];
 
   public difficulties = ['Facile', 'Moyen', 'Difficile'];
   public done = ['Fait', 'Non fait'];
+  public themes: string[] = [];
   public selectedDifficulty: string = 'Difficulté';
   public selectedDone: string = 'Progrès';
   public selectedTheme: string = 'Thème';
@@ -40,7 +41,6 @@ export class QuizListComponent implements OnInit {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       this.filteredQuizList = [...this.quizList]; // Initialise la liste filtrée avec tous les quiz
-      this.populateThemes();
     });
 
     this.authService.user$.subscribe((user) => {
@@ -49,6 +49,13 @@ export class QuizListComponent implements OnInit {
       this.resultService.getResultsByUser(user).subscribe((results) => {
         this.playedQuizIds = results.map((result) => result.quiz_id);
       });
+    });
+
+    this.themeService.themes$.subscribe((themes) => {
+      for (const theme of themes) {
+        this.themes.push(theme.name);
+      }
+      this.themeList = themes;
     });
   }
 
@@ -75,6 +82,14 @@ export class QuizListComponent implements OnInit {
         } else if (this.selectedDuration === '> 10 min') {
           durationMatch = quiz.estimated_time > 10;
         }
+      }
+
+      if (this.selectedTheme !== 'Thème') {
+        this.themeList.forEach((theme) => {
+          if (theme.name === this.selectedTheme) {
+            themeMatch = quiz.themeId === Number(theme.id);
+          }
+        });
       }
 
       return difficultyMatch && doneMatch && themeMatch && durationMatch;
@@ -132,7 +147,7 @@ export class QuizListComponent implements OnInit {
   async openThemeFilter() {
     const inputOptions = {};
     this.themes.forEach((theme) => {
-      inputOptions[theme.id] = theme.name;
+      inputOptions[theme] = theme;
     });
 
     const { value: theme } = await Swal.fire({
@@ -144,7 +159,7 @@ export class QuizListComponent implements OnInit {
 
     if (theme) {
       this.selectedTheme = inputOptions[theme];
-      // Implémenter la logique de filtrage du thème ici
+      this.filterQuizzes();
     }
   }
 
@@ -163,26 +178,6 @@ export class QuizListComponent implements OnInit {
     if (duration) {
       this.selectedDuration = duration;
       this.filterQuizzes();
-    }
-  }
-
-  populateThemes(): void {
-    const themeIds = new Set<number>();
-    for (const quiz of this.quizList) {
-      if (!this.themes[quiz.themeId]) {
-        themeIds.add(quiz.themeId);
-      }
-    }
-
-    for (const themeId of themeIds) {
-      this.themeService.setSelectedTheme(themeId.toString());
-      this.themeService.themeSelected$.subscribe((theme) => {
-        for (const quiz of this.quizList) {
-          if (quiz.themeId.toString() === theme.id) {
-            quiz.theme = theme;
-          }
-        }
-      });
     }
   }
 
