@@ -231,21 +231,21 @@
 
       <div class="flex items-center mr-4">
         <div class="relative mr-6">
-          <div (click)="switchNotifications()">
+          <button (click)="switchNotifications()" class="focus:outline-none focus:shadow-outline">
             <i class="far fa-bell text-6xl"></i>
             <div
               class="absolute top-0 right-0 -mt-6 -mr-6 rounded-full bg-red-600 text-white h-12 w-12 flex items-center justify-center"
             >
               <span class="text-2xl font-bold">2</span>
             </div>
-          </div>
+          </button>
 
           <!-- Notifications -->
           <div
             class="absolute top-14 right-11 bg-[#BAD7E9] bg-opacity-95 rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]"
             *ngIf="showNotifications"
           >
-            <div class="flex justify-between rounded-lg">
+            <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
               <div class="flex items-center space-x-4">
                 <img
                   src="https://static.vecteezy.com/system/resources/previews/002/563/180/non_2x/old-man-person-avatar-character-free-vector.jpg"
@@ -266,7 +266,7 @@
 
             <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0" />
 
-            <div class="flex justify-between rounded-lg">
+            <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
               <div class="flex items-center space-x-4">
                 <img
                   src="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/grandma_elderly_nanny_avatar-512.png"

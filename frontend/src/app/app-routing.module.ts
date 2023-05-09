@@ -19,6 +19,7 @@ import { ThemesComponent } from './admin/themes/themes.component';
 import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
 import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
+import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
 const routes: Routes = [
   {
     path: 'game/:id',
@@ -93,6 +94,11 @@ const routes: Routes = [
     path: 'admin/quiz/add',
     canActivate: [RouteGuardAdminService],
     component: AddQuizComponent,
+  },
+  {
+    path: 'admin/modif-resident/:id',
+    canActivate: [RouteGuardAdminService],
+    component: ModifResidentComponent,
   },
 ];
 
