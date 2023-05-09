@@ -1,3 +1,76 @@
-Modify Resident
-{{resident.dateOfBirth}}
-{{user.userName}}
+<div class="text-4xl text-center font-bold text-[#2B3467] mb-5">
+  Modifier Compte Du Résident {{ user.firstName }} {{ user.lastName }}
+</div>
+<div class="flex justify-center">
+  <div class="w-4/5">
+    <div class="border border-4 border-[#2B3467] rounded overflow-hidden shadow-md mb-4">
+      <div class="bg-gray-100 text-2xl font-bold px-4 py-3 text-[#2B3467]">
+        <i class="fa-solid fa-user mr-2"></i>Information généraux
+      </div>
+      <button class="flex items-center justify-between py-3 w-full" (click)="modify('GENERAL')">
+        <div class="w-full px-4">
+          <p class="text-[#2B3467] text-xl text-left">
+            <span class="font-semibold">Username:</span> {{ user.userName }}
+          </p>
+          <p class="text-[#2B3467] text-xl text-left">
+            <span class="font-semibold">Nom: </span>{{ user.firstName }} {{ user.lastName }}
+          </p>
+          <p class="text-[#2B3467] text-xl text-left">
+            <span class="font-semibold">Sexe:</span> {{ resident.sexe }}
+          </p>
+          <p class="text-[#2B3467] text-xl text-left">
+            <span class="font-semibold">Date de naissance: </span>{{ resident.dateOfBirth }}
+          </p>
+        </div>
+        <div class="flex items-center h-full">
+          <button class="text-gray-700 hover:text-gray-900 flex-grow-0">
+            <i class="fas fa-chevron-right p-2 text-4xl"></i>
+          </button>
+        </div>
+      </button>
+    </div>
+
+    <div class="border border-4 border-[#2B3467] rounded overflow-hidden shadow-md mb-4">
+      <div class="bg-gray-100 text-2xl font-bold px-4 py-3 text-[#2B3467]">
+        <i class="fa-solid fa-list mr-2"></i>Symtômes
+      </div>
+      <button class="flex items-center justify-between py-3 w-full" (click)="modify('SYMPTOMS')">
+        <div class="w-full px-4">
+          <p
+            class="text-[#2B3467] text-xl text-left font-semibold"
+            *ngFor="let sym of resident.symptome"
+          >
+            {{ sym }}
+          </p>
+        </div>
+        <div class="flex items-center h-full">
+          <button class="text-gray-700 hover:text-gray-900 flex-grow-0">
+            <i class="fas fa-chevron-right p-2 text-4xl"></i>
+          </button>
+        </div>
+      </button>
+    </div>
+
+    <div class="border border-4 border-[#2B3467] rounded overflow-hidden shadow-md mb-4">
+      <div class="bg-gray-100 text-2xl font-bold px-4 py-3 text-[#2B3467]">
+        <i class="fa-solid fa-gear mr-2"></i>Paramètres
+      </div>
+      <button class="flex items-center justify-between py-3 w-full" (click)="modify('SETTINGS')">
+        <div class="w-full px-4">
+          <!-- HTML code to display the sound effect setting -->
+          <p class="text-[#2B3467] text-xl text-left">
+            <span class="font-semibold">Effet Sonore:</span> {{ settings.sound_effect ? "Allumé" : "Étendu" }}
+          </p>
+          <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Options de clic de la souris: </span>{{settings.mouse_option}}</p>
+          <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Action au microphone:</span> {{settings.microphone}}</p>
+          <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Confirmation avant de valider:</span> {{settings.confirm_answer ? "Allumé" : "Étendu"}}</p>
+        </div>
+        <div class="flex items-center h-full">
+          <button class="text-gray-700 hover:text-gray-900 flex-grow-0">
+            <i class="fas fa-chevron-right p-2 text-4xl"></i>
+          </button>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

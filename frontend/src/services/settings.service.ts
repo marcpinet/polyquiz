@@ -5,6 +5,7 @@ import { Settings } from '../models/settings.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -43,6 +44,11 @@ export class SettingService {
         resolve(false);
       }
     });
+  }
+
+  getSettingsOfUser(uid: number): Observable<Settings> {
+    const urlWithId = this.settingsUrl + '/' + uid;
+    return this.http.get<Settings>(urlWithId);
   }
 
   updateSettings(settings: Settings): Observable<Settings> {
