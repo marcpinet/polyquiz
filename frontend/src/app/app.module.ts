@@ -38,6 +38,7 @@ import { QuizCreateComponent } from './admin/addQuiz/quiz-create/quiz-create.com
 import { QuestionCreateComponent } from './admin/addQuiz/question-create/question-create.component';
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 import { PlayedQuizAdminComponent } from './admin/statsResident/playedQuizAdmin/played-quiz-admin.component';
+import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +74,7 @@ import { PlayedQuizAdminComponent } from './admin/statsResident/playedQuizAdmin/
     QuestionCreateComponent,
     AddQuizComponent,
     PlayedQuizAdminComponent,
+    ModifResidentComponent,
   ],
   imports: [
     BrowserModule,

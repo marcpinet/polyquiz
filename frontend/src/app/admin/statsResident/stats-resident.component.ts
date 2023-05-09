@@ -91,7 +91,9 @@ export class StatsResidentComponent {
     });
   }
 
-  navigateModifyUser() {}
+  navigateModifyUser() {
+    this.router.navigate(['/admin/modif-resident/' + this.resident.id]);
+  }
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
