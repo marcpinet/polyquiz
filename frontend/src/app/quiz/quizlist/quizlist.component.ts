@@ -92,6 +92,14 @@ export class QuizListComponent implements OnInit {
         });
       }
 
+      if (this.selectedDone !== 'Progrès') {
+        if (this.selectedDone === 'Fait') {
+          doneMatch = this.hasPlayedQuiz(quiz.id);
+        } else if (this.selectedDone === 'Non fait') {
+          doneMatch = !this.hasPlayedQuiz(quiz.id);
+        }
+      }
+
       return difficultyMatch && doneMatch && themeMatch && durationMatch;
     });
   }
@@ -140,7 +148,7 @@ export class QuizListComponent implements OnInit {
 
     if (done) {
       this.selectedDone = done;
-      // Implémenter la logique de filtrage du status ici
+      this.filterQuizzes();
     }
   }
 
