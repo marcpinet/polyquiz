@@ -31,7 +31,6 @@
     "concurrently": "^8.0.1",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.7",
-    "sweetalert2": "^11.7.5",
     "written-number": "^0.11.1"
   }
 }
