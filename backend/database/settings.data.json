@@ -9,9 +9,9 @@
   },
   {
     "user_id": 1682318674112,
-    "sound_effect": true,
-    "mouse_option": "keyboard_control",
-    "microphone": "withoutAntiBruit",
+    "sound_effect": false,
+    "mouse_option": "aucun",
+    "microphone": "aucun",
     "confirm_answer": false,
     "id": 1683740096093
   },
