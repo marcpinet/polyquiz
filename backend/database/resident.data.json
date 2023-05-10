@@ -20,26 +20,6 @@
     "dateOfBirth": "1939-06-17"
   },
   {
-    "userId": 1683118409807,
-    "id": 1683118409882,
-    "sexe": "masculin",
-    "symptome": [
-      "akinesie",
-      "rigidite"
-    ],
-    "dateOfBirth": "1938-03-01"
-  },
-  {
-    "userId": 1683118411101,
-    "id": 1683118411147,
-    "sexe": "masculin",
-    "symptome": [
-      "akinesie",
-      "rigidite"
-    ],
-    "dateOfBirth": "1938-03-01"
-  },
-  {
     "id": 1683119138876,
     "sexe": "masculin",
     "symptome": [
