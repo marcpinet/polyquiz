@@ -3,7 +3,7 @@
       <h1 class="font-bold text-3xl text-[#2B3467]">Ajouter Question</h1>
     </div>
     <button
-    class="absolute top-0 left-0 block w-full max-w-xs mx-auto text-4xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-4 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+    class="absolute top-0 left-0 block w-full max-w-xs mx-auto text-4xl bg-indigo-560 focus:bg-indigo-600 text-white rounded-lg px-3 py-4 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
     (click)="return()"
     >
       <i class="fa-sharp fa-solid fa-arrow-left"></i>
@@ -57,7 +57,7 @@
             <img
             [src]="questionForm.value.questionImage"
             *ngIf="questionForm.value.questionImage"
-            class="mx-auto max-w-md rounded-md h-80"
+            class="mx-auto max-w-md rounded-md h-56"
             alt="Quiz image"
           />
           </div>
@@ -87,7 +87,7 @@
                 <img
                 [src]="questionForm.value.reponse1Image"
                 *ngIf="questionForm.value.reponse1Image"
-                class="mx-auto max-w-md rounded-md h-80"
+                class="mx-auto max-w-md rounded-md h-56"
                 alt="Quiz image"
               />
               </div>
@@ -127,7 +127,7 @@
                 <img
                 [src]="questionForm.value.reponse2Image"
                 *ngIf="questionForm.value.reponse2Image"
-                class="mx-auto max-w-md rounded-md h-80"
+                class="mx-auto max-w-md rounded-md h-56"
                 alt="Quiz image"
               />
               </div>
@@ -167,7 +167,7 @@
                 <img
                 [src]="questionForm.value.reponse3Image"
                 *ngIf="questionForm.value.reponse3Image"
-                class="mx-auto max-w-md rounded-md h-80"
+                class="mx-auto max-w-md rounded-md h-56"
                 alt="Quiz image"
               />
               </div>
@@ -207,7 +207,7 @@
                 <img
                 [src]="questionForm.value.reponse4Image"
                 *ngIf="questionForm.value.reponse4Image"
-                class="mx-auto max-w-md rounded-md h-80"
+                class="mx-auto max-w-md rounded-md h-56"
                 alt="Quiz image"
               />
               </div>
@@ -267,7 +267,7 @@
             <img
                 [src]="questionForm.value.explainImage"
                 *ngIf="questionForm.value.explainImage"
-                class="mx-auto max-w-md rounded-md h-80"
+                class="mx-auto max-w-md rounded-md h-56"
                 alt="Quiz image"
               />
           </div>
@@ -277,7 +277,7 @@
       <div class="flex -mx-3">
         <div class="w-full px-3 mb-5">
           <button
-          class="block w-full max-w-xs mx-auto text-xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+          class="block w-full max-w-xs mx-auto text-xl bg-indigo-560 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
           (click)="addQuestion()"
         >
           Ajouter Question
