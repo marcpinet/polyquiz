@@ -5,7 +5,7 @@
     <button
     class="absolute top-0 left-0 block w-full max-w-xs mx-auto text-4xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-4 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
     (click)="return()"
-    >  
+    >
       <i class="fa-sharp fa-solid fa-arrow-left"></i>
       QUIZ
     </button>
@@ -57,7 +57,7 @@
             <img
             [src]="questionForm.value.questionImage"
             *ngIf="questionForm.value.questionImage"
-            class="mx-auto object-cover w-96 h-auto rounded-md"
+            class="mx-auto max-w-md rounded-md h-80"
             alt="Quiz image"
           />
           </div>
@@ -87,7 +87,7 @@
                 <img
                 [src]="questionForm.value.reponse1Image"
                 *ngIf="questionForm.value.reponse1Image"
-                class="mx-auto object-cover w-96 h-auto rounded-md"
+                class="mx-auto max-w-md rounded-md h-80"
                 alt="Quiz image"
               />
               </div>
@@ -127,7 +127,7 @@
                 <img
                 [src]="questionForm.value.reponse2Image"
                 *ngIf="questionForm.value.reponse2Image"
-                class="mx-auto object-cover w-96 h-auto rounded-md"
+                class="mx-auto max-w-md rounded-md h-80"
                 alt="Quiz image"
               />
               </div>
@@ -167,7 +167,7 @@
                 <img
                 [src]="questionForm.value.reponse3Image"
                 *ngIf="questionForm.value.reponse3Image"
-                class="mx-auto object-cover w-96 h-auto rounded-md"
+                class="mx-auto max-w-md rounded-md h-80"
                 alt="Quiz image"
               />
               </div>
@@ -207,7 +207,7 @@
                 <img
                 [src]="questionForm.value.reponse4Image"
                 *ngIf="questionForm.value.reponse4Image"
-                class="mx-auto object-cover w-96 h-auto rounded-md"
+                class="mx-auto max-w-md rounded-md h-80"
                 alt="Quiz image"
               />
               </div>
@@ -267,7 +267,7 @@
             <img
                 [src]="questionForm.value.explainImage"
                 *ngIf="questionForm.value.explainImage"
-                class="mx-auto object-cover w-96 h-auto rounded-md"
+                class="mx-auto max-w-md rounded-md h-80"
                 alt="Quiz image"
               />
           </div>
