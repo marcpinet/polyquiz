@@ -15,6 +15,8 @@ export class QuizCreateComponent implements OnInit {
   @Output() loadTabComponent = new EventEmitter<string>();
   @Output() loadQuiz = new EventEmitter<Quiz>();
   @Output() uploadQuiz = new EventEmitter<Quiz>();
+  @Output() loadModifyQuestion = new EventEmitter<Question>();
+  @Output() deleteQuestionEmit = new EventEmitter<Question>();
 
   public quizForm: FormGroup;
   themes: Theme[] = [];
@@ -83,6 +85,7 @@ export class QuizCreateComponent implements OnInit {
       themeId: this.quizForm.value.quizTheme,
     };
     this.loadQuiz.emit(this.quiz);
+    this.loadModifyQuestion.emit(null);
     this.loadTabComponent.emit('QUESTION_CREATE');
   }
 
@@ -96,5 +99,25 @@ export class QuizCreateComponent implements OnInit {
       themeId: this.quizForm.value.quizTheme,
     };
     this.uploadQuiz.emit(this.quiz);
+  }
+
+  public deleteQuestion(nQuestion: number): void {
+    this.deleteQuestionEmit.emit(this.questions[nQuestion]);
+    this.questions.splice(nQuestion, 1);
+  }
+
+  public editQuestion(nQuestion: number): void {
+    this.quiz = {
+      name: this.quizForm.value.quizName,
+      image: this.quizForm.value.quizImage,
+      difficulty: this.quizForm.value.quizDifficulty,
+      description: this.quizForm.value.quizDescription,
+      estimated_time: this.quizForm.value.quizEstimatedTime,
+      themeId: this.quizForm.value.quizTheme,
+    };
+    this.loadQuiz.emit(this.quiz);
+    this.loadModifyQuestion.emit(this.questions[nQuestion]);
+    this.loadTabComponent.emit('QUESTION_CREATE');
+    this.deleteQuestion(nQuestion);
   }
 }
