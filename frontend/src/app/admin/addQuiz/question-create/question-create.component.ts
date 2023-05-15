@@ -1,18 +1,26 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Resident } from 'src/models/resident.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question, Theme, Quiz, Answer } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import Swal from 'sweetalert2';
+import { find } from 'rxjs';
 
 @Component({
   selector: 'app-question-create',
   templateUrl: './question-create.component.html',
 })
 export class QuestionCreateComponent implements OnInit {
-  @Input() modifyQuestion: Question = null;
-
+  @Input() modifyQuestion: Question;
+  @Input() modifyAnswers: Answer[];
   @Output() loadTabComponent = new EventEmitter<string>();
   @Output() addQuestionAnswer = new EventEmitter<{
     question: Question;
@@ -29,71 +37,76 @@ export class QuestionCreateComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     console.log('okkkk');
-
-    if (this.modifyQuestion != null) {
-      this.questionForm = this.formBuilder.group({
-        questionImage: [
-          this.modifyQuestion.question_image,
-          Validators.required,
-        ],
-        questionText: [this.modifyQuestion.question_text, Validators.required],
-        explainText: [this.modifyQuestion.explain_text, Validators.required],
-        explainImage: [this.modifyQuestion.explain_image, Validators.required],
-        reponse1: [
-          this.modifyQuestion.answers[0].answer_text,
-          Validators.required,
-        ],
-        reponse1Image: [
-          this.modifyQuestion.answers[0].answer_image,
-          Validators.required,
-        ],
-        reponse2: [
-          this.modifyQuestion.answers[0].answer_text,
-          Validators.required,
-        ],
-        reponse2Image: [
-          this.modifyQuestion.answers[0].answer_image,
-          Validators.required,
-        ],
-        reponse3: [
-          this.modifyQuestion.answers[0].answer_text,
-          Validators.required,
-        ],
-        reponse3Image: [
-          this.modifyQuestion.answers[0].answer_image,
-          Validators.required,
-        ],
-        reponse4: [
-          this.modifyQuestion.answers[0].answer_text,
-          Validators.required,
-        ],
-        reponse4Image: [
-          this.modifyQuestion.answers[0].answer_image,
-          Validators.required,
-        ],
-        validreponse: ['', Validators.required],
-      });
-    } else {
-      this.questionForm = this.formBuilder.group({
-        questionImage: ['', Validators.required],
-        questionText: ['', Validators.required],
-        explainText: ['', Validators.required],
-        explainImage: ['', Validators.required],
-        reponse1: ['', Validators.required],
-        reponse1Image: ['', Validators.required],
-        reponse2: ['', Validators.required],
-        reponse2Image: ['', Validators.required],
-        reponse3: ['', Validators.required],
-        reponse3Image: ['', Validators.required],
-        reponse4: ['', Validators.required],
-        reponse4Image: ['', Validators.required],
-        validreponse: ['', Validators.required],
-      });
-    }
+    this.questionForm = this.formBuilder.group({
+      questionImage: ['', Validators.required],
+      questionText: ['', Validators.required],
+      explainText: ['', Validators.required],
+      explainImage: ['', Validators.required],
+      reponse1: ['', Validators.required],
+      reponse1Image: ['', Validators.required],
+      reponse2: ['', Validators.required],
+      reponse2Image: ['', Validators.required],
+      reponse3: ['', Validators.required],
+      reponse3Image: ['', Validators.required],
+      reponse4: ['', Validators.required],
+      reponse4Image: ['', Validators.required],
+      validreponse: ['', Validators.required],
+    });
     console.log('Question create component');
   }
 
   ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if ('modifyQuestion' in changes) {
+      this.modifyQuestion = changes['modifyQuestion'].currentValue;
+      this.updateForm();
+    }
+  }
+
+  updateForm() {
+    if (this.modifyQuestion != undefined) {
+      this.questionForm.patchValue({
+        questionImage: this.modifyQuestion.question_image,
+        questionText: this.modifyQuestion.question_text,
+        explainText: this.modifyQuestion.explain_text,
+        explainImage: this.modifyQuestion.explain_image,
+      });
+    }
+    if (this.modifyAnswers != undefined) {
+      if (this.modifyAnswers.length > 0) {
+        this.questionForm.patchValue({
+          reponse1: this.modifyAnswers[0].answer_text,
+          reponse1Image: this.modifyAnswers[0].answer_image,
+        });
+      }
+      if (this.modifyAnswers.length > 1) {
+        this.questionForm.patchValue({
+          reponse2: this.modifyAnswers[1].answer_text,
+          reponse2Image: this.modifyAnswers[1].answer_image,
+        });
+      }
+      if (this.modifyAnswers.length > 2) {
+        this.questionForm.patchValue({
+          reponse3: this.modifyAnswers[2].answer_text,
+          reponse3Image: this.modifyAnswers[2].answer_image,
+        });
+      }
+      if (this.modifyAnswers.length > 3) {
+        this.questionForm.patchValue({
+          reponse4: this.modifyAnswers[3].answer_text,
+          reponse4Image: this.modifyAnswers[3].answer_image,
+        });
+      }
+      this.modifyAnswers.forEach((answer) => {
+        if (answer.isCorrect) {
+          this.questionForm.patchValue({
+            validreponse: this.modifyAnswers.indexOf(answer),
+          });
+        }
+      });
+    }
+  }
 
   public addQuestion(): void {
     this.question = {

@@ -21,6 +21,8 @@ export class AddQuizComponent implements OnInit {
   quiz: Quiz;
   questionsAnswers: Map<Question, Answer[]> = new Map<Question, Answer[]>();
   currentTab = 'QUIZ_CREATE';
+  modifyQuestion: Question;
+  modifyAnswers: Answer[];
 
   components = {
     QUIZ_CREATE: QuizCreateComponent,
@@ -40,6 +42,15 @@ export class AddQuizComponent implements OnInit {
   loadQuiz(quiz: Quiz) {
     this.quiz = quiz;
     console.log(quiz);
+  }
+
+  loadModifyQuestion(question: Question) {
+    this.modifyQuestion = question;
+    this.modifyAnswers = this.questionsAnswers.get(question);
+  }
+
+  deleteQuestion(question: Question) {
+    this.questionsAnswers.delete(question);
   }
 
   uploadQuiz(quiz: Quiz) {
