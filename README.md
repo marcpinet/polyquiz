@@ -53,4 +53,4 @@ The project uses GitHub Actions to run the tests and build the project. The husk
 
 ## 📃 License
 
-Distributed under the Mozilla Public License Version 2.0 - see the [LICENSE.md](LICENSE.md) file for details
+Distributed under the Mozilla Public License Version 2.0 - see the [LICENSE.md](LICENSE) file for details
