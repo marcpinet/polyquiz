@@ -6,6 +6,7 @@ import { Resident } from '../models/resident.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { InitSettingService } from './initsettings.service';
 @Injectable({
   providedIn: 'root',
 })
