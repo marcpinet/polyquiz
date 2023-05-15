@@ -97,4 +97,21 @@ export class QuizCreateComponent implements OnInit {
     };
     this.uploadQuiz.emit(this.quiz);
   }
+
+  public deleteQuestion(nQuestion: number): void {
+    this.questions.splice(nQuestion, 1);
+  }
+
+  public editQuestion(nQuestion: number): void {
+    this.quiz = {
+      name: this.quizForm.value.quizName,
+      image: this.quizForm.value.quizImage,
+      difficulty: this.quizForm.value.quizDifficulty,
+      description: this.quizForm.value.quizDescription,
+      estimated_time: this.quizForm.value.quizEstimatedTime,
+      themeId: this.quizForm.value.quizTheme,
+    };
+    this.loadQuiz.emit(this.quiz);
+    this.loadTabComponent.emit('QUESTION_CREATE');
+  }
 }
