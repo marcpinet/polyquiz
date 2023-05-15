@@ -130,4 +130,8 @@ export class UserService {
   getResidentById(id: number): Resident {
     return this.residents.find((resident) => resident.id == id);
   }
+
+  userExists(name: string): boolean {
+    return this.users.find((user) => user.userName == name) != undefined;
+  }
 }

@@ -42,7 +42,7 @@ export class AuthService {
           } else {
             Swal.fire({
               icon: 'error',
-              title: 'Mauvais identifiant / mot de passe.',
+              title: 'Erreur : mauvais mot de passe.',
               showConfirmButton: false,
               showCancelButton: true,
               cancelButtonText: '<span>Retour</span>', // add non-breaking spaces between span tags to create more space between buttons
