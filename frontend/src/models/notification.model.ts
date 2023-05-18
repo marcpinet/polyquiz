@@ -1,6 +1,6 @@
 export interface Notification {
-  senderId: number;
-  receiverId: number;
+  sender_id: number;
+  user_id: number;
   message: string;
   type: 'settings'; //can add ' | [other types] ' here later
   date: Date;

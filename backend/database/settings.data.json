@@ -4,7 +4,7 @@
     "sound_effect": false,
     "mouse_option": "aucun",
     "microphone": "aucun",
-    "confirm_answer": false,
+    "confirm_answer": true,
     "id": 1680382869828
   },
   {
@@ -26,7 +26,7 @@
   {
     "user_id": 1683119138951,
     "sound_effect": true,
-    "mouse_option": "pressionLongue",
+    "mouse_option": "aucun",
     "microphone": "aucun",
     "confirm_answer": false,
     "id": 1683740119582

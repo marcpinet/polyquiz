@@ -46,9 +46,9 @@ export class NotificationService {
     });
   }
 
-  getNotificationOfUser(uid: number): Observable<Notification> {
+  getNotificationsOfUser(uid: number): Observable<Notification[]> {
     const urlWithId = this.notificationUrl + '/' + uid;
-    return this.http.get<Notification>(urlWithId);
+    return this.http.get<Notification[]>(urlWithId);
   }
 
   updateNotification(notification: Notification): Observable<Notification> {

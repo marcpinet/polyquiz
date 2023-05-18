@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { OptionsScreenComponent } from 'src/app/settings/options-screen.component';
 import { MesResultatsComponent } from 'src/app/mesResultats/mes-resultat.component';
 import { Router } from '@angular/router';
@@ -8,12 +8,17 @@ import Swal from 'sweetalert2';
 import { QuizListComponent } from 'src/app/quiz/quizlist/quizlist.component';
 import { GestionQuizComponent } from '../gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from '../mesResidents/resident.component';
+import { Notification } from 'src/models/notification.model';
+import { NotificationService } from 'src/services/notification.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-mainpage.component.html',
 })
 export class AdminMainPage {
   user: User;
+  notifications: Notification[] = [];
+
   currentTab = 'RESIDENT';
   @ViewChild('resultBtn') resultBtn: ElementRef;
   showNotifications = false;
@@ -30,10 +35,20 @@ export class AdminMainPage {
     RESIDENT: ResidentComponent,
   };
 
-  constructor(public router: Router, private authService: AuthService) {
+  constructor(
+    public router: Router,
+    private authService: AuthService,
+    private notificationService: NotificationService
+  ) {
     this.authService.user$.subscribe((user) => {
       this.user = user;
     });
+    this.notificationService
+      .getNotificationsOfUser(this.user.id)
+      .subscribe((notifications) => {
+        this.notifications = notifications;
+        console.log(notifications);
+      });
   }
 
   get selectedComponent() {

@@ -62,8 +62,8 @@ export class SettingService {
       const residentName =
         this.authService.user.firstName + ' ' + this.authService.user.lastName;
       const Notification: Notification = {
-        senderId: settings.user_id,
-        receiverId: 1682318674112, //admin's id. To be changed later if we have multiple admins
+        sender_id: settings.user_id,
+        user_id: 1682318674112, //admin's id. To be changed later if we have multiple admins
         message: residentName + ' a modifié ses paramètres',
         type: 'settings',
         date: new Date(),
