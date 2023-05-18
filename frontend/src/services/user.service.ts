@@ -135,4 +135,8 @@ export class UserService {
   userExists(name: string): boolean {
     return this.users.find((user) => user.userName == name) != undefined;
   }
+
+  getUserById(id: number): User {
+    return this.users.find((user) => user.id == id);
+  }
 }

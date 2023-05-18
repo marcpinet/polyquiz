@@ -11,13 +11,14 @@ import { ResidentComponent } from '../mesResidents/resident.component';
 import { Notification } from 'src/models/notification.model';
 import { NotificationService } from 'src/services/notification.service';
 import { Subscription } from 'rxjs';
+import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-mainpage.component.html',
 })
 export class AdminMainPage {
   user: User;
-  notifications: Notification[] = [];
+  notifications: Map<User, Notification> = new Map<User, Notification>();
 
   currentTab = 'RESIDENT';
   @ViewChild('resultBtn') resultBtn: ElementRef;
@@ -38,16 +39,35 @@ export class AdminMainPage {
   constructor(
     public router: Router,
     private authService: AuthService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private userService: UserService
   ) {
     this.authService.user$.subscribe((user) => {
       this.user = user;
     });
+
     this.notificationService
       .getNotificationsOfUser(this.user.id)
       .subscribe((notifications) => {
-        this.notifications = notifications;
-        console.log(notifications);
+        const notif = notifications;
+        for (const element of notif) {
+          let notification = element;
+          let user = this.userService.getUserById(notification.sender_id);
+
+          //only get one notif per resident, with the lastest time
+          let existingUser = Array.from(this.notifications.keys()).find(
+            (key) => key.id === user.id
+          );
+
+          if (existingUser) {
+            let existingNotification = this.notifications.get(existingUser);
+            existingNotification.message = notification.message;
+            existingNotification.date = notification.date;
+          } else {
+            this.notifications.set(user, notification);
+          }
+        }
+        console.log(this.notifications);
       });
   }
 
