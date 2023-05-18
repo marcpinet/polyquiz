@@ -11,7 +11,7 @@
     "user_id": 1682318674112,
     "sound_effect": false,
     "mouse_option": "aucun",
-    "microphone": "aucun",
+    "microphone": "withoutAntiBruit",
     "confirm_answer": false,
     "id": 1683740096093
   },
@@ -26,7 +26,7 @@
   {
     "user_id": 1683119138951,
     "sound_effect": true,
-    "mouse_option": "aucun",
+    "mouse_option": "pressionLongue",
     "microphone": "aucun",
     "confirm_answer": false,
     "id": 1683740119582

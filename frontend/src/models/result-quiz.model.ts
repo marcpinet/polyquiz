@@ -1,6 +1,6 @@
 export interface Result {
   //Result of of quiz's play round
-  id: number;
+  id?: number;
   user_id: number;
   quiz_id: string;
   right_answers: number;

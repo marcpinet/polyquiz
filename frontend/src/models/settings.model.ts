@@ -1,5 +1,5 @@
 export interface Settings {
-  id: number;
+  id?: number;
   user_id: number;
   sound_effect: boolean;
   mouse_option:
@@ -13,7 +13,7 @@ export interface Settings {
 
 export interface InitSettings {
   //initial values for Settings that are set by admin
-  id: number;
+  id?: number;
   user_id: number;
   sound_effect: boolean;
   mouse_option:

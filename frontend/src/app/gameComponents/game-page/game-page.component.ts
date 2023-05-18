@@ -91,7 +91,6 @@ export class GamePageComponent implements OnInit {
   endGame() {
     //add Result and get the id of the result and navigate to /result
     const result: Result = {
-      id: this.resultService.resultId,
       quiz_id: this.quiz.id,
       date: new Date(),
       user_id: this.userId,

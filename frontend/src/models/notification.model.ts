@@ -5,5 +5,5 @@ export interface Notification {
   type: 'settings'; //can add ' | [other types] ' here later
   date: Date;
   seen: boolean;
-  id: number;
+  id?: number;
 }

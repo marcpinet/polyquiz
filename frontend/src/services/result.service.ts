@@ -16,7 +16,6 @@ export class ResultService {
     []
   );
   public resultSelected$: Subject<Result> = new Subject();
-  public resultId = 0;
 
   constructor(private http: HttpClient, private router: Router) {
     this.retrieveResults();
@@ -45,7 +44,6 @@ export class ResultService {
   }
 
   addResult(result: Result): Observable<Result> {
-    this.resultId++;
     return this.http.post<Result>(this.resultUrl, result, this.httpOptions);
   }
 
