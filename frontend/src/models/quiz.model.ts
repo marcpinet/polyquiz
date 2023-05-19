@@ -28,7 +28,7 @@ export interface Answer {
 }
 
 export interface Theme {
-  id: string;
+  id?: string;
   name: string;
   image: number;
 }

@@ -7,6 +7,7 @@ const Answer = require("./answer.model.js");
 const Result = require("./result.model.js");
 const Settings = require("./settings.model.js");
 const InitSettings = require("./initsettings.model.js");
+const Notification = require("./notification.model.js");
 module.exports = {
   User,
   Resident,
@@ -17,4 +18,5 @@ module.exports = {
   Result,
   Settings,
   InitSettings,
+  Notification,
 };

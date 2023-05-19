@@ -5,7 +5,8 @@ import { Settings } from '../models/settings.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-
+import { NotificationService } from './notification.service';
+import { Notification } from 'src/models/notification.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,7 +22,8 @@ export class SettingService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {}
 
   setCurrentUserSettings() {
@@ -52,7 +54,25 @@ export class SettingService {
   }
 
   updateSettings(settings: Settings): Observable<Settings> {
+    console.log('settings', settings);
     const urlWithId = this.settingsUrl + '/' + settings.user_id;
+
+    if (settings.user_id != 1682318674112) {
+      //admin's id. To be changed later if we have multiple admins
+      const residentName =
+        this.authService.user.firstName + ' ' + this.authService.user.lastName;
+      const Notification: Notification = {
+        sender_id: settings.user_id,
+        user_id: 1682318674112, //admin's id. To be changed later if we have multiple admins
+        message: residentName + ' a modifié ses paramètres',
+        type: 'settings',
+        date: new Date(),
+        seen: false,
+      };
+      this.notificationService.addNotification(Notification).subscribe();
+    }
+
+    //TODO: make sure that the notification was added before updating the settings
     return this.http.put<Settings>(urlWithId, settings, this.httpOptions);
   }
 

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { OptionsScreenComponent } from 'src/app/settings/options-screen.component';
 import { MesResultatsComponent } from 'src/app/mesResultats/mes-resultat.component';
 import { Router } from '@angular/router';
@@ -8,12 +8,18 @@ import Swal from 'sweetalert2';
 import { QuizListComponent } from 'src/app/quiz/quizlist/quizlist.component';
 import { GestionQuizComponent } from '../gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from '../mesResidents/resident.component';
+import { Notification } from 'src/models/notification.model';
+import { NotificationService } from 'src/services/notification.service';
+import { Subscription } from 'rxjs';
+import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-mainpage.component.html',
 })
 export class AdminMainPage {
   user: User;
+  notifications: Map<User, Notification> = new Map<User, Notification>();
+
   currentTab = 'RESIDENT';
   @ViewChild('resultBtn') resultBtn: ElementRef;
   showNotifications = false;
@@ -30,10 +36,39 @@ export class AdminMainPage {
     RESIDENT: ResidentComponent,
   };
 
-  constructor(public router: Router, private authService: AuthService) {
+  constructor(
+    public router: Router,
+    private authService: AuthService,
+    private notificationService: NotificationService,
+    private userService: UserService
+  ) {
     this.authService.user$.subscribe((user) => {
       this.user = user;
     });
+
+    this.notificationService
+      .getNotificationsOfUser(this.user.id)
+      .subscribe((notifications) => {
+        const notif = notifications;
+        for (const element of notif) {
+          let notification = element;
+          let user = this.userService.getUserById(notification.sender_id);
+
+          //only get one notif per resident, with the lastest time
+          let existingUser = Array.from(this.notifications.keys()).find(
+            (key) => key.id === user.id
+          );
+
+          if (existingUser) {
+            let existingNotification = this.notifications.get(existingUser);
+            existingNotification.message = notification.message;
+            existingNotification.date = notification.date;
+          } else {
+            this.notifications.set(user, notification);
+          }
+        }
+        console.log(this.notifications);
+      });
   }
 
   get selectedComponent() {

@@ -2,212 +2,103 @@
   <!-- Left Side -->
   <div class="md:w-1/5 bg-[#BAD7E9] border-r hidden md:block fixed h-screen">
     <div class="flex flex-col justify-between items-center h-full w-full">
-      <img
-        src="../../assets/images/Poly.png"
-        class="w-40 h-40 rounded-full shadow flex-none p-2"
-      />
-      <ul
-        class="w-full h-full flex flex-col justify-center items-center flex-grow"
-      >
-        <li
-          class="w-full h-1/3 flex-grow"
-          (click)="loadTabComponent('RESIDENT')"
-          id="resident-btn"
-        >
+      <img src="../../assets/images/Poly.png" class="w-40 h-40 rounded-full shadow flex-none p-2" />
+      <ul class="w-full h-full flex flex-col justify-center items-center flex-grow">
+        <li class="w-full h-1/3 flex-grow" (click)="loadTabComponent('RESIDENT')" id="resident-btn">
           <button
             class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
-            data-tab="RESIDENT"
-          >
-            <i
-              class="fa-sharp fa-solid fa-hospital-user text-6xl align-middle"
-              [ngClass]="{
+            data-tab="RESIDENT">
+            <i class="fa-sharp fa-solid fa-hospital-user text-6xl align-middle" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'RESIDENT',
                 'text-[#2B3467]': currentTab !== 'RESIDENT'
-              }"
-              *ngIf="currentTab !== 'RESIDENT'"
-            ></i>
-            <i
-              class="fa-sharp fa-solid fa-hospital-user text-6xl align-middle"
-              [ngClass]="{ 'text-[#EB455F]': currentTab === 'RESIDENT' }"
-              *ngIf="currentTab === 'RESIDENT'"
-            ></i>
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{
+              }" *ngIf="currentTab !== 'RESIDENT'"></i>
+            <i class="fa-sharp fa-solid fa-hospital-user text-6xl align-middle"
+              [ngClass]="{ 'text-[#EB455F]': currentTab === 'RESIDENT' }" *ngIf="currentTab === 'RESIDENT'"></i>
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'RESIDENT',
                 'text-[#2B3467]': currentTab !== 'RESIDENT'
-              }"
-              *ngIf="currentTab !== 'RESIDENT'"
-              >Mes résidents</span
-            >
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{ 'text-white': currentTab === 'RESIDENT' }"
-              *ngIf="currentTab === 'RESIDENT'"
-              >Mes résidents</span
-            >
+              }" *ngIf="currentTab !== 'RESIDENT'">Mes résidents</span>
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{ 'text-white': currentTab === 'RESIDENT' }"
+              *ngIf="currentTab === 'RESIDENT'">Mes résidents</span>
           </button>
         </li>
 
-        <li
-          class="w-full h-1/3 flex-grow"
-          (click)="loadTabComponent('GESTION_QUIZ')"
-          id="gestion-quiz-btn"
-        >
+        <li class="w-full h-1/3 flex-grow" (click)="loadTabComponent('GESTION_QUIZ')" id="gestion-quiz-btn">
           <button
             class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
-            data-tab="GESTION_QUIZ"
-          >
-            <i
-              class="fa-sharp fa-solid fa-pen text-6xl align-middle"
-              [ngClass]="{
+            data-tab="GESTION_QUIZ">
+            <i class="fa-sharp fa-solid fa-pen text-6xl align-middle" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'GESTION_QUIZ',
                 'text-[#2B3467]': currentTab !== 'GESTION_QUIZ'
-              }"
-              *ngIf="currentTab !== 'GESTION_QUIZ'"
-            ></i>
-            <i
-              class="fa-sharp fa-solid fa-pen text-6xl align-middle"
-              [ngClass]="{ 'text-[#EB455F]': currentTab === 'GESTION_QUIZ' }"
-              *ngIf="currentTab === 'GESTION_QUIZ'"
-            ></i>
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{
+              }" *ngIf="currentTab !== 'GESTION_QUIZ'"></i>
+            <i class="fa-sharp fa-solid fa-pen text-6xl align-middle"
+              [ngClass]="{ 'text-[#EB455F]': currentTab === 'GESTION_QUIZ' }" *ngIf="currentTab === 'GESTION_QUIZ'"></i>
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'GESTION_QUIZ',
                 'text-[#2B3467]': currentTab !== 'GESTION_QUIZ'
-              }"
-              *ngIf="currentTab !== 'GESTION_QUIZ'"
-              >Gestion Quiz</span
-            >
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{ 'text-white': currentTab === 'GESTION_QUIZ' }"
-              *ngIf="currentTab === 'GESTION_QUIZ'"
-              >Gestion Quiz</span
-            >
+              }" *ngIf="currentTab !== 'GESTION_QUIZ'">Gestion Quiz</span>
+            <span class="font-semibold align-middle text-4xl"
+              [ngClass]="{ 'text-white': currentTab === 'GESTION_QUIZ' }" *ngIf="currentTab === 'GESTION_QUIZ'">Gestion
+              Quiz</span>
           </button>
         </li>
 
-        <li
-          class="w-full h-1/3 flex-grow"
-          (click)="loadTabComponent('QUIZ')"
-          id="result-btn"
-        >
+        <li class="w-full h-1/3 flex-grow" (click)="loadTabComponent('QUIZ')" id="result-btn">
           <button
             class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
-            data-tab="QUIZ"
-          >
-            <i
-              class="fa-solid fa-puzzle-piece text-6xl align-middle"
-              [ngClass]="{
+            data-tab="QUIZ">
+            <i class="fa-solid fa-puzzle-piece text-6xl align-middle" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'QUIZ',
                 'text-[#2B3467]': currentTab !== 'QUIZ'
-              }"
-              *ngIf="currentTab !== 'QUIZ'"
-            ></i>
+              }" *ngIf="currentTab !== 'QUIZ'"></i>
 
-            <i
-              class="fa-solid fa-puzzle-piece text-6xl align-middle"
-              [ngClass]="{ 'text-[#EB455F]': currentTab === 'QUIZ' }"
-              *ngIf="currentTab === 'QUIZ'"
-            ></i>
+            <i class="fa-solid fa-puzzle-piece text-6xl align-middle"
+              [ngClass]="{ 'text-[#EB455F]': currentTab === 'QUIZ' }" *ngIf="currentTab === 'QUIZ'"></i>
 
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'QUIZ',
                 'text-[#2B3467]': currentTab !== 'QUIZ'
-              }"
-              *ngIf="currentTab !== 'QUIZ'"
-              >Quiz</span
-            >
+              }" *ngIf="currentTab !== 'QUIZ'">Quiz</span>
 
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{ 'text-white': currentTab === 'QUIZ' }"
-              *ngIf="currentTab === 'QUIZ'"
-              >Quiz</span
-            >
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{ 'text-white': currentTab === 'QUIZ' }"
+              *ngIf="currentTab === 'QUIZ'">Quiz</span>
           </button>
         </li>
-        <li
-          class="w-full h-1/3 flex-grow"
-          (click)="loadTabComponent('RESULTAT')"
-          id="result-btn"
-        >
+        <li class="w-full h-1/3 flex-grow" (click)="loadTabComponent('RESULTAT')" id="result-btn">
           <button
             class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
-            data-tab="RESULTAT"
-          >
-            <i
-              class="fa-sharp fa-solid fa-trophy text-6xl align-middle"
-              [ngClass]="{
+            data-tab="RESULTAT">
+            <i class="fa-sharp fa-solid fa-trophy text-6xl align-middle" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'RESULTAT',
                 'text-[#2B3467]': currentTab !== 'RESULTAT'
-              }"
-              *ngIf="currentTab !== 'RESULTAT'"
-            ></i>
-            <i
-              class="fa-sharp fa-solid fa-trophy text-6xl align-middle"
-              [ngClass]="{ 'text-[#EB455F]': currentTab === 'RESULTAT' }"
-              *ngIf="currentTab === 'RESULTAT'"
-            ></i>
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{
+              }" *ngIf="currentTab !== 'RESULTAT'"></i>
+            <i class="fa-sharp fa-solid fa-trophy text-6xl align-middle"
+              [ngClass]="{ 'text-[#EB455F]': currentTab === 'RESULTAT' }" *ngIf="currentTab === 'RESULTAT'"></i>
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'RESULTAT',
                 'text-[#2B3467]': currentTab !== 'RESULTAT'
-              }"
-              *ngIf="currentTab !== 'RESULTAT'"
-              >Mes résultats</span
-            >
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{ 'text-white': currentTab === 'RESULTAT' }"
-              *ngIf="currentTab === 'RESULTAT'"
-              >Mes résultats</span
-            >
+              }" *ngIf="currentTab !== 'RESULTAT'">Mes résultats</span>
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{ 'text-white': currentTab === 'RESULTAT' }"
+              *ngIf="currentTab === 'RESULTAT'">Mes résultats</span>
           </button>
         </li>
 
-        <li
-          class="w-full h-1/3 flex-grow"
-          (click)="loadTabComponent('PARAMETRES')"
-          id="param-btn"
-        >
+        <li class="w-full h-1/3 flex-grow" (click)="loadTabComponent('PARAMETRES')" id="param-btn">
           <button
             class="tab-button w-full h-full px-4 bg-[#BAD7E9] shadow-lg rounded-md text-[#2B3467] font-bold flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
-            data-tab="PARAMETRES"
-          >
-            <i
-              class="fa fa-cog text-6xl align-middle"
-              [ngClass]="{
+            data-tab="PARAMETRES">
+            <i class="fa fa-cog text-6xl align-middle" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'PARAMETRES',
                 'text-[#2B3467]': currentTab !== 'PARAMETRES'
-              }"
-              *ngIf="currentTab !== 'PARAMETRES'"
-            ></i>
-            <i
-              class="fa fa-cog text-6xl align-middle"
-              [ngClass]="{ 'text-[#EB455F]': currentTab === 'PARAMETRES' }"
-              *ngIf="currentTab === 'PARAMETRES'"
-            ></i>
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{
+              }" *ngIf="currentTab !== 'PARAMETRES'"></i>
+            <i class="fa fa-cog text-6xl align-middle" [ngClass]="{ 'text-[#EB455F]': currentTab === 'PARAMETRES' }"
+              *ngIf="currentTab === 'PARAMETRES'"></i>
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{
                 'text-[#EB455F]': currentTab === 'PARAMETRES',
                 'text-[#2B3467]': currentTab !== 'PARAMETRES'
-              }"
-              *ngIf="currentTab !== 'PARAMETRES'"
-              >Paramètres</span
-            >
-            <span
-              class="font-semibold align-middle text-4xl"
-              [ngClass]="{ 'text-white': currentTab === 'PARAMETRES' }"
-              *ngIf="currentTab === 'PARAMETRES'"
-              >Paramètres</span
-            >
+              }" *ngIf="currentTab !== 'PARAMETRES'">Paramètres</span>
+            <span class="font-semibold align-middle text-4xl" [ngClass]="{ 'text-white': currentTab === 'PARAMETRES' }"
+              *ngIf="currentTab === 'PARAMETRES'">Paramètres</span>
           </button>
         </li>
       </ul>
@@ -222,8 +113,7 @@
           class="flex items-center w-full px-6 py-6 m-0 font-bold text-[#2B3467] text-5xl bg-[#BAD7E9] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
           type="button"
           onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('div').css('color', '#FCFFE7');"
-          onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('div').css('color', '#2B3467');"
-        >
+          onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('div').css('color', '#2B3467');">
           <i class="fa-regular fa-circle-question text-[#2B3467] text-5xl"></i>
           <div class="m-1">Aide</div>
         </button>
@@ -234,64 +124,43 @@
           <button (click)="switchNotifications()" class="focus:outline-none focus:shadow-outline">
             <i class="far fa-bell text-6xl"></i>
             <div
-              class="absolute top-0 right-0 -mt-6 -mr-6 rounded-full bg-red-600 text-white h-12 w-12 flex items-center justify-center"
-            >
+              class="absolute top-0 right-0 -mt-6 -mr-6 rounded-full bg-red-600 text-white h-12 w-12 flex items-center justify-center">
               <span class="text-2xl font-bold">2</span>
             </div>
           </button>
 
           <!-- Notifications -->
+          <div></div>
           <div
             class="absolute top-14 right-11 bg-[#BAD7E9] bg-opacity-95 rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]"
-            *ngIf="showNotifications"
-          >
-            <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
-              <div class="flex items-center space-x-4">
-                <img
-                  src="https://static.vecteezy.com/system/resources/previews/002/563/180/non_2x/old-man-person-avatar-character-free-vector.jpg"
-                  class="rounded-full h-14 w-14"
-                  alt=""
-                />
-                <div class="flex flex-col space-y-1">
-                  <span class="font-bold">John Doe</span>
-                  <span class="text-sm">a changé ses paramètres</span>
+            *ngIf="showNotifications">
+            <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2"
+              *ngFor="let notification of notifications | keyvalue">
+              <div>
+                <div class="flex items-center space-x-4">
+                  <img src="{{ notification.key.avatar }}" class="rounded-full h-14 w-14" alt="" />
+                  <div class="flex flex-col space-y-1">
+                    <span class="font-bold">{{ notification.key.firstName }}
+                      {{ notification.key.lastName }}</span>
+                    <span class="text-sm">{{
+                      notification.value.message
+                    }}</span>
+                  </div>
                 </div>
-              </div>
-              <div
-                class="flex-none px-4 py-2 text-stone-600 text-xs md:text-sm"
-              >
-                il y a 17m
-              </div>
-            </div>
-
-            <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0" />
-
-            <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
-              <div class="flex items-center space-x-4">
-                <img
-                  src="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/grandma_elderly_nanny_avatar-512.png"
-                  class="rounded-full h-14 w-14"
-                  alt=""
-                />
-                <div class="flex flex-col space-y-1">
-                  <span class="font-bold">Emma Heart</span>
-                  <span class="text-sm">a changé ses paramètres</span>
+                <div class="flex-none px-4 py-2 text-stone-600 text-xs md:text-sm">
+                  {{ notification.value.date }}
+                  <!-- TODO: Make this date be xxx days ago with ngx-time-ago -->
                 </div>
-              </div>
-              <div
-                class="flex-none px-4 py-2 text-stone-600 text-xs md:text-sm"
-              >
-                il y a un jour
+                <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0" />
+
               </div>
             </div>
           </div>
         </div>
 
         <div class="flex items-center py-2 mr-2" (click)="navigateProfile()">
-          <img
-            src="{{ this.user.avatar }}"
-            class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32"
-          />
+          <img src="{{ this.user.avatar }}"
+            class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32" />
           <p class="text-3xl font-bold text-[#2B3467] mt-1">
             {{ this.user.firstName }} {{ this.user.lastName }}
           </p>
