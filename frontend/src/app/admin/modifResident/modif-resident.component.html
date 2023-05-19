@@ -62,8 +62,8 @@
             <span class="font-semibold">Effet Sonore:</span> {{ settings.sound_effect ? "Allumé" : "Étendu" }}
           </p>
           <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Options de clic de la souris: </span>{{settings.mouse_option}}</p>
-          <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Action au microphone:</span> {{settings.microphone}}</p>
-          <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Confirmation avant de valider:</span> {{settings.confirm_answer ? "Allumé" : "Étendu"}}</p>
+          <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Action au microphone:</span> {{settings.microphone ? "Activé" : "Désactivé"}}</p>
+          <p class="text-[#2B3467] text-xl text-left"><span class="font-semibold">Confirmation avant de valider:</span> {{settings.confirm_answer ? "Activé" : "Désactivé"}}</p>
         </div>
         <div class="flex items-center h-full">
           <button class="text-gray-700 hover:text-gray-900 flex-grow-0">

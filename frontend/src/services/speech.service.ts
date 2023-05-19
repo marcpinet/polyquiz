@@ -57,15 +57,7 @@ export class SpeechService {
   }
 
   startRecognition(): void {
-    if (
-      this.userSettings &&
-      this.userSettings.microphone === 'withoutAntiBruit'
-    ) {
-      this.recognition.interimResults = false;
-    } else if (
-      this.userSettings &&
-      this.userSettings.microphone === 'withAntiBruit'
-    ) {
+    if (this.userSettings && this.userSettings.microphone) {
       this.recognition.interimResults = true;
     }
     this.isStopped = false;
