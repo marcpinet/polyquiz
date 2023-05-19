@@ -60,22 +60,15 @@
       Action au microphone
     </div>
     <div class="button-container flex flex-1 h-36 my-auto">
-      <button (click)="setMicrophone('withAntiBruit')" class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
-          microphone === 'withAntiBruit'
+      <button (click)="setMicrophone(true)" class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          microphone
             ? 'bg-[#90C1DF] border border-[#EB455F]'
             : ''
-        }}" id="avec_antibruit">
-        Activé avec anti-bruit
+        }}" id="activer_microphone">
+        Activé
       </button>
-      <button (click)="setMicrophone('withoutAntiBruit')" class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
-          microphone === 'withoutAntiBruit'
-            ? 'bg-[#90C1DF] border border-[#EB455F]'
-            : ''
-        }}" id="sans_antibruit">
-        Activé sans anti-bruit
-      </button>
-      <button (click)="setMicrophone('aucun')" class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
-          microphone === 'aucun' ? 'bg-[#90C1DF] border border-[#EB455F]' : ''
+      <button (click)="setMicrophone(false)" class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 {{
+          !microphone ? 'bg-[#90C1DF] border border-[#EB455F]' : ''
         }}" id="desactiver_microphone">
         Aucun
       </button>
