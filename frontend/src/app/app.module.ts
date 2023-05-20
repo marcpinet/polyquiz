@@ -39,6 +39,9 @@ import { QuestionCreateComponent } from './admin/addQuiz/question-create/questio
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 import { PlayedQuizAdminComponent } from './admin/statsResident/playedQuizAdmin/played-quiz-admin.component';
 import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
+import { IntlModule } from 'angular-ecmascript-intl';
+import { INTL_LOCALES } from 'angular-ecmascript-intl';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,8 +87,14 @@ import { ModifResidentComponent } from './admin/modifResident/modif-resident.com
     FormsModule,
     IvyCarouselModule,
     NgChartsModule,
+    IntlModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: INTL_LOCALES,
+      useValue: 'fr-FR',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
