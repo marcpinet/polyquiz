@@ -5,6 +5,7 @@ import { SettingService } from '../services/settings.service';
 import { Subscription } from 'rxjs';
 import { Settings } from 'src/models/settings.model';
 import writtenNumber from 'written-number';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -215,6 +216,10 @@ export class AppComponent implements OnDestroy {
 
   @HostListener('window:click', ['$event'])
   onClick(event: MouseEvent): void {
+    if ((event.target as Element).closest('.keyboard-warning-popup')) {
+      return;
+    }
+
     if (
       this.userSettings &&
       (this.userSettings.mouse_option == 'keyboard_control' ||
@@ -222,8 +227,39 @@ export class AppComponent implements OnDestroy {
         this.userSettings.mouse_option === 'pressionLongue')
     ) {
       if (
-        (this.userSettings.mouse_option == 'keyboard_control' &&
-          !this.spaceKeyPressed) ||
+        this.userSettings.mouse_option === 'keyboard_control' &&
+        !this.spaceKeyPressed
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        Swal.fire({
+          icon: 'warning',
+          title: 'Mode de clic par clavier activé',
+          html: 'Attention : vos clics sont actuellement réalisés via la barre espace ; vos clics de souris sont donc désactivés. Voulez-vous repasser en mode de clics normaux ?',
+          showDenyButton: true,
+          showCancelButton: false,
+          width: 1700,
+          padding: '4em',
+          confirmButtonText:
+            '<span id="non" style="font-size: 50px; padding: 50px 50px;">Oui</span>',
+          denyButtonText:
+            '<span id="non" style="font-size: 50px; padding: 50px 50px;">Non</span>',
+          customClass: {
+            popup: 'keyboard-warning-popup',
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.userSettings.mouse_option = 'aucun';
+            this.settingsService.updateSettings(this.userSettings);
+            Swal.fire({
+              icon: 'info',
+              title: 'Mouse clicks restored',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+      } else if (
         (this.userSettings.mouse_option === 'doubleClique' &&
           !this.isDoubleClickEnabled) ||
         (this.userSettings.mouse_option === 'pressionLongue' &&
