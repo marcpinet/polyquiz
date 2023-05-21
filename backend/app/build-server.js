@@ -4,15 +4,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const api = require("./api");
 
-const corsOptions = {
-  origin: "http://localhost:4200",
-  credentials: true,
-};
-
 module.exports = (cb) => {
   const app = express();
   app.disable("x-powered-by");
-  app.use(cors(corsOptions));
+  app.use(cors());
   app.use(bodyParser.json({}));
   app.use(
     morgan(
