@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { serverUrl } from 'src/configs/server.config';
@@ -12,16 +13,26 @@ import { QuizService } from 'src/services/quiz.service';
   styleUrls: ['./modify-quiz.component.scss'],
 })
 export class ModifyQuizAdminComponent {
+  public quizForm: FormGroup;
   quiz: Quiz;
   constructor(
     public router: Router,
     public quizService: QuizService,
     public route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private formbuilder: FormBuilder
   ) {
     //recover the quizId from the url
     const id = this.route.snapshot.paramMap.get('id');
 
+    this.quizForm = this.formbuilder.group({
+      quizImage: ['', Validators.required],
+      quizName: ['', [Validators.required]],
+      quizDifficulty: ['', Validators.required],
+      quizDescription: ['', Validators.required],
+      quizEstimatedTime: ['', Validators.required],
+      quizTheme: ['', Validators.required],
+    });
     //Recover quiz from quizservice
     this.quizService.retrieveQuizzes();
     this.quizService
