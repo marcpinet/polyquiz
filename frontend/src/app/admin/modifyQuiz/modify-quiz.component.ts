@@ -22,7 +22,6 @@ export class ModifyQuizAdminComponent {
     private http: HttpClient,
     private formbuilder: FormBuilder
   ) {
-    //recover the quizId from the url
     const id = this.route.snapshot.paramMap.get('id');
 
     this.quizForm = this.formbuilder.group({
@@ -33,22 +32,17 @@ export class ModifyQuizAdminComponent {
       quizEstimatedTime: ['', Validators.required],
       quizTheme: ['', Validators.required],
     });
-    //Recover quiz from quizservice
     this.quizService.retrieveQuizzes();
-    this.quizService
-      .getQuizById(id)
-      .pipe()
-      .subscribe((quiz) => {
-        this.quiz = quiz;
+    this.quizService.getQuizById(id).subscribe((quiz) => {
+      this.quiz = quiz;
+      this.quizForm.patchValue({
+        quizImage: this.quiz.image,
+        quizName: this.quiz.name,
+        quizDifficulty: this.quiz.difficulty,
+        quizDescription: this.quiz.description,
+        quizEstimatedTime: this.quiz.estimated_time,
+        quizTheme: this.quiz.theme,
       });
-
-    this.quizForm.patchValue({
-      quizImage: this.quiz.image,
-      quizName: this.quiz.name,
-      quizDifficulty: this.quiz.difficulty,
-      quizDescription: this.quiz.description,
-      quizEstimatedTime: this.quiz.estimated_time,
-      quizTheme: this.quiz.theme,
     });
   }
 }

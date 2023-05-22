@@ -1,28 +1,27 @@
-<!--Print the form-->
 <form [formGroup]="quizForm">
-    <div>
+    <div class="quizimage">
       <label>Quiz Image:</label>
       <input type="text" formControlName="quizImage" required>
     </div>
-    <div>
+    <div class="quizname">
       <label>Quiz Name:</label>
       <input type="text" formControlName="quizName" required>
     </div>
-    <div>
+    <div class="quizdifficulty">
       <label>Quiz Difficulty:</label>
       <input type="text" formControlName="quizDifficulty" required>
     </div>
-    <div>
+    <div class="quizdescription">
       <label>Quiz Description:</label>
       <textarea formControlName="quizDescription" required></textarea>
     </div>
-    <div>
+    <div class="quiztime">
       <label>Quiz Estimated Time:</label>
       <input type="text" formControlName="quizEstimatedTime" required>
     </div>
-    <div>
+    <div class="quiztheme">
       <label>Quiz Theme:</label>
       <input type="text" formControlName="quizTheme" required>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit">modify quiz</button>
   </form>
