@@ -1,5 +1,28 @@
-<div>
-    <p>
-        bonjour {{ quiz.id }}
-    </p>
-</div>
+<!--Print the form-->
+<form [formGroup]="quizForm">
+    <div>
+      <label>Quiz Image:</label>
+      <input type="text" formControlName="quizImage" required>
+    </div>
+    <div>
+      <label>Quiz Name:</label>
+      <input type="text" formControlName="quizName" required>
+    </div>
+    <div>
+      <label>Quiz Difficulty:</label>
+      <input type="text" formControlName="quizDifficulty" required>
+    </div>
+    <div>
+      <label>Quiz Description:</label>
+      <textarea formControlName="quizDescription" required></textarea>
+    </div>
+    <div>
+      <label>Quiz Estimated Time:</label>
+      <input type="text" formControlName="quizEstimatedTime" required>
+    </div>
+    <div>
+      <label>Quiz Theme:</label>
+      <input type="text" formControlName="quizTheme" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
