@@ -10,7 +10,6 @@ import { GestionQuizComponent } from '../gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from '../mesResidents/resident.component';
 import { Notification } from 'src/models/notification.model';
 import { NotificationService } from 'src/services/notification.service';
-import { Subscription } from 'rxjs';
 import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-admin-main',
