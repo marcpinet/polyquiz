@@ -1,42 +1,24 @@
-import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { OptionsScreenComponent } from 'src/app/settings/options-screen.component';
-import { MesResultatsComponent } from 'src/app/mesResultats/mes-resultat.component';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
-import { QuizListComponent } from 'src/app/quiz/quizlist/quizlist.component';
-import { GestionQuizComponent } from '../gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from '../mesResidents/resident.component';
 import { Notification } from 'src/models/notification.model';
 import { NotificationService } from 'src/services/notification.service';
 import { UserService } from 'src/services/user.service';
+
 @Component({
-  selector: 'app-admin-main',
-  templateUrl: './admin-mainpage.component.html',
+  selector: 'app-navbar-admin',
+  templateUrl: './navbar-admin.component.html',
 })
-export class AdminMainPage {
+export class AdminNavbarComponent implements OnInit {
   user: User;
   notifications: Map<User, Notification> = new Map<User, Notification>();
-
-  currentTab = 'RESIDENT';
-  @ViewChild('resultBtn') resultBtn: ElementRef;
   showNotifications = false;
 
-  ngAfterViewInit() {
-    this.loadTabComponent('RESIDENT');
-  }
-
-  components = {
-    QUIZ: QuizListComponent,
-    RESULTAT: MesResultatsComponent,
-    PARAMETRES: OptionsScreenComponent,
-    GESTION_QUIZ: GestionQuizComponent,
-    RESIDENT: ResidentComponent,
-  };
-
   constructor(
-    public router: Router,
+    private router: Router,
     private authService: AuthService,
     private notificationService: NotificationService,
     private userService: UserService
@@ -70,29 +52,31 @@ export class AdminMainPage {
       });
   }
 
-  get selectedComponent() {
-    return this.components[this.currentTab] || QuizListComponent;
-  }
+  ngOnInit() {}
 
-  loadTabComponent(tab: string) {
-    this.currentTab = tab;
-    const buttons = document.querySelectorAll('.tab-button');
-    buttons.forEach((button: any) => {
-      button.style.backgroundColor = '#BAD7E9';
-      button.style.color = '#2B3467';
-    });
-    // set the background and text color of the selected button
-    const selectedButton = document.querySelector(
-      `[data-tab=${tab}]`
-    ) as HTMLElement;
-    if (selectedButton) {
-      selectedButton.style.backgroundColor = '#2B3467';
+  navigateMain() {
+    if (this.user.userType == 'admin') {
+      this.router.navigate(['/admin']);
+    } else {
+      this.router.navigate(['/']);
     }
   }
 
   navigateProfile() {
     this.router.navigate(['/profile']);
   }
+
+  navigateSettings() {
+    this.router.navigate(['/settings']);
+  }
+
+  switchNotifications() {
+    this.showNotifications = !this.showNotifications;
+  }
+
+  // navigateHelp() {
+  //   this.router.navigate(['/help']);
+  // }
 
   helpPopup() {
     console.log('aaa');
@@ -147,11 +131,8 @@ export class AdminMainPage {
       allowOutsideClick: false,
       cancelButtonText:
         '<span style="font-size: 60px; padding: 56px 54px;">Fermer</span>',
-      width: 1700,
+      width: 1700, // add this line to set the width of the SweetAlert
+      customClass: { container: 'z-50', popup: 'z-50' }, // add z-index to the popup class
     });
-  }
-
-  switchNotifications() {
-    this.showNotifications = !this.showNotifications;
   }
 }

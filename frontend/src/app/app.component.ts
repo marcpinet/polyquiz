@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
 import { Settings } from 'src/models/settings.model';
 import writtenNumber from 'written-number';
 import Swal from 'sweetalert2';
-
+import { User } from 'src/models/user.model';
+import { AuthService } from 'src/services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -27,6 +28,7 @@ export class AppComponent implements OnDestroy {
   private lastClickTimestamp: number = 0;
   private click_sound: HTMLAudioElement = new Audio();
   private missclick_count = 0;
+  private user: User;
   constructor(
     public router: Router,
     private speechService: SpeechService,

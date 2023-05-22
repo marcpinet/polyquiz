@@ -1,5 +1,8 @@
 <div>
-  <app-navbar *ngIf="router.url !== '/' && router.url !== '/login' && router.url!='/admin'"></app-navbar>
+  <app-navbar *ngIf="router.url !== '/' && router.url !== '/login' && !router.url.startsWith('/admin')"></app-navbar>
+  
+  <app-navbar-admin *ngIf="router.url.startsWith('/admin/')"></app-navbar-admin>
+
   <div *ngIf="
       router.url == '/tempo-register' ||
       router.url == '/profile' ||
