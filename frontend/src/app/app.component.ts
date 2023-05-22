@@ -248,9 +248,9 @@ export class AppComponent implements OnDestroy {
           width: 1700,
           padding: '4em',
           confirmButtonText:
-            '<span id="non" style="font-size: 50px; padding: 50px 50px;">Oui</span>',
+            '<span id="oui" style="font-size: 150px; padding: 150px 150px; ">Oui</span>',
           denyButtonText:
-            '<span id="non" style="font-size: 50px; padding: 50px 50px;">Non</span>',
+            '<span id="non" style="font-size: 150px; padding: 150px 150px;">Non</span>',
           customClass: {
             popup: 'keyboard-warning-popup',
           },
