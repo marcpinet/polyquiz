@@ -5,6 +5,7 @@ import { SettingService } from '../services/settings.service';
 import { Subscription } from 'rxjs';
 import { Settings } from 'src/models/settings.model';
 import writtenNumber from 'written-number';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnDestroy {
   private boundOnMouseDown: any;
   private lastClickTimestamp: number = 0;
   private click_sound: HTMLAudioElement = new Audio();
+  private missclick_count = 0;
   constructor(
     public router: Router,
     private speechService: SpeechService,
@@ -215,6 +217,10 @@ export class AppComponent implements OnDestroy {
 
   @HostListener('window:click', ['$event'])
   onClick(event: MouseEvent): void {
+    if ((event.target as Element).closest('.keyboard-warning-popup')) {
+      return;
+    }
+
     if (
       this.userSettings &&
       (this.userSettings.mouse_option == 'keyboard_control' ||
@@ -222,8 +228,45 @@ export class AppComponent implements OnDestroy {
         this.userSettings.mouse_option === 'pressionLongue')
     ) {
       if (
-        (this.userSettings.mouse_option == 'keyboard_control' &&
-          !this.spaceKeyPressed) ||
+        this.userSettings.mouse_option === 'keyboard_control' &&
+        !this.spaceKeyPressed
+      ) {
+        this.missclick_count++;
+        console.log('missclick_count : ' + this.missclick_count);
+        if (this.missclick_count < 12) {
+          return;
+        }
+        this.missclick_count = 0;
+        event.preventDefault();
+        event.stopPropagation();
+        Swal.fire({
+          icon: 'warning',
+          title: 'Mode de clic par clavier activé',
+          html: 'Attention : vos clics sont actuellement réalisés via la barre espace ; vos clics de souris sont donc désactivés. Voulez-vous repasser en mode de clics normaux ?',
+          showDenyButton: true,
+          showCancelButton: false,
+          width: 1700,
+          padding: '4em',
+          confirmButtonText:
+            '<span id="oui" style="font-size: 150px; padding: 150px 150px; ">Oui</span>',
+          denyButtonText:
+            '<span id="non" style="font-size: 150px; padding: 150px 150px;">Non</span>',
+          customClass: {
+            popup: 'keyboard-warning-popup',
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.userSettings.mouse_option = 'aucun';
+            this.settingsService.updateSettings(this.userSettings);
+            Swal.fire({
+              icon: 'info',
+              title: 'Mouse clicks restored',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+      } else if (
         (this.userSettings.mouse_option === 'doubleClique' &&
           !this.isDoubleClickEnabled) ||
         (this.userSettings.mouse_option === 'pressionLongue' &&
