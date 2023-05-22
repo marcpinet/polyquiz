@@ -22,7 +22,6 @@ import { ModifResidentComponent } from './admin/modifResident/modif-resident.com
 import { AdminNotificationComponent } from './admin/notification/notification.component';
 import { LeaveRouteGuard } from 'src/services/leave-route-guard';
 import { AdminProfileComponent } from './admin/profile/admin-profile.component';
-import { ModifyQuizAdminComponent } from './admin/modifyQuiz/modify-quiz.component';
 import { ModifyQuizAdminComponent } from './admin/modif/modifyQuiz/modify-quiz.component';
 const routes: Routes = [
   {
@@ -98,6 +97,11 @@ const routes: Routes = [
   },
   {
     path: 'admin/quiz/modify/:id',
+    canActivate: [RouteGuardAdminService],
+    component: ModifyQuizAdminComponent,
+  },
+  {
+    path: 'admin/question/modify/:id',
     canActivate: [RouteGuardAdminService],
     component: ModifyQuizAdminComponent,
   },

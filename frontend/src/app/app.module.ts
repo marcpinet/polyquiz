@@ -51,7 +51,7 @@ import { AdminProfileComponent } from './admin/profile/admin-profile.component';
 import { AdminPasswordChangeComponent } from './admin/profile/password-change/password-change.component';
 import { AdminProfileUpdateComponent } from './admin/profile/profile-update/profile-update.component';
 import { AdminAbstractModal } from './admin/modals/admin-abtract-modal/admin-abstract-modal.component';
-import { ModifyQuizAdminComponent } from './admin/modifyQuiz/modify-quiz.component';
+import { ModifyQuestionAdminComponent } from './admin/modif/modifQuestion/modify-question.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +88,6 @@ import { ModifyQuizAdminComponent } from './admin/modifyQuiz/modify-quiz.compone
     AddQuizComponent,
     PlayedQuizAdminComponent,
     ModifResidentComponent,
-<<<<<<< HEAD
     AdminNavbarComponent,
     HelpModalComponent,
     AdminNotificationComponent,
@@ -99,9 +98,8 @@ import { ModifyQuizAdminComponent } from './admin/modifyQuiz/modify-quiz.compone
     AdminPasswordChangeComponent,
     AdminProfileUpdateComponent,
     AdminAbstractModal,
-=======
     ModifyQuizAdminComponent,
->>>>>>> e6820ec (feat: add component modify-Quiz #266)
+    ModifyQuestionAdminComponent,
   ],
   imports: [
     BrowserModule,
