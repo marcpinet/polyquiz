@@ -18,6 +18,7 @@ export class GameQuestionComponent implements OnInit {
   // audioObjW: HTMLAudioElement = new Audio();
   answerSelected = -1;
   microphoneActivated = false;
+  quizInProgress = false;
   buttonStates: boolean[] = [false, false, false, false];
   private userSettings: Settings;
   private settingsSubscription: Subscription;
@@ -124,6 +125,7 @@ export class GameQuestionComponent implements OnInit {
         //this.playAudio();
       }
       this.buttonStates[answer] = false;
+      this.quizInProgress = false;
     }, 1500);
   }
 
@@ -159,7 +161,6 @@ export class GameQuestionComponent implements OnInit {
       this.isClickableOrContainsClickable(clickedElement);
 
     if (!isClickableElement) {
-      console.log('PROUT');
       this.click_error++;
       this.clickError.emit(this.click_error);
     }
@@ -182,5 +183,15 @@ export class GameQuestionComponent implements OnInit {
     }
 
     return this.isClickableOrContainsClickable(element.parentElement);
+  }
+
+  blockClick() {
+    console.log('Krysto');
+    this.quizInProgress = true;
+    //const answerDivs = document.querySelectorAll('.flex-1.h-full');
+    //answerDivs.forEach((div: HTMLDivElement) => {
+    //console.log("DIV");
+    //div.classList.add('disabled');
+    // });
   }
 }

@@ -16,30 +16,33 @@
     <div
       class="flex mx-auto gap-24 pl-2 pr-2 h-screen mx-6 my-6 items-stretch items-center justify-items-center justify-center"
       *ngIf="this.answerSelected == -1" id="answers">
-      <div
-        class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        (click)="selectAnswerClick(0)" [ngClass]="{ 'clicked': buttonStates[0] }"
+      <div class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
+        (click)="!quizInProgress ?selectAnswerClick(0)  : null; 
+        !quizInProgress ? blockClick() : null"
+        [ngClass]="{ 'clicked': buttonStates[0], 'disabled': quizInProgress}"
         [attr.id]="normalizeText(question.answers[0].answer_text)" data-number="un"
         id="answer1">
         <app-game-answer [answer]="question.answers[0]" letter="1." />
       </div>
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        (click)="selectAnswerClick(1)" [ngClass]="{ 'clicked': buttonStates[1] }"
+        (click)="!quizInProgress ? selectAnswerClick(1) : null; !quizInProgress ? blockClick() : null" [ngClass]="{ 'clicked': buttonStates[1], 'disabled': quizInProgress }"
         [attr.id]="normalizeText(question.answers[1].answer_text)" data-number="deux"
         id="answer2">
         <app-game-answer [answer]="question.answers[1]" letter="2." />
       </div>
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        *ngIf="this.question.answers.length >= 3" (click)="selectAnswerClick(2)"
-        [ngClass]="{ 'clicked': buttonStates[2] }" [attr.id]="normalizeText(question.answers[2].answer_text)" data-number="trois" id="answer3">
+        *ngIf="this.question.answers.length >= 3" (click)="!quizInProgress ? selectAnswerClick(2) : null; 
+        !quizInProgress ? blockClick() : null"
+        [ngClass]="{ 'clicked': buttonStates[2], 'disabled': quizInProgress }" [attr.id]="normalizeText(question.answers[2].answer_text)" data-number="trois" id="answer3">
         <app-game-answer [answer]="question.answers[2]" letter="3." />
       </div>
       <div
         class="bg-[#BAD7E9] hover:bg-[#90C1DF] transition-colors duration-300 rounded-lg flex justify-center items-center flex-col h-1/2 flex-1 mx-2"
-        *ngIf="this.question.answers.length == 4" (click)="selectAnswerClick(3)"
-        [ngClass]="{ 'clicked': buttonStates[3] }" [attr.id]="normalizeText(question.answers[3].answer_text)" data-number="quatre" id="answer4">
+        *ngIf="this.question.answers.length == 4" (click)="!quizInProgress ? selectAnswerClick(3) : null; 
+        !quizInProgress ? blockClick() : null"
+        [ngClass]="{ 'clicked': buttonStates[3], 'disabled': quizInProgress }" [attr.id]="normalizeText(question.answers[3].answer_text)" data-number="quatre" id="answer4">
         <app-game-answer [answer]="question.answers[3]" letter="4." />
       </div>
     </div>
