@@ -26,6 +26,7 @@ export class AppComponent implements OnDestroy {
   private boundOnMouseDown: any;
   private lastClickTimestamp: number = 0;
   private click_sound: HTMLAudioElement = new Audio();
+  private missclick_count = 0;
   constructor(
     public router: Router,
     private speechService: SpeechService,
@@ -230,6 +231,12 @@ export class AppComponent implements OnDestroy {
         this.userSettings.mouse_option === 'keyboard_control' &&
         !this.spaceKeyPressed
       ) {
+        this.missclick_count++;
+        console.log('missclick_count : ' + this.missclick_count);
+        if (this.missclick_count < 12) {
+          return;
+        }
+        this.missclick_count = 0;
         event.preventDefault();
         event.stopPropagation();
         Swal.fire({
