@@ -29,8 +29,10 @@ export class RouteGuardService implements CanActivate {
           if (this.authService.isLoggedIn()) {
             this.settingService.setCurrentUserSettings().then((v) => {
               if (v === true) {
+                if (this.authService.user.userType === 'admin') {
+                  this.router.navigate(['/admin']);
+                }
                 resolve(true);
-                console.log(this.settingService.settings);
               } else {
                 resolve(false);
               }
