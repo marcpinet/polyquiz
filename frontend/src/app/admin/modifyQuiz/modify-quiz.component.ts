@@ -4,9 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { serverUrl } from 'src/configs/server.config';
-import { Quiz } from 'src/models/quiz.model';
+import { Quiz, Theme } from 'src/models/quiz.model';
 import { Result } from 'src/models/result-quiz.model';
 import { QuizService } from 'src/services/quiz.service';
+import { ThemesService } from 'src/services/theme.service';
 @Component({
   selector: 'app-modify-quiz-admin',
   templateUrl: './modify-quiz.component.html',
@@ -15,15 +16,19 @@ import { QuizService } from 'src/services/quiz.service';
 export class ModifyQuizAdminComponent {
   public quizForm: FormGroup;
   quiz: Quiz;
+  themes: Theme[] = [];
   constructor(
     public router: Router,
     public quizService: QuizService,
     public route: ActivatedRoute,
     private http: HttpClient,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private themeService: ThemesService
   ) {
     const id = this.route.snapshot.paramMap.get('id');
-
+    this.themeService.themes$.subscribe((themes) => {
+      this.themes = themes;
+    });
     this.quizForm = this.formbuilder.group({
       quizImage: ['', Validators.required],
       quizName: ['', [Validators.required]],
