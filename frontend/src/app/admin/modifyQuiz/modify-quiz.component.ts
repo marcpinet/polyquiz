@@ -41,5 +41,14 @@ export class ModifyQuizAdminComponent {
       .subscribe((quiz) => {
         this.quiz = quiz;
       });
+
+    this.quizForm.patchValue({
+      quizImage: this.quiz.image,
+      quizName: this.quiz.name,
+      quizDifficulty: this.quiz.difficulty,
+      quizDescription: this.quiz.description,
+      quizEstimatedTime: this.quiz.estimated_time,
+      quizTheme: this.quiz.theme,
+    });
   }
 }
