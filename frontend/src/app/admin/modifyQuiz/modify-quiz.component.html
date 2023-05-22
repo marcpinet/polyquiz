@@ -1,27 +1,254 @@
-<form [formGroup]="quizForm">
-    <div class="quizimage">
-      <label>Quiz Image:</label>
-      <input type="text" formControlName="quizImage" required>
+<div class="w-full w-full py-10 px-5 md:px-10">
+    <div class="text-center mb-10">
+      <h1 class="font-bold text-3xl text-[#2B3467]">Créer Un Quiz</h1>
     </div>
-    <div class="quizname">
-      <label>Quiz Name:</label>
-      <input type="text" formControlName="quizName" required>
+    <form [formGroup]="quizForm">
+      <!-- Temporary Photo Input -->
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image du quiz</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'quizImage'"
+              placeholder="Entrez l'URL de l'image"
+            />
+          </div>
+          <img
+            [src]="quizForm.value.quizImage"
+            *ngIf="quizForm.value.quizImage"
+            class="mx-auto max-w-md rounded-md h-56"
+            alt="Quiz image"
+          />
+        </div>
+      </div>
+  
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Nom du quiz</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'quizName'"
+              placeholder="Entrez le nom du quiz"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Niveau de difficulté du quiz</label
+          >
+          <div class="flex items-center">
+            <div class="mr-4 rounded-md bg-indigo-200 p-2">
+              <input
+                type="radio"
+                class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                formControlName="quizDifficulty"
+                name="quizDifficulty"
+                value="Facile"
+              />
+              <label for="Facile" class="ml-2 text-sm text-gray-600"
+                >Facile</label
+              >
+            </div>
+            <div class="mr-4 rounded-md bg-indigo-200 p-2">
+              <input
+                type="radio"
+                class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                formControlName="quizDifficulty"
+                name="quizDifficulty"
+                value="Moyen"
+              />
+              <label for="Moyen" class="ml-2 text-sm text-gray-600">Moyen</label>
+            </div>
+            <div class="mr-4 rounded-md bg-indigo-200 p-2">
+              <input
+                type="radio"
+                class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                formControlName="quizDifficulty"
+                name="quizDifficulty"
+                value="Difficile"
+              />
+              <label for="Difficile" class="ml-2 text-sm text-gray-600"
+                >Difficile</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Description du quiz</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-pen-nib text-gray-400 text-lg"></i>
+            </div>
+  
+            <textarea
+              id="message"
+              rows="4"
+              class="block w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              placeholder="Entrez la description du quiz"
+              [formControlName]="'quizDescription'"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+  
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Temps estimé</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-solid fa-stopwatch text-gray-400 text-lg"></i>
+            </div>
+            <div class="items-center">
+              <input
+                type="number"
+                class="w-100 mr-2 py-2 px-3 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                [formControlName]="'quizEstimatedTime'"
+                placeholder="Temps estimé du quiz"
+                min="1"
+              />
+              <span class="text-gray-600">minute(s)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="flex -mx-3 items-center">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Choisir un thème</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-solid fa-list text-gray-400 text-lg"></i>
+            </div>
+            <select
+              formControlName="quizTheme"
+              class="w-full flex-grow -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+            >
+              <option *ngFor="let theme of themes" value="{{ theme.id }}">
+                {{ theme.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="w-5 text-center">ou</div>
+        <div class="w-full px-3 mb-5">
+          <button
+            class="flex items-center justify-center w-full px-4 py-2 text-lg font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 mt-6 focus:outline-none focus:bg-indigo-700"
+          >
+            <i class="fa-solid fa-list mr-2 text-[#EB455F]"></i>
+            <span>Créer un thème</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  
+    <!-- Questions List -->
+    <div class="overflow-x-auto">
+      <div *ngIf="questionsAnswers.size" class="w-full">
+        <div *ngFor="let question of questions; let i = index" class="mx-auto">
+          <div
+            class="flex items-center border rounded-lg p-4 shadow-lg bg-[#BAD7E9] mb-2"
+          >
+            <div class="w-1/10" *ngIf="question.question_image">
+              <img
+                src="{{question.question_image}}"
+                alt="Image"
+                class="w-96 h-auto rounded-md"
+              />
+            </div>
+            <div class="w-1/2 ml-4">
+              <h2 class="text-xl text-[#2B3467] font-bold mb-2 text-xl">
+                Question {{ i + 1 }}
+              </h2>
+              <p class="text-xl font-semibold">{{ question.question_text }}</p>
+            </div>
+            <div class="w-2/5 flex justify-end">
+              <div class="flex flex-col">
+                <button
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded mb-2 w-full text-xl"
+                  (click)="editQuestion(i)"
+                >
+                  Modifier
+                </button>
+                <button
+                  class="bg-red-500 hover:bg-red-700 text-white font-bold py-5 px-8 rounded w-full text-xl"
+                  (click)="deleteQuestion(i)"
+                >
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="quizdifficulty">
-      <label>Quiz Difficulty:</label>
-      <input type="text" formControlName="quizDifficulty" required>
+  
+    <!-- Buttons -->
+    <div *ngIf="!questionsAnswers.size || questionsAnswers.size < 2">
+      <button
+        class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8"
+        (click)="addQuestion()"
+      >
+        Ajouter une question
+        <i class="fa-sharp fa-solid fa-arrow-right"></i>
+      </button>
+      <div class="text-red-600 text-center text-md">
+        Il doit y avoir au moins 2 questions pour créer un quiz.
+      </div>
     </div>
-    <div class="quizdescription">
-      <label>Quiz Description:</label>
-      <textarea formControlName="quizDescription" required></textarea>
+  
+    <div *ngIf="questionsAnswers.size >= 2">
+      <div class="flex justify-between">
+        <button
+          class="block w-full max-w-md mx-auto text-3xl bg-[#90C1DF] focus:bg-[#90C1DF] text-white rounded-lg font-semibold hover:[#EB455F] focus:outline-none focus:shadow-outline py-4 px-8"
+          (click)="addQuiz()"
+        >
+          <div class="text-[#2B3467]">Sauvegarder</div>
+        </button>
+  
+        <button
+          class="block w-full max-w-md mx-auto text-3xl bg-[#2B3467] focus:bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline py-4 px-8"
+          (click)="addQuestion()"
+        >
+          Ajouter une question
+          <i class="fa-sharp fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
     </div>
-    <div class="quiztime">
-      <label>Quiz Estimated Time:</label>
-      <input type="text" formControlName="quizEstimatedTime" required>
-    </div>
-    <div class="quiztheme">
-      <label>Quiz Theme:</label>
-      <input type="text" formControlName="quizTheme" required>
-    </div>
-    <button type="submit">modify quiz</button>
-  </form>
+  </div>
+  
