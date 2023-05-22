@@ -23,6 +23,7 @@ import { AdminNotificationComponent } from './admin/notification/notification.co
 import { LeaveRouteGuard } from 'src/services/leave-route-guard';
 import { AdminProfileComponent } from './admin/profile/admin-profile.component';
 import { ModifyQuizAdminComponent } from './admin/modifyQuiz/modify-quiz.component';
+import { ModifyQuizAdminComponent } from './admin/modif/modifyQuiz/modify-quiz.component';
 const routes: Routes = [
   {
     path: 'game/:id',

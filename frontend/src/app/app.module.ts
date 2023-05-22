@@ -40,6 +40,7 @@ import { PlayedQuizAdminComponent } from './admin/statsResident/playedQuizAdmin/
 import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
 import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
+import { ModifyQuizAdminComponent } from './admin/modif/modifyQuiz/modify-quiz.component';
 import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
 import { HelpModalComponent } from './modals/help-modal/help-modal.component';
 import { AdminNotificationComponent } from './admin/notification/notification.component';
