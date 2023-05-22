@@ -11,7 +11,6 @@ import { ThemesService } from 'src/services/theme.service';
 @Component({
   selector: 'app-modify-quiz-admin',
   templateUrl: './modify-quiz.component.html',
-  styleUrls: ['./modify-quiz.component.scss'],
 })
 export class ModifyQuizAdminComponent {
   public quizForm: FormGroup;
