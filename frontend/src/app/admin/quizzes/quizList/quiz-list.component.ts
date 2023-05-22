@@ -62,8 +62,6 @@ export class QuizListAdminComponent {
 
   modifQuiz(quizId: string) {
     console.log('modif quiz ' + quizId);
-    const quiz = this.quizList.find((quiz) => quiz.id === quizId);
-    console.log(quiz);
-    this.router.navigate(['/admin/quiz/add'], { queryParams: { quizId } });
+    this.router.navigate(['/admin/quiz/modify/' + quizId]);
   }
 }
