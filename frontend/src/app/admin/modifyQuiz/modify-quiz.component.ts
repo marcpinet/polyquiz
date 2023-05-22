@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { serverUrl } from 'src/configs/server.config';
 import { Quiz } from 'src/models/quiz.model';
@@ -16,14 +16,19 @@ export class ModifyQuizAdminComponent {
   constructor(
     public router: Router,
     public quizService: QuizService,
+    public route: ActivatedRoute,
     private http: HttpClient
   ) {
     //recover the quizId from the url
-    const url = this.router.url;
-    const quizId = url.split('/')[3];
-    //Recover quiz from quizSerice
-    this.quizService.quizzes$.subscribe((quizzes) => {
-      this.quiz = quizzes.find((quiz) => quiz.id === quizId);
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+
+    //Recover quiz from quizservice
+    this.quizService.retrieveQuizzes();
+    this.quizService
+      .getQuizById(id)
+      .pipe()
+      .subscribe((quiz) => {
+        this.quiz = quiz;
+      });
   }
 }
