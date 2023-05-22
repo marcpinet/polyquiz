@@ -28,11 +28,11 @@ export class SettingService {
 
   setCurrentUserSettings() {
     return new Promise((resolve, reject) => {
-      if (this.settings !== undefined) {
-        return resolve(true);
-      }
+      // if (this.settings !== undefined) {
+      //   return resolve(true);
+      // }
 
-      if (this.authService.user != null) {
+      if (this.authService.user != null && this.authService.user.id != null) {
         const uid = this.authService.user.id;
 
         const urlWithId = this.settingsUrl + '/' + uid;
