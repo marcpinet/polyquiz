@@ -41,6 +41,7 @@ import { PlayedQuizAdminComponent } from './admin/statsResident/playedQuizAdmin/
 import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
 import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
+import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { INTL_LOCALES } from 'angular-ecmascript-intl';
     AddQuizComponent,
     PlayedQuizAdminComponent,
     ModifResidentComponent,
+    AdminNavbarComponent,
   ],
   imports: [
     BrowserModule,
