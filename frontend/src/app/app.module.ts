@@ -19,7 +19,6 @@ import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeAdminComponent } from './admin/themes/theme-admin/theme-admin.component';
-import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from './admin/mesResidents/resident.component';
@@ -60,7 +59,6 @@ import { HelpModalComponent } from './modals/help-modal.component';
     UserProfileComponent,
     NavbarComponent,
     ThemeAdminComponent,
-    HelpComponent,
     AdminMainPage,
     GestionQuizComponent,
     ResidentComponent,
