@@ -10,7 +10,6 @@ import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouteGuardService } from 'src/services/route-guard.service';
 import { LoggedInRouteGuardService } from 'src/services/loggedin-route-guard-service';
-import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { RouteGuardAdminService } from 'src/services/route-guard-admin.service';
 import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
@@ -52,7 +51,6 @@ const routes: Routes = [
     canActivate: [RouteGuardService],
     component: NavbarComponent,
   },
-  { path: 'help', canActivate: [RouteGuardService], component: HelpComponent },
 
   //admin routes
   {

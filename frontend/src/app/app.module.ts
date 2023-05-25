@@ -19,7 +19,6 @@ import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeAdminComponent } from './admin/themes/theme-admin/theme-admin.component';
-import { HelpComponent } from './help/help.component';
 import { AdminMainPage } from './admin/admin_mainpage/admin-mainpage.component';
 import { GestionQuizComponent } from './admin/gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from './admin/mesResidents/resident.component';
@@ -42,7 +41,7 @@ import { ModifResidentComponent } from './admin/modifResident/modif-resident.com
 import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
 import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
-
+import { HelpModalComponent } from './modals/help-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +59,6 @@ import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
     UserProfileComponent,
     NavbarComponent,
     ThemeAdminComponent,
-    HelpComponent,
     AdminMainPage,
     GestionQuizComponent,
     ResidentComponent,
@@ -80,6 +78,7 @@ import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
     PlayedQuizAdminComponent,
     ModifResidentComponent,
     AdminNavbarComponent,
+    HelpModalComponent,
   ],
   imports: [
     BrowserModule,
