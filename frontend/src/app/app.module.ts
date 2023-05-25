@@ -42,7 +42,7 @@ import { ModifResidentComponent } from './admin/modifResident/modif-resident.com
 import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
 import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
-
+import { HelpModalComponent } from './modals/help-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +80,7 @@ import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
     PlayedQuizAdminComponent,
     ModifResidentComponent,
     AdminNavbarComponent,
+    HelpModalComponent,
   ],
   imports: [
     BrowserModule,
