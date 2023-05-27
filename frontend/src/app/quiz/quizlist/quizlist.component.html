@@ -13,6 +13,13 @@
     <button class="mx-3 bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded text-xl font-bold" (click)="openDurationFilter()">
       <i class="fa-solid fa-clock text-2xl mr-1"></i> {{ selectedDuration }}
     </button>
+    <div class="pagination">
+      <button class="pagination-button" (click)="prevPage()" [disabled]="currentPage === 1"> <i class="fa-solid fa-arrow-left"> </i>
+      </button>
+      <span class="mx-3 text-#2B3467 px-2 py-6 rounded text-xl font-bold">Page {{currentPage}}</span>
+      <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage * pageSize >= quizList.length"> <i class="fa-solid fa-arrow-right"> </i>
+      </button>
+    </div>
   </div>
   <div>
     <button class="bg-red-500 text-white px-2 py-6 rounded text-xl font-bold" (click)="resetFilters()">
@@ -25,11 +32,10 @@
 </div>
 
   <ul>
-    <li *ngFor="let quiz of filteredQuizList">
+    <li *ngFor="let quiz of quizList; let i = index" class="my-4" [ngStyle]="{'display': i >= (currentPage - 1) * pageSize && i < currentPage * pageSize ? 'block' : 'none'}">
       <app-quiz-details
         [quiz]="quiz"
         [played]="hasPlayedQuiz(quiz.id)"
       ></app-quiz-details>
     </li>
   </ul>
-
