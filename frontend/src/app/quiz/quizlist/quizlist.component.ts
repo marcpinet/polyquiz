@@ -31,6 +31,9 @@ export class QuizListComponent implements OnInit {
 
   public filteredQuizList: Quiz[] = [];
 
+  public currentPage: number = 1;
+  public pageSize: number = 6;
+
   constructor(
     private router: Router,
     public quizService: QuizService,
@@ -102,6 +105,20 @@ export class QuizListComponent implements OnInit {
 
       return difficultyMatch && doneMatch && themeMatch && durationMatch;
     });
+
+    let start = (this.currentPage - 1) * this.pageSize;
+    let end = start + this.pageSize;
+    this.filteredQuizList = this.filteredQuizList.slice(start, end);
+  }
+
+  nextPage(): void {
+    this.currentPage++;
+    this.filterQuizzes();
+  }
+
+  prevPage(): void {
+    this.currentPage--;
+    this.filterQuizzes();
   }
 
   resetFilters(): void {

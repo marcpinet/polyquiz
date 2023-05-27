@@ -1,14 +1,44 @@
 ul {
   list-style-type: none;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
   li {
-    display: inline-block;
+    flex-basis: calc(33.3333% - 20px);
     padding-left: 10px;
     padding-right: 10px;
+    box-sizing: border-box;
+    margin-bottom: 0;
   }
-  padding: 10px;
+
+  padding: 0;
 }
 
 div {
   display: inline-block;
 }
+
+.pagination {
+  align-items: center;
+  margin-left: 140px;
+}
+
+.pagination-button {
+  background-color: #90C1DF;
+  color: #2B3467;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 38px;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
