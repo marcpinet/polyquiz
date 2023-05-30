@@ -39,6 +39,8 @@ export class ModifyQuizAdminComponent {
     this.quizService.retrieveQuizzes();
     this.quizService.getQuizById(id).subscribe((quiz) => {
       this.quiz = quiz;
+      console.log(this.quiz.questions);
+
       this.quizForm.patchValue({
         quizImage: this.quiz.image,
         quizName: this.quiz.name,
@@ -55,19 +57,19 @@ export class ModifyQuizAdminComponent {
   }
 
   public addQuiz(): void {
-    this.quiz = {
-      name: this.quizForm.value.quizName,
-      image: this.quizForm.value.quizImage,
-      difficulty: this.quizForm.value.quizDifficulty,
-      description: this.quizForm.value.quizDescription,
-      estimated_time: this.quizForm.value.quizEstimatedTime,
-      themeId: this.quizForm.value.quizTheme,
-    };
+    this.quiz.name = this.quizForm.value.quizName;
+    this.quiz.image = this.quizForm.value.quizImage;
+    this.quiz.difficulty = this.quizForm.value.quizDifficulty;
+    this.quiz.description = this.quizForm.value.quizDescription;
+    this.quiz.estimated_time = this.quizForm.value.quizEstimatedTime;
+    this.quiz.themeId = this.quizForm.value.quizTheme;
 
     const questions = new Map();
-    this.quiz.questions.forEach((question) => {
-      questions.set(question, question.answers);
-    });
+    let j = 0;
+    for (j = 0; j < this.quiz.questions.length; j++) {
+      questions.set(this.quiz.questions[j], this.quiz.questions[j].answers);
+    }
+
     this.quizService.deleteQuiz(this.quiz);
     this.quizService.createQuiz(this.quiz, questions);
   }
