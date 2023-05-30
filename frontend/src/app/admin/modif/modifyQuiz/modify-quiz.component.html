@@ -166,8 +166,8 @@
         </div>
       </div>
       <div class="overflow-x-auto">
-        <div *ngIf="this.quiz.questions.length" class="w-full">
-          <div *ngFor="let question of this.quiz.questions; let i = index" class="mx-auto">
+        <div *ngIf="this.questions.size" class="w-full">
+          <div *ngFor="let question of this.questions.keys(); let i = index" class="mx-auto">
             <div
               class="flex items-center border rounded-lg p-4 shadow-lg bg-[#BAD7E9] mb-2"
             >
@@ -188,13 +188,13 @@
                 <div class="flex flex-col">
                   <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded mb-2 w-full text-xl"
-                    
+                    (click)="modifyQuestion(question)"  
                   >
                     Modifier
                   </button>
                   <button
                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-5 px-8 rounded w-full text-xl"
-                    (click)="deleteQuestion(i)"
+                    (click)="deleteQuestion(question)"
                     >
                     Supprimer
                   </button>
@@ -208,7 +208,7 @@
       <div>
         <div class="flex justify-between">
           <button
-            *ngIf="this.quiz.questions.length >= 2"
+            *ngIf="this.questions.size >= 2"
             class="block w-full max-w-md mx-auto text-3xl bg-[#90C1DF] focus:bg-[#90C1DF] text-white rounded-lg font-semibold hover:[#EB455F] focus:outline-none focus:shadow-outline py-4 px-8"
             (click)="addQuiz()"
           >

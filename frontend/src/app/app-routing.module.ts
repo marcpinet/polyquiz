@@ -23,6 +23,7 @@ import { AdminNotificationComponent } from './admin/notification/notification.co
 import { LeaveRouteGuard } from 'src/services/leave-route-guard';
 import { AdminProfileComponent } from './admin/profile/admin-profile.component';
 import { ModifyQuizAdminComponent } from './admin/modif/modifyQuiz/modify-quiz.component';
+import { ModifyQuizComponent } from './admin/modif/modify.component';
 const routes: Routes = [
   {
     path: 'game/:id',
@@ -98,12 +99,7 @@ const routes: Routes = [
   {
     path: 'admin/quiz/modify/:id',
     canActivate: [RouteGuardAdminService],
-    component: ModifyQuizAdminComponent,
-  },
-  {
-    path: 'admin/question/modify/:id',
-    canActivate: [RouteGuardAdminService],
-    component: ModifyQuizAdminComponent,
+    component: ModifyQuizComponent,
   },
   {
     path: 'admin/modif-resident/:id',

@@ -1,0 +1,3 @@
+<app-modify-quiz-admin (loadTabComponent)="loadTabComponent($event)" (loadQuiz)="loadQuiz($event)" *ngIf="currentTab=='QUIZ_MODIFY'" (uploadQuiz)="uploadQuiz($event)" (deleteQuestionEmit)="deleteQuestion($event)" (loadModifyQuestion)="loadModifyQuestion($event)" [questions]="questionsAnswers" [quiz]="quiz">
+
+<app-modify-question-admin (loadTabComponent)="loadTabComponent($event)" *ngIf="currentTab=='QUESTION_MODIFY'" (addQuestionAnswer)="addQuestionAnswer($event.question, $event.answers)" [modifyQuestion]="this.modifyQuestion" [modifyAnswers]="this.modifyAnswers"></app-question-create>
