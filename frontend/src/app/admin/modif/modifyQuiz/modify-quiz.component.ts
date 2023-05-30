@@ -53,4 +53,24 @@ export class ModifyQuizAdminComponent {
   public deleteQuestion(questionid: number) {
     this.quiz.questions.splice(questionid, 1);
   }
+
+  public addQuiz(): void {
+    this.quiz = {
+      name: this.quizForm.value.quizName,
+      image: this.quizForm.value.quizImage,
+      difficulty: this.quizForm.value.quizDifficulty,
+      description: this.quizForm.value.quizDescription,
+      estimated_time: this.quizForm.value.quizEstimatedTime,
+      themeId: this.quizForm.value.quizTheme,
+    };
+
+    const questions = new Map();
+    this.quiz.questions.forEach((question) => {
+      questions.set(question, question.answers);
+    });
+    this.quizService.deleteQuiz(this.quiz);
+    this.quizService.createQuiz(this.quiz, questions);
+  }
+
+  public addQuestion(): void {}
 }
