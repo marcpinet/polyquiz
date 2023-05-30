@@ -32,10 +32,11 @@ export class ModifyQuestionAdminComponent {
     private formbuilder: FormBuilder,
     private themeService: ThemesService
   ) {
-    const id = this.route.snapshot.paramMap.get('id');
     this.themeService.themes$.subscribe((themes) => {
       this.themes = themes;
     });
+    console.log('modify question component');
+
     this.questionForm = this.formbuilder.group({
       questionImage: ['', Validators.required],
       questionText: ['', Validators.required],

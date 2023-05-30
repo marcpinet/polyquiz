@@ -30,7 +30,8 @@ export class ModifyQuizAdminComponent {
     private formbuilder: FormBuilder,
     private themeService: ThemesService
   ) {
-    const id = this.route.snapshot.paramMap.get('id');
+    console.log('admin modify quiz component');
+    console.log(this.quiz);
     this.themeService.themes$.subscribe((themes) => {
       this.themes = themes;
     });
@@ -42,24 +43,41 @@ export class ModifyQuizAdminComponent {
       quizEstimatedTime: ['', Validators.required],
       quizTheme: ['', Validators.required],
     });
-
-    this.quizForm.patchValue({
-      quizImage: this.quiz.image,
-      quizName: this.quiz.name,
-      quizDifficulty: this.quiz.difficulty,
-      quizDescription: this.quiz.description,
-      quizEstimatedTime: this.quiz.estimated_time,
-      quizTheme: this.quiz.theme,
-    });
+    this.updateForm();
   }
 
   public updateQuiz() {
-    this.quiz.name = this.quizForm.value.quizName;
-    this.quiz.image = this.quizForm.value.quizImage;
-    this.quiz.difficulty = this.quizForm.value.quizDifficulty;
-    this.quiz.description = this.quizForm.value.quizDescription;
-    this.quiz.estimated_time = this.quizForm.value.quizEstimatedTime;
-    this.quiz.themeId = this.quizForm.value.quizTheme;
+    if (this.quizForm.value.quizName != undefined) {
+      this.quiz.name = this.quizForm.value.quizName;
+    }
+    if (this.quizForm.value.quizImage != undefined) {
+      this.quiz.image = this.quizForm.value.quizImage;
+    }
+    if (this.quizForm.value.quizDifficulty != undefined) {
+      this.quiz.difficulty = this.quizForm.value.quizDifficulty;
+    }
+    if (this.quizForm.value.quizDescription != undefined) {
+      this.quiz.description = this.quizForm.value.quizDescription;
+    }
+    if (this.quizForm.value.quizEstimatedTime != undefined) {
+      this.quiz.estimated_time = this.quizForm.value.quizEstimatedTime;
+    }
+    if (this.quizForm.value.quizTheme != undefined) {
+      this.quiz.themeId = this.quizForm.value.quizTheme;
+    }
+  }
+
+  public updateForm() {
+    if (this.quiz != undefined) {
+      this.quizForm.patchValue({
+        quizName: this.quiz.name,
+        quizImage: this.quiz.image,
+        quizDifficulty: this.quiz.difficulty,
+        quizDescription: this.quiz.description,
+        quizEstimatedTime: this.quiz.estimated_time,
+        quizTheme: this.quiz.themeId,
+      });
+    }
   }
 
   public addQuiz(): void {
