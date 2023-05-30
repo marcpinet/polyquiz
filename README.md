@@ -2,8 +2,10 @@
 
 ## 📝 Description
 
-Polyquiz is a school project for the course *PS6* at Polytech Nice Sophia. It is a quiz game which aims to be used by nursing residents to test their physical and mental capabilities.
-<br>As an admin or nurse, you can create quizzes, add questions and answers, and assign them to residents. The residents can then play the quizzes and see their results.
+Polyquiz is a school project for the course *PS6* at Polytech Nice Sophia. It is a quiz game which aims to be used by
+nursing residents to test their physical and mental capabilities.
+<br>As an admin or nurse, you can create quizzes, add questions and answers, and assign them to residents. The residents
+can then play the quizzes and see their results.
 
 The whole project is being supervised by the [Amadeus](https://amadeus.com/) company.
 
@@ -37,11 +39,13 @@ Coming soon...
 
 ### Running
 
-After that, you can proceed to start the program by running `npm run dev` at the root of the project. This will start both the backend and the frontend.
+After that, you can proceed to start the program by running `npm run dev` at the root of the project. This will start
+both the backend and the frontend.
 
 ### Continuous Integration
 
-The project uses GitHub Actions to run the tests and build the project. The husky post-merge hook will also install the dependencies for you when you pull from the repository (only if there are newly added ones).
+The project uses GitHub Actions to run the tests and build the project. The husky post-merge hook will also install the
+dependencies for you when you pull from the repository (only if there are newly added ones).
 
 ## ✍️ Authors
 
@@ -53,4 +57,4 @@ The project uses GitHub Actions to run the tests and build the project. The husk
 
 ## 📃 License
 
-Distributed under the Mozilla Public License Version 2.0 - see the [LICENSE.md](LICENSE) file for details
+Distributed under the Mozilla Public License Version 2.0 - see the [LICENSE](LICENSE) file for details
