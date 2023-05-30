@@ -1,5 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
@@ -12,7 +20,7 @@ import { ThemesService } from 'src/services/theme.service';
   selector: 'app-modify-quiz-admin',
   templateUrl: './modify-quiz.component.html',
 })
-export class ModifyQuizAdminComponent {
+export class ModifyQuizAdminComponent implements OnChanges {
   @Input() quiz: Quiz;
   @Input() questions: Map<Question, Answer[]>;
   @Output() loadModifyQuestion = new EventEmitter<Question>();
@@ -44,6 +52,14 @@ export class ModifyQuizAdminComponent {
       quizTheme: ['', Validators.required],
     });
     this.updateForm();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['quiz']) {
+      this.updateForm();
+    }
+    if (changes['questions']) {
+      this.questions = changes['questions'].currentValue;
+    }
   }
 
   public updateQuiz() {
