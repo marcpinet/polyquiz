@@ -49,4 +49,8 @@ export class ModifyQuizAdminComponent {
       });
     });
   }
+
+  public deleteQuestion(questionid: number) {
+    this.quiz.questions.splice(questionid, 1);
+  }
 }
