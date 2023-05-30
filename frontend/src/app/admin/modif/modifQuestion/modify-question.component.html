@@ -1,3 +1,289 @@
-<p>
-    bonjour {{this.quiz.id}}
-</p>
+<div class="relative w-full w-full py-10 px-5 md:px-10">
+    <div class="text-center mb-0">
+      <h1 class="font-bold text-3xl text-[#2B3467]">Ajouter Question</h1>
+    </div>
+    <button
+    class="absolute top-0 left-0 block w-full max-w-xs mx-auto text-4xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-4 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+    (click)="return()"
+    >
+      <i class="fa-sharp fa-solid fa-arrow-left"></i>
+      QUIZ
+    </button>
+    <form [formGroup]="questionForm">
+      <!-- Temporary Photo Input -->
+
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Question</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'questionText'"
+              placeholder="Entrez la question"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image de la question</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'questionImage'"
+              placeholder="Entrez l'URL de l'image"
+            />
+            <img
+            [src]="questionForm.value.questionImage"
+            *ngIf="questionForm.value.questionImage"
+            class="mx-auto max-w-md rounded-md h-56"
+            alt="Quiz image"
+          />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3 rounded-md bg-[#BAD7E9] mb-2 border border-[#2B3467] border-2">
+        <div class="w-full px-3 mb-5">
+          <div class="flex items-center justify-between">
+            <label for="" class="text-lg font-bold text-[#2B3467] px-1" style="width:40%">Réponse 1</label>
+          </div>
+          <div class="flex rounded-lg">
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-regular fa-game-board-simple text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse1'" placeholder="Entrez la réponse">
+              </div>
+            </div>
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse1Image'" placeholder="Entrez l'URL de l'image">
+                <img
+                [src]="questionForm.value.reponse1Image"
+                *ngIf="questionForm.value.reponse1Image"
+                class="mx-auto max-w-md rounded-md h-56"
+                alt="Quiz image"
+              />
+              </div>
+            </div>
+            <div class="w-1/5 px-3 py-2" style="width:20%">
+              <div class="flex items-center justify-end">
+                <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
+                  <input type="radio" formControlName="validreponse" name="validreponse" value="0" id="valid0" style="transform: scale(2)">
+                  <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3 rounded-md bg-[#BAD7E9] mb-2 border border-[#2B3467] border-2">
+        <div class="w-full px-3 mb-5">
+          <div class="flex items-center justify-between">
+            <label for="" class="text-lg font-bold text-[#2B3467] px-1" style="width:40%">Réponse 2</label>
+          </div>
+          <div class="flex rounded-lg">
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-regular fa-game-board-simple text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse2'" placeholder="Entrez la réponse">
+              </div>
+            </div>
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse2Image'" placeholder="Entrez l'URL de l'image">
+                <img
+                [src]="questionForm.value.reponse2Image"
+                *ngIf="questionForm.value.reponse2Image"
+                class="mx-auto max-w-md rounded-md h-56"
+                alt="Quiz image"
+              />
+              </div>
+            </div>
+            <div class="w-1/5 px-3 py-2" style="width:20%">
+              <div class="flex items-center justify-end">
+                <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
+                  <input type="radio" formControlName="validreponse" name="validreponse" value="1" id="valid1" style="transform: scale(2)">
+                  <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3 rounded-md bg-[#BAD7E9] mb-2 border border-[#2B3467] border-2">
+        <div class="w-full px-3 mb-5">
+          <div class="flex items-center justify-between">
+            <label for="" class="text-lg font-bold text-[#2B3467] px-1" style="width:40%">Réponse 3</label>
+          </div>
+          <div class="flex rounded-lg">
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-regular fa-game-board-simple text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse3'" placeholder="Entrez la réponse">
+              </div>
+            </div>
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse3Image'" placeholder="Entrez l'URL de l'image">
+                <img
+                [src]="questionForm.value.reponse3Image"
+                *ngIf="questionForm.value.reponse3Image"
+                class="mx-auto max-w-md rounded-md h-56"
+                alt="Quiz image"
+              />
+              </div>
+            </div>
+            <div class="w-1/5 px-3 py-2" style="width:20%">
+              <div class="flex items-center justify-end">
+                <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
+                  <input type="radio" formControlName="validreponse" name="validreponse" value="2" id="valid2" style="transform: scale(2)">
+                  <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3 rounded-md bg-[#BAD7E9] mb-2 border border-[#2B3467] border-2">
+        <div class="w-full px-3 mb-5">
+          <div class="flex items-center justify-between">
+            <label for="" class="text-lg font-bold text-[#2B3467] px-1" style="width:40%">Réponse 4</label>
+          </div>
+          <div class="flex rounded-lg">
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-regular fa-game-board-simple text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse4'" placeholder="Entrez la réponse">
+              </div>
+            </div>
+            <div class="w-2/5 px-3 py-2" style="width:40%">
+              <div class="flex">
+                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                  <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-none focus:outline-none" [formControlName]="'reponse4Image'" placeholder="Entrez l'URL de l'image">
+                <img
+                [src]="questionForm.value.reponse4Image"
+                *ngIf="questionForm.value.reponse4Image"
+                class="mx-auto max-w-md rounded-md h-56"
+                alt="Quiz image"
+              />
+              </div>
+            </div>
+            <div class="w-1/5 px-3 py-2" style="width:20%">
+              <div class="flex items-center justify-end">
+                <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
+                  <input type="radio" formControlName="validreponse" name="validreponse" value="3" id="valid3" style="transform: scale(2)">
+                  <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Explication de la réponse</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-game-board-simple text-gray-400 text-lg"
+              ></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'explainText'"
+              placeholder="Entrez l'explication de la réponse"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <label for="" class="text-lg font-bold text-[#2B3467] px-1"
+            >Image de l'explication</label
+          >
+          <div class="flex">
+            <div
+              class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+            >
+              <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
+            </div>
+            <input
+              type="text"
+              class="w-full -ml-10 pl-10 pr-3 py-2 px-4 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              [formControlName]="'explainImage'"
+              placeholder="Entrez l'URL de l'image"
+            />
+            <img
+                [src]="questionForm.value.explainImage"
+                *ngIf="questionForm.value.explainImage"
+                class="mx-auto max-w-md rounded-md h-56"
+                alt="Quiz image"
+              />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex -mx-3">
+        <div class="w-full px-3 mb-5">
+          <button
+          class="block w-full max-w-xs mx-auto text-xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 px-4 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
+          (click)="addQuestion()"
+        >
+          Ajouter Question
+          <i class="fa-sharp fa-solid fa-arrow-right"></i>
+        </button>
+        </div>
+      </div>
+    </form>
+  </div>
