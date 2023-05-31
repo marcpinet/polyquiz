@@ -9,7 +9,7 @@ ul {
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0;
 }
 
@@ -19,16 +19,8 @@ li {
   margin-bottom: 0;
 }
 
-.pagination:first-child .pagination-button {
-  margin-right: 20px;
-}
-
-.pagination:last-child .pagination-button {
-  margin-left: 20px;
-}
-
 .pagination-button {
-  padding: 100px 12px;
+  padding: 120px 30px;
   border: none;
   border-radius: 4px;
   font-size: 38px;

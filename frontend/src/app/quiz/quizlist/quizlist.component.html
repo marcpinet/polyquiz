@@ -24,24 +24,28 @@
   </div>
 </div>
 
-<div class="quiz-container">
-  <div class="pagination">
-    <button class="pagination-button" [ngClass]="{'enabled': currentPage !== 1, 'disabled': currentPage === 1}" (click)="prevPage()" [disabled]="currentPage === 1">
-      <i class="fa-solid fa-arrow-left"></i>
+<div class="quiz-container h-3/4 -mt-2">
+  <div class="pagination h-3/5">
+    <button class="pagination-button" [ngClass]="{'enabled': currentPage !== 1, 'disabled': currentPage === 1}" (click)="prevPage()" [disabled]="currentPage === 1" >
+      <i class="fa-solid fa-arrow-left text-5xl"></i>
     </button>
   </div>
+
   <ul>
     <li *ngFor="let quiz of quizList; let i = index" class="my-4" [ngStyle]="{'display': i >= (currentPage - 1) * pageSize && i < currentPage * pageSize ? 'block' : 'none'}">
       <app-quiz-details
         [quiz]="quiz"
         [played]="hasPlayedQuiz(quiz.id)"
+        class="w-80 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 h-auto"
       ></app-quiz-details>
     </li>
   </ul>
 
-  <div class="pagination">
+
+
+  <div class="pagination h-3/5">
     <button class="pagination-button" [ngClass]="{'enabled': currentPage * pageSize < quizList.length, 'disabled': currentPage * pageSize >= quizList.length}" (click)="nextPage()" [disabled]="currentPage * pageSize >= quizList.length">
-      <i class="fa-solid fa-arrow-right"></i>
+      <i class="fa-solid fa-arrow-right text-5xl"></i>
     </button>
   </div>
 </div>
