@@ -125,6 +125,7 @@ export class QuizListComponent implements OnInit {
     this.selectedDifficulty = 'Difficulté';
     this.selectedTheme = 'Thème';
     this.selectedDone = 'Progrès';
+    this.selectedDuration = 'Durée';
     this.filteredQuizList = [...this.quizList];
   }
 

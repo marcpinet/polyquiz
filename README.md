@@ -34,7 +34,7 @@ Coming soon...
 3. Go to the root of the project. Open your Terminal and install the dependencies:
 
     ```bash
-    npm install && cd backend && npm install && cd ../frontend && npm install
+    npm install && cd backend && npm install && cd ../frontend && npm install && cd ..
     ```
 
 ### Running
