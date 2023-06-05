@@ -102,8 +102,18 @@ export class ModifyQuizAdminComponent implements OnChanges {
   }
 
   modifyQuestion(question: Question) {
+    this.quiz = {
+      name: this.quizForm.value.quizName,
+      image: this.quizForm.value.quizImage,
+      difficulty: this.quizForm.value.quizDifficulty,
+      description: this.quizForm.value.quizDescription,
+      estimated_time: this.quizForm.value.quizEstimatedTime,
+      themeId: this.quizForm.value.quizTheme,
+    };
+    this.loadQuiz.emit(this.quiz);
     this.loadModifyQuestion.emit(question);
     this.loadTabComponent.emit('QUESTION_MODIFY');
+    this.deleteQuestion(question);
   }
 
   public addQuestion(): void {

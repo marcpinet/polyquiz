@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   selector: 'app-modify-question-admin',
   templateUrl: './modify-question.component.html',
 })
-export class ModifyQuestionAdminComponent {
+export class ModifyQuestionAdminComponent implements OnInit {
   @Input() question: Question;
   @Input() answers: Answer[];
   @Output() addQuestionAnswer = new EventEmitter<{
@@ -35,7 +35,6 @@ export class ModifyQuestionAdminComponent {
     this.themeService.themes$.subscribe((themes) => {
       this.themes = themes;
     });
-    console.log('modify question component');
 
     this.questionForm = this.formbuilder.group({
       questionImage: ['', Validators.required],
@@ -52,12 +51,10 @@ export class ModifyQuestionAdminComponent {
       reponse4Image: ['', Validators.required],
       validreponse: ['', Validators.required],
     });
-    if (this.question == null) {
-      this.question = {} as Question;
-      this.answers = [];
-    } else {
-      this.updateForm();
-    }
+  }
+
+  ngOnInit(): void {
+    this.updateForm();
   }
 
   updateForm() {
