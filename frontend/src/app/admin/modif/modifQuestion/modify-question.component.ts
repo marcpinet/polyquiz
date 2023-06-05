@@ -1,5 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
@@ -53,8 +60,13 @@ export class ModifyQuestionAdminComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.updateForm();
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if ('question' in changes) {
+      this.question = changes['question'].currentValue;
+      this.updateForm();
+    }
   }
 
   updateForm() {
@@ -113,9 +125,7 @@ export class ModifyQuestionAdminComponent implements OnInit {
     if (this.questionForm.get('explainImage').value !== '') {
       this.question.explain_image = this.questionForm.get('explainImage').value;
     }
-    if (this.answers == undefined) {
-      this.answers = [];
-    }
+    this.answers = [];
 
     for (let i = 1; i <= 4; i++) {
       const answer_text = this.questionForm.get(`reponse${i}`).value;
@@ -144,13 +154,15 @@ export class ModifyQuestionAdminComponent implements OnInit {
         this.answers[3].isCorrect = true;
         break;
     }
-
-    this.loadTabComponent.emit('QUIZ_MODIFY');
-
+    console.log('aaa');
+    console.log(this.answers);
     this.addQuestionAnswer.emit({
       question: this.question,
       answers: this.answers,
     });
+
+    this.loadTabComponent.emit('QUIZ_MODIFY');
+
     console.log('ok');
   }
 

@@ -20,7 +20,7 @@ import { ThemesService } from 'src/services/theme.service';
   selector: 'app-modify-quiz-admin',
   templateUrl: './modify-quiz.component.html',
 })
-export class ModifyQuizAdminComponent implements OnChanges {
+export class ModifyQuizAdminComponent implements OnInit {
   @Input() quiz: Quiz;
   @Input() questions: Map<Question, Answer[]>;
   @Output() loadModifyQuestion = new EventEmitter<Question>();
@@ -54,16 +54,14 @@ export class ModifyQuizAdminComponent implements OnChanges {
     });
     this.updateForm();
   }
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['quiz']) {
-      this.updateForm();
-    }
-    if (changes['questions']) {
-      this.questions = changes['questions'].currentValue;
-    }
+
+  ngOnInit(): void {
+    this.updateForm();
   }
 
   public updateQuiz() {
+    console.log('update quiz');
+    console.log(this.questions);
     if (this.quizForm.value.quizName != undefined) {
       this.quiz.name = this.quizForm.value.quizName;
     }
@@ -104,12 +102,12 @@ export class ModifyQuizAdminComponent implements OnChanges {
     this.uploadQuiz.emit(this.quiz);
   }
 
-  modifyQuestion(question: Question) {
+  modifyQuestion(questionId: number) {
     this.updateQuiz();
     this.loadQuiz.emit(this.quiz);
-    this.loadModifyQuestion.emit(question);
+    this.loadModifyQuestion.emit(this.questionsArray[questionId]);
     this.loadTabComponent.emit('QUESTION_MODIFY');
-    this.deleteQuestion(question);
+    this.deleteQuestion(this.questionsArray[questionId]);
   }
 
   public addQuestion(): void {
