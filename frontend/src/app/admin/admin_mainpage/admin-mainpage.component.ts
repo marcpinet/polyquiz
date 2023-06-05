@@ -1,16 +1,14 @@
-import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { OptionsScreenComponent } from 'src/app/settings/options-screen.component';
-import { MesResultatsComponent } from 'src/app/mesResultats/mes-resultat.component';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/user.model';
-import Swal from 'sweetalert2';
 import { QuizListComponent } from 'src/app/quiz/quizlist/quizlist.component';
 import { GestionQuizComponent } from '../gestionQuiz/gestion-quiz.component';
 import { ResidentComponent } from '../mesResidents/resident.component';
 import { Notification } from 'src/models/notification.model';
 import { NotificationService } from 'src/services/notification.service';
 import { UserService } from 'src/services/user.service';
+
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-mainpage.component.html',
@@ -22,15 +20,7 @@ export class AdminMainPage {
   currentTab = 'RESIDENT';
   @ViewChild('resultBtn') resultBtn: ElementRef;
   showNotifications = false;
-
-  ngAfterViewInit() {
-    this.loadTabComponent('RESIDENT');
-  }
-
   components = {
-    QUIZ: QuizListComponent,
-    RESULTAT: MesResultatsComponent,
-    PARAMETRES: OptionsScreenComponent,
     GESTION_QUIZ: GestionQuizComponent,
     RESIDENT: ResidentComponent,
   };
@@ -72,6 +62,10 @@ export class AdminMainPage {
 
   get selectedComponent() {
     return this.components[this.currentTab] || QuizListComponent;
+  }
+
+  ngAfterViewInit() {
+    this.loadTabComponent('RESIDENT');
   }
 
   loadTabComponent(tab: string) {
