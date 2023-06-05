@@ -50,70 +50,51 @@
   </div>
 
   <!-- Right Side -->
-  <div class="md:w-4/5 h-screen bg-white" style="margin-left: 21%">
-    <nav class="flex bg-white items-center relative justify-between w-full">
+<div class="md:w-4/5 h-screen bg-white" style="margin-left: 21%">
+  <nav class="flex bg-white items-center relative justify-end w-full">
 
-      <!--
-      <div (click)="helpPopup()">
-        <button
-          class="flex items-center w-full px-6 py-6 m-0 font-bold text-[#2B3467] text-5xl bg-[#BAD7E9] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline"
-          onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('div').css('color', '#2B3467');"
-          onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('div').css('color', '#FCFFE7');"
-          type="button">
-          <i class="fa-regular fa-circle-question text-[#2B3467] text-5xl"></i>
-          <div class="m-1">Aide</div>
+    <div class="flex items-center mr-4">
+      <div class="relative mr-6">
+        <button (click)="switchNotifications()" class="focus:outline-none focus:shadow-outline">
+          <i class="far fa-bell text-6xl"></i>
+          <div class="absolute top-0 right-0 -mt-6 -mr-6 rounded-full bg-red-600 text-white h-12 w-12 flex items-center justify-center">
+            <span class="text-2xl font-bold">2</span>
+          </div>
         </button>
-      </div>
-      -->
 
-        <div class="relative mr-6">
-          <button (click)="switchNotifications()" class="focus:outline-none focus:shadow-outline">
-            <i class="far fa-bell text-6xl"></i>
-            <div
-              class="absolute top-0 right-0 -mt-6 -mr-6 rounded-full bg-red-600 text-white h-12 w-12 flex items-center justify-center">
-              <span class="text-2xl font-bold">2</span>
-            </div>
-          </button>
-
-          <!-- Notifications -->
-          <div
-            *ngIf="showNotifications"
-            class="absolute top-14 right-11 bg-[#BAD7E9] bg-opacity-95 rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]">
-            <div *ngFor="let notification of notifications | keyvalue"
-                 class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
-              <div>
-                <div class="flex items-center space-x-4">
-                  <img alt="" class="rounded-full h-14 w-14" src="{{ notification.key.avatar }}"/>
-                  <div class="flex flex-col space-y-1">
-                    <span class="font-bold">{{ notification.key.firstName }}
-                      {{ notification.key.lastName }}</span>
-                    <span class="text-sm">{{
-                      notification.value.message
-                      }}</span>
-                  </div>
+        <!-- Notifications -->
+        <div *ngIf="showNotifications" class="absolute top-14 right-11 bg-[#BAD7E9] bg-opacity-95 rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]">
+          <div *ngFor="let notification of notifications | keyvalue" class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
+            <div>
+              <div class="flex items-center space-x-4">
+                <img alt="" class="rounded-full h-14 w-14" src="{{ notification.key.avatar }}"/>
+                <div class="flex flex-col space-y-1">
+                  <span class="font-bold">{{ notification.key.firstName }}
+                    {{ notification.key.lastName }}</span>
+                  <span class="text-sm">{{ notification.value.message }}</span>
                 </div>
-                <div class="flex-none px-4 py-2 text-stone-600 text-xs md:text-md">
-                  {{ notification.value.date | intlRelativeTime}}
-                </div>
-                <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0"/>
-
               </div>
+              <div class="flex-none px-4 py-2 text-stone-600 text-xs md:text-md">
+                {{ notification.value.date | intlRelativeTime}}
+              </div>
+              <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0"/>
             </div>
           </div>
         </div>
-        <!-- TODO : separer l'element au dessus de celui ci, en foutant celui en dessous a droite -->
-        
-        <div (click)="navigateProfile()" class="flex items-center py-2 mr-2">
-          <img class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32"
-               src="{{ this.user.avatar }}"/>
-          <p class="text-3xl font-bold text-[#2B3467] mt-1">
-            {{ this.user.firstName }} {{ this.user.lastName }}
-          </p>
-        </div>
-    </nav>
+      </div>
+      <!-- TODO : separer l'element au dessus de celui ci, en foutant celui en dessous a droite -->
 
-    <!-- Begin of RightSide (Quiz, Parameters or Mes Resultats)-->
-    <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
-    <!-- End of RightSide-->
-  </div>
+      <div (click)="navigateProfile()" class="flex items-center py-2 mr-2">
+        <img class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 h-32 w-32" src="{{ this.user.avatar }}"/>
+        <p class="text-3xl font-bold text-[#2B3467] mt-1">
+          {{ this.user.firstName }} {{ this.user.lastName }}
+        </p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Begin of RightSide (Quiz, Parameters or Mes Resultats)-->
+  <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
+  <!-- End of RightSide-->
+</div>
 </div>
