@@ -167,7 +167,7 @@
       </div>
       <div class="overflow-x-auto">
         <div *ngIf="this.questions.size" class="w-full">
-          <div *ngFor="let question of this.questions.keys(); let i = index" class="mx-auto">
+          <div *ngFor="let question of this.questionsArray; let i = index" class="mx-auto">
             <div
               class="flex items-center border rounded-lg p-4 shadow-lg bg-[#BAD7E9] mb-2"
             >

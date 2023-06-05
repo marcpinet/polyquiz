@@ -30,6 +30,7 @@ export class ModifyQuizAdminComponent implements OnChanges {
   @Output() loadQuiz = new EventEmitter<Quiz>();
   public quizForm: FormGroup;
   themes: Theme[] = [];
+  questionsArray: Question[] = [];
   constructor(
     public router: Router,
     public quizService: QuizService,
@@ -94,6 +95,8 @@ export class ModifyQuizAdminComponent implements OnChanges {
         quizTheme: this.quiz.themeId,
       });
     }
+    if (this.questions != undefined)
+      this.questionsArray = Array.from(this.questions.keys());
   }
 
   public addQuiz(): void {
@@ -102,14 +105,7 @@ export class ModifyQuizAdminComponent implements OnChanges {
   }
 
   modifyQuestion(question: Question) {
-    this.quiz = {
-      name: this.quizForm.value.quizName,
-      image: this.quizForm.value.quizImage,
-      difficulty: this.quizForm.value.quizDifficulty,
-      description: this.quizForm.value.quizDescription,
-      estimated_time: this.quizForm.value.quizEstimatedTime,
-      themeId: this.quizForm.value.quizTheme,
-    };
+    this.updateQuiz();
     this.loadQuiz.emit(this.quiz);
     this.loadModifyQuestion.emit(question);
     this.loadTabComponent.emit('QUESTION_MODIFY');

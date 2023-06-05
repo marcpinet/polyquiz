@@ -62,6 +62,7 @@ export class ModifyQuizComponent {
 
   uploadQuiz(quiz: Quiz) {
     this.quiz = quiz;
+    this.quizService.deleteQuiz(this.quiz);
     this.quizService.createQuiz(this.quiz, this.questionsAnswers);
     console.log(this.questionsAnswers);
     console.log(this.quiz);
