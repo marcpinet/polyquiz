@@ -29,8 +29,14 @@ export class ModifyQuizComponent {
     this.quizService.retrieveQuizzes();
     this.quizService.getQuizById(id).subscribe((quiz) => {
       this.quiz = quiz;
+      for (let i = 0; i < this.quiz.questions.length; i++) {
+        this.questionsAnswers.set(
+          this.quiz.questions[i],
+          this.quiz.questions[i].answers
+        );
+      }
       console.log('aaaaaaaaaaa');
-      console.log(this.quiz);
+      console.log(this.quiz.questions);
       this.currentTab = 'QUIZ_MODIFY';
       console.log('aaaaaaaaaaa');
     });

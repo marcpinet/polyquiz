@@ -116,6 +116,9 @@ export class ModifyQuestionAdminComponent {
     if (this.questionForm.get('explainImage').value !== '') {
       this.question.explain_image = this.questionForm.get('explainImage').value;
     }
+    if (this.answers == undefined) {
+      this.answers = [];
+    }
 
     for (let i = 1; i <= 4; i++) {
       const answer_text = this.questionForm.get(`reponse${i}`).value;
@@ -151,6 +154,7 @@ export class ModifyQuestionAdminComponent {
       question: this.question,
       answers: this.answers,
     });
+    console.log('ok');
   }
 
   public return(): void {
