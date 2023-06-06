@@ -149,6 +149,7 @@ export class QuizListComponent implements OnInit {
 
     if (difficulty) {
       this.selectedDifficulty = difficulty;
+      this.currentPage = 1;
       this.filterQuizzes();
     }
   }
@@ -166,6 +167,7 @@ export class QuizListComponent implements OnInit {
 
     if (done) {
       this.selectedDone = done;
+      this.currentPage = 1;
       this.filterQuizzes();
     }
   }
@@ -185,6 +187,7 @@ export class QuizListComponent implements OnInit {
 
     if (theme) {
       this.selectedTheme = inputOptions[theme];
+      this.currentPage = 1;
       this.filterQuizzes();
     }
   }
@@ -203,6 +206,7 @@ export class QuizListComponent implements OnInit {
 
     if (duration) {
       this.selectedDuration = duration;
+      this.currentPage = 1;
       this.filterQuizzes();
     }
   }

@@ -32,7 +32,7 @@
   </div>
 
   <ul>
-    <li *ngFor="let quiz of filteredQuizList; let i = index" class="my-4" [ngStyle]="{'display': i < pageSize ? 'block' : 'none'}">
+    <li *ngFor="let quiz of filteredQuizList; let i = index" class="my-4" [ngStyle]="{'display': i >= (currentPage - 1) * pageSize && i < currentPage * pageSize ? 'block' : 'none'}">
       <app-quiz-details
         [quiz]="quiz"
         [played]="hasPlayedQuiz(quiz.id)"
@@ -44,8 +44,9 @@
 
 
   <div class="pagination h-3/5">
-    <button class="pagination-button" [ngClass]="{'enabled': currentPage * pageSize < quizList.length, 'disabled': currentPage * pageSize >= quizList.length}" (click)="nextPage()" [disabled]="currentPage * pageSize >= quizList.length">
+    <button class="pagination-button" [ngClass]="{'enabled': currentPage * pageSize < filteredQuizList.length, 'disabled': currentPage * pageSize >= filteredQuizList.length}" (click)="nextPage()" [disabled]="currentPage * pageSize >= filteredQuizList.length">
       <i class="fa-solid fa-arrow-right text-5xl"></i>
     </button>
   </div>
+
 </div>
