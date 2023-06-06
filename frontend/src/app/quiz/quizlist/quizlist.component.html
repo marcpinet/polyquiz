@@ -32,7 +32,7 @@
   </div>
 
   <ul>
-    <li *ngFor="let quiz of filteredQuizList; let i = index" class="my-4" [ngStyle]="{'display': i >= (currentPage - 1) * pageSize && i < currentPage * pageSize ? 'block' : 'none'}">
+    <li *ngFor="let quiz of filteredQuizList; let i = index" class="my-4" [ngStyle]="{'display': i < pageSize ? 'block' : 'none'}">
       <app-quiz-details
         [quiz]="quiz"
         [played]="hasPlayedQuiz(quiz.id)"

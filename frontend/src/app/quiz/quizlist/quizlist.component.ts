@@ -67,7 +67,7 @@ export class QuizListComponent implements OnInit {
   }
 
   filterQuizzes(): void {
-    this.quizList = this.quizList.filter((quiz) => {
+    this.filteredQuizList = this.quizList.filter((quiz) => {
       let difficultyMatch = true;
       let doneMatch = true;
       let themeMatch = true;
@@ -114,17 +114,11 @@ export class QuizListComponent implements OnInit {
   nextPage(): void {
     this.currentPage++;
     this.filterQuizzes();
-    this.filteredQuizList = [...this.quizList];
-
-    console.log(this.filteredQuizList);
   }
 
   prevPage(): void {
     this.currentPage--;
     this.filterQuizzes();
-    this.filteredQuizList = [...this.quizList];
-
-    console.log(this.filteredQuizList);
   }
 
   resetFilters(): void {
