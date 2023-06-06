@@ -88,11 +88,6 @@ export class AdminMainPage {
     this.router.navigate(['/profile']);
   }
 
-  helpPopup() {
-    let dialog = document.getElementsByTagName('dialog')[0];
-    dialog.showModal();
-  }
-
   switchNotifications() {
     this.showNotifications = !this.showNotifications;
   }

@@ -73,13 +73,4 @@ export class AdminNavbarComponent implements OnInit {
   switchNotifications() {
     this.showNotifications = !this.showNotifications;
   }
-
-  // navigateHelp() {
-  //   this.router.navigate(['/help']);
-  // }
-
-  helpPopup() {
-    let dialog = document.getElementsByTagName('dialog')[0];
-    dialog.showModal();
-  }
 }
