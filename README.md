@@ -11,7 +11,7 @@ The whole project is being supervised by the [Amadeus](https://amadeus.com/) com
 
 ## 🎥 Demo
 
-Coming soon...
+https://github.com/marcpinet/polyquiz/assets/52708150/b2a64fcb-29b6-442e-aaca-e464b61bf61d
 
 ## 💡 How to use
 
