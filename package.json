@@ -11,8 +11,7 @@
     "build": "npm run build-client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
-    "lint": ".eslintrc.js",
-    "test:e2e": "npx playwright test"
+    "lint": ".eslintrc.js"
   },
   "repository": {
     "type": "git",
