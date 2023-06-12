@@ -19,6 +19,7 @@ import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
 import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
+import { AdminNotificationComponent } from './admin/notification/notification.component';
 const routes: Routes = [
   {
     path: 'game/:id',
@@ -97,6 +98,11 @@ const routes: Routes = [
     path: 'admin/modif-resident/:id',
     canActivate: [RouteGuardAdminService],
     component: ModifResidentComponent,
+  },
+  {
+    path: 'admin/notification/:id',
+    canActivate: [RouteGuardAdminService],
+    component: AdminNotificationComponent,
   },
 ];
 

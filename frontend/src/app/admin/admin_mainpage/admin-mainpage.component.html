@@ -64,7 +64,7 @@
 
         <!-- Notifications -->
         <div *ngIf="showNotifications" class="absolute top-14 right-11 bg-[#BAD7E9] rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]">
-          <div *ngFor="let notification of notifications | keyvalue" class="flex justify-between rounded-lg  p-2 mb-1" [ngClass]="{'bg-[#b1b5bd] hover:bg-[#989ca3]': notification.value.seen, 'bg-[#5d97fc] hover:bg-[#4585f5]': !notification.value.seen}">
+          <div *ngFor="let notification of notifications | keyvalue" class="flex justify-between rounded-lg  p-2 mb-1" [ngClass]="{'bg-[#b1b5bd] hover:bg-[#989ca3]': notification.value.seen, 'bg-[#5d97fc] hover:bg-[#4585f5]': !notification.value.seen}" (click)="navigateNotif(notification.value.id)">
             <div>
               <div class="flex items-center space-x-4">
                 <img alt="" class="rounded-full h-14 w-14" src="{{ notification.key.avatar }}"/>

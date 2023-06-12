@@ -91,4 +91,9 @@ export class AdminMainPage {
   switchNotifications() {
     this.showNotifications = !this.showNotifications;
   }
+
+  navigateNotif(notification: number) {
+    this.showNotifications = false;
+    this.router.navigate(['/admin/notification/' + notification]);
+  }
 }

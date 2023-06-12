@@ -22,7 +22,16 @@ router.post("/", (req, res) => {
   }
 });
 
-router.get("/:receiverId", (req, res) => {
+router.get("/:notificationId", (req, res) => {
+  try {
+    const notification = Notification.getById(req.params.notificationId);
+    res.status(200).json(notification);
+  } catch (err) {
+    manageAllErrors(res, err);
+  }
+});
+
+router.get("/user/:receiverId", (req, res) => {
   try {
     const notification = Notification.getByUserId(req.params.receiverId);
     res.status(200).json(notification);

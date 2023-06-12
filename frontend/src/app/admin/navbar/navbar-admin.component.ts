@@ -73,4 +73,24 @@ export class AdminNavbarComponent implements OnInit {
   switchNotifications() {
     this.showNotifications = !this.showNotifications;
   }
+
+  navigateNotif(notification: number) {
+    this.showNotifications = false;
+    const currentUrl = this.router.url;
+    const baseUrl = '/admin/notification/';
+    //gotta do this since navigate wont work if we are already on the same page /admin/notification/:id
+    if (currentUrl.startsWith(baseUrl)) {
+      const currentNotification = parseInt(
+        currentUrl.substring(baseUrl.length),
+        10
+      );
+      if (currentNotification !== notification) {
+        const newUrl = baseUrl + notification;
+        window.location.href = newUrl;
+      }
+    } else {
+      const newUrl = baseUrl + notification;
+      window.location.href = newUrl;
+    }
+  }
 }

@@ -42,6 +42,7 @@ import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
 import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
 import { HelpModalComponent } from './modals/help-modal.component';
+import { AdminNotificationComponent } from './admin/notification/notification.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +80,7 @@ import { HelpModalComponent } from './modals/help-modal.component';
     ModifResidentComponent,
     AdminNavbarComponent,
     HelpModalComponent,
+    AdminNotificationComponent,
   ],
   imports: [
     BrowserModule,
