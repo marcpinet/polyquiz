@@ -44,6 +44,7 @@ import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
 import { HelpModalComponent } from './modals/help-modal.component';
 import { AdminNotificationComponent } from './admin/notification/notification.component';
 import { UserOptionsScreenComponent } from './settings/user-options-screen.component';
+import { QuizRecommendComponent } from './quiz/quiz-recommend/quiz-recommend.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +84,7 @@ import { UserOptionsScreenComponent } from './settings/user-options-screen.compo
     HelpModalComponent,
     AdminNotificationComponent,
     UserOptionsScreenComponent,
+    QuizRecommendComponent,
   ],
   imports: [
     BrowserModule,

@@ -76,10 +76,14 @@
 </div>
 
 <button
-  class="block mx-auto w-64 h-32 px-4 py-2 bg-[#2B3467] text-white rounded hover:bg-[#324299] text-4xl rounded-md"
+  class="block mx-auto w-64 h-32 px-4 py-2 bg-[#2B3467] text-white rounded hover:bg-[#324299] text-4xl rounded-md -mt-5"
   (click)="replay()" id="rejouer"
 >
   <i class="fa-solid fa-rotate-right text-3xl text-[#EB455F]"></i>
   Rejouer
 </button>
+<div class="recommended-quizzes">
+  <h2 class="text-3xl text-[#2B3467] font-bold ml-10 mb-1">Quiz Recommandés</h2>
+  <quiz-recommend></quiz-recommend>
+</div>
 </ng-container>
