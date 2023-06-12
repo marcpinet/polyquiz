@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { OptionsScreenComponent } from 'src/app/settings/options-screen.component';
+import { UserOptionsScreenComponent } from 'src/app/settings/user-options-screen.component';
 import { MesResultatsComponent } from 'src/app/mesResultats/mes-resultat.component';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
@@ -22,7 +22,7 @@ export class MainPage {
   components = {
     QUIZ: QuizListComponent,
     RESULTAT: MesResultatsComponent,
-    PARAMETRES: OptionsScreenComponent,
+    PARAMETRES: UserOptionsScreenComponent,
   };
 
   constructor(public router: Router, private authService: AuthService) {

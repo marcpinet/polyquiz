@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './admin/addResident/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
 import { MainPage } from './mainpage/mainpage-main/mainpage.component';
-import { OptionsScreenComponent } from './settings/options-screen.component';
+import { UserOptionsScreenComponent } from './settings/user-options-screen.component';
 import { ResultComponent } from './result/result.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'settings',
     canActivate: [RouteGuardService],
-    component: OptionsScreenComponent,
+    component: UserOptionsScreenComponent,
   },
   {
     path: 'result/:id',

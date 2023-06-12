@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InitSettings, Settings } from 'src/models/settings.model';
-import { InitSettingService } from 'src/services/initsettings.service';
 import { SettingService } from 'src/services/settings.service';
-import { AuthService } from 'src/services/auth.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-options-screen',
   templateUrl: './options-screen.component.html',
 })
 export class OptionsScreenComponent {
+  @Input() settings: Settings;
+  @Input() initSettings: InitSettings;
+
   sound_effect: boolean;
   mouse_option:
     | 'doubleClique'
@@ -18,26 +19,11 @@ export class OptionsScreenComponent {
   microphone: boolean;
   confirm_answer: boolean;
 
-  initSettings: InitSettings;
-  settings: Settings;
-
   constructor(
-    private initSettingService: InitSettingService,
-    private settingService: SettingService,
-    private authService: AuthService
-  ) {
-    const userId = this.authService.user.id;
-    console.log('userId', userId);
-    this.initSettingService.setSelectedInitSetting(userId.toString());
-    this.initSettingService.initsettingsSelected$.subscribe((initSettings) => {
-      this.initSettings = initSettings;
-      console.log('initSettings', initSettings);
-    });
-    this.settingService.settings$.subscribe((settings) => {
-      this.settings = settings;
-      console.log('settings', settings);
-      this.renderSettings();
-    });
+    private settingService: SettingService) {
+    console.log('settings', this.settings);
+    console.log('initSettings', this.initSettings);
+    this.renderSettings();
   }
 
   renderSettings() {
