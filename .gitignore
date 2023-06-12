@@ -54,3 +54,6 @@ backend/sessions
 
 # Session
 sessions/
+
+#playwright report
+frontend/playwright-report
