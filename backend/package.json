@@ -8,7 +8,7 @@
     "dev": "./node_modules/.bin/nodemon app/index.js",
     "lint": "./node_modules/.bin/eslint -c .eslintrc.js app/",
     "lint:fix": "./node_modules/.bin/eslint -c .eslintrc.js app/ --fix",
-    "start:e2e": "rimraf ./database/e2e && mkdirp ./database/e2e && cross-env DB_FOLDER=e2e/ node app/index.js"
+    "start:e2e": "rimraf ./database/e2e && copyfiles -f ./database/e2e-starter/* ./database/e2e ./database/e2e && cross-env DB_FOLDER=e2e/ node app/index.js"
   },
   "precommit": [
     "lint"
@@ -36,6 +36,7 @@
     "session-file-store": "^1.5.0"
   },
   "devDependencies": {
+    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.0.0",
