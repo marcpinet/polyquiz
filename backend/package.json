@@ -7,7 +7,8 @@
     "start": "node app/index.js",
     "dev": "./node_modules/.bin/nodemon app/index.js",
     "lint": "./node_modules/.bin/eslint -c .eslintrc.js app/",
-    "lint:fix": "./node_modules/.bin/eslint -c .eslintrc.js app/ --fix"
+    "lint:fix": "./node_modules/.bin/eslint -c .eslintrc.js app/ --fix",
+    "start:e2e": "rimraf ./database/e2e && mkdirp ./database/e2e && cross-env DB_FOLDER=e2e/ node app/index.js"
   },
   "precommit": [
     "lint"
