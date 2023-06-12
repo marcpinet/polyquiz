@@ -9,6 +9,9 @@ test.describe('Main page tests', () => {
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsUser(page);
+      await page.waitForSelector(
+        'text=Aucun quiz ne correspond à vos critères'
+      );
     });
 
     await test.step('Difficulte', async () => {
@@ -59,6 +62,25 @@ test.describe('Main page tests', () => {
       //await page.waitForSelector('text=Progrès');
       await page.waitForSelector('text=Thème');
       await page.waitForSelector('text=Durée');
+    });
+
+    await test.step('Aide', async () => {
+      await page.getByRole('button', { name: 'Aide' }).click();
+      await page.waitForSelector('text=Comment modifier les paramètres ?');
+      await page.getByRole('button', { name: 'Fermer' }).click();
+    });
+
+    await test.step('Profil', async () => {
+      await page.getByRole('navigation').getByRole('img').click();
+      await page.waitForSelector('text=Date de naissance');
+      await page.waitForSelector('text=1950-01-01');
+      await page.waitForSelector('text=Sexe');
+      await page.waitForSelector('text=masculin');
+      await page.waitForSelector('text=Statistiques');
+    });
+
+    await test.step('Deconnexion', async () => {
+      await page.getByRole('button', { name: 'Se Déconnecter' }).click();
     });
   });
 });
