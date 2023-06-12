@@ -58,13 +58,13 @@
         <button (click)="switchNotifications()" class="focus:outline-none focus:shadow-outline">
           <i class="far fa-bell text-6xl"></i>
           <div class="absolute top-0 right-0 -mt-6 -mr-6 rounded-full bg-red-600 text-white h-12 w-12 flex items-center justify-center">
-            <span class="text-2xl font-bold">2</span>
+            <span class="text-2xl font-bold">{{notifications.size}}</span>
           </div>
         </button>
 
         <!-- Notifications -->
-        <div *ngIf="showNotifications" class="absolute top-14 right-11 bg-[#BAD7E9] bg-opacity-95 rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]">
-          <div *ngFor="let notification of notifications | keyvalue" class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2">
+        <div *ngIf="showNotifications" class="absolute top-14 right-11 bg-[#BAD7E9] rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]">
+          <div *ngFor="let notification of notifications | keyvalue" class="flex justify-between rounded-lg  p-2 mb-1" [ngClass]="{'bg-[#b1b5bd] hover:bg-[#989ca3]': notification.value.seen, 'bg-[#5d97fc] hover:bg-[#4585f5]': !notification.value.seen}">
             <div>
               <div class="flex items-center space-x-4">
                 <img alt="" class="rounded-full h-14 w-14" src="{{ notification.key.avatar }}"/>
@@ -74,7 +74,7 @@
                   <span class="text-sm">{{ notification.value.message }}</span>
                 </div>
               </div>
-              <div class="flex-none px-4 py-2 text-stone-600 text-xs md:text-md">
+              <div class="flex-none px-4 py-2 text-xs md:text-md">
                 {{ notification.value.date | intlRelativeTime}}
               </div>
               <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0"/>
