@@ -33,7 +33,7 @@ export class NotificationService {
       if (this.authService.user != null) {
         const uid = this.authService.user.id;
 
-        const urlWithId = this.notificationUrl + '/' + uid;
+        const urlWithId = this.notificationUrl + '/user/' + uid;
 
         this.http.get<Notification>(urlWithId).subscribe((notification) => {
           this.notification = notification;
@@ -47,8 +47,13 @@ export class NotificationService {
   }
 
   getNotificationsOfUser(uid: number): Observable<Notification[]> {
-    const urlWithId = this.notificationUrl + '/' + uid;
+    const urlWithId = this.notificationUrl + '/user/' + uid;
     return this.http.get<Notification[]>(urlWithId);
+  }
+
+  getNotificationById(id: number): Observable<Notification> {
+    const urlWithId = this.notificationUrl + '/' + id;
+    return this.http.get<Notification>(urlWithId);
   }
 
   updateNotification(notification: Notification): Observable<Notification> {

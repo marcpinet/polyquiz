@@ -1,73 +1,62 @@
 <help-modal></help-modal>
-<nav
-  class="flex bg-[#BAD7E9] items-center relative justify-between pl-3 rounded-md"
->
-  <button >
-    <img
-      src="../../assets/images/Poly.png"
-      class="h-24 rounded-full shadow flex-none"
-      (click)="navigateMain()"
-    />
+<nav class="flex bg-[#BAD7E9] items-center relative justify-between pl-3 rounded-md">
+  <button>
+    <img src="../../assets/images/Poly.png" class="h-24 rounded-full shadow flex-none" (click)="navigateMain()" />
   </button>
   <div (click)="navigateSettings()">
     <button
       class="flex flex-col items-center h-full px-8 py-1 m-0 font-bold text-[#2B3467] text-xl bg-[#90C1DF] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline transition-colors duration-300"
       type="button"
       onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('div').css('color', '#FCFFE7');"
-      onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('span').css('color', '#2B3467');"
-    >
+      onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('span').css('color', '#2B3467');">
       <i class="fa fa-cog text-3xl align-middle text-[#2B3467]"></i>
       <div class="m-1">Paramètres</div>
     </button>
   </div>
 
   <!-- Notifications -->
-  <div (click)="switchNotifications()">
-    <button
-      class="flex flex-col items-center h-full px-8 py-1 m-0 font-bold text-[#2B3467] text-xl bg-[#90C1DF] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline transition-colors duration-300"
-      type="button"
+  <div class="relative">
+    <button class="flex flex-col items-center h-full px-8 py-1 m-0 font-bold text-[#2B3467] text-xl bg-[#90C1DF] rounded-md hover:bg-[#2B3467] focus:outline-none focus:shadow-outline transition-colors duration-300"
+      type="button" (click)="switchNotifications()"
       onmouseover="$(this).find('i').css('color', '#EB455F'); $(this).find('div').css('color', '#FCFFE7');"
-      onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('span').css('color', '#2B3467');"
-    >
+      onmouseout="$(this).find('i').css('color', '#2B3467'); $(this).find('span').css('color', '#2B3467');">
       <i class="far fa-bell text-3xl align-middle text-[#2B3467]"></i>
       <div class="m-1">Notifications</div>
+      <div class="absolute top-[-8px] right-[-8px] bg-[#EB455F] text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">{{this.unreadNotificationsCount}}</div>
     </button>
 
+
     <div
-    class="absolute top-20 right-11 bg-[#BAD7E9] bg-opacity-95 rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]"
-    *ngIf="showNotifications">
-    <div class="flex justify-between rounded-lg hover:bg-[#90C1DF] p-2"
-      *ngFor="let notification of notifications | keyvalue">
-      <div>
-        <div class="flex items-center space-x-4">
-          <img src="{{ notification.key.avatar }}" class="rounded-full h-14 w-14" alt="" />
-          <div class="flex flex-col space-y-1">
-            <span class="font-bold">{{ notification.key.firstName }}
-              {{ notification.key.lastName }}</span>
-            <span class="text-sm">{{
+      class="absolute top-24 bg-[#BAD7E9] rounded-lg shadow-lg w-96 p-4 scale-110 border border-2 border-[#EB455F]"
+      *ngIf="showNotifications">
+      <div class="flex justify-between rounded-lg p-2 md-1"
+        *ngFor="let notification of notifications | keyvalue" [ngClass]="{'bg-[#b1b5bd] hover:bg-[#989ca3]': notification.value.seen, 'bg-[#5d97fc] hover:bg-[#4585f5]': !notification.value.seen}" (click)="navigateNotif(notification.value.id)">
+        <div>
+          <div class="flex items-center space-x-4">
+            <img src="{{ notification.key.avatar }}" class="rounded-full h-14 w-14" alt="" />
+            <div class="flex flex-col space-y-1">
+              <span class="font-bold">{{ notification.key.firstName }}
+                {{ notification.key.lastName }}</span>
+              <span class="text-sm">{{
               notification.value.message
             }}</span>
+            </div>
           </div>
+          <div class="flex-none px-4 py-2 text-stone-600 text-xs md:text-md">
+            {{ notification.value.date | intlRelativeTime}}
+          </div>
+          <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0" />
         </div>
-        <div class="flex-none px-4 py-2 text-stone-600 text-xs md:text-md">
-          {{ notification.value.date | intlRelativeTime}}
-          <!-- TODO: Make this date be xxx days ago with ngx-time-ago -->
-        </div>
-        <hr class="mt-2 mb-2 h-px my-8 bg-[#EB455F] border-0" />
-
       </div>
     </div>
-  </div>
   </div>
 
 
 
 
   <div class="flex items-center py-2 mr-2 btn" (click)="navigateProfile()">
-    <img
-      src="{{this.user.avatar}}"
-      class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 w-24"
-    />
+    <img src="{{this.user.avatar}}"
+      class="rounded-full border-4 object-center object-cover border-[#BAD7E9] mr-2 w-24" />
     <p class="text-xl font-bold text-[#2B3467] mt-1">{{this.user.firstName}} {{this.user.lastName}}</p>
   </div>
 </nav>

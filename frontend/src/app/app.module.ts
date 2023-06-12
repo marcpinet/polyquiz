@@ -14,7 +14,7 @@ import { RegisterComponent } from './admin/addResident/register.component';
 import { GamePageComponent } from './gameComponents/game-page/game-page.component';
 import { GameQuestionComponent } from './gameComponents/game-question/game-question.component';
 import { GameAnswerComponent } from './gameComponents/game-answer/game-answer.component';
-import { OptionsScreenComponent } from './settings/options-screen.component';
+import { OptionsScreenComponent } from './settings/settings_component/options-screen.component';
 import { MesResultatsComponent } from './mesResultats/mes-resultat.component';
 import { UserProfileComponent } from './userProfile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -42,6 +42,8 @@ import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
 import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
 import { HelpModalComponent } from './modals/help-modal.component';
+import { AdminNotificationComponent } from './admin/notification/notification.component';
+import { UserOptionsScreenComponent } from './settings/user-options-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +81,8 @@ import { HelpModalComponent } from './modals/help-modal.component';
     ModifResidentComponent,
     AdminNavbarComponent,
     HelpModalComponent,
+    AdminNotificationComponent,
+    UserOptionsScreenComponent,
   ],
   imports: [
     BrowserModule,

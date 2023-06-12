@@ -16,6 +16,7 @@ export class AdminNavbarComponent implements OnInit {
   user: User;
   notifications: Map<User, Notification> = new Map<User, Notification>();
   showNotifications = false;
+  unreadNotificationsCount: number = 0;
 
   constructor(
     private router: Router,
@@ -49,6 +50,11 @@ export class AdminNavbarComponent implements OnInit {
           }
         }
         console.log(this.notifications);
+        for (let notification of this.notifications.values()) {
+          if (!notification.seen) {
+            this.unreadNotificationsCount++;
+          }
+        }
       });
   }
 
@@ -72,5 +78,25 @@ export class AdminNavbarComponent implements OnInit {
 
   switchNotifications() {
     this.showNotifications = !this.showNotifications;
+  }
+
+  navigateNotif(notification: number) {
+    this.showNotifications = false;
+    const currentUrl = this.router.url;
+    const baseUrl = '/admin/notification/';
+    //gotta do this since navigate wont work if we are already on the same page /admin/notification/:id
+    if (currentUrl.startsWith(baseUrl)) {
+      const currentNotification = parseInt(
+        currentUrl.substring(baseUrl.length),
+        10
+      );
+      if (currentNotification !== notification) {
+        const newUrl = baseUrl + notification;
+        window.location.href = newUrl;
+      }
+    } else {
+      const newUrl = baseUrl + notification;
+      window.location.href = newUrl;
+    }
   }
 }
