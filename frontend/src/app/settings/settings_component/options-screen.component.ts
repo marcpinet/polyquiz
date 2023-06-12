@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { InitSettings, Settings } from 'src/models/settings.model';
 import { SettingService } from 'src/services/settings.service';
 import Swal from 'sweetalert2';
-
+import { AuthService } from 'src/services/auth.service';
+import { User } from 'src/models/user.model';
 @Component({
   selector: 'app-options-screen',
   templateUrl: './options-screen.component.html',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 export class OptionsScreenComponent implements OnInit {
   @Input() settings: Settings;
   @Input() initSettings: InitSettings;
-
+  user: User;
   sound_effect: boolean;
   mouse_option:
     | 'doubleClique'
@@ -20,9 +21,18 @@ export class OptionsScreenComponent implements OnInit {
   microphone: boolean;
   confirm_answer: boolean;
 
-  constructor(private settingService: SettingService) {}
+  constructor(
+    private settingService: SettingService,
+    private authService: AuthService
+  ) {
+    authService.user$.subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   ngOnInit() {
+    console.log('settings', this.settings); //undefined
+    console.log('initSettings', this.initSettings); //undefined
     this.renderSettings();
   }
 
@@ -63,22 +73,27 @@ export class OptionsScreenComponent implements OnInit {
     this.settings.mouse_option = this.mouse_option;
     this.settings.microphone = this.microphone;
     this.settings.confirm_answer = this.confirm_answer;
-    this.settingService.updateSettings(this.settings).subscribe({
-      next: (updatedSettings) => {
-        console.log('Settings updated:', updatedSettings);
-        this.settings = updatedSettings;
-        this.settingService.setSettings(this.settings);
-        Swal.fire({
-          icon: 'success',
-          title: 'Paramètres sauvegardés',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.renderSettings();
-      },
-      error: (error) => {
-        console.error('Error updating settings:', error);
-      },
-    });
+    if (this.user.userType == 'admin') {
+      //TODO: update initSettings of resident
+    } else {
+      //resident
+      this.settingService.updateSettings(this.settings).subscribe({
+        next: (updatedSettings) => {
+          console.log('Settings updated:', updatedSettings);
+          this.settings = updatedSettings;
+          this.settingService.setSettings(this.settings);
+          Swal.fire({
+            icon: 'success',
+            title: 'Paramètres sauvegardés',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.renderSettings();
+        },
+        error: (error) => {
+          console.error('Error updating settings:', error);
+        },
+      });
+    }
   }
 }
