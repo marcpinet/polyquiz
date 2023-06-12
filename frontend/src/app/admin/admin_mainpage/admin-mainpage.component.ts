@@ -16,6 +16,7 @@ import { UserService } from 'src/services/user.service';
 export class AdminMainPage {
   user: User;
   notifications: Map<User, Notification> = new Map<User, Notification>();
+  unreadNotificationsCount: number = 0;
 
   currentTab = 'RESIDENT';
   @ViewChild('resultBtn') resultBtn: ElementRef;
@@ -57,6 +58,11 @@ export class AdminMainPage {
           }
         }
         console.log(this.notifications);
+        for (let notification of this.notifications.values()) {
+          if (!notification.seen) {
+            this.unreadNotificationsCount++;
+          }
+        }
       });
   }
 

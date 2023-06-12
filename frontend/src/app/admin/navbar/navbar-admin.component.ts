@@ -16,6 +16,7 @@ export class AdminNavbarComponent implements OnInit {
   user: User;
   notifications: Map<User, Notification> = new Map<User, Notification>();
   showNotifications = false;
+  unreadNotificationsCount: number = 0;
 
   constructor(
     private router: Router,
@@ -49,6 +50,11 @@ export class AdminNavbarComponent implements OnInit {
           }
         }
         console.log(this.notifications);
+        for (let notification of this.notifications.values()) {
+          if (!notification.seen) {
+            this.unreadNotificationsCount++;
+          }
+        }
       });
   }
 
