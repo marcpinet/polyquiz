@@ -10,5 +10,13 @@ test.describe('Main page tests', () => {
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsUser(page);
     });
+
+    await test.step('Check for successful login', async () => {
+      await page.waitForSelector('li#quiz-btn');
+    });
+
+    await test.step('Filtres', async () => {
+      await page.click('Difficulté');
+    });
   });
 });

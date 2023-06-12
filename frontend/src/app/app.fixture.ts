@@ -5,15 +5,15 @@ const correctAdminName = 'admin';
 const correctPassword = '123456';
 
 export class AppFixture extends E2EComponentFixture {
-  ConnexionAsUser(page) {
-    page.fill('#username', correctUsername);
-    page.fill('#password', correctPassword);
-    page.click('text=Se connecter');
+  async ConnexionAsUser(page) {
+    await page.fill('#username', correctUsername);
+    await page.fill('#password', correctPassword);
+    await page.click('text=Se connecter');
   }
 
-  ConnexionAsAdmin(page) {
-    page.fill('#username', correctAdminName);
-    page.fill('#password', correctPassword);
-    page.click('text=Se connecter');
+  async ConnexionAsAdmin(page) {
+    await page.fill('#username', correctAdminName);
+    await page.fill('#password', correctPassword);
+    await page.click('text=Se connecter');
   }
 }
