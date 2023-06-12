@@ -1,0 +1,27 @@
+<div class="quiz-container h-3/4 ml-5 mr-5">
+  <div class="pagination h-2/5 ml-10">
+    <button class="pagination-button" [ngClass]="{'enabled': currentPage !== 1, 'disabled': currentPage === 1}" (click)="prevPage()" [disabled]="currentPage === 1" >
+      <i class="fa-solid fa-arrow-left text-5xl"></i>
+    </button>
+  </div>
+
+  <ul>
+    <li *ngFor="let quiz of filteredQuizList; let i = index" class="my-8" [ngStyle]="{'display': i < pageSize ? 'block' : 'none'}">
+      <app-quiz-details
+        [quiz]="quiz"
+        [played]="hasPlayedQuiz(quiz.id)"
+        class="w-64 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 h-auto"
+      ></app-quiz-details>
+    </li>
+    <div *ngIf="filteredQuizList.length === 0" class="text-5xl text-[#2B3467] ml-2">Aucun quiz ne correspond à vos critères</div>
+  </ul>
+
+
+
+  <div class="pagination h-2/5 mr-10">
+    <button class="pagination-button" [ngClass]="{'enabled': currentPage * pageSize <= filteredQuizList.length, 'disabled': currentPage * pageSize > filteredQuizList.length}" (click)="nextPage()" [disabled]="currentPage * pageSize > filteredQuizList.length">
+      <i class="fa-solid fa-arrow-right text-5xl"></i>
+    </button>
+  </div>
+
+</div>

@@ -52,6 +52,11 @@ export class ResultService {
     return this.http.get<Result[]>(urlWithId);
   }
 
+  getResultsByQuiz(quizId: string): Observable<Result[]> {
+    const urlWithId = this.resultUrl + '/quiz/' + quizId;
+    return this.http.get<Result[]>(urlWithId);
+  }
+
   // createResult(result: Result): void {
   //   forkJoin([
   //     this.addResult(result),
