@@ -35,10 +35,13 @@
     "session-file-store": "^1.5.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.20.0",
-    "pre-commit": "1.2.2"
+    "mkdirp": "^3.0.1",
+    "pre-commit": "1.2.2",
+    "rimraf": "^5.0.1"
   },
   "nodemonConfig": {
     "ignore": [
