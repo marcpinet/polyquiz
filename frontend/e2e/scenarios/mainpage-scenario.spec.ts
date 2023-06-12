@@ -58,10 +58,28 @@ test.describe('Main page tests', () => {
       await page.getByRole('button', { name: 'Réinitialiser' }).click();
       //On verifie que le bouton s'est bien mis a jour
       await page.waitForSelector('text=Difficulté');
-      //Je ne sais pas pourquoi celui ci ne passe pas...
-      //await page.waitForSelector('text=Progrès');
+      //Utilisation de la fonction locator pour trouver la bonne instance
+      await page.locator('text=Progrès').nth(1);
       await page.waitForSelector('text=Thème');
       await page.waitForSelector('text=Durée');
+    });
+
+    await test.step('Resultats', async () => {
+      await page.getByRole('button', { name: 'Mes résultats' }).click();
+      await page.locator('text=Score').nth(1);
+      await page.locator('text=Taux de réussite').nth(1);
+    });
+
+    await test.step('Paramètres', async () => {
+      await page.getByRole('button', { name: 'Paramètres' }).click();
+      await page.locator('text=Paramètres').nth(4);
+      //await page.waitForSelector('text=Options de clic de la souris');
+      await page.locator('text=Options de clic de la souris').nth(1);
+      await page.locator('text=Action au microphones').nth(1);
+      await page.locator('text=Confirmation avant de valider').nth(1);
+      //await page.waitForSelector('text=Action au microphones');
+      //await page.waitForSelector('text=Confirmation avant de valider');
+      await page.getByRole('button', { name: 'Quiz' }).click();
     });
 
     await test.step('Aide', async () => {
