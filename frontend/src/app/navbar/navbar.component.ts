@@ -29,8 +29,14 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
+  closeDialog() {
+    let dialog = document.getElementsByTagName('dialog')[1];
+    dialog.close();
+  }
+
   navigateSettings() {
-    this.router.navigate(['/settings']);
+    let dialog = document.getElementsByTagName('dialog')[1];
+    dialog.showModal();
   }
 
   // navigateHelp() {

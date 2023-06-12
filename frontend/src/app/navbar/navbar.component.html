@@ -1,5 +1,17 @@
 <help-modal></help-modal>
 
+<dialog class="relative w-3/4 mx-auto rounded-lg border border-4 border-[#2B3467]">
+  <div class="absolute top-2 right-2">
+    <button class="flex items-center justify-center w-24 h-24 rounded-full bg-gray-200 hover:bg-[#2B3467] focus:outline-none transition-colors duration-300"
+      type="button" (click)="closeDialog()">
+      <i class="fas fa-times text-6xl text-[#EB455F]"></i>
+    </button>
+  </div>
+  <div class="mt-20">
+    <app-user-options-screen></app-user-options-screen>
+  </div>
+</dialog>
+
 <nav
   class="flex bg-[#BAD7E9] items-center relative justify-between pl-3 rounded-md"
 >
