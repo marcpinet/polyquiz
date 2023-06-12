@@ -17,6 +17,7 @@ export class ModifyQuizComponent {
   id: string;
   modifyQuestion: Question;
   modifyAnswers: Answer[];
+  tmp: Map<Question, Answer[]> = new Map<Question, Answer[]>();
 
   components = {
     QUIZ_MODIFY: ModifyQuestionAdminComponent,
@@ -32,6 +33,7 @@ export class ModifyQuizComponent {
     this.quizService.getQuizById(id).subscribe((quiz) => {
       this.quiz = quiz;
       for (let i = 0; i < this.quiz.questions.length; i++) {
+        this.tmp.set(this.quiz.questions[i], this.quiz.questions[i].answers);
         this.questionsAnswers.set(
           this.quiz.questions[i],
           this.quiz.questions[i].answers
@@ -65,19 +67,8 @@ export class ModifyQuizComponent {
   uploadQuiz(quiz: Quiz) {
     this.quiz = quiz;
     this.quiz.id = this.id;
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-    console.log(this.quiz);
-    let tmp;
-    let tmp2;
-    this.quizService.getQuizById(this.id).subscribe((quiz) => {
-      tmp = quiz;
-      for (let i = 0; i < tmp.questions.length; i++) {
-        tmp2.set(tmp2.questions[i], tmp2.questions[i].answers);
-      }
-    });
     this.quizService.deleteQuiz(this.quiz);
-    if (!this.quizService.createQuiz(this.quiz, this.questionsAnswers))
-      this.quizService.createQuiz(tmp, tmp2);
+    this.quizService.createQuiz(this.quiz, this.tmp);
     console.log(this.questionsAnswers);
     console.log(this.quiz);
   }
