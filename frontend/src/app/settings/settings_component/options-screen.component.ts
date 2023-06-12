@@ -4,6 +4,7 @@ import { SettingService } from 'src/services/settings.service';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/user.model';
+import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-options-screen',
   templateUrl: './options-screen.component.html',
@@ -23,16 +24,12 @@ export class OptionsScreenComponent implements OnInit {
 
   constructor(
     private settingService: SettingService,
-    private authService: AuthService
-  ) {
-    authService.user$.subscribe((user) => {
-      this.user = user;
-    });
-  }
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
-    console.log('settings', this.settings); //undefined
-    console.log('initSettings', this.initSettings); //undefined
+    this.user = this.userService.getUserById(this.settings.user_id);
     this.renderSettings();
   }
 
@@ -73,8 +70,28 @@ export class OptionsScreenComponent implements OnInit {
     this.settings.mouse_option = this.mouse_option;
     this.settings.microphone = this.microphone;
     this.settings.confirm_answer = this.confirm_answer;
-    if (this.user.userType == 'admin') {
-      //TODO: update initSettings of resident
+    if (this.authService.user.userType === 'admin') {
+      this.settingService.updateInitSettings(this.settings).subscribe({
+        next: (updatedSettings) => {
+          console.log('Settings updated:', updatedSettings);
+          this.settings = updatedSettings;
+          this.settingService.setSettings(this.settings);
+          Swal.fire({
+            icon: 'success',
+            title:
+              'Paramètres sauvegardés pour résident ' +
+              this.user.firstName +
+              ' ' +
+              this.user.lastName,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.renderSettings();
+        },
+        error: (error) => {
+          console.error('Error updating settings:', error);
+        },
+      });
     } else {
       //resident
       this.settingService.updateSettings(this.settings).subscribe({

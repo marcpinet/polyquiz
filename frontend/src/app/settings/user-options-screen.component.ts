@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { InitSettings, Settings } from 'src/models/settings.model';
-import { InitSettingService } from 'src/services/initsettings.service';
 import { SettingService } from 'src/services/settings.service';
 import { AuthService } from 'src/services/auth.service';
 
@@ -13,17 +12,17 @@ export class UserOptionsScreenComponent {
   settings: Settings;
 
   constructor(
-    private initSettingService: InitSettingService,
     private settingService: SettingService,
     private authService: AuthService
   ) {
     const userId = this.authService.user.id;
     console.log('userId', userId);
-    this.initSettingService.setSelectedInitSetting(userId.toString());
-    this.initSettingService.initsettingsSelected$.subscribe((initSettings) => {
+    this.settingService.setSelectedInitSetting(userId.toString());
+    this.settingService.initsettingsSelected$.subscribe((initSettings) => {
       this.initSettings = initSettings;
       console.log('initSettings', initSettings);
     });
+
     this.settingService.settings$.subscribe((settings) => {
       this.settings = settings;
       console.log('settings', settings);
