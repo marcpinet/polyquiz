@@ -62,8 +62,17 @@ export class ModifyQuizComponent {
 
   uploadQuiz(quiz: Quiz) {
     this.quiz = quiz;
+    let tmp;
+    let tmp2;
+    this.quizService.getQuizById(this.quiz.id).subscribe((quiz) => {
+      tmp = quiz;
+      for (let i = 0; i < tmp.questions.length; i++) {
+        tmp2.set(tmp2.questions[i], tmp2.questions[i].answers);
+      }
+    });
     this.quizService.deleteQuiz(this.quiz);
-    this.quizService.createQuiz(this.quiz, this.questionsAnswers);
+    if (!this.quizService.createQuiz(this.quiz, this.questionsAnswers))
+      this.quizService.createQuiz(tmp, tmp2);
     console.log(this.questionsAnswers);
     console.log(this.quiz);
   }

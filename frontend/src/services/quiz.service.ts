@@ -98,7 +98,7 @@ export class QuizService {
     return this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions);
   }
 
-  createQuiz(quiz: Quiz, questionAnswers: Map<Question, Answer[]>) {
+  createQuiz(quiz: Quiz, questionAnswers: Map<Question, Answer[]>): boolean {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe({
       next: (createdQuiz) => {
         console.log('Quiz was created successfully');
@@ -128,6 +128,7 @@ export class QuizService {
                       next: (createdAnswer) => {
                         console.log('Answer was created successfully');
                         requestsCompleted++;
+
                         if (
                           requestsCompleted ===
                           questionAnswers.size * answers.length
@@ -140,6 +141,7 @@ export class QuizService {
                             showConfirmButton: false,
                           }).then(() => {
                             this.router.navigate(['/admin/quiz']);
+                            return true;
                           });
                         }
                       },
@@ -152,6 +154,7 @@ export class QuizService {
                           timer: 2000,
                           showConfirmButton: false,
                         });
+                        return false;
                       },
                     });
                 });
@@ -165,6 +168,7 @@ export class QuizService {
                   timer: 2000,
                   showConfirmButton: false,
                 });
+                return false;
               },
             });
         });
@@ -178,8 +182,10 @@ export class QuizService {
           timer: 2000,
           showConfirmButton: false,
         });
+        return false;
       },
     });
+    return false;
   }
 
   createQuestion(quizId: string, question: Question): Observable<Question> {

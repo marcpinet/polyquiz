@@ -62,24 +62,12 @@ export class ModifyQuizAdminComponent implements OnInit {
   public updateQuiz() {
     console.log('update quiz');
     console.log(this.questions);
-    if (this.quizForm.value.quizName != undefined) {
-      this.quiz.name = this.quizForm.value.quizName;
-    }
-    if (this.quizForm.value.quizImage != undefined) {
-      this.quiz.image = this.quizForm.value.quizImage;
-    }
-    if (this.quizForm.value.quizDifficulty != undefined) {
-      this.quiz.difficulty = this.quizForm.value.quizDifficulty;
-    }
-    if (this.quizForm.value.quizDescription != undefined) {
-      this.quiz.description = this.quizForm.value.quizDescription;
-    }
-    if (this.quizForm.value.quizEstimatedTime != undefined) {
-      this.quiz.estimated_time = this.quizForm.value.quizEstimatedTime;
-    }
-    if (this.quizForm.value.quizTheme != undefined) {
-      this.quiz.themeId = this.quizForm.value.quizTheme;
-    }
+    this.quiz.name = this.quizForm.value.quizName;
+    this.quiz.image = this.quizForm.value.quizImage;
+    this.quiz.difficulty = this.quizForm.value.quizDifficulty;
+    this.quiz.description = this.quizForm.value.quizDescription;
+    this.quiz.estimated_time = this.quizForm.value.quizEstimatedTime;
+    this.quiz.themeId = this.quizForm.value.quizTheme;
   }
 
   public updateForm() {
