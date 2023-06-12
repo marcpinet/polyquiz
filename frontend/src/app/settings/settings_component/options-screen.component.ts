@@ -87,6 +87,11 @@ export class OptionsScreenComponent implements OnInit {
             timer: 1500,
           });
           this.renderSettings();
+          //check if there is dialog as parent element
+          let dialog = document.getElementsByTagName('dialog')[1];
+          if (dialog) {
+            dialog.close();
+          }
         },
         error: (error) => {
           console.error('Error updating settings:', error);
@@ -106,6 +111,10 @@ export class OptionsScreenComponent implements OnInit {
             timer: 1500,
           });
           this.renderSettings();
+          let dialog = document.getElementsByTagName('dialog')[1];
+          if (dialog) {
+            dialog.close();
+          }
         },
         error: (error) => {
           console.error('Error updating settings:', error);
