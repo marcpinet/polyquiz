@@ -14,6 +14,7 @@ export class ModifyQuizComponent {
   quiz: Quiz;
   questionsAnswers: Map<Question, Answer[]> = new Map<Question, Answer[]>();
   currentTab = '';
+  id: string;
   modifyQuestion: Question;
   modifyAnswers: Answer[];
 
@@ -26,6 +27,7 @@ export class ModifyQuizComponent {
     this.quiz = {} as Quiz;
     console.log('modify component');
     const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
     this.quizService.retrieveQuizzes();
     this.quizService.getQuizById(id).subscribe((quiz) => {
       this.quiz = quiz;
@@ -62,9 +64,12 @@ export class ModifyQuizComponent {
 
   uploadQuiz(quiz: Quiz) {
     this.quiz = quiz;
+    this.quiz.id = this.id;
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+    console.log(this.quiz);
     let tmp;
     let tmp2;
-    this.quizService.getQuizById(this.quiz.id).subscribe((quiz) => {
+    this.quizService.getQuizById(this.id).subscribe((quiz) => {
       tmp = quiz;
       for (let i = 0; i < tmp.questions.length; i++) {
         tmp2.set(tmp2.questions[i], tmp2.questions[i].answers);
