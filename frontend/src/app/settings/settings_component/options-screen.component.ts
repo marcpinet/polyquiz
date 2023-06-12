@@ -1,12 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { InitSettings, Settings } from 'src/models/settings.model';
 import { SettingService } from 'src/services/settings.service';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-options-screen',
   templateUrl: './options-screen.component.html',
 })
-export class OptionsScreenComponent {
+export class OptionsScreenComponent implements OnInit {
   @Input() settings: Settings;
   @Input() initSettings: InitSettings;
 
@@ -19,10 +20,9 @@ export class OptionsScreenComponent {
   microphone: boolean;
   confirm_answer: boolean;
 
-  constructor(
-    private settingService: SettingService) {
-    console.log('settings', this.settings);
-    console.log('initSettings', this.initSettings);
+  constructor(private settingService: SettingService) {}
+
+  ngOnInit() {
     this.renderSettings();
   }
 

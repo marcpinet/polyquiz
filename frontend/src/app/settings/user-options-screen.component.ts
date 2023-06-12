@@ -3,7 +3,7 @@ import { InitSettings, Settings } from 'src/models/settings.model';
 import { InitSettingService } from 'src/services/initsettings.service';
 import { SettingService } from 'src/services/settings.service';
 import { AuthService } from 'src/services/auth.service';
-import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-user-options-screen',
   templateUrl: './user-options-screen.component.html',
