@@ -22,16 +22,42 @@ test.describe('Main page tests', () => {
       await page.waitForSelector('text=1 / 1');
       await page.getByRole('cell', { name: '1680382334189' });
       await page.getByRole('navigation').getByRole('img').click();
+    });
 
-      await page.waitForSelector('text=Mes résidents');
-      // Sélectionner l'option "Moyen"
-      await page.selectOption('role=combobox', { label: 'Moyen' });
-      await page.getByRole('button', { name: 'OK' }).click();
-      //On verifie que le bouton s'est bien mis a jour
-      await page.waitForSelector('text=Moyen');
+    await test.step('AdminAide', async () => {
+      await page.getByRole('button', { name: 'Aide' }).click();
+      await page.waitForSelector('text=Comment modifier les paramètres ?');
+      await page.waitForSelector('text=Comment suivre mes progrès ?');
+      await page.waitForSelector('text=Les différents paramètres');
+      await page.waitForSelector('text=Options de clics de souris :');
+      await page.waitForSelector('text=Action au microphone :');
+      await page.waitForSelector('text=Clics avec barre espace :');
+      await page.waitForSelector('text=Confirmation avant de valider :');
+      await page.getByRole('button', { name: 'Fermer' }).click();
+    });
+
+    await test.step('AdminParamètres', async () => {
+      await page.getByRole('button', { name: 'Paramètres' }).click();
+      await page.locator('text=Options de clic de la souris').nth(1);
+      await page.locator('text=Double clique').nth(1);
+      await page.locator('text=Pression longue').nth(1);
+      await page.locator('text=Clics avec barre espace').nth(1);
+      await page.locator('text=Action au microphone').nth(1);
+      await page.locator('text=Confirmation avant de valider :').nth(1);
+      await page.waitForSelector('text=Sauvegarder');
+      await page.getByRole('button', { name: 'Réinitialiser' }).click();
+      await page.getByRole('button', { name: '' }).click();
+    });
+
+    await test.step('AdminProfil', async () => {
+      await page.getByRole('navigation').getByRole('img').first().click();
+      await page.locator('text=Score').nth(1);
+      await page.locator('text=Taux de réussite').nth(1);
+      await page.getByRole('button').first().click();
     });
 
     await test.step('Deconnexion', async () => {
+      await page.getByRole('navigation').getByRole('img').first().click();
       await page.getByRole('button', { name: 'Se Déconnecter' }).click();
     });
   });
