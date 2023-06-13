@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class AddThemeComponent {
   public theme: Theme;
   public themeForm: FormGroup;
-  public submitted = false; // Added variable for form submission
+  public submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,10 +26,10 @@ export class AddThemeComponent {
   }
 
   addTheme() {
-    this.submitted = true; // Set submitted to true on button click
+    this.submitted = true;
 
     if (this.themeForm.invalid) {
-      return; // Do not proceed if form is invalid
+      return;
     }
 
     const theme: Theme = {
@@ -39,10 +39,12 @@ export class AddThemeComponent {
 
     this.themeService.addTheme(theme).subscribe(
       () => {
+        //Swal fire in 1.5s
         Swal.fire({
           icon: 'success',
-          title: 'Réussi',
-          text: 'Thème ajouté avec succès',
+          title: 'Thème ajouté',
+          showConfirmButton: false,
+          timer: 1500,
         });
       },
       (error) => {
@@ -50,6 +52,8 @@ export class AddThemeComponent {
           icon: 'error',
           title: 'Oops...',
           text: "Une erreur est survenue lors de l'ajout du thème",
+          showConfirmButton: false,
+          timer: 1500,
         });
       }
     );
