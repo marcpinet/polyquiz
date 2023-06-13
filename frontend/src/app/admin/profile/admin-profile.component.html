@@ -25,12 +25,12 @@
 
       <div class="flex justify-center mt-6 pb-5">
         <button
-          class="flex flex-col items-center bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl mr-2">
+          class="flex flex-col items-center bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl mr-2" (click)="passwordPopUp()">
           <i class="fas fa-key text-white text-2xl"></i>
           <span class="mt-2 text-[#2B3467] text-2xl">Changer mot de passe</span>
         </button>
         <button
-          class="flex flex-col items-center bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl ml-2">
+          class="flex flex-col items-center bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl ml-2" (click)="profileUpdatePopUp()">
           <i class="fas fa-user-edit text-white text-2xl"></i>
           <span class="mt-2 text-[#2B3467] text-2xl">Mettre à jour le profil</span>
         </button>
@@ -39,3 +39,4 @@
     </div>
   </div>
 </div>
+<password-change-modal></password-change-modal>

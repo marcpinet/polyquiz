@@ -48,6 +48,8 @@ import { QuizRecommendComponent } from './quiz/quiz-recommend/quiz-recommend.com
 import { SettingsModalComponent } from './modals/settings-modal/settings-modal.component';
 import { AddThemeModalComponent } from './admin/modals/add-theme-modal/add-theme-modal.component';
 import { AdminProfileComponent } from './admin/profile/admin-profile.component';
+import { AdminPasswordChangeComponent } from './admin/profile/password-change/password-change.component';
+import { AdminPasswordChangeModal } from './admin/modals/admin-password-change-modal/password-change-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,6 +93,8 @@ import { AdminProfileComponent } from './admin/profile/admin-profile.component';
     SettingsModalComponent,
     AddThemeModalComponent,
     AdminProfileComponent,
+    AdminPasswordChangeComponent,
+    AdminPasswordChangeModal,
   ],
   imports: [
     BrowserModule,

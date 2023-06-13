@@ -138,4 +138,16 @@ export class UserService {
   getUserById(id: number): User {
     return this.users.find((user) => user.id == id);
   }
+
+  updatePassword(
+    userId: number,
+    oldPassword: string,
+    newPassword: string
+  ): Observable<any> {
+    return this.http.put(
+      `${this.userUrl}/${userId}/password`,
+      { oldPassword, newPassword },
+      this.httpOptions
+    );
+  }
 }
