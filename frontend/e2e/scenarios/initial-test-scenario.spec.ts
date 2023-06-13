@@ -69,6 +69,8 @@ test.describe('Quiz tests', () => {
 
     expect(page.url()).toMatch(testResultRegex);
 
-    await page.dblclick('img');
+    expect((await page.textContent('#correct')).trim()).toBe('3');
+
+    expect((await page.textContent('#incorrect')).trim()).toBe('0');
   });
 });
