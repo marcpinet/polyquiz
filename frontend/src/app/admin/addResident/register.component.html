@@ -2,7 +2,7 @@
   <div class="text-center mb-10">
     <h1 class="font-bold text-3xl text-[#2B3467]">Créer Un Compte Résident</h1>
   </div>
-  <form [formGroup]="residentForm">
+  <form [formGroup]="residentForm" (ngSubmit)="addResident()">
     <!-- <div class="flex -mx-3">
       <div
         x-data="{photoName: null, photoPreview: null}"
@@ -99,6 +99,9 @@
             placeholder="John"
           />
         </div>
+        <div *ngIf="residentForm.get('lastName').invalid && (residentForm.get('lastName').touched || submitted)" class="text-red-500 text-xl mt-1">
+          Nom du résident est requis
+        </div>
       </div>
       <div class="w-full px-3 mb-5">
         <label for="" class="text-lg font-bold text-[#2B3467] px-1"
@@ -117,6 +120,8 @@
             placeholder="Doe"
           />
         </div>
+        <div *ngIf="residentForm.get('firstName').invalid && (residentForm.get('firstName').touched || submitted)" class="text-red-500 text-xl mt-1">
+          Prénom du résident est requis</div>
       </div>
     </div>
     <div class="flex -mx-3">
@@ -149,6 +154,8 @@
               >Masculin</label
             >
           </div>
+          <div *ngIf="residentForm.get('sexe').invalid && (residentForm.get('sexe').touched || submitted)" class="text-red-500 text-xl mt-1">
+            Sexe du résident est requis</div>
         </div>
       </div>
     </div>
@@ -176,6 +183,8 @@
             }}</label>
           </div>
         </div>
+        <div *ngIf="residentForm.get('symptome').invalid && (residentForm.get('symptome').touched || submitted)" class="text-red-500 text-xl mt-1">
+          Symptôme(s) du résident est requis</div>
       </div>
     </div>
 
@@ -197,6 +206,8 @@
             placeholder="01/01/1990"
           />
         </div>
+        <div *ngIf="residentForm.get('dateOfBirth').invalid && (residentForm.get('dateOfBirth').touched || submitted)" class="text-red-500 text-xl mt-1">
+          Date de naissance du résident est requise</div>
       </div>
     </div>
     <div class="flex -mx-3">
@@ -217,6 +228,8 @@
             placeholder="JohnDoe123"
           />
         </div>
+        <div *ngIf="residentForm.get('userName').invalid && (residentForm.get('userName').touched || submitted)" class="text-red-500 text-xl mt-1">
+          Pseudonyme du résident est requis</div>
       </div>
     </div>
     <div class="flex -mx-3">
@@ -237,6 +250,10 @@
             placeholder="************"
           />
         </div>
+        <div *ngIf="residentForm.get('password').hasError('passwordLength') && (residentForm.get('password').touched || submitted)" class="text-red-500 text-xl mt-1">
+          Le mot de passe doit avoir au moins 5 caractères.
+        </div>
+
       </div>
     </div>
 
@@ -252,11 +269,16 @@
             <i class="fa-solid fa-lock text-gray-400 text-lg"></i>
           </div>
           <input
-            type="password"
+          type="password"
+          [formControlName]="'confirmPassword'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
             placeholder="************"
           />
         </div>
+        <div *ngIf="residentForm.get('confirmPassword').hasError('passwordMatch') && (residentForm.get('confirmPassword').touched || submitted)" class="text-red-500 text-xl mt-1">
+          Mot de passe n'est pas le même
+        </div>
+
       </div>
     </div>
     <!-- TODO: Error if confirmPassword is not the same as Password or not have enough characters -->
@@ -264,9 +286,8 @@
     <div class="flex -mx-3">
       <div class="w-full px-3 mb-5">
         <button
-          class="block w-full max-w-xs mx-auto text-xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline"
-          (click)="addResident()"
-        >
+          class="block w-full max-w-xs mx-auto text-2xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-5 py-5 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline disabled:opacity-50"
+          type="submit" [disabled]="residentForm.invalid">
           Enregistrer
         </button>
       </div>
