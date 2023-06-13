@@ -33,9 +33,7 @@ test.describe('Quiz tests', () => {
 
     await page.click('#theme');
 
-    await page.click('select');
-
-    await page.click('option[value="Géographie"]');
+    await page.selectOption('select', 'Géographie');
 
     await page.click('button:has-text("OK")');
 
