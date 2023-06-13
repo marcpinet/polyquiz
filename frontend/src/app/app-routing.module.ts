@@ -65,6 +65,7 @@ const routes: Routes = [
     path: 'admin/add-resident',
     canActivate: [RouteGuardAdminService],
     component: RegisterComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'admin/stats-resident/:id',
@@ -85,6 +86,7 @@ const routes: Routes = [
     path: 'admin/theme/add',
     canActivate: [RouteGuardAdminService],
     component: AddThemeComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'admin/theme/modif/:id',
@@ -95,6 +97,7 @@ const routes: Routes = [
     path: 'admin/quiz/add',
     canActivate: [RouteGuardAdminService],
     component: AddQuizComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'admin/modif-resident/:id',

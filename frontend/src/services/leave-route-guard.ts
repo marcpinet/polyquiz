@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 export class LeaveRouteGuard implements CanDeactivate<any> {
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     return new Observable<boolean>((observer) => {
-      //if route is /game
       if (window.location.pathname.startsWith('/game')) {
         Swal.fire({
           title: 'Êtes-vous sûr de vouloir quitter la partie ?',
@@ -24,6 +23,25 @@ export class LeaveRouteGuard implements CanDeactivate<any> {
             '<span id="oui" style="font-size: 8vmin; padding: 50px 50px; ">Oui, quitter</span>',
           cancelButtonText:
             '<span id="non" style="font-size: 8vmin; padding: 50px 50px;">Non, rester</span>',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            observer.next(true); // Allow navigation
+          } else {
+            observer.next(false); // Prevent navigation
+          }
+          observer.complete();
+        });
+      } else {
+        //other routes in admin
+        Swal.fire({
+          title: 'Êtes-vous sûr de vouloir quitter la page ?',
+          text: 'Vous perdrez votre progression',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Oui, quitter',
+          cancelButtonText: 'Non, rester',
         }).then((result) => {
           if (result.isConfirmed) {
             observer.next(true); // Allow navigation
