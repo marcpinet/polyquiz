@@ -73,4 +73,25 @@ test.describe('Quiz tests', () => {
 
     expect((await page.textContent('#incorrect')).trim()).toBe('0');
   });
+
+  test('ResetParams', async ({ page }) => {
+    await page.setViewportSize({
+      width: 1920 * (3 / 4),
+      height: 1080 * (3 / 4),
+    });
+
+    await page.goto(testUrl);
+
+    await page.type('#username', 'gekomoria');
+
+    await page.type('#password', '123456');
+
+    await page.click('button:text(" Se connecter ")');
+
+    await page.dblclick('button[data-tab="PARAMETRES"]');
+
+    await page.dblclick('#desactiver_souris');
+
+    await page.dblclick('#sauvegarder');
+  });
 });

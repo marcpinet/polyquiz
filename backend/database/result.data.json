@@ -746,5 +746,16 @@
     "time_per_question": 3,
     "click_error": -1,
     "id": 1686647539369
+  },
+  {
+    "quiz_id": 1679875889425,
+    "date": "2023-06-13T09:15:49.098Z",
+    "user_id": 1680382334270,
+    "right_answers": 3,
+    "wrong_answers": 0,
+    "play_time": 9,
+    "time_per_question": 3,
+    "click_error": -1,
+    "id": 1686647749121
   }
 ]
