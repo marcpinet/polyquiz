@@ -8,6 +8,7 @@ export class ThemesComponent {
   constructor(private router: Router) {}
 
   navigateAddTheme() {
-    this.router.navigate(['/admin/theme/add']);
+    let dialog = document.getElementsByTagName('dialog')[1];
+    dialog.showModal();
   }
 }

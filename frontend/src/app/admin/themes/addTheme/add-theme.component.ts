@@ -46,6 +46,8 @@ export class AddThemeComponent {
           showConfirmButton: false,
           timer: 1500,
         });
+        let dialog = document.getElementsByTagName('dialog')[1];
+        dialog.close();
       },
       (error) => {
         Swal.fire({
