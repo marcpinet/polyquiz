@@ -31,34 +31,44 @@ test.describe('Quiz tests', () => {
 
     await page.click('button:text(" Se connecter ")');
 
-    await page.click('#theme');
+    await page.click('button[data-tab="PARAMETRES"]');
+
+    await page.click('#activer_double_clic');
+
+    await page.click('#sauvegarder');
+
+    await page.dblclick('button[data-tab="QUIZ"]');
+
+    await page.dblclick('#theme');
 
     await page.selectOption('select', 'Géographie');
 
-    await page.click('button:has-text("OK")');
+    await page.dblclick('button:has-text("OK")');
 
-    await page.click('app-quiz-details');
+    await page.dblclick('app-quiz-details');
 
     expect(page.url()).toBe(testQuiz);
 
-    await page.click('#vrai');
+    await page.dblclick('#faux');
 
-    await page.click('#vrai');
+    await page.dblclick('#faux');
 
-    await page.click('button:text("Suivant")');
+    await page.dblclick('button:text("Suivant")');
 
-    await page.click('[data-number="un"]');
+    await page.dblclick('[data-number="quatre"]');
 
-    await page.click('[data-number="un"]');
+    await page.dblclick('[data-number="quatre"]');
 
-    await page.click('button:text("Suivant")');
+    await page.dblclick('button:text("Suivant")');
 
-    await page.click('[data-number="deux"]');
+    await page.dblclick('[data-number="trois"]');
 
-    await page.click('[data-number="deux"]');
+    await page.dblclick('[data-number="trois"]');
 
-    await page.click('button:text("Suivant")');
+    await page.dblclick('button:text("Suivant")');
 
     expect(page.url()).toMatch(testResultRegex);
+
+    await page.dblclick('img');
   });
 });
