@@ -69,7 +69,7 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   navigateProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/admin/profile']);
   }
 
   navigateSettings() {
