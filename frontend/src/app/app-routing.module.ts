@@ -20,11 +20,13 @@ import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.comp
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
 import { AdminNotificationComponent } from './admin/notification/notification.component';
+import { LeaveRouteGuard } from 'src/services/leave-route-guard';
 const routes: Routes = [
   {
     path: 'game/:id',
     canActivate: [RouteGuardService],
     component: GamePageComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'login',
