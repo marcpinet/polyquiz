@@ -150,4 +150,12 @@ export class UserService {
       this.httpOptions
     );
   }
+
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(
+      `${this.userUrl}/${user.id}`,
+      user,
+      this.httpOptions
+    );
+  }
 }

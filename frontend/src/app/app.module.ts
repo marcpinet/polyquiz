@@ -50,6 +50,8 @@ import { AddThemeModalComponent } from './admin/modals/add-theme-modal/add-theme
 import { AdminProfileComponent } from './admin/profile/admin-profile.component';
 import { AdminPasswordChangeComponent } from './admin/profile/password-change/password-change.component';
 import { AdminPasswordChangeModal } from './admin/modals/admin-password-change-modal/password-change-modal.component';
+import { AdminProfileUpdateComponent } from './admin/profile/profile-update/profile-update.component';
+import { AdminProfileUpdateModal } from './admin/modals/admin-profile-update-modal/profile-update-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,6 +97,8 @@ import { AdminPasswordChangeModal } from './admin/modals/admin-password-change-m
     AdminProfileComponent,
     AdminPasswordChangeComponent,
     AdminPasswordChangeModal,
+    AdminProfileUpdateComponent,
+    AdminProfileUpdateModal,
   ],
   imports: [
     BrowserModule,

@@ -29,6 +29,7 @@ export class AdminProfileComponent {
   }
 
   profileUpdatePopUp() {
-    //TODO
+    let dialog = document.getElementsByTagName('dialog')[2];
+    dialog.showModal();
   }
 }
