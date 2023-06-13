@@ -91,7 +91,7 @@ export class AdminMainPage {
   }
 
   navigateProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/admin/profile']);
   }
 
   switchNotifications() {

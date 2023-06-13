@@ -1,0 +1,41 @@
+<div class="bg-white">
+  <div class="relative mx-auto w-2/3 mt-6 min-w-0 break-words bg-[#BAD7E9] mb-6 shadow-lg rounded-xl scale-60">
+    <div class="px-6 mt-16">
+      <div class="flex flex-wrap justify-center">
+        <div class="w-full flex justify-center">
+          <div class="relative mr-5">
+            <img src="{{this.user.avatar}}"
+              class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]" />
+          </div>
+        </div>
+        <div class="w-full text-center mt-20">
+          <h3 class="text-2xl text-[#2b3467] font-bold leading-normal mb-1">
+            {{this.user.firstName}} {{this.user.lastName}}
+          </h3>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <button class="bg-white hover:bg-[#90C1DF] text-[#EB455F] font-bold py-6 px-12 rounded-lg text-2xl"
+          (click)="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Se Déconnecter
+        </button>
+      </div>
+
+      <div class="flex justify-center mt-6 pb-5">
+        <button
+          class="flex flex-col items-center bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl mr-2">
+          <i class="fas fa-key text-white text-2xl"></i>
+          <span class="mt-2 text-[#2B3467] text-2xl">Changer mot de passe</span>
+        </button>
+        <button
+          class="flex flex-col items-center bg-[#90C1DF] text-[#2B3467] font-bold py-6 px-12 rounded-lg text-xl ml-2">
+          <i class="fas fa-user-edit text-white text-2xl"></i>
+          <span class="mt-2 text-[#2B3467] text-2xl">Mettre à jour le profil</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

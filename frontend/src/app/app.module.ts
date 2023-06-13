@@ -47,6 +47,7 @@ import { UserOptionsScreenComponent } from './settings/user-options-screen.compo
 import { QuizRecommendComponent } from './quiz/quiz-recommend/quiz-recommend.component';
 import { SettingsModalComponent } from './modals/settings-modal/settings-modal.component';
 import { AddThemeModalComponent } from './admin/modals/add-theme-modal/add-theme-modal.component';
+import { AdminProfileComponent } from './admin/profile/admin-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +90,7 @@ import { AddThemeModalComponent } from './admin/modals/add-theme-modal/add-theme
     QuizRecommendComponent,
     SettingsModalComponent,
     AddThemeModalComponent,
+    AdminProfileComponent,
   ],
   imports: [
     BrowserModule,
