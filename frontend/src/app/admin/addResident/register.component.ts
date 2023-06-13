@@ -1,5 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 import { Resident } from 'src/models/resident.model';
@@ -7,7 +14,7 @@ import { Resident } from 'src/models/resident.model';
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   public residentForm: FormGroup;
   symptomes = [
     {
@@ -20,6 +27,8 @@ export class RegisterComponent implements OnInit {
     { name: 'Rigidité', value: 'rigidite', id: 2, checked: false },
     { name: 'Autres', value: 'autres', id: 3, checked: false },
   ];
+  public submitted = false;
+
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder
@@ -36,7 +45,15 @@ export class RegisterComponent implements OnInit {
         [
           Validators.maxLength(20),
           Validators.minLength(5),
-          Validators.required,
+          this.validatePasswordLength,
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [
+          Validators.maxLength(20),
+          Validators.minLength(5),
+          this.passwordMatchValidator,
         ],
       ],
       userType: 'patient',
@@ -44,9 +61,9 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
   addResident() {
+    this.submitted = true;
+
     const symptomeArray = this.symptomes
       .filter((symptome) => symptome.checked)
       .map((symptome) => symptome.value);
@@ -81,5 +98,24 @@ export class RegisterComponent implements OnInit {
       'symptome',
       this.formBuilder.array(symptomeArray)
     );
+  }
+
+  public validatePasswordLength(
+    control: AbstractControl
+  ): ValidationErrors | null {
+    const password = control.value;
+    if (password && password.length < 5) {
+      return { passwordLength: true };
+    }
+    return null;
+  }
+
+  passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.parent?.get('password')?.value;
+    const confirmPassword = control.value;
+    if (password !== confirmPassword) {
+      return { passwordMatch: true };
+    }
+    return null;
   }
 }
