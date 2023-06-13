@@ -95,7 +95,7 @@ router.delete("/:userId", (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { userName, password } = req.body;
     const existingUser = await User.findOne({ userName });
@@ -104,17 +104,17 @@ router.post('/login', async (req, res) => {
     }
     if (await bcrypt.compare(password, existingUser.password)) {
       req.session.userId = existingUser.id;
-      return res.status(200).json(existingUser)
+      return res.status(200).json(existingUser);
     } else {
-      return res.status(200).json({ 'errors': 'Wrong password' })
+      return res.status(200).json({ errors: "Wrong password" });
     }
   } catch (err) {
-    console.log(err)
-    manageAllErrors(res, err)
+    console.log(err);
+    manageAllErrors(res, err);
   }
 });
 
-router.get('/login', async (req, res) => {
+router.get("/login", async (req, res) => {
   try {
     console.log(req.session.userId);
     if (req.session.userId !== undefined) {
@@ -123,32 +123,53 @@ router.get('/login', async (req, res) => {
       return res.status(200).json(existingUser);
     }
     if (req.body.userName !== undefined) {
-      const existingUser = await User.findOne({userName: userName });
+      const existingUser = await User.findOne({ userName: userName });
       console.log(existingUser);
       return res.status(200).json(existingUser);
     }
     return res.status(200).json({});
   } catch (err) {
     console.log(err);
-    manageAllErrors(res, err)
+    manageAllErrors(res, err);
   }
 });
 
-router.get('/logout', (req, res) => {
+router.put("/:userId/password", async (req, res) => {
   try {
-      req.session.destroy(err => {
-          if (err) {
-              return res.status(200).json({'success': false})
-          }
-          res.clearCookie(SESSION_NAME);
-          console.log('Logged out');
-          return res.status(200).json({'success': true})
-      })
+    const { oldPassword, newPassword } = req.body;
+    const userId = parseInt(req.params.userId);
+    const existingUser = await User.findOne({ id: userId });
+    if (!existingUser) {
+      return res
+        .status(404)
+        .json({ error: "User not found" + req.params.userId });
+    }
+    if (await bcrypt.compare(oldPassword, existingUser.password)) {
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      const user = await User.update(userId, { password: hashedPassword });
+      return res.status(200).json(user);
+    } else {
+      return res.status(400).json({ error: "Wrong password" });
+    }
   } catch (err) {
-      manageAllErrors(res, err)
+    console.log(err);
+    manageAllErrors(res, err);
   }
 });
 
-
+router.get("/logout", (req, res) => {
+  try {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(200).json({ success: false });
+      }
+      res.clearCookie(SESSION_NAME);
+      console.log("Logged out");
+      return res.status(200).json({ success: true });
+    });
+  } catch (err) {
+    manageAllErrors(res, err);
+  }
+});
 
 module.exports = router;

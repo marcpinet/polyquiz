@@ -22,4 +22,14 @@ export class AdminProfileComponent {
   logout() {
     this.authService.logout();
   }
+
+  passwordPopUp() {
+    let dialog = document.getElementsByTagName('dialog')[1];
+    dialog.showModal();
+  }
+
+  profileUpdatePopUp() {
+    let dialog = document.getElementsByTagName('dialog')[2];
+    dialog.showModal();
+  }
 }
