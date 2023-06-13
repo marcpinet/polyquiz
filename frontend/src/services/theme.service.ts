@@ -40,4 +40,8 @@ export class ThemesService {
       this.themeSelected$.next(theme);
     });
   }
+
+  addTheme(theme: Theme): Observable<Theme> {
+    return this.http.post<Theme>(this.themeUrl, theme, this.httpOptions);
+  }
 }

@@ -83,12 +83,6 @@ const routes: Routes = [
     component: ThemesComponent,
   },
   {
-    path: 'admin/theme/add',
-    canActivate: [RouteGuardAdminService],
-    component: AddThemeComponent,
-    canDeactivate: [LeaveRouteGuard],
-  },
-  {
     path: 'admin/theme/modif/:id',
     canActivate: [RouteGuardAdminService],
     component: ModifyThemeComponent,
