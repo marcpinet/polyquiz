@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { testQuiz, testResultRegex, testUrl } from 'e2e/e2e.config';
+import { webkit } from 'playwright';
 
 // This file is here to test the playwright integration.
 test.describe('Initial test display', () => {
@@ -17,6 +18,11 @@ test.describe('Initial test display', () => {
 
 test.describe('Quiz tests', () => {
   test('test Quiz', async ({ page }) => {
+    await page.setViewportSize({
+      width: 1920 * (3 / 4),
+      height: 1080 * (3 / 4),
+    });
+
     await page.goto(testUrl);
 
     await page.type('#username', 'gekomoria');
@@ -24,6 +30,14 @@ test.describe('Quiz tests', () => {
     await page.type('#password', '123456');
 
     await page.click('button:text(" Se connecter ")');
+
+    await page.click('#theme');
+
+    await page.click('select');
+
+    await page.click('option[value="Géographie"]');
+
+    await page.click('button:has-text("OK")');
 
     await page.click('app-quiz-details');
 
