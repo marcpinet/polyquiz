@@ -56,6 +56,25 @@ test.describe('Main page tests', () => {
       await page.getByRole('button').first().click();
     });
 
+    await test.step('UserProfil', async () => {
+      await page.getByPlaceholder(
+        "Entrez le nom du résident ou son numéro d'identification"
+      );
+      await page.getByRole('cell', { name: 'user user user' }).click();
+      await page.waitForSelector('text=Date de naissance');
+      await page.waitForSelector('text=Troubles');
+      await page.waitForSelector("text=Total du nombre d'essais");
+    });
+
+    await test.step('Modifier le profil', async () => {
+      await page.getByRole('button', { name: 'Modifier le profil' }).click();
+      await page.waitForSelector('text=Modifier Compte Du Résident user user');
+      await page.waitForSelector('text=Information généraux');
+      await page.waitForSelector('text=Symtômes');
+      await page.waitForSelector('text=Effet sonore: Étendu');
+      await page.getByRole('button').first().click();
+    });
+
     await test.step('Deconnexion', async () => {
       await page.getByRole('navigation').getByRole('img').first().click();
       await page.getByRole('button', { name: 'Se Déconnecter' }).click();
