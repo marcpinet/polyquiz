@@ -78,4 +78,11 @@ export class NotificationService {
       this.httpOptions
     );
   }
+
+  setNotificationAsSeen(notification: Notification) {
+    notification.seen = true;
+    this.updateNotification(notification).subscribe((notif) => {
+      console.log(notif);
+    });
+  }
 }

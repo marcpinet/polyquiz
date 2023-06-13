@@ -45,12 +45,12 @@
       <!-- Stats -->
       <h1 class="text-3xl text-[#2b3467] font-bold mt-2 mb-2">Statistiques</h1>
 
-      <div class="w-7/8 mx-auto bg-white rounded-xl">
+      <div class="w-3/4 mx-auto bg-white rounded-xl">
         <canvas baseChart class="chart" [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType"
          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
 
-      <div class="w-7/8 mx-auto bg-white rounded-xl mt-5">
+      <div class="w-3/4 mx-auto bg-white rounded-xl mt-5">
         <div class="p-2 rounded-xl">
           <div class="flex border-b-2 border-[#2B3467] py-2">
             <div class="flex-1 text-left text-2xl font-bold text-[#2B3467]">Temps moyen par question</div>

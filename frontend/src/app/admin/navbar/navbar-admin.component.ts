@@ -32,6 +32,7 @@ export class AdminNavbarComponent implements OnInit {
       .getNotificationsOfUser(this.user.id)
       .subscribe((notifications) => {
         const notif = notifications;
+        notif.reverse();
         for (const element of notif) {
           let notification = element;
           let user = this.userService.getUserById(notification.sender_id);
@@ -80,7 +81,8 @@ export class AdminNavbarComponent implements OnInit {
     this.showNotifications = !this.showNotifications;
   }
 
-  navigateNotif(notification: number) {
+  navigateNotif(notification: Notification) {
+    this.notificationService.setNotificationAsSeen(notification);
     this.showNotifications = false;
     const currentUrl = this.router.url;
     const baseUrl = '/admin/notification/';
@@ -90,12 +92,12 @@ export class AdminNavbarComponent implements OnInit {
         currentUrl.substring(baseUrl.length),
         10
       );
-      if (currentNotification !== notification) {
-        const newUrl = baseUrl + notification;
+      if (currentNotification !== notification.id) {
+        const newUrl = baseUrl + notification.id;
         window.location.href = newUrl;
       }
     } else {
-      const newUrl = baseUrl + notification;
+      const newUrl = baseUrl + notification.id;
       window.location.href = newUrl;
     }
   }

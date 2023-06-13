@@ -40,6 +40,7 @@ export class AdminMainPage {
       .getNotificationsOfUser(this.user.id)
       .subscribe((notifications) => {
         const notif = notifications;
+        notif.reverse();
         for (const element of notif) {
           let notification = element;
           let user = this.userService.getUserById(notification.sender_id);
@@ -98,8 +99,8 @@ export class AdminMainPage {
     this.showNotifications = !this.showNotifications;
   }
 
-  navigateNotif(notification: number) {
-    this.showNotifications = false;
-    this.router.navigate(['/admin/notification/' + notification]);
+  navigateNotif(notification: Notification) {
+    this.notificationService.setNotificationAsSeen(notification);
+    this.router.navigate(['/admin/notification/' + notification.id]);
   }
 }
