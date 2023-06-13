@@ -7,49 +7,64 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class LeaveRouteGuard implements CanDeactivate<any> {
-  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+  private guardActive = true;
+
+  disableGuard() {
+    this.guardActive = false;
+  }
+
+  enableGuard() {
+    this.guardActive = true;
+  }
+
+  canDeactivate(): Observable<boolean> {
     return new Observable<boolean>((observer) => {
-      if (window.location.pathname.startsWith('/game')) {
-        Swal.fire({
-          title: 'Êtes-vous sûr de vouloir quitter la partie ?',
-          text: 'Vous perdrez votre progression',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#d33',
-          cancelButtonColor: '#3085d6',
-          width: 1700,
-          padding: '4em',
-          confirmButtonText:
-            '<span id="oui" style="font-size: 8vmin; padding: 50px 50px; ">Oui, quitter</span>',
-          cancelButtonText:
-            '<span id="non" style="font-size: 8vmin; padding: 50px 50px;">Non, rester</span>',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            observer.next(true); // Allow navigation
-          } else {
-            observer.next(false); // Prevent navigation
-          }
-          observer.complete();
-        });
+      if (!this.guardActive) {
+        observer.next(true); // Allow navigation
+        observer.complete();
       } else {
-        //other routes in admin
-        Swal.fire({
-          title: 'Êtes-vous sûr de vouloir quitter la page ?',
-          text: 'Vous perdrez votre progression',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#d33',
-          cancelButtonColor: '#3085d6',
-          confirmButtonText: 'Oui, quitter',
-          cancelButtonText: 'Non, rester',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            observer.next(true); // Allow navigation
-          } else {
-            observer.next(false); // Prevent navigation
-          }
-          observer.complete();
-        });
+        if (window.location.pathname.startsWith('/game')) {
+          Swal.fire({
+            title: 'Êtes-vous sûr de vouloir quitter la partie ?',
+            text: 'Vous perdrez votre progression',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            width: 1700,
+            padding: '4em',
+            confirmButtonText:
+              '<span id="oui" style="font-size: 8vmin; padding: 50px 50px; ">Oui, quitter</span>',
+            cancelButtonText:
+              '<span id="non" style="font-size: 8vmin; padding: 50px 50px;">Non, rester</span>',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              observer.next(true); // Allow navigation
+            } else {
+              observer.next(false); // Prevent navigation
+            }
+            observer.complete();
+          });
+        } else {
+          //other routes in admin
+          Swal.fire({
+            title: 'Êtes-vous sûr de vouloir quitter la page ?',
+            text: 'Vous perdrez votre progression',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Oui, quitter',
+            cancelButtonText: 'Non, rester',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              observer.next(true); // Allow navigation
+            } else {
+              observer.next(false); // Prevent navigation
+            }
+            observer.complete();
+          });
+        }
       }
     });
   }

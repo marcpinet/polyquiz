@@ -6,6 +6,7 @@ import { Resident } from '../models/resident.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LeaveRouteGuard } from './leave-route-guard';
 @Injectable({
   providedIn: 'root',
 })
@@ -20,12 +21,66 @@ export class UserService {
     Resident[]
   >([]);
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private leaveRouteGuard: LeaveRouteGuard
+  ) {
     //TODO: Simplify later to only get one necessary user and not the whole list :v
     this.retrieveUsers();
     this.retrieveResidents();
   }
+  createResident(resident: Resident, user: User): void {
+    this.leaveRouteGuard.disableGuard();
+    forkJoin([this.addUser(user), this.addResident(resident)]).subscribe({
+      next: ([addedUser, addedResident]) => {
+        console.log('Both user and resident were added successfully');
+        this.users.push(addedUser);
+        this.users$.next(this.users);
+        this.residents.push(addedResident);
+        this.residents$.next(this.residents);
 
+        // Update the resident's userId to the id of the added user
+        addedResident.userId = addedUser.id;
+
+        // Update the resident on the server with the new userId
+        this.http
+          .put<Resident>(
+            `${this.residentUrl}/${addedResident.id}`,
+            addedResident,
+            this.httpOptions
+          )
+          .subscribe({
+            next: () => {
+              console.log('Resident was updated with new userId');
+              Swal.fire({
+                title: 'Succès',
+                text: 'Resident a été ajouté avec succès',
+                icon: 'success',
+                timer: 1500,
+                showConfirmButton: false,
+              }).then(() => {
+                this.router.navigate(['/admin']).then(() => {
+                  this.leaveRouteGuard.enableGuard();
+                });
+              });
+            },
+            error: (error) => {
+              console.error('Failed to update resident with new userId', error);
+            },
+            complete: () => {
+              console.log('Resident update completed');
+            },
+          });
+      },
+      error: (error) => {
+        console.error('Failed to create resident and user', error);
+      },
+      complete: () => {
+        console.log('Resident and user creation completed');
+      },
+    });
+  }
   retrieveUsers(): void {
     this.http.get<User[]>(this.userUrl).subscribe({
       next: (userList) => {
@@ -71,54 +126,6 @@ export class UserService {
   getUserFromResident(resident: Resident): User {
     console.log(resident);
     return this.users.find((user) => user.id == resident.userId);
-  }
-
-  createResident(resident: Resident, user: User): void {
-    forkJoin([this.addUser(user), this.addResident(resident)]).subscribe({
-      next: ([addedUser, addedResident]) => {
-        console.log('Both user and resident were added successfully');
-        this.users.push(addedUser);
-        this.users$.next(this.users);
-        this.residents.push(addedResident);
-        this.residents$.next(this.residents);
-
-        // Update the resident's userId to the id of the added user
-        addedResident.userId = addedUser.id;
-
-        // Update the resident on the server with the new userId
-        this.http
-          .put<Resident>(
-            `${this.residentUrl}/${addedResident.id}`,
-            addedResident,
-            this.httpOptions
-          )
-          .subscribe({
-            next: () => {
-              console.log('Resident was updated with new userId');
-              Swal.fire({
-                title: 'Succès',
-                text: 'Resident a été ajouté avec succès',
-                icon: 'success',
-                confirmButtonText: 'Ok',
-              }).then(() => {
-                this.router.navigate(['/admin']);
-              });
-            },
-            error: (error) => {
-              console.error('Failed to update resident with new userId', error);
-            },
-            complete: () => {
-              console.log('Resident update completed');
-            },
-          });
-      },
-      error: (error) => {
-        console.error('Failed to create resident and user', error);
-      },
-      complete: () => {
-        console.log('Resident and user creation completed');
-      },
-    });
   }
 
   getPhotoUrl(user: User) {
