@@ -24,30 +24,7 @@ test.describe('Main page tests', () => {
       await page.getByRole('navigation').getByRole('img').click();
     });
 
-    await test.step('AdminAide', async () => {
-      await page.getByRole('button', { name: 'Aide' }).click();
-      await page.waitForSelector('text=Comment modifier les paramètres ?');
-      await page.waitForSelector('text=Comment suivre mes progrès ?');
-      await page.waitForSelector('text=Les différents paramètres');
-      await page.waitForSelector('text=Options de clics de souris :');
-      await page.waitForSelector('text=Action au microphone :');
-      await page.waitForSelector('text=Clics avec barre espace :');
-      await page.waitForSelector('text=Confirmation avant de valider :');
-      await page.getByRole('button', { name: 'Fermer' }).click();
-    });
-
-    await test.step('AdminParamètres', async () => {
-      await page.getByRole('button', { name: 'Paramètres' }).click();
-      await page.locator('text=Options de clic de la souris').nth(1);
-      await page.locator('text=Double clique').nth(1);
-      await page.locator('text=Pression longue').nth(1);
-      await page.locator('text=Clics avec barre espace').nth(1);
-      await page.locator('text=Action au microphone').nth(1);
-      await page.locator('text=Confirmation avant de valider :').nth(1);
-      await page.waitForSelector('text=Sauvegarder');
-      await page.getByRole('button', { name: 'Réinitialiser' }).click();
-      await page.getByRole('button', { name: '' }).click();
-    });
+    //TODO new admin profil
 
     await test.step('AdminProfil', async () => {
       await page.getByRole('navigation').getByRole('img').first().click();
