@@ -9,9 +9,7 @@ test.describe('Main page tests', () => {
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsUser(page);
-      await page.waitForSelector(
-        'text=Aucun quiz ne correspond à vos critères'
-      );
+      await page.waitForSelector('text=nom du quiz');
     });
 
     await test.step('Difficulte', async () => {
