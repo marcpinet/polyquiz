@@ -603,5 +603,27 @@
     "time_per_question": 2.6666666666666665,
     "click_error": -1,
     "id": 1686567199238
+  },
+  {
+    "quiz_id": 1679875889425,
+    "date": "2023-06-13T07:51:38.642Z",
+    "user_id": 1680382334270,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 9,
+    "time_per_question": 3,
+    "click_error": -1,
+    "id": 1686642698678
+  },
+  {
+    "quiz_id": 1679875889425,
+    "date": "2023-06-13T07:52:39.172Z",
+    "user_id": 1680382334270,
+    "right_answers": 0,
+    "wrong_answers": 3,
+    "play_time": 8,
+    "time_per_question": 2.6666666666666665,
+    "click_error": -1,
+    "id": 1686642759415
   }
 ]

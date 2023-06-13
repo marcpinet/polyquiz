@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { testQuiz, testUrl } from 'e2e/e2e.config';
+import { testQuiz, testResultRegex, testUrl } from 'e2e/e2e.config';
 
 // This file is here to test the playwright integration.
 test.describe('Initial test display', () => {
@@ -13,7 +13,9 @@ test.describe('Initial test display', () => {
     expect(pageTitle).not.toBeVisible();
     // Test case pass? Means the playwright setup is done! Congrats!
   });
+});
 
+test.describe('Quiz tests', () => {
   test('test Quiz', async ({ page }) => {
     await page.goto(testUrl);
 
@@ -44,5 +46,7 @@ test.describe('Initial test display', () => {
     await page.click('[data-number="deux"]');
 
     await page.click('button:text("Suivant")');
+
+    expect(page.url()).toMatch(testResultRegex);
   });
 });
