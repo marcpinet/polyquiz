@@ -20,11 +20,13 @@ import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.comp
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
 import { AdminNotificationComponent } from './admin/notification/notification.component';
+import { LeaveRouteGuard } from 'src/services/leave-route-guard';
 const routes: Routes = [
   {
     path: 'game/:id',
     canActivate: [RouteGuardService],
     component: GamePageComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'login',
@@ -63,6 +65,7 @@ const routes: Routes = [
     path: 'admin/add-resident',
     canActivate: [RouteGuardAdminService],
     component: RegisterComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'admin/stats-resident/:id',
@@ -83,6 +86,7 @@ const routes: Routes = [
     path: 'admin/theme/add',
     canActivate: [RouteGuardAdminService],
     component: AddThemeComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'admin/theme/modif/:id',
@@ -93,6 +97,7 @@ const routes: Routes = [
     path: 'admin/quiz/add',
     canActivate: [RouteGuardAdminService],
     component: AddQuizComponent,
+    canDeactivate: [LeaveRouteGuard],
   },
   {
     path: 'admin/modif-resident/:id',

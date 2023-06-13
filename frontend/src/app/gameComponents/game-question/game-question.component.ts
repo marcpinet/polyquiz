@@ -95,9 +95,9 @@ export class GameQuestionComponent implements OnInit {
           width: 1700,
           padding: '4em',
           confirmButtonText:
-            '<span id="oui" style="font-size: 150px; padding: 150px 150px; ">Oui</span>',
+            '<span id="oui" style="font-size: 12vmin; padding: 150px 150px; ">Oui</span>',
           denyButtonText:
-            '<span id="non" style="font-size: 150px; padding: 150px 150px;">Non</span>', // add non-breaking spaces between span tags to create more space between buttons
+            '<span id="non" style="font-size: 12vmin; padding: 150px 150px;">Non</span>', // add non-breaking spaces between span tags to create more space between buttons
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
