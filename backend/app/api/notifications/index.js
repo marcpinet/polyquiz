@@ -40,4 +40,14 @@ router.get("/user/:receiverId", (req, res) => {
   }
 });
 
+router.put("/:notificationId", (req, res) => {
+  try {
+    res
+      .status(200)
+      .json(Notification.update(req.params.notificationId, req.body));
+  } catch (err) {
+    manageAllErrors(res, err);
+  }
+});
+
 module.exports = router;
