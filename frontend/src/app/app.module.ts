@@ -41,10 +41,11 @@ import { ModifResidentComponent } from './admin/modifResident/modif-resident.com
 import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
 import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
-import { HelpModalComponent } from './modals/help-modal.component';
+import { HelpModalComponent } from './modals/help-modal/help-modal.component';
 import { AdminNotificationComponent } from './admin/notification/notification.component';
 import { UserOptionsScreenComponent } from './settings/user-options-screen.component';
 import { QuizRecommendComponent } from './quiz/quiz-recommend/quiz-recommend.component';
+import { SettingsModalComponent } from './modals/settings-modal/settings-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +86,7 @@ import { QuizRecommendComponent } from './quiz/quiz-recommend/quiz-recommend.com
     AdminNotificationComponent,
     UserOptionsScreenComponent,
     QuizRecommendComponent,
+    SettingsModalComponent,
   ],
   imports: [
     BrowserModule,
