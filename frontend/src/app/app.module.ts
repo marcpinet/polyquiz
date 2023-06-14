@@ -52,7 +52,6 @@ import { AdminPasswordChangeComponent } from './admin/profile/password-change/pa
 import { AdminProfileUpdateComponent } from './admin/profile/profile-update/profile-update.component';
 import { AdminAbstractModal } from './admin/modals/admin-abtract-modal/admin-abstract-modal.component';
 import { ModifyQuestionAdminComponent } from './admin/modif/modifQuestion/modify-question.component';
-import { HelpModalComponent } from './modals/help-modal.component';
 import { ModifyQuizComponent } from './admin/modif/modify.component';
 @NgModule({
   declarations: [
