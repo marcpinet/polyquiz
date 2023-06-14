@@ -5,6 +5,7 @@ import { User } from 'src/models/user.model';
 import { UserService } from 'src/services/user.service';
 import { Settings } from 'src/models/settings.model';
 import { SettingService } from 'src/services/settings.service';
+import { InitSettings } from 'src/models/settings.model';
 
 @Component({
   selector: 'app-modif-resident',
@@ -14,6 +15,21 @@ export class ModifResidentComponent {
   public resident: Resident;
   public user: User;
   public settings: Settings;
+  public initSettings: InitSettings;
+  modals = [
+    {
+      num: 1,
+      title: 'Modifier informations générales',
+    },
+    {
+      num: 2,
+      title: 'Modifier les symptômes',
+    },
+    {
+      num: 3,
+      title: 'Modifier les paramètres',
+    },
+  ];
 
   constructor(
     public router: Router,
@@ -29,20 +45,27 @@ export class ModifResidentComponent {
       .subscribe((settings) => {
         this.settings = settings;
       });
+    this.settingService
+      .getInitSettingsOfUser(this.user.id)
+      .subscribe((initSettings) => {
+        this.initSettings = initSettings;
+      });
   }
   modify(item: String) {
+    let dialog;
     switch (item) {
       case 'GENERAL':
         console.log('GENERAL');
-        return;
+        break;
       case 'SYMPTOMS':
         console.log('SYMPTOMS');
-        return;
+        break;
       case 'SETTINGS':
-        console.log('SETTINGS');
-        return;
+        dialog = document.getElementsByTagName('dialog')[this.modals[2].num];
+        break;
       default:
         return;
     }
+    dialog.showModal();
   }
 }
