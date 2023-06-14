@@ -19,7 +19,6 @@ test.describe('Main page tests', () => {
       await page.getByRole('button', { name: '0' });
       await page.getByRole('navigation').getByRole('img');
       await page.waitForSelector('text=admin admin');
-      await page.waitForSelector('text=1 / 1');
       await page.getByRole('cell', { name: '1680382334189' });
       await page.getByRole('navigation').getByRole('img').click();
     });

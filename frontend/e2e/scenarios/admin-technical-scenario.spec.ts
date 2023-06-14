@@ -125,16 +125,12 @@ test.describe('Create a new user', () => {
   test('Create the user', async ({ page }) => {
     await page.goto(loginUrl);
     const appComponentFixture = new AppFixture();
-    var username = 'PseudoRésident';
+    var username = appComponentFixture.generateRandomUsername(
+      Math.random() * 16
+    );
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsAdmin(page);
-    });
-
-    await test.step('Changer pseudo si l\'username existe déjà', async () => {
-      if(await page.waitForSelector('text='+username)) {
-        username = appComponentFixture.generateRandomUsername(10);
-      }
     });
 
     await test.step('Acces a la page de creation de resident', async () => {
@@ -145,9 +141,17 @@ test.describe('Create a new user', () => {
       await page.fill('#residentPicture', 'photo nouveau résident');
       await page.fill('#residentName', 'NomRésident');
       await page.fill('#residentFirstName', 'PrénomRésident');
-      await page.locator('div').filter({ hasText: /^Masculin$/ }).getByRole('radio').click();
+      await page
+        .locator('div')
+        .filter({ hasText: /^Masculin$/ })
+        .getByRole('radio')
+        .click();
       await page.getByLabel('Symptôme(s) du résident').click();
-      await page.locator('div').filter({ hasText: /^Rigidité$/ }).locator('#symptome').click();
+      await page
+        .locator('div')
+        .filter({ hasText: /^Rigidité$/ })
+        .locator('#symptome')
+        .click();
       const parts = '01/01/1950'.split('/');
       const formattedDate = `${parts[0]}-${parts[1]}-${parts[2]}`;
       await page.type('#residentDateOfBirth', formattedDate);
@@ -158,9 +162,14 @@ test.describe('Create a new user', () => {
     });
 
     await test.step('Verification existance', async () => {
+      const searchResident = page.getByPlaceholder(
+        "Entrez le nom du résident ou son numéro d'identification"
+      );
+      await page.getByTestId('searchResident').type(username);
+      //await page.fill('#searchResident', username);
       await page.waitForSelector('text=NomRésident');
       await page.waitForSelector('text=PrénomRésident');
-      await page.waitForSelector('text='+username);
+      await page.waitForSelector('text=' + username);
     });
 
     await test.step('Deconnexion', async () => {
@@ -174,8 +183,5 @@ test.describe('Create a new user', () => {
       await page.click('text=Se connecter');
       await page.waitForSelector('li#quiz-btn');
     });
-
-  
-})});
-
-
+  });
+});
