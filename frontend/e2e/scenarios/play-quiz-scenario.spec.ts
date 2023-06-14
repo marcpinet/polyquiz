@@ -11,7 +11,7 @@ test.describe('Quiz tests', () => {
 
     await page.goto(testUrl);
 
-    await page.type('#username', 'gekomoria');
+    await page.type('#username', 'user');
 
     await page.type('#password', '123456');
 
@@ -68,7 +68,7 @@ test.describe('Quiz tests', () => {
 
     await page.goto(testUrl);
 
-    await page.type('#username', 'gekomoria');
+    await page.type('#username', 'user');
 
     await page.type('#password', '123456');
 
