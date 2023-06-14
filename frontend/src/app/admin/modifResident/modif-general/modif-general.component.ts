@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -7,36 +7,31 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { User } from 'src/models/user.model';
-import { UserService } from 'src/services/user.service';
-import { AuthService } from 'src/services/auth.service';
 import Swal from 'sweetalert2';
-
+import { UserService } from 'src/services/user.service';
 @Component({
-  selector: 'app-profile-update',
-  templateUrl: './profile-update.component.html',
+  selector: 'app-modif-general',
+  templateUrl: './modif-general.component.html',
 })
-export class AdminProfileUpdateComponent {
-  public user: User;
+export class AdminModifGeneralComponent implements OnInit {
+  @Input() user: User;
   public profileForm: FormGroup;
   public submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService,
-    private authService: AuthService
+    private userService: UserService
   ) {
     this.profileForm = this.formBuilder.group({
       firstName: [this.user?.firstName || '', Validators.required],
       lastName: [this.user?.lastName || '', Validators.required],
       userName: [this.user?.userName || '', Validators.required],
     });
+  }
 
-    this.authService.user$.subscribe((user) => {
-      this.user = user;
-      // Update the form values when the user data changes
-      this.repatchValue();
-    });
+  ngOnInit(): void {
+    this.repatchValue();
   }
 
   repatchValue() {
@@ -63,8 +58,12 @@ export class AdminProfileUpdateComponent {
         showConfirmButton: false,
       });
       this.repatchValue();
-      let dialog = document.getElementsByTagName('dialog')[2];
-      dialog.close();
+      let dialog = document.getElementsByTagName('dialog');
+      if (dialog) {
+        for (let i = 0; i < dialog.length; i++) {
+          dialog[i].close();
+        }
+      }
     });
   }
 }

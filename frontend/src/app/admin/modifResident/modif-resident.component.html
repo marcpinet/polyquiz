@@ -5,7 +5,7 @@
   <div class="w-4/5">
     <div class="border border-4 border-[#2B3467] rounded overflow-hidden shadow-md mb-4">
       <div class="bg-gray-100 text-2xl font-bold px-4 py-3 text-[#2B3467]">
-        <i class="fa-solid fa-user mr-2"></i>informations générales
+        <i class="fa-solid fa-user mr-2"></i>Informations générales
       </div>
       <button class="flex items-center justify-between py-3 w-full" (click)="modify('GENERAL')">
         <div class="w-full px-4">
@@ -76,9 +76,7 @@
 </div>
 
 <admin-abstract-modal [modalNum]="modals[0].num" [modalTitle]="modals[0].title">
-<!-- TODO -->
-<app-add-theme></app-add-theme>
-
+  <app-modif-general [user]="user"></app-modif-general>
 </admin-abstract-modal>
 
 <admin-abstract-modal [modalNum]="modals[1].num" [modalTitle]="modals[1].title">

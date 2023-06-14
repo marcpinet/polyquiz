@@ -55,10 +55,10 @@ export class ModifResidentComponent {
     let dialog;
     switch (item) {
       case 'GENERAL':
-        console.log('GENERAL');
+        dialog = document.getElementsByTagName('dialog')[this.modals[0].num];
         break;
       case 'SYMPTOMS':
-        console.log('SYMPTOMS');
+        dialog = document.getElementsByTagName('dialog')[this.modals[1].num];
         break;
       case 'SETTINGS':
         dialog = document.getElementsByTagName('dialog')[this.modals[2].num];
