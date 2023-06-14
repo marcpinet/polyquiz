@@ -71,6 +71,7 @@
             <i class="fa-sharp fa-solid fa-image text-gray-400 text-lg"></i>
           </div>
           <input
+            id="residentPicture"
             type="text"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
             [formControlName]="'avatar'"
@@ -93,6 +94,7 @@
             <i class="fa-regular fa-input-text text-gray-400 text-lg"></i>
           </div>
           <input
+            id="residentName"
             type="text"
             [formControlName]="'lastName'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -114,6 +116,7 @@
             <i class="mdi mdi-account-outline text-gray-400 text-lg"></i>
           </div>
           <input
+            id="residentFirstName"
             type="text"
             [formControlName]="'firstName'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -171,6 +174,7 @@
             *ngFor="let symptome of symptomes"
           >
             <input
+              id = "symptome" 
               type="checkbox"
               class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
               name="symptome"
@@ -200,6 +204,7 @@
             <i class="fa-regular fa-calendar-days text-gray-400 text-lg"></i>
           </div>
           <input
+            id="residentDateOfBirth"
             type="date"
             [formControlName]="'dateOfBirth'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -222,6 +227,7 @@
             <i class="fa-solid fa-user text-gray-400 text-lg"></i>
           </div>
           <input
+            id="residentUserName"
             type="text"
             [formControlName]="'userName'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -244,6 +250,7 @@
             <i class="fa-solid fa-lock text-gray-400 text-lg"></i>
           </div>
           <input
+            id="residentPassword"
             type="password"
             [formControlName]="'password'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -269,6 +276,7 @@
             <i class="fa-solid fa-lock text-gray-400 text-lg"></i>
           </div>
           <input
+          id="residentConfirmPassword"
           type="password"
           [formControlName]="'confirmPassword'"
             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
