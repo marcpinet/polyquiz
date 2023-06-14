@@ -19,6 +19,8 @@ WORKDIR /app
 COPY --from=build-stage /app /app
 COPY --from=build-stage /app/node_modules /app/node_modules
 
+USER appuser
+
 EXPOSE 9428
 
 CMD ["npm", "start"]
