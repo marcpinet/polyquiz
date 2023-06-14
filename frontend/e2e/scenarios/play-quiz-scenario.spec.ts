@@ -53,11 +53,11 @@ test.describe('Quiz tests', () => {
 
     await page.dblclick('button:text("Suivant")');
 
-    expect(page.url()).toMatch(testResultRegex);
-
     expect((await page.textContent('#correct')).trim()).toBe('3');
 
     expect((await page.textContent('#incorrect')).trim()).toBe('0');
+
+    expect(page.url()).toMatch(testResultRegex);
   });
 
   test('ResetParams', async ({ page }) => {
