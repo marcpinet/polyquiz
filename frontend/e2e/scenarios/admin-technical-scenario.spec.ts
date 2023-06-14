@@ -125,9 +125,7 @@ test.describe('Create a new user', () => {
   test('Create the user', async ({ page }) => {
     await page.goto(loginUrl);
     const appComponentFixture = new AppFixture();
-    var username = appComponentFixture.generateRandomUsername(
-      Math.random() * 16
-    );
+    var username = appComponentFixture.generateRandomUsername(15);
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsAdmin(page);
