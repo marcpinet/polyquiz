@@ -106,11 +106,22 @@ test.describe('Create a quiz scenario', () => {
 
     await test.step('Valider creation quiz', async () => {
       await page.getByRole('button', { name: 'Sauvegarder' }).click();
-      await page.getByRole('navigation').getByRole('button').first().click();
-      await page.waitForSelector(
-        'text=Êtes-vous sûr de vouloir quitter la page ?'
-      );
-      await page.click('text=Oui, quitter');
+      //await page.getByRole('navigation').getByRole('button').first().click();
+      //await page.waitForSelector(
+      //  'text=Êtes-vous sûr de vouloir quitter la page ?'
+      //);
+      //await page.click('text=Oui, quitter');
+    });
+  });
+});
+
+test.describe('Verifier creation de quiz', () => {
+  test('Create the user', async ({ page }) => {
+    await page.goto(loginUrl);
+    const appComponentFixture = new AppFixture();
+
+    await test.step('Connexion', async () => {
+      appComponentFixture.ConnexionAsAdmin(page);
     });
 
     await test.step('Verifier creation quiz', async () => {
@@ -125,7 +136,9 @@ test.describe('Create a new user', () => {
   test('Create the user', async ({ page }) => {
     await page.goto(loginUrl);
     const appComponentFixture = new AppFixture();
-    var username = appComponentFixture.generateRandomUsername(15);
+    var username = appComponentFixture.generateRandomUsername(
+      Math.random() * 16
+    );
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsAdmin(page);
