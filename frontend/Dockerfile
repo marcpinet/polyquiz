@@ -21,7 +21,7 @@ RUN groupadd appgroup && \
     mkdir -p /var/cache/nginx/client_temp && \
     chown -R appuser:appgroup /var/cache/nginx
 
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY --from=build-stage /app/dist/front-end /usr/share/nginx/html
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 

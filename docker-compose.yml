@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   installer:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.installer
     volumes:
@@ -13,12 +13,12 @@ services:
       - ./backend:/app
       - /app/node_modules
     ports:
-      - 9428:9428
+      - "9428:9428"
     restart: unless-stopped
     depends_on:
       - installer
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:9428 || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:9428 || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -27,7 +27,7 @@ services:
 
   frontend:
     user: root
-    build: 
+    build:
       context: ./frontend
       args:
         - API_URL=http://backend:9428
@@ -37,18 +37,18 @@ services:
       - /app/dist
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 4200:4200
+      - "4200:4200"
     restart: unless-stopped
     depends_on:
       - backend
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:4200 || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:4200 || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 3
     networks:
-          - app-network
-          
+      - app-network
+
 networks:
   app-network:
     driver: bridge
