@@ -9,7 +9,7 @@ test.describe('Main page tests', () => {
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsUser(page);
-      await page.waitForSelector('text=nom du quiz');
+      await page.waitForSelector('text=Les capitales européennes');
     });
 
     await test.step('Difficulte', async () => {
