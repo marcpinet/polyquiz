@@ -43,9 +43,13 @@ test.describe('Quiz tests', () => {
 
     await page.dblclick('[data-number="quatre"]');
 
+    await page.click('[data-number="un"]');
+
     await page.dblclick('[data-number="quatre"]');
 
     await page.dblclick('button:text("Suivant")');
+
+    await page.click('[data-number="un"]');
 
     await page.dblclick('[data-number="trois"]');
 
