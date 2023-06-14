@@ -5,10 +5,17 @@ import { Router } from '@angular/router';
   templateUrl: './themes.component.html',
 })
 export class ThemesComponent {
+  modals = [
+    {
+      id: 'ADD_THEME',
+      num: 1,
+      title: 'Ajouter un thème',
+    },
+  ];
   constructor(private router: Router) {}
 
   navigateAddTheme() {
-    let dialog = document.getElementsByTagName('dialog')[1];
+    let dialog = document.getElementsByTagName('dialog')[this.modals[0].num];
     dialog.showModal();
   }
 }

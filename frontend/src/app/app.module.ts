@@ -46,7 +46,6 @@ import { AdminNotificationComponent } from './admin/notification/notification.co
 import { UserOptionsScreenComponent } from './settings/user-options-screen.component';
 import { QuizRecommendComponent } from './quiz/quiz-recommend/quiz-recommend.component';
 import { SettingsModalComponent } from './modals/settings-modal/settings-modal.component';
-import { AddThemeModalComponent } from './admin/modals/add-theme-modal/add-theme-modal.component';
 import { AdminProfileComponent } from './admin/profile/admin-profile.component';
 import { AdminPasswordChangeComponent } from './admin/profile/password-change/password-change.component';
 import { AdminProfileUpdateComponent } from './admin/profile/profile-update/profile-update.component';
@@ -92,7 +91,6 @@ import { AdminAbstractModal } from './admin/modals/admin-abtract-modal/admin-abs
     UserOptionsScreenComponent,
     QuizRecommendComponent,
     SettingsModalComponent,
-    AddThemeModalComponent,
     AdminProfileComponent,
     AdminPasswordChangeComponent,
     AdminProfileUpdateComponent,
