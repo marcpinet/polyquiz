@@ -25,8 +25,8 @@ export class LeaveRouteGuard implements CanDeactivate<any> {
       } else {
         if (window.location.pathname.startsWith('/game')) {
           Swal.fire({
-            title: 'Êtes-vous sûr de vouloir quitter la partie ?',
-            text: 'Vous perdrez votre progression',
+            title:
+              '<div class="text-4xl font-bold text-[#2B3467]">Êtes-vous sûr de vouloir quitter la page ?</div><div class="text-3xl text-[#EB455F]">Vous perdrez votre progression</div>',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
