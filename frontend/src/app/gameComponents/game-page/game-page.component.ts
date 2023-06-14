@@ -5,6 +5,8 @@ import { QuizService } from 'src/services/quiz.service';
 import { ResultService } from 'src/services/result.service';
 import { Result } from 'src/models/result-quiz.model';
 import { AuthService } from 'src/services/auth.service';
+import { LeaveRouteGuard } from 'src/services/leave-route-guard';
+
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
@@ -27,7 +29,8 @@ export class GamePageComponent implements OnInit {
     private route: ActivatedRoute,
     private quizService: QuizService,
     private resultService: ResultService,
-    private authService: AuthService
+    private authService: AuthService,
+    private leaveRouteGuard: LeaveRouteGuard
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
@@ -103,7 +106,10 @@ export class GamePageComponent implements OnInit {
     };
 
     this.resultService.addResult(result).subscribe((result) => {
-      this.router.navigate(['/result', result.id]);
+      this.leaveRouteGuard.disableGuard();
+      this.router.navigate(['/result', result.id]).then(() => {
+        this.leaveRouteGuard.enableGuard();
+      });
     });
     console.log('End of the game');
   }
