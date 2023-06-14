@@ -9,6 +9,18 @@ import { UserService } from 'src/services/user.service';
 })
 export class AdminProfileComponent {
   user: User;
+  modals = [
+    {
+      id: 'ADMIN_PASSWORD_CHANGE',
+      num: 1,
+      title: 'Changer le mot de passe',
+    },
+    {
+      id: 'ADMIN_PROFILE_UPDATE',
+      num: 2,
+      title: 'Modifier le profil',
+    },
+  ];
 
   constructor(
     private authService: AuthService,
@@ -24,12 +36,12 @@ export class AdminProfileComponent {
   }
 
   passwordPopUp() {
-    let dialog = document.getElementsByTagName('dialog')[1];
+    let dialog = document.getElementsByTagName('dialog')[this.modals[0].num];
     dialog.showModal();
   }
 
   profileUpdatePopUp() {
-    let dialog = document.getElementsByTagName('dialog')[2];
+    let dialog = document.getElementsByTagName('dialog')[this.modals[1].num];
     dialog.showModal();
   }
 }

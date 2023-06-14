@@ -39,5 +39,5 @@
     </div>
   </div>
 </div>
-<password-change-modal></password-change-modal>
-<profile-update-modal></profile-update-modal>
+<admin-abstract-modal *ngFor="let modal of modals" [modalComponent]="modal.id" [modalNum]="modal.num" [modalTitle]="modal.title"></admin-abstract-modal>
+
