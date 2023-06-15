@@ -19,13 +19,13 @@ export class RegisterComponent {
   symptomes = [
     {
       name: 'Le tremblement de repos',
-      value: 'tremblement',
+      value: 'Tremblement de repos',
       id: 0,
       checked: false,
     },
-    { name: 'Akinésie', value: 'akinesie', id: 1, checked: false },
-    { name: 'Rigidité', value: 'rigidite', id: 2, checked: false },
-    { name: 'Autres', value: 'autres', id: 3, checked: false },
+    { name: 'Akinésie', value: 'Akinésie', id: 1, checked: false },
+    { name: 'Rigidité', value: 'Rigidité', id: 2, checked: false },
+    { name: 'Autres', value: 'Autres', id: 3, checked: false },
   ];
   public submitted = false;
 
