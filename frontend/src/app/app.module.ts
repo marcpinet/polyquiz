@@ -52,6 +52,7 @@ import { AdminProfileUpdateComponent } from './admin/profile/profile-update/prof
 import { AdminAbstractModal } from './admin/modals/admin-abtract-modal/admin-abstract-modal.component';
 import { AdminModifGeneralComponent } from './admin/modifResident/modif-general/modif-general.component';
 import { AdminModifSymptomeComponent } from './admin/modifResident/modif-symptomes/modif-symptome.component';
+import { AdminModifPasswordComponent } from './admin/modifResident/modif-password/modif-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,6 +100,7 @@ import { AdminModifSymptomeComponent } from './admin/modifResident/modif-symptom
     AdminAbstractModal,
     AdminModifGeneralComponent,
     AdminModifSymptomeComponent,
+    AdminModifPasswordComponent,
   ],
   imports: [
     BrowserModule,

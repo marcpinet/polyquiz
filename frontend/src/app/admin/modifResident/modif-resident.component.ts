@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Resident } from 'src/models/resident.model';
 import { User } from 'src/models/user.model';
@@ -11,7 +11,7 @@ import { InitSettings } from 'src/models/settings.model';
   selector: 'app-modif-resident',
   templateUrl: './modif-resident.component.html',
 })
-export class ModifResidentComponent {
+export class ModifResidentComponent implements OnInit {
   public resident: Resident;
   public user: User;
   public settings: Settings;
@@ -19,15 +19,19 @@ export class ModifResidentComponent {
   modals = [
     {
       num: 1,
-      title: 'Modifier informations générales',
+      title: 'Modifier informations générales du résident ',
     },
     {
       num: 2,
-      title: 'Modifier les symptômes',
+      title: 'Modifier les symptômes du résident ',
     },
     {
       num: 3,
-      title: 'Modifier les paramètres',
+      title: 'Modifier les paramètres du résident ',
+    },
+    {
+      num: 4,
+      title: 'Modifier le mot de passe du résident ',
     },
   ];
 
@@ -51,6 +55,13 @@ export class ModifResidentComponent {
         this.initSettings = initSettings;
       });
   }
+
+  ngOnInit(): void {
+    for (let i = 0; i < this.modals.length; i++) {
+      this.modals[i].title += this.user.firstName + ' ' + this.user.lastName;
+    }
+  }
+
   modify(item: String) {
     let dialog;
     switch (item) {
@@ -62,6 +73,9 @@ export class ModifResidentComponent {
         break;
       case 'SETTINGS':
         dialog = document.getElementsByTagName('dialog')[this.modals[2].num];
+        break;
+      case 'PASSWORD':
+        dialog = document.getElementsByTagName('dialog')[this.modals[3].num];
         break;
       default:
         return;
