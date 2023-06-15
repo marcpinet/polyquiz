@@ -32,8 +32,8 @@
   <div class="mb-4">
     <label for="sexe" class="block text-[#2B3467] text-xl font-bold mb-2">Sexe du résident</label>
     <select id="sexe" class="form-select p-4 mt-1 block w-full border-[#2B3467] border-2 rounded-md shadow-sm focus:ring-[#2B3467] focus:border-[#2B3467]" formControlName="sexe" required>
-      <option value="Masculin">Masculin</option>
-      <option value="Féminin">Féminin</option>
+      <option value="Masculin" [selected]="generalForm.value.sexe === 'Masculin'">Masculin</option>
+      <option value="Féminin" [selected]="generalForm.value.sexe === 'Féminin'">Féminin</option>
     </select>
     <div *ngIf="generalForm.get('sexe').invalid && (generalForm.get('sexe').touched || submitted)" class="text-red-500 text-xl mt-1">
       Le sexe est requis
