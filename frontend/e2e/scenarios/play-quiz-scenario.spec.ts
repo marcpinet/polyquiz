@@ -3,6 +3,7 @@ import { testQuiz, testResultRegex, testUrl } from 'e2e/e2e.config';
 import { loginUrl } from 'e2e/e2e.config';
 import { AppFixture } from 'src/app/app.fixture';
 import { webkit } from 'playwright';
+import { PlayedQuizFixture } from 'src/app/playedQuiz/played-quiz-fixture.component';
 
 test.describe('Quiz tests', () => {
   test('test Quiz', async ({ page }) => {
@@ -10,6 +11,7 @@ test.describe('Quiz tests', () => {
       width: 1920 * (3 / 4),
       height: 1080 * (3 / 4),
     });
+    const playedQuizComponentFixture = new PlayedQuizFixture();
 
     await page.goto(testUrl);
 
@@ -21,27 +23,113 @@ test.describe('Quiz tests', () => {
 
     await page.click('button[data-tab="PARAMETRES"]');
 
-    await page.click('#activer_double_clic');
+    await page.click('#activer_pression_longue');
 
     await page.click('#sauvegarder');
 
-    await page.dblclick('button[data-tab="QUIZ"]');
+    //On commence a utiliser la barre espace
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+    var currentButton = await page.$('button[data-tab="QUIZ"]');
+    var currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
 
-    await page.dblclick('#theme');
+    currentButton = await page.$('#theme');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
 
-    await page.selectOption('select', 'Géographie');
+    //await page.dblclick('#theme');
 
-    await page.dblclick('button:has-text("OK")');
+    //await page.selectOption('select', 'Géographie');
 
-    await page.dblclick('app-quiz-details');
+    currentButton = await page.$('button:has-text("OK")');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
 
-    expect(page.url()).toBe(testQuiz);
+    //await page.dblclick('button:has-text("OK")');
 
-    await page.dblclick('#faux');
+    currentButton = await page.$('app-quiz-details');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
 
-    await page.dblclick('#faux');
+    //await page.dblclick('app-quiz-details');
 
-    await page.dblclick('button:text("Suivant")');
+    await page.waitForSelector(
+      'text=VRAI ou FAUX ? La ville du Vatican, capitale du Vatican, a le taux de crime le plus faible au monde.'
+    );
+
+    currentButton = await page.$('#faux');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
+
+    //await page.dblclick('#faux');
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    currentButton = await page.$('button:text("Suivant")');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
+
+    //await page.dblclick('button:text("Suivant")');
+
+    //Passer sur la barre espace
+
+    currentButton = await page.$('button[data-tab="navbarParam"]');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
+
+    //await page.dblclick('button[data-tab="PARAMETRES"]');
+
+    currentButton = await page.$('#activer_double_clic');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    await playedQuizComponentFixture.CliquePressionLongue(
+      page,
+      currentuttonBoundingBox
+    );
+
+    //await page.dblclick('#activer_double_clic');
+
+    await page.waitForSelector('text=Sauvegarder');
+    currentButton = await page.$('[data-tab="save"]');
+    currentuttonBoundingBox = await currentButton.boundingBox();
+    //await playedQuizComponentFixture.CliquePressionLongue(page, currentuttonBoundingBox);
+    //comme le bouton n'apparaît pas entièrement sur la page, on est obligé de cliquer sur le haut de ce dernier, d'où le -50
+    await page.mouse.move(
+      currentuttonBoundingBox.x + currentuttonBoundingBox.width / 2,
+      currentuttonBoundingBox.y - 50 + currentuttonBoundingBox.height / 2
+    );
+    //for (let i = 0; i < 20000; i++) {
+    //  await page.mouse.click(currentuttonBoundingBox.x + currentuttonBoundingBox.width / 2, currentuttonBoundingBox.y + currentuttonBoundingBox.height / 2);
+    //}
+    await page.mouse.down();
+    await new Promise((resolve) => setTimeout(resolve, 800)); // Maintenir le clic pendant 0.8 seconde
+    await page.mouse.up();
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+
+    //currentButton = await page.$('#closePopup');
+    //await page.dblclick('button[data-tab="closePopup"]');
+
+    //await page.dblclick('#sauvegarder');
+
+    //retour au quiz
 
     await page.dblclick('[data-number="quatre"]');
 
@@ -50,6 +138,8 @@ test.describe('Quiz tests', () => {
     await page.dblclick('[data-number="quatre"]');
 
     await page.dblclick('button:text("Suivant")');
+
+    //double clique
 
     await page.click('[data-number="un"]');
 
