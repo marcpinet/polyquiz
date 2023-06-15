@@ -49,6 +49,34 @@ services:
     networks:
       - app-network
 
+  frontend-test-server:
+    build: 
+      context: ./frontend
+      target: test-stage
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: ["npm", "run", "test"]
+    networks:
+      - app-network
+
+  frontend-test-e2e:
+    build: 
+      context: ./frontend
+      target: test-stage
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - test-results:/app/test-results
+    command: ["npm", "run", "test:e2e"]
+    depends_on:
+      - frontend-test-server
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  test-results:
