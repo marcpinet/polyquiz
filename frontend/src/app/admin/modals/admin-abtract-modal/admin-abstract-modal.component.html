@@ -1,4 +1,4 @@
-<dialog class="relative w-1/4 mx-auto rounded-lg border border-4 border-[#2B3467]">
+<dialog class="relative w-2/5 mx-auto rounded-lg border border-4 border-[#2B3467]">
   <div class="absolute top-2 right-2">
     <button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-[#2B3467] focus:outline-none transition-colors duration-300"
       type="button" (click)="closeDialog()">
@@ -7,6 +7,6 @@
   </div>
   <div class="mt-5 flex items-center justify-center text-3xl font-bold text-[#EB455F]">{{modalTitle}}</div>
   <div class="mt-2">
-    <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
+    <ng-content></ng-content>
   </div>
 </dialog>

@@ -79,6 +79,11 @@ router.post("/", async (req, res) => {
 
 router.put("/:userId", (req, res) => {
   try {
+    //check if password changed, if yes then update with crypted password
+    if (req.body.password !== undefined) {
+      const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+      req.body.password = hashedPassword;
+    }
     res.status(200).json(User.update(req.params.userId, req.body));
   } catch (err) {
     console.log(err);

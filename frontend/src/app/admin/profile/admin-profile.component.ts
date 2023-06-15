@@ -11,12 +11,10 @@ export class AdminProfileComponent {
   user: User;
   modals = [
     {
-      id: 'ADMIN_PASSWORD_CHANGE',
       num: 1,
       title: 'Changer le mot de passe',
     },
     {
-      id: 'ADMIN_PROFILE_UPDATE',
       num: 2,
       title: 'Modifier le profil',
     },

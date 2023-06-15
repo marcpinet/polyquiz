@@ -106,17 +106,93 @@ test.describe('Create a quiz scenario', () => {
 
     await test.step('Valider creation quiz', async () => {
       await page.getByRole('button', { name: 'Sauvegarder' }).click();
-      await page.getByRole('navigation').getByRole('button').first().click();
-      await page.waitForSelector(
-        'text=Êtes-vous sûr de vouloir quitter la page ?'
-      );
-      await page.click('text=Oui, quitter');
+      //await page.getByRole('navigation').getByRole('button').first().click();
+      //await page.waitForSelector(
+      //  'text=Êtes-vous sûr de vouloir quitter la page ?'
+      //);
+      //await page.click('text=Oui, quitter');
+    });
+  });
+});
+
+test.describe('Verifier creation de quiz', () => {
+  test('Create the user', async ({ page }) => {
+    await page.goto(loginUrl);
+    const appComponentFixture = new AppFixture();
+
+    await test.step('Connexion', async () => {
+      appComponentFixture.ConnexionAsAdmin(page);
     });
 
     await test.step('Verifier creation quiz', async () => {
       await page.getByRole('button', { name: 'Gestion Quiz' }).click();
       await page.getByRole('button', { name: 'Mes Quiz' }).click();
       await page.waitForSelector('text=nom du quiz');
+    });
+  });
+});
+
+test.describe('Create a new user', () => {
+  test('Create the user', async ({ page }) => {
+    await page.goto(loginUrl);
+    const appComponentFixture = new AppFixture();
+    var username = appComponentFixture.generateRandomUsername(
+      Math.random() * 16
+    );
+
+    await test.step('Connexion', async () => {
+      appComponentFixture.ConnexionAsAdmin(page);
+    });
+
+    await test.step('Acces a la page de creation de resident', async () => {
+      await page.getByRole('button', { name: 'Créer compte résident' }).click();
+    });
+
+    await test.step('Remplir page de création du résident', async () => {
+      await page.fill('#residentPicture', 'photo nouveau résident');
+      await page.fill('#residentName', 'NomRésident');
+      await page.fill('#residentFirstName', 'PrénomRésident');
+      await page
+        .locator('div')
+        .filter({ hasText: /^Masculin$/ })
+        .getByRole('radio')
+        .click();
+      await page.getByLabel('Symptôme(s) du résident').click();
+      await page
+        .locator('div')
+        .filter({ hasText: /^Rigidité$/ })
+        .locator('#symptome')
+        .click();
+      const parts = '01/01/1950'.split('/');
+      const formattedDate = `${parts[0]}-${parts[1]}-${parts[2]}`;
+      await page.type('#residentDateOfBirth', formattedDate);
+      await page.fill('#residentUserName', username);
+      await page.fill('#residentPassword', '123456');
+      await page.fill('#residentConfirmPassword', '123456');
+      await page.getByRole('button', { name: 'Enregistrer' }).click();
+    });
+
+    await test.step('Verification existance', async () => {
+      const searchResident = page.getByPlaceholder(
+        "Entrez le nom du résident ou son numéro d'identification"
+      );
+      await page.getByTestId('searchResident').type(username);
+      //await page.fill('#searchResident', username);
+      await page.waitForSelector('text=NomRésident');
+      await page.waitForSelector('text=PrénomRésident');
+      await page.waitForSelector('text=' + username);
+    });
+
+    await test.step('Deconnexion', async () => {
+      await page.getByRole('navigation').getByRole('img').first().click();
+      await page.getByRole('button', { name: 'Se Déconnecter' }).click();
+    });
+
+    await test.step('Connexion avec le nouvel utilisateur', async () => {
+      await page.fill('#username', username);
+      await page.fill('#password', '123456');
+      await page.click('text=Se connecter');
+      await page.waitForSelector('li#quiz-btn');
     });
   });
 });

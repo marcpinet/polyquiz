@@ -9,7 +9,7 @@
     "build-client": "npm run build --prefix frontend",
     "dev": "concurrently \" npm run server \" \" npm run client \"",
     "build": "npm run build-client",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "concurrently \" cd backend && npm run start:e2e \" \" cd frontend && npm start \"",
     "prepare": "husky install",
     "lint": ".eslintrc.js"
   },
