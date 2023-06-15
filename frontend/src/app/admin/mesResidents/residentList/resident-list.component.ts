@@ -14,9 +14,9 @@ export class ResidentListComponent {
   public displayedUsers: User[] = [];
   public displayedResident: Resident[] = [];
   public inputValue: string = '';
-
-  private _currentPage: number = 1;
+  public currentPage: number = 1;
   public itemsPerPage: number = 4;
+  public totalPages: number = 1;
 
   constructor(public router: Router, public userService: UserService) {
     this.userService.residents$.subscribe((residents) => {
@@ -33,25 +33,12 @@ export class ResidentListComponent {
     });
   }
 
-  public get currentPage(): number {
-    return this._currentPage;
-  }
-
-  public set currentPage(value: number) {
-    this._currentPage = value;
-    this.searchResident();
-  }
-
-  public get totalPages(): number {
-    return Math.ceil(this.residentsList.length / this.itemsPerPage);
-  }
-
   navigateResidentStats(userId: number) {
     this.router.navigate(['/admin/stats-resident/', userId]);
   }
 
   searchResident() {
-    if (this.inputValue == '') {
+    if (this.inputValue === '') {
       this.displayedResident = this.residentsList;
       this.displayedUsers = this.usersList;
     } else {
@@ -88,6 +75,9 @@ export class ResidentListComponent {
       }
     }
 
+    this.totalPages = Math.ceil(
+      this.displayedResident.length / this.itemsPerPage
+    );
     this.displayedResident = this.displayedResident.slice(
       (this.currentPage - 1) * this.itemsPerPage,
       this.currentPage * this.itemsPerPage
@@ -97,5 +87,19 @@ export class ResidentListComponent {
       (this.currentPage - 1) * this.itemsPerPage,
       this.currentPage * this.itemsPerPage
     );
+  }
+
+  forward() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.searchResident();
+    }
+  }
+
+  backward() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.searchResident();
+    }
   }
 }
