@@ -4,6 +4,7 @@ import {
   FormGroup,
   Validators,
   AbstractControl,
+  ValidationErrors,
 } from '@angular/forms';
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
@@ -25,26 +26,35 @@ export class AdminModifPasswordComponent {
   ) {
     this.passwordForm = this.formBuilder.group(
       {
-        newPassword: ['', Validators.required],
+        newPassword: [
+          '',
+          [Validators.minLength(5), this.validatePasswordLength],
+        ],
         confirmPassword: ['', Validators.required],
       },
       { validators: this.passwordMatchValidator }
     );
   }
 
-  passwordMatchValidator(
+  public validatePasswordLength(
     control: AbstractControl
-  ): { [key: string]: boolean } | null {
+  ): ValidationErrors | null {
+    const password = control.value;
+    if (password && password.length < 5) {
+      return { passwordLength: true };
+    }
+    return null;
+  }
+
+  passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const newPassword = control.get('newPassword');
     const confirmPassword = control.get('confirmPassword');
 
     if (newPassword.value !== confirmPassword.value) {
-      confirmPassword.setErrors({ passwordMismatch: true });
-      return { passwordMismatch: true };
-    } else {
-      confirmPassword.setErrors(null);
-      return null;
+      return { passwordMatch: true };
     }
+
+    return null;
   }
 
   updateProfile() {
