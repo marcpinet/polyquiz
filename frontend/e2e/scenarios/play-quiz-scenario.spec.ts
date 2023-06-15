@@ -11,149 +11,178 @@ test.describe('Quiz tests', () => {
       width: 1920 * (3 / 4),
       height: 1080 * (3 / 4),
     });
+    const app = new AppFixture();
     const playedQuizComponentFixture = new PlayedQuizFixture();
-
     await page.goto(testUrl);
 
-    await page.type('#username', 'user');
+    await test.step('Connexion', async () => {
+      app.ConnexionAsUser(page);
+    });
 
-    await page.type('#password', '123456');
+    await test.step('Sélection du paramètre du clic maintenu de la souris', async () => {
+      await page.click('button[data-tab="PARAMETRES"]');
+      await page.click('#activer_pression_longue');
+      await page.click('#sauvegarder');
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+    });
 
-    await page.click('button:text(" Se connecter ")');
-
-    await page.click('button[data-tab="PARAMETRES"]');
-
-    await page.click('#activer_pression_longue');
-
-    await page.click('#sauvegarder');
-
-    //On commence a utiliser la barre espace
-    await new Promise((resolve) => setTimeout(resolve, 2500));
+    //On commence a utiliser la pression longue
     var currentButton = await page.$('button[data-tab="QUIZ"]');
     var currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
 
-    currentButton = await page.$('#theme');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
+    await test.step('Lancement du quiz', async () => {
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
 
-    //await page.dblclick('#theme');
+      currentButton = await page.$('#theme');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
 
-    //await page.selectOption('select', 'Géographie');
+      currentButton = await page.$('button:has-text("OK")');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
 
-    currentButton = await page.$('button:has-text("OK")');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
+      currentButton = await page.$('app-quiz-details');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
 
-    //await page.dblclick('button:has-text("OK")');
+      await page.waitForSelector(
+        'text=VRAI ou FAUX ? La ville du Vatican, capitale du Vatican, a le taux de crime le plus faible au monde.'
+      );
+    });
 
-    currentButton = await page.$('app-quiz-details');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
+    await test.step('Jouer au quiz avec la pression longue', async () => {
+      currentButton = await page.$('#faux');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
 
-    //await page.dblclick('app-quiz-details');
-
-    await page.waitForSelector(
-      'text=VRAI ou FAUX ? La ville du Vatican, capitale du Vatican, a le taux de crime le plus faible au monde.'
-    );
-
-    currentButton = await page.$('#faux');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
-
-    //await page.dblclick('#faux');
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    currentButton = await page.$('button:text("Suivant")');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
-
-    //await page.dblclick('button:text("Suivant")');
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      currentButton = await page.$('button:text("Suivant")');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
+    });
 
     //Passer sur la barre espace
 
-    currentButton = await page.$('button[data-tab="navbarParam"]');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
+    await test.step('Changement de paramètre pour utiliser la barre espace', async () => {
+      currentButton = await page.$('button[data-tab="navbarParam"]');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
 
-    //await page.dblclick('button[data-tab="PARAMETRES"]');
+      currentButton = await page.$('#activer_barre_espace');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliquePressionLongue(
+        page,
+        currentuttonBoundingBox
+      );
 
-    currentButton = await page.$('#activer_double_clic');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    await playedQuizComponentFixture.CliquePressionLongue(
-      page,
-      currentuttonBoundingBox
-    );
+      await page.waitForSelector('text=Sauvegarder');
+      currentButton = await page.$('[data-tab="save"]');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      //comme le bouton n'apparaît pas entièrement sur la page, on est obligé de cliquer sur le haut de ce dernier, d'où le -50
+      await page.mouse.move(
+        currentuttonBoundingBox.x + currentuttonBoundingBox.width / 2,
+        currentuttonBoundingBox.y - 50 + currentuttonBoundingBox.height / 2
+      );
+      await page.mouse.down();
+      await new Promise((resolve) => setTimeout(resolve, 800)); // Maintenir le clic pendant 0.8 seconde
+      await page.mouse.up();
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+    });
 
-    //await page.dblclick('#activer_double_clic');
+    await test.step('Jeu en utilisant la barre espace', async () => {
+      currentButton = await page.$('[data-number="quatre"]');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliqueBarreEspace(
+        page,
+        currentuttonBoundingBox
+      );
+      await new Promise((resolve) => setTimeout(resolve, 1600));
+      //On zoome car le bouton suivant n'est pas visible de base
+      await page.evaluate(() => {
+        const zoomLevel = 0.75; // Modifier la valeur pour ajuster le niveau de zoom souhaité
+        document.documentElement.style.transform = `scale(${zoomLevel})`;
+      });
+      currentButton = await page.$('button:text("Suivant")');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliqueBarreEspace(
+        page,
+        currentuttonBoundingBox
+      );
+      //On remet la page a la taille d'origine
+      await page.evaluate(() => {
+        const zoomLevel = 1; // Modifier la valeur pour ajuster le niveau de zoom souhaité
+        document.documentElement.style.transform = `scale(${zoomLevel})`;
+      });
+    });
 
-    await page.waitForSelector('text=Sauvegarder');
-    currentButton = await page.$('[data-tab="save"]');
-    currentuttonBoundingBox = await currentButton.boundingBox();
-    //await playedQuizComponentFixture.CliquePressionLongue(page, currentuttonBoundingBox);
-    //comme le bouton n'apparaît pas entièrement sur la page, on est obligé de cliquer sur le haut de ce dernier, d'où le -50
-    await page.mouse.move(
-      currentuttonBoundingBox.x + currentuttonBoundingBox.width / 2,
-      currentuttonBoundingBox.y - 50 + currentuttonBoundingBox.height / 2
-    );
-    //for (let i = 0; i < 20000; i++) {
-    //  await page.mouse.click(currentuttonBoundingBox.x + currentuttonBoundingBox.width / 2, currentuttonBoundingBox.y + currentuttonBoundingBox.height / 2);
-    //}
-    await page.mouse.down();
-    await new Promise((resolve) => setTimeout(resolve, 800)); // Maintenir le clic pendant 0.8 seconde
-    await page.mouse.up();
-    await new Promise((resolve) => setTimeout(resolve, 2500));
+    await test.step("Changement d'option pour le double clique", async () => {
+      currentButton = await page.$('button[data-tab="navbarParam"]');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliqueBarreEspace(
+        page,
+        currentuttonBoundingBox
+      );
 
-    //currentButton = await page.$('#closePopup');
-    //await page.dblclick('button[data-tab="closePopup"]');
+      currentButton = await page.$('#activer_double_clic');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      await playedQuizComponentFixture.CliqueBarreEspace(
+        page,
+        currentuttonBoundingBox
+      );
 
-    //await page.dblclick('#sauvegarder');
-
-    //retour au quiz
-
-    await page.dblclick('[data-number="quatre"]');
-
-    await page.click('[data-number="un"]');
-
-    await page.dblclick('[data-number="quatre"]');
-
-    await page.dblclick('button:text("Suivant")');
+      await page.waitForSelector('text=Sauvegarder');
+      currentButton = await page.$('[data-tab="save"]');
+      currentuttonBoundingBox = await currentButton.boundingBox();
+      //comme le bouton n'apparaît pas entièrement sur la page, on est obligé de cliquer sur le haut de ce dernier, d'où le -50
+      await page.mouse.move(
+        currentuttonBoundingBox.x + currentuttonBoundingBox.width / 2,
+        currentuttonBoundingBox.y - 50 + currentuttonBoundingBox.height / 2
+      );
+      await page.keyboard.press('Space');
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+    });
 
     //double clique
+    await test.step('Jeu avec le double clique', async () => {
+      await page.click('[data-number="un"]');
 
-    await page.click('[data-number="un"]');
+      await page.dblclick('[data-number="trois"]');
 
-    await page.dblclick('[data-number="trois"]');
+      await page.dblclick('[data-number="trois"]');
 
-    await page.dblclick('[data-number="trois"]');
+      await new Promise((resolve) => setTimeout(resolve, 1600));
 
-    await page.dblclick('button:text("Suivant")');
+      await page.dblclick('button:text("Suivant")');
+    });
 
-    expect((await page.textContent('#correct')).trim()).toBe('3');
+    await test.step('Verification page de resultat', async () => {
+      expect((await page.textContent('#correct')).trim()).toBe('3');
 
-    expect((await page.textContent('#incorrect')).trim()).toBe('0');
+      expect((await page.textContent('#incorrect')).trim()).toBe('0');
 
-    expect(page.url()).toMatch(testResultRegex);
+      expect(page.url()).toMatch(testResultRegex);
+    });
   });
 
   test('ResetParams', async ({ page }) => {
