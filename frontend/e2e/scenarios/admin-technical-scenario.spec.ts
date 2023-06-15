@@ -2,10 +2,12 @@ import { test } from '@playwright/test';
 import { loginUrl } from 'e2e/e2e.config';
 import { AppFixture } from 'src/app/app.fixture';
 
+const appComponentFixture = new AppFixture();
+var username = appComponentFixture.generateRandomUsername(15);
+
 test.describe('Create a quiz scenario', () => {
   test('Create the quiz', async ({ page }) => {
     await page.goto(loginUrl);
-    const appComponentFixture = new AppFixture();
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsAdmin(page);
@@ -118,7 +120,6 @@ test.describe('Create a quiz scenario', () => {
 test.describe('Verifier creation de quiz', () => {
   test('Create the user', async ({ page }) => {
     await page.goto(loginUrl);
-    const appComponentFixture = new AppFixture();
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsAdmin(page);
@@ -136,9 +137,6 @@ test.describe('Create a new user', () => {
   test('Create the user', async ({ page }) => {
     await page.goto(loginUrl);
     const appComponentFixture = new AppFixture();
-    var username = appComponentFixture.generateRandomUsername(
-      Math.random() * 16
-    );
 
     await test.step('Connexion', async () => {
       appComponentFixture.ConnexionAsAdmin(page);
@@ -193,6 +191,69 @@ test.describe('Create a new user', () => {
       await page.fill('#password', '123456');
       await page.click('text=Se connecter');
       await page.waitForSelector('li#quiz-btn');
+    });
+  });
+});
+
+test.describe('Modify a user', () => {
+  test('Modify the user', async ({ page }) => {
+    await page.goto(loginUrl);
+
+    await test.step('Connexion', async () => {
+      appComponentFixture.ConnexionAsAdmin(page);
+    });
+
+    await test.step('Acces a la page de modification de resident', async () => {
+      await page.getByTestId('searchResident').type(username);
+      await page.getByRole('cell', { name: username }).click();
+      await page.getByRole('button', { name: 'Modifier le profil' }).click();
+      await page
+        .getByRole('button', {
+          name: 'Sexe: masculin Date de naissance: 1950-01-01',
+        })
+        .click();
+    });
+
+    await test.step('Modifier les infos résidents', async () => {
+      //On vide le champ avant de le remplir
+      await page.getByTestId('modifyPP').fill('');
+      await page
+        .getByTestId('modifyPP')
+        .type(
+          'https://static.wikia.nocookie.net/heros/images/2/24/Mettaton_EX.png/revision/latest?cb=20210422115610&path-prefix=fr'
+        );
+
+      await page.getByTestId('modifySex').click();
+      await page.selectOption('role=combobox', { label: 'Féminin' });
+      await page.getByTestId('modifySex').click();
+
+      const parts = '02/10/1954'.split('/');
+      const formattedDate = `${parts[0]}-${parts[1]}-${parts[2]}`;
+      await page.getByTestId('modifyDOB').fill('');
+      await page.getByTestId('modifyDOB').type(formattedDate);
+      await page
+        .getByRole('button', { name: 'Mettre à jour le profil' })
+        .click();
+    });
+  });
+});
+
+test.describe('Verify user modification', () => {
+  test('Modify the user', async ({ page }) => {
+    await page.goto(loginUrl);
+
+    await test.step('Connexion', async () => {
+      appComponentFixture.ConnexionAsAdmin(page);
+    });
+
+    await test.step('Acces a la page de modification de resident', async () => {
+      await page.getByTestId('searchResident').type(username);
+      await page.getByRole('cell', { name: username }).click();
+    });
+
+    await test.step('Verifier informations mise à jour', async () => {
+      await page.waitForSelector('text="Féminin"');
+      await page.waitForSelector('text="1954-10-02"');
     });
   });
 });
