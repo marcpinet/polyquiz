@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 export class ThemesComponent {
   modals = [
     {
-      id: 'ADD_THEME',
       num: 1,
       title: 'Ajouter un thème',
     },

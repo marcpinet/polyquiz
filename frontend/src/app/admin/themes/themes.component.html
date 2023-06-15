@@ -12,4 +12,4 @@
   </div>
 </div>
 <app-theme-list></app-theme-list>
-<admin-abstract-modal *ngFor="let modal of modals" [modalComponent]="modal.id" [modalNum]="modal.num" [modalTitle]="modal.title"></admin-abstract-modal>
+<admin-abstract-modal [modalNum]="modals[0].num" [modalTitle]="modals[0].title"><app-add-theme></app-add-theme></admin-abstract-modal>

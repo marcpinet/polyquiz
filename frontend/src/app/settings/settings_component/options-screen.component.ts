@@ -88,9 +88,11 @@ export class OptionsScreenComponent implements OnInit {
           });
           this.renderSettings();
           //check if there is dialog as parent element
-          let dialog = document.getElementsByTagName('dialog')[1];
+          let dialog = document.getElementsByTagName('dialog');
           if (dialog) {
-            dialog.close();
+            for (let i = 0; i < dialog.length; i++) {
+              dialog[i].close();
+            }
           }
         },
         error: (error) => {
