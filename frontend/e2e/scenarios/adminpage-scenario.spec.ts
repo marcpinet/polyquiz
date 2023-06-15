@@ -45,9 +45,10 @@ test.describe('Main page tests', () => {
     await test.step('Modifier le profil', async () => {
       await page.getByRole('button', { name: 'Modifier le profil' }).click();
       await page.waitForSelector('text=Modifier Compte Du Résident user user');
-      await page.waitForSelector('text=Information généraux');
+      await page.waitForSelector('text=Informations générales');
       await page.waitForSelector('text=Symtômes');
       await page.waitForSelector('text=Effet sonore: Étendu');
+      await page.waitForSelector('text=Changer mot de passe du résident');
       await page.getByRole('button').first().click();
     });
 
