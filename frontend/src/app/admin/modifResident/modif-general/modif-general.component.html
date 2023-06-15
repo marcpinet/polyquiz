@@ -1,8 +1,8 @@
-<form [formGroup]="generalForm" (ngSubmit)="updateProfile()" class="w-full max-w-sm mx-auto">
+<form [formGroup]="generalForm" (ngSubmit)="updateProfile()" class="container mx-auto justify-between items-center">
   <div class="mb-4">
     <label for="avatar" class="block text-[#2B3467] text-xl font-bold mb-2">Photo du résident</label>
     <input type="text" id="avatar" class="form-input p-4 mt-1 block w-full border-[#2B3467] border-2 rounded-md shadow-sm focus:ring-[#2B3467] focus:border-[#2B3467]" formControlName="avatar" required placeholder="Entrez l'URL de la photo">
-    <img [src]="generalForm.value.avatar" *ngIf="generalForm.value.avatar" class="mx-auto object-cover rounded-lg" alt="Resident image">
+    <img [src]="generalForm.value.avatar" *ngIf="generalForm.value.avatar" class="mx-auto object-cover w-1/3 rounded-lg" alt="Resident image">
   </div>
 
   <div class="mb-4">
