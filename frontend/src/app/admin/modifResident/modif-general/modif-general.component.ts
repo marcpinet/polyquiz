@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -9,24 +8,29 @@ import {
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/services/user.service';
+import { Resident } from 'src/models/resident.model';
+
 @Component({
   selector: 'app-modif-general',
   templateUrl: './modif-general.component.html',
 })
 export class AdminModifGeneralComponent implements OnInit {
   @Input() user: User;
-  public profileForm: FormGroup;
+  @Input() resident: Resident;
+  public generalForm: FormGroup;
   public submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     private userService: UserService
   ) {
-    this.profileForm = this.formBuilder.group({
+    this.generalForm = this.formBuilder.group({
+      avatar: [this.user?.avatar || ''],
       firstName: [this.user?.firstName || '', Validators.required],
       lastName: [this.user?.lastName || '', Validators.required],
       userName: [this.user?.userName || '', Validators.required],
+      sexe: [this.resident?.sexe || '', Validators.required],
+      dateOfBirth: [this.resident?.dateOfBirth || '', Validators.required],
     });
   }
 
@@ -35,35 +39,43 @@ export class AdminModifGeneralComponent implements OnInit {
   }
 
   repatchValue() {
-    this.profileForm.patchValue({
+    this.generalForm.patchValue({
+      avatar: this.user?.avatar || '',
       firstName: this.user?.firstName || '',
       lastName: this.user?.lastName || '',
       userName: this.user?.userName || '',
+      sexe: this.resident?.sexe || '',
+      dateOfBirth: this.resident?.dateOfBirth || '',
     });
   }
 
   updateProfile() {
     this.submitted = true;
-    if (this.profileForm.invalid) {
+    if (this.generalForm.invalid) {
       return;
     }
-    this.user.firstName = this.profileForm.value.firstName;
-    this.user.lastName = this.profileForm.value.lastName;
-    this.user.userName = this.profileForm.value.userName;
+    this.user.avatar = this.generalForm.value.avatar;
+    this.user.firstName = this.generalForm.value.firstName;
+    this.user.lastName = this.generalForm.value.lastName;
+    this.user.userName = this.generalForm.value.userName;
+    this.resident.sexe = this.generalForm.value.sexe;
+    this.resident.dateOfBirth = this.generalForm.value.dateOfBirth;
     this.userService.updateUser(this.user).subscribe((user) => {
-      Swal.fire({
-        title: 'Profil modifié',
-        icon: 'success',
-        timer: 1500,
-        showConfirmButton: false,
-      });
-      this.repatchValue();
-      let dialog = document.getElementsByTagName('dialog');
-      if (dialog) {
-        for (let i = 0; i < dialog.length; i++) {
-          dialog[i].close();
+      this.userService.updateResident(this.resident).subscribe((resident) => {
+        Swal.fire({
+          title: 'Profil modifié',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        this.repatchValue();
+        let dialog = document.getElementsByTagName('dialog');
+        if (dialog) {
+          for (let i = 0; i < dialog.length; i++) {
+            dialog[i].close();
+          }
         }
-      }
+      });
     });
   }
 }

@@ -165,4 +165,12 @@ export class UserService {
       this.httpOptions
     );
   }
+
+  updateResident(resident: Resident): Observable<Resident> {
+    return this.http.put<Resident>(
+      `${this.residentUrl}/${resident.id}`,
+      resident,
+      this.httpOptions
+    );
+  }
 }
