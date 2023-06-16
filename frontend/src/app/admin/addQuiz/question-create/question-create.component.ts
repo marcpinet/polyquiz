@@ -38,24 +38,26 @@ export class QuestionCreateComponent implements OnInit {
   ) {
     console.log('okkkk');
     this.questionForm = this.formBuilder.group({
-      questionImage: ['', Validators.required],
+      questionImage: [''],
       questionText: ['', Validators.required],
       explainText: ['', Validators.required],
-      explainImage: ['', Validators.required],
+      explainImage: [''],
       reponse1: ['', Validators.required],
-      reponse1Image: ['', Validators.required],
+      reponse1Image: [''],
       reponse2: ['', Validators.required],
-      reponse2Image: ['', Validators.required],
-      reponse3: ['', Validators.required],
-      reponse3Image: ['', Validators.required],
-      reponse4: ['', Validators.required],
-      reponse4Image: ['', Validators.required],
-      validreponse: ['', Validators.required],
+      reponse2Image: [''],
+      reponse3: [''],
+      reponse3Image: [''],
+      reponse4: [''],
+      reponse4Image: [''],
+      validresponse: ['', Validators.required],
     });
     console.log('Question create component');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.updateForm();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if ('modifyQuestion' in changes) {
@@ -101,7 +103,7 @@ export class QuestionCreateComponent implements OnInit {
       this.modifyAnswers.forEach((answer) => {
         if (answer.isCorrect) {
           this.questionForm.patchValue({
-            validreponse: this.modifyAnswers.indexOf(answer),
+            validresponse: this.modifyAnswers.indexOf(answer),
           });
         }
       });
@@ -134,7 +136,7 @@ export class QuestionCreateComponent implements OnInit {
       }
     }
 
-    switch (this.questionForm.get('validreponse').value) {
+    switch (this.questionForm.get('validresponse').value) {
       default:
         this.answers[0].isCorrect = true;
         break;

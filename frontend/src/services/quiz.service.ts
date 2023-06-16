@@ -8,6 +8,7 @@ import { Answer } from '../models/quiz.model';
 import { switchMap, map, tap, mapTo } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { LeaveRouteGuard } from './leave-route-guard';
 @Injectable({
   providedIn: 'root',
 })
@@ -37,7 +38,11 @@ export class QuizService {
 
   private httpOptions = httpOptionsBase;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private leaveRouteGuard: LeaveRouteGuard
+  ) {
     this.retrieveQuizzes();
   }
 
@@ -99,6 +104,7 @@ export class QuizService {
   }
 
   createQuiz(quiz: Quiz, questionAnswers: Map<Question, Answer[]>) {
+    this.leaveRouteGuard.disableGuard();
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe({
       next: (createdQuiz) => {
         console.log('Quiz was created successfully');
@@ -138,9 +144,15 @@ export class QuizService {
                             icon: 'success',
                             timer: 2000,
                             showConfirmButton: false,
-                          }).then(() => {
-                            this.router.navigate(['/admin/quiz']);
-                          });
+                          })
+                            .then(() => {
+                              this.router.navigate(['/admin/quiz']);
+                            })
+                            .then(() => {
+                              this.router.navigate(['/admin']).then(() => {
+                                this.leaveRouteGuard.enableGuard();
+                              });
+                            });
                         }
                       },
                       error: (error) => {
