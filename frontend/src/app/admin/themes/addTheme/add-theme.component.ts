@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Theme } from 'src/models/quiz.model';
 import { ThemesService } from 'src/services/theme.service';
@@ -13,6 +13,7 @@ export class AddThemeComponent {
   public theme: Theme;
   public themeForm: FormGroup;
   public submitted = false;
+  @Output() themeCreated = new EventEmitter<Theme>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,8 +39,7 @@ export class AddThemeComponent {
     };
 
     this.themeService.addTheme(theme).subscribe(
-      () => {
-        //Swal fire in 1.5s
+      (theme) => {
         Swal.fire({
           icon: 'success',
           title: 'Thème ajouté',
@@ -48,6 +48,10 @@ export class AddThemeComponent {
         });
         let dialog = document.getElementsByTagName('dialog')[1];
         dialog.close();
+        this.themeForm.reset();
+        if (this.themeCreated) {
+          this.themeCreated.emit(theme);
+        }
       },
       (error) => {
         Swal.fire({
