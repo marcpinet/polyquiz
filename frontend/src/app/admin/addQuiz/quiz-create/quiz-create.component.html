@@ -184,24 +184,17 @@
   <div class="overflow-x-auto">
     <div *ngIf="questionsAnswers.size" class="w-full">
       <div *ngFor="let question of questions; let i = index" class="mx-auto">
-        <div
-          class="flex items-center border rounded-lg p-4 shadow-lg bg-[#BAD7E9] mb-2"
-        >
-          <div class="w-1/10" *ngIf="question.question_image">
-            <img
-              src="{{question.question_image}}"
-              alt="Image"
-              class="w-96 h-auto rounded-md"
-            />
-          </div>
+        <div class="flex items-center border rounded-lg p-4 shadow-lg bg-[#BAD7E9] mb-2">
           <div class="w-1/2 ml-4">
-            <h2 class="text-xl text-[#2B3467] font-bold mb-2 text-xl">
-              Question {{ i + 1 }}
-            </h2>
+            <h2 class="text-xl text-[#2B3467] font-bold mb-2 text-xl">Question {{ i + 1 }}</h2>
             <p class="text-xl font-semibold">{{ question.question_text }}</p>
           </div>
-          <div class="w-2/5 flex justify-end">
-            <div class="flex flex-col">
+          <div class="w-1/10" *ngIf="question.question_image">
+            <img src="{{question.question_image}}" alt="Image" class="w-96 h-auto rounded-md" />
+          </div>
+          <div class="flex-grow"></div> <!-- Added 'flex-grow' class -->
+          <div class="flex justify-end"> <!-- Updated 'w-2/5' to 'flex' -->
+            <div class="flex flex-col items-end">
               <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded mb-2 w-full text-xl"
                 (click)="editQuestion(i)"
@@ -220,7 +213,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- Buttons -->
   <div *ngIf="!questionsAnswers.size || questionsAnswers.size < 2">
     <button

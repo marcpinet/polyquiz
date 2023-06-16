@@ -97,7 +97,7 @@
             <div class="w-1/5 px-3 py-2" style="width:20%">
               <div class="flex items-center justify-end">
                 <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
-                  <input id="reponseVraie1" type="radio" formControlName="validresponse" name="validresponse" value="0" style="transform: scale(2)">
+                  <input id="reponseVraie1" type="radio" formControlName="validresponse" name="validresponse" value="0" style="transform: scale(2)" [checked]="modifyAnswers !== undefined && questionForm.value.validresponse == 0">
                   <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
                 </div>
               </div>
@@ -137,7 +137,7 @@
             <div class="w-1/5 px-3 py-2" style="width:20%">
               <div class="flex items-center justify-end">
                 <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
-                  <input id="reponseVraie2" type="radio" formControlName="validresponse" name="validresponse" value="1" style="transform: scale(2)">
+                  <input id="reponseVraie2" type="radio" formControlName="validresponse" name="validresponse" value="1" style="transform: scale(2)" [checked]="modifyAnswers !== undefined && questionForm.value.validresponse == 1">
                   <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
                 </div>
               </div>
@@ -177,7 +177,7 @@
             <div class="w-1/5 px-3 py-2" style="width:20%">
               <div class="flex items-center justify-end">
                 <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
-                  <input id="reponseVraie3" type="radio" formControlName="validresponse" name="validresponse" value="2" style="transform: scale(2)">
+                  <input id="reponseVraie3" type="radio" formControlName="validresponse" name="validresponse" value="2" style="transform: scale(2)" [checked]="modifyAnswers !== undefined && questionForm.value.validresponse == 2">
                   <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
                 </div>
               </div>
@@ -217,7 +217,7 @@
             <div class="w-1/5 px-3 py-2" style="width:20%">
               <div class="flex items-center justify-end">
                 <div class="mr-6 rounded-md bg-[#90C1DF] p-6">
-                  <input id="reponseVraie4" type="radio" formControlName="validresponse" name="validresponse" value="3" style="transform: scale(2)">
+                  <input id="reponseVraie4" type="radio" formControlName="validresponse" name="validresponse" value="3" style="transform: scale(2)" [checked]="modifyAnswers !== undefined && questionForm.value.validresponse == 3">
                   <label for="valid0" class="ml-2 text-md font-bold">Bonne Réponse</label>
                 </div>
               </div>
