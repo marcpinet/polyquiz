@@ -22,6 +22,12 @@ export class QuizCreateComponent implements OnInit {
   themes: Theme[] = [];
   quiz: Quiz;
   questions: Question[] = [];
+  modals = [
+    {
+      num: 1,
+      title: 'Ajouter un thème',
+    },
+  ];
 
   constructor(
     private quizService: QuizService,
@@ -73,6 +79,18 @@ export class QuizCreateComponent implements OnInit {
         quizTheme: this.quiz.themeId,
       });
     }
+  }
+
+  public addTheme(theme: Theme): void {
+    this.themes.push(theme);
+    this.quizForm.patchValue({
+      quizTheme: theme.id,
+    });
+  }
+
+  navigateAddTheme() {
+    let dialog = document.getElementsByTagName('dialog')[this.modals[0].num];
+    dialog.showModal();
   }
 
   public addQuestion(): void {
