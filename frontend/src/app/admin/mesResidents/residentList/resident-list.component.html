@@ -17,60 +17,33 @@
   </div>
 </div>
 
-<div
-  class="overflow-hidden rounded-lg border border-[#2B3467] shadow-md"
-  style="width: 100%"
->
+<div class="overflow-hidden rounded-lg border border-[#2B3467] shadow-md" style="width: 100%">
   <div style="width: 100%; overflow-x: auto">
-    <table
-      class="w-full border-collapse bg-[#BAD7E9] text-left text-sm text-[#2B3467] text-xl"
-      style="table-layout: fixed"
-    >
+    <table class="w-full border-collapse bg-[#BAD7E9] text-left text-sm text-[#2B3467] text-xl" style="table-layout: fixed">
       <thead class="bg-[#90C1DF]">
         <tr>
-          <th
-            scope="col"
-            class="px-6 py-4 font-medium text-[#2B3467] text-xl"
-            style="width: 25%"
-          >
-            Numéro Résident
-          </th>
-          <th
-            scope="col"
-            class="px-6 py-4 font-medium text-[#2B3467] text-xl"
-            style="width: 75%"
-          >
-            Résident
-          </th>
+          <th scope="col" class="px-6 py-4 font-medium text-[#2B3467] text-xl" style="width: 25%">Numéro Résident</th>
+          <th scope="col" class="px-6 py-4 font-medium text-[#2B3467] text-xl" style="width: 75%">Résident</th>
         </tr>
       </thead>
-      <tbody
-        class="divide-y divide-gray-100 border-t border-[#2B3467]"
-        *ngFor="let resident of displayedResident; let i = index"
-        (click)="navigateResidentStats(resident.id)"
-      >
+      <tbody class="divide-y divide-gray-100 border-t border-[#2B3467]" *ngFor="let resident of displayedResident; let i = index" (click)="navigateResidentStats(resident.id)">
         <ng-container *ngIf="displayedUsers[i]">
           <tr class="hover:bg-[#90C1DF]">
+            <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">{{ resident.id }}</td>
             <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">
-              {{ resident.id }}
-            </td>
-            <td class="px-6 py-4 font-normal text-[#2B3467] text-xl">
-              <div class="flex gap-3">
-                <div class="relative h-14 w-14 mr-2">
-                  <img
-                    class="h-full w-full rounded-full object-cover object-center"
-                    src="{{ displayedUsers[i].avatar }}"
-                    alt=""
-                  />
+              <div class="flex justify-between items-center">
+                <div class="flex gap-3">
+                  <div class="relative h-14 w-14 mr-2">
+                    <img class="h-full w-full rounded-full object-cover object-center" src="{{ displayedUsers[i].avatar }}" alt="" />
+                  </div>
+                  <div class="text-xl">
+                    <div class="font-medium text-gray-700">{{ displayedUsers[i].firstName }} {{ displayedUsers[i].lastName }}</div>
+                    <div class="text-[#2B3467]">{{ displayedUsers[i].userName }}</div>
+                  </div>
                 </div>
-                <div class="text-xl">
-                  <div class="font-medium text-gray-700">
-                    {{ displayedUsers[i].firstName }}
-                    {{ displayedUsers[i].lastName }}
-                  </div>
-                  <div class="text-[#2B3467]">
-                    {{ displayedUsers[i].userName }}
-                  </div>
+                <div class="flex gap-2">
+                  <button class="px-4 py-2 bg-[#2B3467] text-white rounded-lg" (click)="navigateModify(resident.id); $event.stopPropagation()">Modifier</button>
+                  <button class="px-4 py-2 bg-[#EB455F] text-white rounded-lg" (click)="deleteResident(resident); $event.stopPropagation()">Supprimer</button>
                 </div>
               </div>
             </td>
@@ -80,6 +53,9 @@
     </table>
   </div>
 </div>
+
+
+
 <div class="flex justify-center mt-2">
   <button
     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l disabled:bg-gray-400"
