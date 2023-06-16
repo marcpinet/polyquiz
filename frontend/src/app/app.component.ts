@@ -225,7 +225,7 @@ export class AppComponent implements OnDestroy {
 
     if (
       this.userSettings &&
-      (this.userSettings.mouse_option == 'keyboard_control' ||
+      (this.userSettings.mouse_option === 'keyboard_control' ||
         this.userSettings.mouse_option === 'doubleClique' ||
         this.userSettings.mouse_option === 'pressionLongue')
     ) {
@@ -233,18 +233,21 @@ export class AppComponent implements OnDestroy {
         this.userSettings.mouse_option === 'keyboard_control' &&
         !this.spaceKeyPressed
       ) {
-        this.missclick_count++;
-        console.log('missclick_count : ' + this.missclick_count);
-        if (this.missclick_count < 12) {
-          return;
-        }
-        this.missclick_count = 0;
         event.preventDefault();
         event.stopPropagation();
+
+        this.missclick_count++;
+        console.log('missclick_count : ' + this.missclick_count);
+        if (this.missclick_count < 3) {
+          return;
+        }
+
+        this.missclick_count = 0;
+
         Swal.fire({
           icon: 'warning',
-          title: 'Mode de clic par clavier activé',
-          html: 'Attention : vos clics sont actuellement réalisés via la barre espace ; vos clics de souris sont donc désactivés. Voulez-vous repasser en mode de clics normaux ?',
+          title:
+            '<div class="text-5xl font-bold text-[#2B3467]">Mode de clic par clavier activé</div><div class="text-4xl text-[#2B3467]">Attention : vos clics sont actuellement réalisés via la barre espace ; vos clics de souris sont donc désactivés. Voulez-vous repasser en mode de clics normaux ?</div>',
           showDenyButton: true,
           showCancelButton: false,
           width: 1700,

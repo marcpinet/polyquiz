@@ -169,5 +169,68 @@
     "date": "2023-06-14T08:22:48.902Z",
     "seen": false,
     "id": 1686730968931
+  },
+  {
+    "sender_id": 1682834336623,
+    "user_id": 1682318674112,
+    "message": "Marie-Claude Remy a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T10:31:38.210Z",
+    "seen": false,
+    "id": 1686911498227
+  },
+  {
+    "sender_id": 1682834336623,
+    "user_id": 1682318674112,
+    "message": "Marie-Claude Remy a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T10:32:40.700Z",
+    "seen": false,
+    "id": 1686911560716
+  },
+  {
+    "sender_id": 1682834336623,
+    "user_id": 1682318674112,
+    "message": "Marie-Claude Remy a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T10:32:46.782Z",
+    "seen": false,
+    "id": 1686911566797
+  },
+  {
+    "sender_id": 1682834336623,
+    "user_id": 1682318674112,
+    "message": "Marie-Claude Remy a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T10:32:50.546Z",
+    "seen": false,
+    "id": 1686911570561
+  },
+  {
+    "sender_id": 1682834336623,
+    "user_id": 1682318674112,
+    "message": "Marie-Claude Remy a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T10:32:52.909Z",
+    "seen": false,
+    "id": 1686911572931
+  },
+  {
+    "sender_id": 1682834336623,
+    "user_id": 1682318674112,
+    "message": "Marie-Claude Remy a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T10:32:54.860Z",
+    "seen": false,
+    "id": 1686911574876
+  },
+  {
+    "sender_id": 1680382334270,
+    "user_id": 1682318674112,
+    "message": "Geko Moria a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T11:05:14.834Z",
+    "seen": false,
+    "id": 1686913514879
   }
 ]
