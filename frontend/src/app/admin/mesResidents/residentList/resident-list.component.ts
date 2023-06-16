@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Resident } from 'src/models/resident.model';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-residents-list',
   templateUrl: './resident-list.component.html',
@@ -101,5 +101,38 @@ export class ResidentListComponent {
       this.currentPage--;
       this.searchResident();
     }
+  }
+
+  navigateModify(id: number) {
+    this.router.navigate(['/admin/modif-resident/' + id]);
+  }
+
+  deleteResident(resident: Resident) {
+    Swal.fire({
+      title: 'Êtes-vous sûr de vouloir supprimer ce résident ?',
+      text: 'Cette action est irréversible !',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Supprimer',
+      cancelButtonText: 'Annuler',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteResident(resident);
+        this.residentsList = this.residentsList.filter(
+          (res) => res.id !== resident.id
+        );
+        this.displayedResident = this.displayedResident.filter(
+          (res) => res.id !== resident.id
+        );
+        this.usersList = this.usersList.filter(
+          (user) => user.id !== resident.userId
+        );
+        this.displayedUsers = this.displayedUsers.filter(
+          (user) => user.id !== resident.userId
+        );
+      }
+    });
   }
 }

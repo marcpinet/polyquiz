@@ -111,6 +111,37 @@ export class UserService {
     });
   }
 
+  deleteResident(resident: Resident): void {
+    const user = this.getUserById(resident.userId);
+    forkJoin([
+      this.deleteUser(user),
+      this.deleteResidentOnServer(resident.id),
+    ]).subscribe({
+      next: () => {
+        this.retrieveUsers();
+        this.retrieveResidents();
+        Swal.fire({
+          title: 'Succès',
+          text: 'Resident a été supprimé avec succès',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      },
+    });
+  }
+
+  deleteUser(user: User): Observable<User> {
+    const userId = user.id;
+    const userUrl = `${this.userUrl}/${userId}`;
+    return this.http.delete<User>(userUrl, this.httpOptions);
+  }
+
+  deleteResidentOnServer(residentId: number): Observable<Resident> {
+    const residentUrl = `${this.residentUrl}/${residentId}`;
+    return this.http.delete<Resident>(residentUrl, this.httpOptions);
+  }
+
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.userUrl, user, this.httpOptions);
   }
