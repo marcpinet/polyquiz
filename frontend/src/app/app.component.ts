@@ -246,8 +246,8 @@ export class AppComponent implements OnDestroy {
 
         Swal.fire({
           icon: 'warning',
-          title: 'Mode de clic par clavier activé',
-          html: 'Attention : vos clics sont actuellement réalisés via la barre espace ; vos clics de souris sont donc désactivés. Voulez-vous repasser en mode de clics normaux ?',
+          title:
+            '<div class="text-5xl font-bold text-[#2B3467]">Mode de clic par clavier activé</div><div class="text-4xl text-[#2B3467]">Attention : vos clics sont actuellement réalisés via la barre espace ; vos clics de souris sont donc désactivés. Voulez-vous repasser en mode de clics normaux ?</div>',
           showDenyButton: true,
           showCancelButton: false,
           width: 1700,

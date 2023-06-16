@@ -223,5 +223,14 @@
     "date": "2023-06-16T10:32:54.860Z",
     "seen": false,
     "id": 1686911574876
+  },
+  {
+    "sender_id": 1680382334270,
+    "user_id": 1682318674112,
+    "message": "Geko Moria a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T11:05:14.834Z",
+    "seen": false,
+    "id": 1686913514879
   }
 ]
