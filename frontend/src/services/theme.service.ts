@@ -3,7 +3,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Theme } from '../models/quiz.model';
-
+import { QuizService } from './quiz.service';
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +16,7 @@ export class ThemesService {
   private themeUrl = serverUrl + '/themes';
   private httpOptions = httpOptionsBase;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private quizService: QuizService) {
     this.retrieveThemes();
   }
 
@@ -42,11 +43,66 @@ export class ThemesService {
   }
 
   addTheme(theme: Theme): Observable<Theme> {
-    return this.http.post<Theme>(this.themeUrl, theme, this.httpOptions);
+    const themeUpdated = this.http.post<Theme>(
+      this.themeUrl,
+      theme,
+      this.httpOptions
+    );
+    themeUpdated.subscribe({
+      next: () => {
+        this.retrieveThemes();
+      },
+    });
+    return themeUpdated;
   }
 
   updateTheme(theme: Theme): Observable<Theme> {
     const urlWithId = this.themeUrl + '/' + theme.id;
     return this.http.put<Theme>(urlWithId, theme, this.httpOptions);
+  }
+
+  deleteTheme(theme: Theme): void {
+    //verifier si le theme est utilisé par un quiz
+    this.quizService.quizzes$.subscribe((quizzes) => {
+      let isUsed = false;
+      quizzes.forEach((quiz) => {
+        if (quiz.themeId === parseInt(theme.id)) {
+          isUsed = true;
+        }
+      });
+      if (isUsed) {
+        Swal.fire({
+          title: 'Ce thème est utilisé par un quiz',
+          text: 'Veuillez supprimer le quiz avant de supprimer le thème',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      } else {
+        const urlWithId = this.themeUrl + '/' + theme.id;
+        this.http.delete<Theme>(urlWithId, this.httpOptions).subscribe({
+          next: () => {
+            this.retrieveThemes();
+          },
+          error: (error) => {
+            Swal.fire({
+              title: 'Erreur',
+              text: 'Une erreur est survenue lors de la suppression du thème',
+              icon: 'error',
+              timer: 2000,
+              showConfirmButton: false,
+            });
+          },
+          complete: () => {
+            Swal.fire({
+              title: 'Thème supprimé',
+              text: 'Le thème a bien été supprimé',
+              icon: 'success',
+              timer: 2000,
+              showConfirmButton: false,
+            });
+          },
+        });
+      }
+    });
   }
 }
