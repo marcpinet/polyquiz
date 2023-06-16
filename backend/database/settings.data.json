@@ -17,8 +17,8 @@
   },
   {
     "user_id": 1682834336623,
-    "sound_effect": true,
-    "mouse_option": "aucun",
+    "sound_effect": false,
+    "mouse_option": "keyboard_control",
     "microphone": false,
     "confirm_answer": false,
     "id": 1683740110196
