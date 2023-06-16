@@ -94,7 +94,16 @@ export class SettingService {
       this.notificationService.addNotification(Notification).subscribe();
     }
     //TODO: make sure that the notification was added before updating the settings
-    return this.http.put<Settings>(urlWithId, settings, this.httpOptions);
+    const settings$ = this.http.put<Settings>(
+      urlWithId,
+      settings,
+      this.httpOptions
+    );
+    settings$.subscribe((settings) => {
+      this.settings = settings;
+      this.settings$.next(this.settings);
+    });
+    return settings$;
   }
 
   setSettings(settings: Settings) {
