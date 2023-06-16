@@ -232,5 +232,14 @@
     "date": "2023-06-16T11:05:14.834Z",
     "seen": false,
     "id": 1686913514879
+  },
+  {
+    "sender_id": 1682834336623,
+    "user_id": 1682318674112,
+    "message": "Marie-Claude Remy a modifié ses paramètres",
+    "type": "settings",
+    "date": "2023-06-16T13:55:29.700Z",
+    "seen": false,
+    "id": 1686923729727
   }
 ]

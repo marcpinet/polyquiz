@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Question } from 'src/models/quiz.model';
 import { GamePageComponent } from '../game-page/game-page.component';
-import { writtenNumber } from 'written-number';
+import * as writtenNumber from 'written-number';
 import { Subscription } from 'rxjs';
 import { SettingService } from 'src/services/settings.service';
 import Swal from 'sweetalert2';

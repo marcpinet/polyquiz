@@ -4,7 +4,7 @@ import { SpeechService } from '../services/speech.service';
 import { SettingService } from '../services/settings.service';
 import { Subscription } from 'rxjs';
 import { Settings } from 'src/models/settings.model';
-import writtenNumber from 'written-number';
+import * as writtenNumber from 'written-number';
 import Swal from 'sweetalert2';
 import { User } from 'src/models/user.model';
 import { AuthService } from 'src/services/auth.service';
