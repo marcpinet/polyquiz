@@ -7,7 +7,7 @@ import { Theme } from 'src/models/quiz.model';
 })
 export class ThemesComponent {
   @Output() modifyTheme: EventEmitter<Theme> = new EventEmitter<Theme>();
-
+  theme: Theme;
   modals = [
     {
       num: 1,
@@ -26,8 +26,7 @@ export class ThemesComponent {
   }
 
   handleModifyTheme(theme: Theme) {
-    console.log(theme);
-    this.modifyTheme.emit(theme);
+    this.theme = theme;
     let dialog = document.getElementsByTagName('dialog')[this.modals[1].num];
     dialog.showModal();
   }
