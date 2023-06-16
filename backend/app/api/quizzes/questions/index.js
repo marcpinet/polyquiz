@@ -65,27 +65,7 @@ router.post("/", (req, res) => {
 
 router.put("/:questionId", (req, res) => {
   try {
-    const question = getQuestionFromQuiz(
-      req.params.quizId,
-      req.params.questionId
-    );
-    let updatedQuestion = {
-      question_text: req.body.question_text,
-      explain_text: req.body.explain_text,
-      quizId,
-    };
-
-    if (req.body.question_image) {
-      question.question_image = req.body.question_image;
-    }
-    if (req.body.question_sound) {
-      question.question_sound = req.body.question_sound;
-    }
-    if (req.body.explain_image) {
-      question.explain_image = req.body.explain_image;
-    }
-    Question.update(req.params.questionId, updatedQuestion);
-    res.status(200).json(updatedQuestion);
+    res.status(200).json(Question.update(req.params.questionId, req.body));
   } catch (err) {
     manageAllErrors(res, err);
   }

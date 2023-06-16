@@ -14,7 +14,6 @@ export class ModifyQuizComponent {
   quiz: Quiz;
   questionsAnswers: Map<Question, Answer[]> = new Map<Question, Answer[]>();
   currentTab = '';
-  id: string;
   modifyQuestion: Question;
   modifyAnswers: Answer[];
   tmp: Map<Question, Answer[]> = new Map<Question, Answer[]>();
@@ -28,10 +27,9 @@ export class ModifyQuizComponent {
     this.quiz = {} as Quiz;
     console.log('modify component');
     const id = this.route.snapshot.paramMap.get('id');
-    this.id = id;
-    this.quizService.retrieveQuizzes();
     this.quizService.getQuizById(id).subscribe((quiz) => {
       this.quiz = quiz;
+      console.log(quiz);
       for (let i = 0; i < this.quiz.questions.length; i++) {
         this.tmp.set(this.quiz.questions[i], this.quiz.questions[i].answers);
         this.questionsAnswers.set(
@@ -39,10 +37,8 @@ export class ModifyQuizComponent {
           this.quiz.questions[i].answers
         );
       }
-      console.log('aaaaaaaaaaa');
       console.log(this.quiz.questions);
       this.currentTab = 'QUIZ_MODIFY';
-      console.log('aaaaaaaaaaa');
     });
   }
 
@@ -52,7 +48,6 @@ export class ModifyQuizComponent {
 
   loadQuiz(quiz: Quiz) {
     this.quiz = quiz;
-    console.log(quiz);
   }
 
   loadModifyQuestion(question: Question) {
@@ -66,9 +61,46 @@ export class ModifyQuizComponent {
 
   uploadQuiz(quiz: Quiz) {
     this.quiz = quiz;
-    this.quiz.id = this.id;
-    this.quizService.deleteQuiz(this.quiz);
-    this.quizService.createQuiz(this.quiz, this.tmp);
+    //create a doublicate quiz wil only id,   name, difficulty, image, description, estimated_time, themeId but without questions and answers
+    const quizModify: Quiz = {
+      id: this.quiz.id,
+      name: this.quiz.name,
+      difficulty: this.quiz.difficulty,
+      image: this.quiz.image,
+      description: this.quiz.description,
+      estimated_time: this.quiz.estimated_time,
+      themeId: this.quiz.themeId,
+    };
+    const questions: Question[] = [];
+    this.questionsAnswers.forEach((value, key) => {
+      const question: Question = {
+        id: key.id,
+        quizId: key.quizId,
+        question_text: key.question_text,
+        explain_text: key.explain_text,
+      };
+      if (key.explain_image !== undefined) {
+        question.explain_image = key.explain_image;
+      }
+      if (key.question_image !== undefined) {
+        question.question_image = key.question_image;
+      }
+      questions.push(question);
+    });
+    const answers: Answer[] = [];
+    this.questionsAnswers.forEach((value, key) => {
+      for (let i = 0; i < value.length; i++) {
+        const answer: Answer = {
+          id: value[i].id,
+          isCorrect: value[i].isCorrect,
+          answer_text: value[i].answer_text,
+          answer_image: value[i].answer_image,
+        };
+        answers.push(answer);
+      }
+    });
+    console.log(this.tmp);
+    this.quizService.updateQuiz(quizModify, questions, answers);
     console.log(this.questionsAnswers);
     console.log(this.quiz);
   }

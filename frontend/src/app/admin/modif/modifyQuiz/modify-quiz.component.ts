@@ -105,7 +105,7 @@ export class ModifyQuizAdminComponent implements OnInit {
   }
 
   public deleteQuestion(question: Question) {
-    this.questions.delete(question);
     this.deleteQuestionEmit.emit(question);
+    this.questions.delete(question);
   }
 }
