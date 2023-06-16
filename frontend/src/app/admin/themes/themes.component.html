@@ -11,5 +11,6 @@
     </div>
   </div>
 </div>
-<app-theme-list></app-theme-list>
+<app-theme-list (modifyTheme)="handleModifyTheme($event)"></app-theme-list>
 <admin-abstract-modal [modalNum]="modals[0].num" [modalTitle]="modals[0].title"><app-add-theme></app-add-theme></admin-abstract-modal>
+<admin-abstract-modal [modalNum]="modals[1].num" [modalTitle]="modals[1].title"><app-modif-theme [theme]="theme"></app-modif-theme></admin-abstract-modal>

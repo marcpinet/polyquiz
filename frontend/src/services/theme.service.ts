@@ -44,4 +44,9 @@ export class ThemesService {
   addTheme(theme: Theme): Observable<Theme> {
     return this.http.post<Theme>(this.themeUrl, theme, this.httpOptions);
   }
+
+  updateTheme(theme: Theme): Observable<Theme> {
+    const urlWithId = this.themeUrl + '/' + theme.id;
+    return this.http.put<Theme>(urlWithId, theme, this.httpOptions);
+  }
 }
