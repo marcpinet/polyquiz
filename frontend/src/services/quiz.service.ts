@@ -134,6 +134,7 @@ export class QuizService {
                       next: (createdAnswer) => {
                         console.log('Answer was created successfully');
                         requestsCompleted++;
+
                         if (
                           requestsCompleted ===
                           questionAnswers.size * answers.length
@@ -164,6 +165,7 @@ export class QuizService {
                           timer: 2000,
                           showConfirmButton: false,
                         });
+                        return false;
                       },
                     });
                 });
@@ -177,6 +179,7 @@ export class QuizService {
                   timer: 2000,
                   showConfirmButton: false,
                 });
+                return false;
               },
             });
         });
@@ -190,8 +193,103 @@ export class QuizService {
           timer: 2000,
           showConfirmButton: false,
         });
+        return false;
       },
     });
+    return false;
+  }
+
+  updateQuiz(quiz: Quiz, questions: Question[], answers: Answer[]): boolean {
+    this.http
+      .put<Quiz>(this.quizUrl + '/' + quiz.id, quiz, this.httpOptions)
+      .subscribe({
+        next: (updatedQuiz) => {
+          console.log('Quiz was updated successfully');
+          this.quizzes.push(updatedQuiz);
+          this.quizzes$.next(this.quizzes);
+          let requestsCompleted = 0;
+          questions.forEach((question: Question) => {
+            console.log(question);
+            question.quizId = parseInt(updatedQuiz.id);
+            this.http
+              .put<Question>(
+                `${this.quizUrl}/${updatedQuiz.id}/${this.questionsPath}/${question.id}`,
+                question,
+                this.httpOptions
+              )
+              .subscribe({
+                next: (updatedQuestion) => {
+                  console.log('Question was updated successfully');
+                  question.id = updatedQuestion.id;
+                  answers.forEach((answer: Answer) => {
+                    this.http
+                      .put<Answer>(
+                        `${this.quizUrl}/${updatedQuiz.id}/${this.questionsPath}/${updatedQuestion.id}/${this.answerPath}/${answer.id}`,
+                        answer,
+                        this.httpOptions
+                      )
+                      .subscribe({
+                        next: (updatedAnswer) => {
+                          console.log('Answer was updated successfully');
+                          requestsCompleted++;
+
+                          if (
+                            requestsCompleted ===
+                            questions.length * answers.length
+                          ) {
+                            Swal.fire({
+                              title: 'Quiz modifié',
+                              text: 'Vous allez être redirigé vers la liste des quiz',
+                              icon: 'success',
+                              timer: 2000,
+                              showConfirmButton: false,
+                            }).then(() => {
+                              this.router.navigate(['/admin/quiz']);
+                              return true;
+                            });
+                          }
+                        },
+                        error: (error) => {
+                          console.error('Failed to update answer', error);
+                          Swal.fire({
+                            title: 'Erreur',
+                            text: 'Une erreur est survenue lors de la modification de la réponse',
+                            icon: 'error',
+                            timer: 2000,
+                            showConfirmButton: false,
+                          });
+                          return false;
+                        },
+                      });
+                  });
+                },
+                error: (error) => {
+                  console.error('Failed to update question', error);
+                  Swal.fire({
+                    title: 'Erreur',
+                    text: 'Une erreur est survenue lors de la modification de la question',
+                    icon: 'error',
+                    timer: 2000,
+                    showConfirmButton: false,
+                  });
+                  return false;
+                },
+              });
+          });
+        },
+        error: (error) => {
+          console.error('Failed to update quiz', error);
+          Swal.fire({
+            title: 'Erreur',
+            text: 'Une erreur est survenue lors de la modification du quiz',
+            icon: 'error',
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          return false;
+        },
+      });
+    return false;
   }
 
   createQuestion(quizId: string, question: Question): Observable<Question> {

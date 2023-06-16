@@ -37,9 +37,10 @@ import { QuizCreateComponent } from './admin/addQuiz/quiz-create/quiz-create.com
 import { QuestionCreateComponent } from './admin/addQuiz/question-create/question-create.component';
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
 import { PlayedQuizAdminComponent } from './admin/statsResident/playedQuizAdmin/played-quiz-admin.component';
-import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
+import { ModifResidentComponent } from './admin/statsResident/modifResident/modif-resident.component';
 import { IntlModule } from 'angular-ecmascript-intl';
 import { INTL_LOCALES } from 'angular-ecmascript-intl';
+import { ModifyQuizAdminComponent } from './admin/quizzes/quizList/modif-quiz/modifyQuiz/modify-quiz.component';
 import { AdminNavbarComponent } from './admin/navbar/navbar-admin.component';
 import { HelpModalComponent } from './modals/help-modal/help-modal.component';
 import { AdminNotificationComponent } from './admin/notification/notification.component';
@@ -50,9 +51,11 @@ import { AdminProfileComponent } from './admin/profile/admin-profile.component';
 import { AdminPasswordChangeComponent } from './admin/profile/password-change/password-change.component';
 import { AdminProfileUpdateComponent } from './admin/profile/profile-update/profile-update.component';
 import { AdminAbstractModal } from './admin/modals/admin-abtract-modal/admin-abstract-modal.component';
-import { AdminModifGeneralComponent } from './admin/modifResident/modif-general/modif-general.component';
-import { AdminModifSymptomeComponent } from './admin/modifResident/modif-symptomes/modif-symptome.component';
-import { AdminModifPasswordComponent } from './admin/modifResident/modif-password/modif-password.component';
+import { ModifyQuestionAdminComponent } from './admin/quizzes/quizList/modif-quiz/modifQuestion/modify-question.component';
+import { ModifyQuizComponent } from './admin/quizzes/quizList/modif-quiz/modify.component';
+import { AdminModifGeneralComponent } from './admin/statsResident/modifResident/modif-general/modif-general.component';
+import { AdminModifSymptomeComponent } from './admin/statsResident/modifResident/modif-symptomes/modif-symptome.component';
+import { AdminModifPasswordComponent } from './admin/statsResident/modifResident/modif-password/modif-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +101,9 @@ import { AdminModifPasswordComponent } from './admin/modifResident/modif-passwor
     AdminPasswordChangeComponent,
     AdminProfileUpdateComponent,
     AdminAbstractModal,
+    ModifyQuizAdminComponent,
+    ModifyQuestionAdminComponent,
+    ModifyQuizComponent,
     AdminModifGeneralComponent,
     AdminModifSymptomeComponent,
     AdminModifPasswordComponent,

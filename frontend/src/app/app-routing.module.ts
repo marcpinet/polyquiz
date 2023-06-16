@@ -15,13 +15,13 @@ import { RouteGuardAdminService } from 'src/services/route-guard-admin.service';
 import { StatsResidentComponent } from './admin/statsResident/stats-resident.component';
 import { QuizzesAdminComponent } from './admin/quizzes/quizzes.component';
 import { ThemesComponent } from './admin/themes/themes.component';
-import { AddThemeComponent } from './admin/themes/addTheme/add-theme.component';
 import { ModifyThemeComponent } from './admin/themes/modifTheme/modif-theme.component';
 import { AddQuizComponent } from './admin/addQuiz/add-quiz.component';
-import { ModifResidentComponent } from './admin/modifResident/modif-resident.component';
+import { ModifResidentComponent } from './admin/statsResident/modifResident/modif-resident.component';
 import { AdminNotificationComponent } from './admin/notification/notification.component';
 import { LeaveRouteGuard } from 'src/services/leave-route-guard';
 import { AdminProfileComponent } from './admin/profile/admin-profile.component';
+import { ModifyQuizComponent } from './admin/quizzes/quizList/modif-quiz/modify.component';
 const routes: Routes = [
   {
     path: 'game/:id',
@@ -93,6 +93,11 @@ const routes: Routes = [
     canActivate: [RouteGuardAdminService],
     component: AddQuizComponent,
     canDeactivate: [LeaveRouteGuard],
+  },
+  {
+    path: 'admin/quiz/modify/:id',
+    canActivate: [RouteGuardAdminService],
+    component: ModifyQuizComponent,
   },
   {
     path: 'admin/modif-resident/:id',

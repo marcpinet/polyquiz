@@ -48,10 +48,6 @@ export class QuizListAdminComponent {
     });
   }
 
-  navigateQuizModif(quizId: string) {
-    this.router.navigate(['/admin/quiz/modif/' + quizId]);
-  }
-
   async getResultsForQuiz(quizId: string): Promise<Result[]> {
     try {
       const resultList = await this.http
@@ -62,5 +58,10 @@ export class QuizListAdminComponent {
       console.error('Failed to retrieve results', error);
       return [];
     }
+  }
+
+  modifQuiz(quizId: string) {
+    console.log('modif quiz ' + quizId);
+    this.router.navigate(['/admin/quiz/modify/' + quizId]);
   }
 }
