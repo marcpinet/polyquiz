@@ -35,11 +35,15 @@ export class AdminProfileUpdateComponent {
     this.authService.user$.subscribe((user) => {
       this.user = user;
       // Update the form values when the user data changes
-      this.profileForm.patchValue({
-        firstName: this.user?.firstName || '',
-        lastName: this.user?.lastName || '',
-        userName: this.user?.userName || '',
-      });
+      this.repatchValue();
+    });
+  }
+
+  repatchValue() {
+    this.profileForm.patchValue({
+      firstName: this.user?.firstName || '',
+      lastName: this.user?.lastName || '',
+      userName: this.user?.userName || '',
     });
   }
 
@@ -58,7 +62,7 @@ export class AdminProfileUpdateComponent {
         timer: 1500,
         showConfirmButton: false,
       });
-      this.profileForm.reset();
+      this.repatchValue();
       let dialog = document.getElementsByTagName('dialog')[2];
       dialog.close();
     });

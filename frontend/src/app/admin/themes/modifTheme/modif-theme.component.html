@@ -1,2 +1,26 @@
-Modif Theme
-<!-- TODO -->
+<form [formGroup]="themeForm" (ngSubmit)="updateTheme()" class="container mx-auto justify-between items-center">
+  <div class="mb-4">
+    <label for="name" class="block text-[#2B3467] text-xl font-bold mb-2">Nom du thème</label>
+    <input data-testid="modifyName" type="text" id="name" class="form-input p-4 mt-1 block w-full border-[#2B3467] border-2 rounded-md shadow-sm focus:ring-[#2B3467] focus:border-[#2B3467]"
+      formControlName="name" required placeholder="Entrez le nom du thème" >
+    <div *ngIf="themeForm.get('name').invalid && (themeForm.get('name').touched || submitted)" class="text-red-500 text-xl mt-1">
+      Le nom du thème est requis
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="image" class="block text-[#2B3467] text-xl font-bold mb-2">Image du thème</label>
+    <input data-testid="modifyImage" type="text" id="image" class="form-input p-4 mt-1 block w-full border-[#2B3467] border-2 rounded-md shadow-sm focus:ring-[#2B3467] focus:border-[#2B3467]"
+      formControlName="image" required placeholder="Entrez l'URL de l'image">
+    <img [src]="themeForm.value.image" *ngIf="themeForm.value.image" class="mx-auto object-cover w-1/3 rounded-lg" alt="Theme image">
+    <div *ngIf="themeForm.get('image').invalid && (themeForm.get('image').touched || submitted)" class="text-red-500 text-xl mt-1">
+      L'URL de l'image est requise
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <button type="submit" [disabled]="themeForm.invalid" class="block w-full max-w-xs mx-auto text-2xl bg-indigo-800 focus:bg-indigo-600 text-white rounded-lg px-5 py-5 font-semibold hover:bg-indigo-900 focus:outline-none focus:shadow-outline disabled:opacity-50">Mettre à jour le thème</button>
+  </div>
+
+
+</form>

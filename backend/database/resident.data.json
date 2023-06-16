@@ -2,38 +2,38 @@
   {
     "userId": 1680382334270,
     "id": 1680382334189,
-    "sexe": "masculin",
+    "sexe": "Masculin",
     "symptome": [
-      "akinesie",
-      "rigidite"
+      "Akinésie",
+      "Rigidité"
     ],
     "dateOfBirth": "1925-04-06"
   },
   {
     "userId": 1682834336623,
     "id": 1682834336524,
-    "sexe": "feminin",
+    "sexe": "Féminin",
     "symptome": [
-      "tremblement",
-      "rigidite"
+      "Tremblement de repos",
+      "Rigidité"
     ],
     "dateOfBirth": "1939-06-17"
   },
   {
     "id": 1683119138876,
-    "sexe": "masculin",
+    "sexe": "Masculin",
     "symptome": [
-      "tremblement",
-      "akinesie",
-      "rigidite"
+      "Tremblement de repos",
+      "Akinésie",
+      "Rigidité"
     ],
     "dateOfBirth": "1940-05-02",
     "userId": 1683119138951
   },
   {
-    "sexe": "masculin",
+    "sexe": "Masculin",
     "symptome": [
-      "autres"
+      "Autres"
     ],
     "dateOfBirth": "1933-03-20",
     "id": 1683121125662,
@@ -42,18 +42,18 @@
   {
     "sexe": "feminin",
     "symptome": [
-      "akinesie",
-      "rigidite"
+      "Akinésie",
+      "Rigidité"
     ],
     "dateOfBirth": "1950-05-02",
     "id": 1683322819530,
     "userId": 1683322819612
   },
   {
-    "sexe": "masculin",
+    "sexe": "Masculin",
     "symptome": [
-      "tremblement",
-      "autres"
+      "Tremblement de repos",
+      "Autres"
     ],
     "dateOfBirth": "1944-02-05",
     "id": 1683322954418,

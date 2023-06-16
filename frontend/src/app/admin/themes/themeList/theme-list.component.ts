@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Theme } from 'src/models/quiz.model';
 import { ThemesService } from 'src/services/theme.service';
@@ -8,6 +8,8 @@ import { ThemesService } from 'src/services/theme.service';
   templateUrl: './theme-list.component.html',
 })
 export class ThemeListComponent {
+  @Output() modifyTheme: EventEmitter<Theme> = new EventEmitter<Theme>();
+
   public themeList: Theme[] = [];
 
   constructor(public router: Router, public themeService: ThemesService) {
@@ -16,7 +18,7 @@ export class ThemeListComponent {
     });
   }
 
-  navigateThemeModif(themeId: string) {
-    this.router.navigate(['/admin/theme/modif/' + themeId]);
+  navigateThemeModif(theme: Theme) {
+    this.modifyTheme.emit(theme);
   }
 }
