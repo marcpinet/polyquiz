@@ -1,0 +1,10 @@
+<dialog class="relative w-2/5 mx-auto rounded-lg border border-4 border-[#2B3467]">
+  <div class="mt-1 flex items-center justify-center text-3xl font-bold text-[#EB455F]">{{modalTitle}}</div>
+  <div class="mt-2">
+    <ng-content></ng-content>
+  </div>
+  <div class="flex justify-end mt-5">
+    <button class="px-4 py-2 mr-2 bg-[#2B3467] text-white rounded" type="button" (click)="applyFilterAndCloseDialog()">Ok</button>
+    <button class="px-4 py-2 bg-gray-300 text-[#2B3467] rounded" type="button" (click)="closeDialog()">Annuler</button>
+  </div>
+</dialog>
