@@ -53,7 +53,7 @@ test.describe('Create a quiz scenario', () => {
       await page.fill('#reponse2Image', 'image reponse 2 Q1');
       await page.fill('#reponse3', 'reponse 3 Q1');
       await page.fill('#reponse3Image', 'image reponse 3 Q1');
-      await page.locator('#valid2').click();
+      await page.locator('#reponseVraie2').click();
       await page.fill('#reponse4', 'reponse 4 Q1');
       await page.fill('#reponse4Image', 'image reponse 4 Q1');
       await page.fill('#explicationReponse', 'explication reponse Q1');
@@ -68,7 +68,7 @@ test.describe('Create a quiz scenario', () => {
       await page.fill('#reponse1Image', 'image reponse 1 Q2');
       await page.fill('#reponse2', 'reponse 2 Q2');
       await page.fill('#reponse2Image', 'image reponse 2 Q2');
-      await page.locator('#valid1').click();
+      await page.locator('#reponseVraie1').click();
       await page.fill('#reponse3', 'reponse 3 Q2');
       await page.fill('#reponse3Image', 'image reponse 3 Q2');
       await page.fill('#explicationReponse', 'explication reponse Q2');
@@ -81,9 +81,9 @@ test.describe('Create a quiz scenario', () => {
       await page.fill('#questionImage', 'Image de la question');
       await page.fill('#reponse1', 'reponse 1 Q3');
       await page.fill('#reponse1Image', 'image reponse 1 Q3');
-      await page.getByLabel('Bonne Réponse').click();
       await page.fill('#reponse2', 'reponse 2 Q3');
       await page.fill('#reponse2Image', 'image reponse 2 Q3');
+      await page.locator('#reponseVraie2').click();
       await page.fill('#explicationReponse', 'explication reponse Q3');
       await page.fill('#explicationImage', 'image explication reponse Q3');
       await page.getByRole('button', { name: 'Ajouter question' }).click();
@@ -99,7 +99,7 @@ test.describe('Create a quiz scenario', () => {
       await page.fill('#reponse1', 'reponse 1 Q2');
       await page.fill('#reponse1Image', 'image reponse 1 Q2');
       await page.fill('#reponse2', 'reponse 2 Q2');
-      await page.locator('#valid1').click();
+      await page.locator('#reponseVraie1').click();
       await page.fill('#reponse2Image', 'image reponse 2 Q2');
       await page.fill('#explicationReponse', 'explication reponse Q2');
       await page.fill('#explicationImage', 'image explication reponse Q2');
