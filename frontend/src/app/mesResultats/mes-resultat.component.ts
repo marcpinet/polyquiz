@@ -12,7 +12,12 @@ import { Quiz } from 'src/models/quiz.model';
 })
 export class MesResultatsComponent implements OnInit {
   user: User;
-  playedQuizzes: Map<Quiz, Result[]> = new Map<Quiz, Result[]>();
+  playedQuizData: {
+    quiz: Quiz;
+    score: number;
+    successRate: number;
+    numberOfAttempts: number;
+  }[] = [];
 
   totalScore: number | null = null;
   successRate: number | null = null;
@@ -29,10 +34,6 @@ export class MesResultatsComponent implements OnInit {
     this.resultService
       .getResultsByUser(this.user)
       .subscribe(async (results) => {
-        let totalQuestions = 0;
-        let totalCorrectAnswers = 0;
-        let totalPoints = 0;
-
         let quizIds = new Set<string>();
         for (const element of results) {
           let result = element;
@@ -46,35 +47,59 @@ export class MesResultatsComponent implements OnInit {
           let quizResults = results.filter(
             (result) => result.quiz_id === quizId
           );
-          this.playedQuizzes.set(quiz, quizResults);
+
+          let totalQuestions = 0;
+          let totalCorrectAnswers = 0;
+          let totalPoints = 0;
+
+          let maxPoints = 0;
+          switch (quiz.difficulty) {
+            case 'Facile':
+              maxPoints = 100;
+              break;
+            case 'Moyen':
+              maxPoints = 200;
+              break;
+            case 'Difficile':
+              maxPoints = 300;
+              break;
+            default:
+              break;
+          }
 
           for (const result of quizResults) {
             const questions = result.right_answers + result.wrong_answers;
             totalQuestions += questions;
             totalCorrectAnswers += result.right_answers;
 
-            let pointMultiplier = 0;
-            switch (quiz.difficulty) {
-              case 'Facile':
-                pointMultiplier = 100;
-                break;
-              case 'Moyen':
-                pointMultiplier = 200;
-                break;
-              case 'Difficile':
-                pointMultiplier = 300;
-                break;
-              default:
-                break;
-            }
-
             const correctPercentage = result.right_answers / questions;
-            totalPoints += correctPercentage * pointMultiplier;
+            totalPoints += correctPercentage * maxPoints;
           }
+
+          const score = Math.round(totalPoints / quizResults.length); // Calculate average score per quiz
+          const successRate = (totalCorrectAnswers / totalQuestions) * 100 || 0;
+          const numberOfAttempts = quizResults.length;
+
+          this.playedQuizData.push({
+            quiz,
+            score,
+            successRate: Number(successRate.toFixed(1)),
+            numberOfAttempts,
+          });
         }
 
-        this.totalScore = Math.round(totalPoints);
-        this.successRate = (totalCorrectAnswers / totalQuestions) * 100;
+        const successRateSum = this.playedQuizData.reduce(
+          (sum, entry) => sum + entry.successRate,
+          0
+        );
+
+        this.totalScore = Math.round(
+          this.playedQuizData.reduce((sum, entry) => sum + entry.score, 0)
+        );
+        this.successRate =
+          this.playedQuizData.length > 0
+            ? successRateSum / this.playedQuizData.length
+            : 0;
       });
   }
 
