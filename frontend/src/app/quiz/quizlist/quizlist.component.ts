@@ -240,6 +240,10 @@ export class QuizListComponent implements OnInit {
     this.selectedDuration = this.durations;
     this.selectedTheme = this.themes;
     this.filteredQuizList = [...this.quizList];
+    this.currentPage = 1;
+    this.modals.forEach((modal) => {
+      modal.selected = modal.filters;
+    });
   }
 
   randomQuiz(): void {
