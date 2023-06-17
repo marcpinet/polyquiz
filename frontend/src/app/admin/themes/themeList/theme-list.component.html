@@ -1,18 +1,18 @@
 <div *ngFor="let theme of themeList;" class="flex justify-center">
-  <div class="flex border bg-[#90C1DF] border-[#2b3467] rounded-md overflow-hidden h-40 mb-6 items-center justify-center w-4/5">
+  <div class="flex border bg-[#90C1DF] border-[#2b3467] border-8 rounded-md overflow-hidden h-40 mb-6 items-center justify-center w-4/5">
     <div class="w-80 py-3 px-5 bg-[#2b3467] text-white h-40 border-r border-r-[#2b3467]">
       <app-theme-admin [theme]="theme" class="w-full h-full"></app-theme-admin>
     </div>
 
     <div class="button-container flex h-40 my-auto flex-1">
-      <button class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4">
+      <button class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 pointer-events-none">
         <div>
           <i class="fa-solid fa-people-group text-[#2b3467] mb-1 text-3xl"></i>
         </div>
         <div class="font-bold text-[#2b3467]">Participants</div>
         <div class="text-white font-bold text-5xl">35</div>
       </button>
-      <button class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4">
+      <button class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 pointer-events-none">
         <div>
           <i class="fa-solid fa-percent text-[#2b3467] mb-1 text-3xl"></i>
         </div>
@@ -20,7 +20,7 @@
         <div class="text-white font-bold text-5xl">75%</div>
       </button>
 
-      <button class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4">
+      <button class="text-2xl flex-1 font-semibold p-0 hover:bg-[ #90C1DF] transition-colors duration-300 border-4 pointer-events-none">
         <div>
           <i class="fa-solid fa-rotate-left text-[#2b3467] mb-1 text-3xl"></i>
         </div>
