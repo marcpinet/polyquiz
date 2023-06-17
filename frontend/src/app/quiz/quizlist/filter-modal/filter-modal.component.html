@@ -1,10 +1,22 @@
-<dialog class="relative w-2/5 mx-auto rounded-lg border border-4 border-[#2B3467]">
-  <div class="mt-1 flex items-center justify-center text-3xl font-bold text-[#EB455F]">{{modalTitle}}</div>
-  <div class="mt-2">
-    <ng-content></ng-content>
+<dialog class="relative w-2/3 mx-auto rounded-lg border border-4 border-[#2B3467]">
+  <div class="mt-1 flex items-center justify-center text-3xl font-bold text-[#EB455F]">{{ modalTitle }}</div>
+  <div class="mt-2 flex justify-center">
+    <div class="w-4/5">
+      <!-- Filter options checkboxes -->
+      <ng-container *ngFor="let filter of filterList">
+        <label class="flex items-center my-5 cursor-pointer rounded-lg px-4 py-2 bg-[#90C1DF]">
+          <input type="checkbox" class="mr-4 h-16 w-12 cursor-pointer" [checked]="isSelected(filter)" (change)="toggleFilter(filter)">
+          <span class="text-3xl cursor-pointer">{{ filter }}</span>
+        </label>
+      </ng-container>
+    </div>
   </div>
-  <div class="flex justify-end mt-5">
-    <button class="px-4 py-2 mr-2 bg-[#2B3467] text-white rounded" type="button" (click)="applyFilterAndCloseDialog()">Ok</button>
-    <button class="px-4 py-2 bg-gray-300 text-[#2B3467] rounded" type="button" (click)="closeDialog()">Annuler</button>
+  <div class="flex justify-center mt-5">
+    <div class="w-2/5 mr-8">
+      <button class="px-10 py-6 bg-gray-300 text-[#EB455F] rounded w-full text-3xl font-bold" type="button" (click)="closeDialog()">Annuler</button>
+    </div>
+    <div class="w-2/5">
+      <button class="px-10 py-6 bg-[#2B3467] text-white rounded w-full text-3xl font-bold" type="button" (click)="applyFilterAndCloseDialog()">Filtrer ! </button>
+    </div>
   </div>
 </dialog>

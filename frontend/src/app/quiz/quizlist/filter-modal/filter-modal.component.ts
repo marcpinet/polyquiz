@@ -20,15 +20,27 @@ export class FilterModal {
   @Input() selectedFilters: string[];
   @Output() applyFilters: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  closeDialog() {
-    let dialog = document.getElementsByTagName('dialog')[this.modalNum];
-    dialog.close();
+  toggleFilter(filter: string) {
+    if (this.isSelected(filter)) {
+      this.selectedFilters = this.selectedFilters.filter((f) => f !== filter);
+    } else {
+      this.selectedFilters = [...this.selectedFilters, filter];
+    }
+  }
+
+  isSelected(filter: string): boolean {
+    return this.selectedFilters.includes(filter);
   }
 
   applyFilterAndCloseDialog() {
     let dialog = document.getElementsByTagName('dialog')[this.modalNum];
     dialog.close();
-    const filters: string[] = [];
+    const filters = [...this.selectedFilters];
     this.applyFilters.emit(filters);
+  }
+
+  closeDialog() {
+    let dialog = document.getElementsByTagName('dialog')[this.modalNum];
+    dialog.close();
   }
 }
