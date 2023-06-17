@@ -36,20 +36,6 @@ test.describe('Quiz tests', () => {
         currentuttonBoundingBox
       );
 
-      currentButton = await page.$('#theme');
-      currentuttonBoundingBox = await currentButton.boundingBox();
-      await playedQuizComponentFixture.CliquePressionLongue(
-        page,
-        currentuttonBoundingBox
-      );
-
-      currentButton = await page.$('button:has-text("OK")');
-      currentuttonBoundingBox = await currentButton.boundingBox();
-      await playedQuizComponentFixture.CliquePressionLongue(
-        page,
-        currentuttonBoundingBox
-      );
-
       currentButton = await page.$('app-quiz-details');
       currentuttonBoundingBox = await currentButton.boundingBox();
       await playedQuizComponentFixture.CliquePressionLongue(
@@ -221,20 +207,19 @@ test.describe('Main page tests', () => {
       await page.getByRole('button', { name: 'Difficulté' }).click();
       //Vérifions que le texte de la popup est bien présente
       await page.waitForSelector('text=Sélectionnez la difficulté');
-      await page.getByRole('combobox').click();
       // Sélectionner l'option "Moyen"
-      await page.selectOption('role=combobox', { label: 'Moyen' });
-      await page.getByRole('button', { name: 'OK' }).click();
+      await page.getByLabel('Facile').click();
+      await page.getByLabel('Difficile').click();
+      await page.getByRole('button', { name: 'Filtrer !' }).click();
       //On verifie que le bouton s'est bien mis a jour
       await page.waitForSelector('text=Moyen');
     });
 
     await test.step('Progres', async () => {
       await page.getByRole('button', { name: 'Progrès' }).click();
-      await page.waitForSelector('text=Sélectionnez le statut');
-      await page.getByRole('combobox').click();
-      await page.selectOption('role=combobox', { label: 'Non fait' });
-      await page.getByRole('button', { name: 'OK' }).click();
+      await page.waitForSelector('text=Sélectionnez le progrès');
+      await page.locator('text=Fait').nth(0).click();
+      await page.getByRole('button', { name: 'Filtrer !' }).click();
       //On verifie que le bouton s'est bien mis a jour
       await page.waitForSelector('text=Non fait');
     });
@@ -242,19 +227,19 @@ test.describe('Main page tests', () => {
     await test.step('Theme', async () => {
       await page.getByRole('button', { name: 'Thème' }).click();
       await page.waitForSelector('text=Sélectionnez le thème');
-      await page.getByRole('button', { name: 'OK' }).click();
+      await page.getByRole('button', { name: 'Filtrer !' }).click();
       //On verifie que le bouton s'est bien mis a jour
-      await page.waitForSelector('text=Géographie');
+      await page.waitForSelector('text=Thème');
     });
 
     await test.step('Duree', async () => {
       await page.getByRole('button', { name: 'Durée' }).click();
       await page.waitForSelector('text=Sélectionnez la durée');
-      await page.getByRole('combobox').click();
-      await page.selectOption('role=combobox', { label: '> 10 min' });
-      await page.getByRole('button', { name: 'OK' }).click();
+      await page.getByLabel('< 5 mins').click();
+      await page.getByLabel('5 mins < 10 mins').click();
+      await page.getByRole('button', { name: 'Filtrer !' }).click();
       //On verifie que le bouton s'est bien mis a jour
-      await page.waitForSelector('text=> 10 min');
+      await page.waitForSelector('text=> 10 mins');
     });
 
     await test.step('Reinitialisation', async () => {
