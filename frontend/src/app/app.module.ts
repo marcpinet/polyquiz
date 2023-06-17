@@ -56,6 +56,7 @@ import { ModifyQuizComponent } from './admin/quizzes/quizList/modif-quiz/modify.
 import { AdminModifGeneralComponent } from './admin/statsResident/modifResident/modif-general/modif-general.component';
 import { AdminModifSymptomeComponent } from './admin/statsResident/modifResident/modif-symptomes/modif-symptome.component';
 import { AdminModifPasswordComponent } from './admin/statsResident/modifResident/modif-password/modif-password.component';
+import { FilterModal } from './quiz/quizlist/filter-modal/filter-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +108,7 @@ import { AdminModifPasswordComponent } from './admin/statsResident/modifResident
     AdminModifGeneralComponent,
     AdminModifSymptomeComponent,
     AdminModifPasswordComponent,
+    FilterModal,
   ],
   imports: [
     BrowserModule,

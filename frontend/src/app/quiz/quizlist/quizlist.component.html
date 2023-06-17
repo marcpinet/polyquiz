@@ -1,17 +1,17 @@
 <div class="w-full mt-4" style="display: flex; justify-content: space-between">
   <div>
     <span class="text-2xl font-bold text-[#2B3467] ml-2">Filtres: </span>
-    <button class="bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded my* text-xl font-bold" (click)="openDifficultyFilter()">
-      <i class="fa-solid fa-stairs text-2xl mr-1"></i> {{ selectedDifficulty }}
+    <button class="bg-[#90C1DF] text-[#2B3467] px-2 py-6 rounded my* text-xl font-bold my-1" (click)="openFilterModal('difficulty')">
+      <i class="fa-solid fa-stairs text-2xl mr-1"></i> {{ getDifficultyLabel() }}
     </button>
-    <button class="mx-3 bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded text-xl font-bold" (click)="openDoneFilter()">
-      <i class="fa-solid fa-check-circle text-2xl mr-1"></i> {{ selectedDone }}
+    <button class="mx-3 bg-[#90C1DF] text-[#2B3467] px-2 py-6 rounded text-xl font-bold my-1" (click)="openFilterModal('progress')">
+      <i class="fa-solid fa-check-circle text-2xl mr-1"></i> {{ getDoneLabel() }}
     </button>
-    <button class="bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded text-xl font-bold" id="theme" (click)="openThemeFilter()">
-      <i class="fa-solid fa-palette text-2xl mr-1"></i> {{ selectedTheme }}
+    <button class="bg-[#90C1DF] text-[#2B3467] px-2 py-6 rounded text-xl font-bold my-1" id="theme" (click)="openFilterModal('theme')">
+      <i class="fa-solid fa-palette text-2xl mr-1"></i> {{ getThemeLabel() }}
     </button>
-    <button class="mx-3 bg-[#90C1DF] text[#2B3467] px-2 py-6 rounded text-xl font-bold" (click)="openDurationFilter()">
-      <i class="fa-solid fa-clock text-2xl mr-1"></i> {{ selectedDuration }}
+    <button class="mx-3 bg-[#90C1DF] text-[#2B3467] px-2 py-6 rounded text-xl font-bold my-1" (click)="openFilterModal('duration')">
+      <i class="fa-solid fa-clock text-2xl mr-1"></i> {{ getDurationLabel() }}
     </button>
   </div>
   <div>
@@ -42,8 +42,6 @@
     <div *ngIf="filteredQuizList.length === 0" class="text-5xl text-[#2B3467] ml-2">Aucun quiz ne correspond à vos critères</div>
   </ul>
 
-
-
   <div class="pagination h-3/5">
     <button class="pagination-button" [ngClass]="{'enabled': currentPage * pageSize <= filteredQuizList.length, 'disabled': currentPage * pageSize > filteredQuizList.length}" (click)="nextPage()" [disabled]="currentPage * pageSize > filteredQuizList.length">
       <i class="fa-solid fa-arrow-right text-5xl"></i>
@@ -51,3 +49,12 @@
   </div>
 
 </div>
+<ng-container *ngFor="let modal of modals">
+  <filter-modal
+    [modalNum]="modal.num"
+    [modalTitle]="modal.title"
+    [filterList]="modal.filters"
+    [selectedFilters]="modal.selected"
+    (applyFilters)="setSelectedFilters($event, modal.num)"
+  ></filter-modal>
+</ng-container>
