@@ -1,13 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-  Input,
-  Type,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'filter-modal',
@@ -19,6 +10,8 @@ export class FilterModal {
   @Input() filterList: string[];
   @Input() selectedFilters: string[];
   @Output() applyFilters: EventEmitter<string[]> = new EventEmitter<string[]>();
+
+  private initialSelectedFilters: string[] = [];
 
   toggleFilter(filter: string) {
     if (this.isSelected(filter)) {
@@ -36,11 +29,17 @@ export class FilterModal {
     let dialog = document.getElementsByTagName('dialog')[this.modalNum];
     dialog.close();
     const filters = [...this.selectedFilters];
+    this.initialSelectedFilters = [...this.selectedFilters];
     this.applyFilters.emit(filters);
   }
 
   closeDialog() {
     let dialog = document.getElementsByTagName('dialog')[this.modalNum];
     dialog.close();
+    this.selectedFilters = [...this.initialSelectedFilters];
+  }
+
+  ngOnInit() {
+    this.initialSelectedFilters = [...this.selectedFilters];
   }
 }
