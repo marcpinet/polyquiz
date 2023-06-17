@@ -1,13 +1,16 @@
 <ng-container *ngIf="user != undefined && resident != undefined">
   <div class="w-9/10 m-6 bg-[#90C1DF] shadow-lg rounded-xl pl-6 pb-6 mx-auto">
-    <div class="px-6 mt-16">
+    <div class="px-6 mt-20">
       <div class="flex flex-wrap justify-center">
-        <div class="w-full flex justify-center mr-16">
-          <div class="relative">
-            <img src="{{ this.user.avatar }}" class="shadow-xl rounded-full align-middle absolute -m-16 -ml-20 lg:-ml-16 max-w-[200px] max-h-[200px]">
+        <div class="w-full flex justify-center">
+          <div class="relative flex items-center -mt-16">
+            <img
+              src="{{ this.user.avatar }}"
+              class="shadow-xl rounded-full border border-[#2b3467] border-4 max-w-[250px]"
+            />
           </div>
         </div>
-        <div class="w-full text-center mt-32">
+        <div class="w-full text-center">
           <h3 class="text-3xl text-[#2b3467] font-bold leading-normal mb-1">
             {{ this.user.firstName }} {{ this.user.lastName }}
           </h3>
@@ -37,7 +40,7 @@
       <!-- Troubles -->
       <h1 class="text-3xl text-[#2b3467] font-bold mb-2">Troubles</h1>
       <span
-        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xl font-semibold text-[#EB455F] border border-[#2B3467] mr-2 mb-2"
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-[#EB455F] border border-[#2B3467] mr-2 mb-2 text-2xl"
         *ngFor="let symptome of symptomes">
         {{ symptome }}
       </span>
