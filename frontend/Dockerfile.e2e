@@ -1,0 +1,21 @@
+# Build
+FROM mcr.microsoft.com/playwright:v1.35.0-jammy AS build-stage
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+# Test
+FROM build-stage AS test-stage
+
+ENV TEST_URL="http://front-back-test:4200"
+
+WORKDIR /app
+
+CMD ["npm", "run", "test:e2e"]

@@ -1,0 +1,23 @@
+# Test Server
+FROM node:16.20-alpine3.17
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN mkdir -p /app/frontend
+RUN mkdir -p /app/backend
+
+COPY ./backend/package*.json /app/backend/
+COPY ./frontend/package*.json /app/frontend/
+
+RUN cd /app/backend && npm install
+RUN cd /app/frontend && npm install
+
+EXPOSE 4200 9428
+
+CMD ["npm", "run", "test"]

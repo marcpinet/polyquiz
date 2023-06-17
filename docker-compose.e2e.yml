@@ -1,0 +1,51 @@
+version: "3.8"
+services:
+  installer:
+    build:
+      context: .
+      dockerfile: Dockerfile.installer
+    volumes:
+      - .:/app
+
+  front-back-test:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.testserver
+    volumes:
+      - .:/app
+      - /node_modules
+    networks:
+      - app-network
+    ports:
+      - "4200:4200"
+      - "9427:9428"
+    depends_on:
+      - installer
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 4200 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend-test-e2e:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.e2e
+      target: test-stage
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - test-results:/app/test-results
+    command: ["npm", "run", "test:e2e"]
+    depends_on:
+      front-back-test:
+        condition: service_healthy
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  test-results:

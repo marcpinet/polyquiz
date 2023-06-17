@@ -17,26 +17,11 @@ USER appuser
 
 RUN npm install
 
-USER root
-
-ENV PLAYWRIGHT_BROWSERS_PATH=/tmp/playwright
-
-RUN mkdir -p /root/.cache && chmod 777 /root/.cache
-
-RUN npx playwright install
-
 COPY . .
 
 USER appuser
 
 RUN npm run build
-
-# Test
-FROM build-stage AS test-stage
-
-WORKDIR /app
-
-CMD ["npm", "run", "test"]
 
 # Prod
 FROM nginx:1.24.0 AS production-stage

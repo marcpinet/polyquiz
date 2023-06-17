@@ -36,23 +36,36 @@ https://github.com/marcpinet/polyquiz/assets/52708150/b2a64fcb-29b6-442e-aaca-e4
     ```bash
     npm install && cd backend && npm install && cd ../frontend && npm install && cd ..
     ```
-
-## Run the end to end tests
-
-Before running the tests, you need to run your front-end and back-end:
-
-1) Run your back-end: `npm run start:e2e`
-
-2) Run your front-end: `npm run start`
-
-3) Run the tests:  `npm run test:e2e`
-
 ### Running
 
 After that, you can proceed to start the program by running `npm run dev` at the root of the project. This will start
 both the backend and the frontend.
 
-### Continuous Integration
+### Run the end to end tests
+
+Before running the tests, you need to run your front-end and back-end:
+
+1. Run your backend: `npm run start:e2e`
+
+2. Run your frontend: `npm run start`
+
+3. Run the tests:  `npm run test:e2e`
+
+## Running with Docker
+
+- If you want to run front and back simultaneously, run:
+
+```bash
+docker compose up
+``` 
+
+- If you want to run the tests, run:
+
+```bash
+docker compose -f docker-compose.e2e.yml up
+``` 
+
+## Continuous Integration
 
 The project uses GitHub Actions to run the tests and build the project. The husky post-merge hook will also install the
 dependencies for you when you pull from the repository (only if there are newly added ones).
