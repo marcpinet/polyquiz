@@ -143,21 +143,5 @@
     "explain_text": "La réponse est VRAI. Pour se désaltérer, ce petit marsupial de l’Océanie ingère des plantes succulentes, une espèce végétale riche en eau.",
     "quizId": 1683563481464,
     "id": 1683563481532
-  },
-  {
-    "question_text": "intitule question 1",
-    "explain_text": "explication reponse Q1",
-    "quizId": 1687005038859,
-    "question_image": "Image de la question",
-    "explain_image": "image explication reponse Q1",
-    "id": 1687005038874
-  },
-  {
-    "question_text": "intitule question 2",
-    "explain_text": "explication reponse Q2",
-    "quizId": 1687005038859,
-    "question_image": "Image de la question",
-    "explain_image": "image explication reponse Q2",
-    "id": 1687005038876
   }
 ]

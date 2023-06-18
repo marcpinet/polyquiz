@@ -58,15 +58,5 @@
     "dateOfBirth": "1944-02-05",
     "id": 1683322954418,
     "userId": 1683322954499
-  },
-  {
-    "sexe": "Masculin",
-    "symptome": [
-      "Tremblement de repos",
-      "Rigidité"
-    ],
-    "dateOfBirth": "1950-01-01",
-    "id": 1687005043216,
-    "userId": 1687005043273
   }
 ]
