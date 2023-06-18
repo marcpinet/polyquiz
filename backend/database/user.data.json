@@ -61,14 +61,5 @@
     "userType": "patient",
     "avatar": "https://is2-ssl.mzstatic.com/image/thumb/Purple127/v4/a1/04/94/a10494c3-8d06-e305-1b89-f9e41fc63a75/source/512x512bb.jpg",
     "id": 1683322954499
-  },
-  {
-    "userName": "ONDyIuUrrL9NNbr",
-    "firstName": "PrénomRésident",
-    "lastName": "NomRésident",
-    "password": "$2b$10$n6sTbQA5hL7SEg5hDDI8H.9J7flOLIPm1lA4LP/Gf4XIERr.e.E9y",
-    "userType": "patient",
-    "avatar": "photo nouveau résident",
-    "id": 1687005043273
   }
 ]
